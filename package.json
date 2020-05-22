@@ -1,0 +1,33 @@
+{
+  "name": "ohmyform-react",
+  "version": "0.1.0",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "export": "next build && next export",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^4.1.0",
+    "antd": "^4.2.2",
+    "axios": "^0.19.2",
+    "dayjs": "^1.8.27",
+    "next": "9.4.0",
+    "next-images": "^1.4.0",
+    "next-redux-wrapper": "^6.0.0",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-icons": "^3.10.0",
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0",
+    "sass": "^1.26.5"
+  },
+  "devDependencies": {
+    "@types/node": "^14.0.1",
+    "@types/react": "^16.9.35",
+    "typescript": "^3.9.2"
+  }
+}
