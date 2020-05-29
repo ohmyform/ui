@@ -22,3 +22,7 @@
     color: #1890ff;
   }
 }
+
+.ant-spin-nested-loading > div > .ant-spin {
+  max-height: unset;
+}

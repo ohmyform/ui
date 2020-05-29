@@ -15,25 +15,32 @@ export const sideMenu: SideMenuElement[] = [
   {
     key: 'home',
     name: 'Home',
-    href: '/',
+    href: '/admin',
     icon: <HomeOutlined />,
   },
   {
-    key: 'communication',
-    name: 'Communication',
+    key: 'public',
+    name: 'Forms',
+    group: true,
+    items: [
+      {
+        key: 'forms',
+        name: 'Forms',
+        href: '/admin/forms',
+        icon: <MessageOutlined />,
+      },
+    ]
+  },
+  {
+    key: 'administration',
+    name: 'Administration',
     group: true,
     items: [
       {
         key: 'users',
         name: 'Users',
-        href: '/users',
+        href: '/admin/users',
         icon: <TeamOutlined />,
-      },
-      {
-        key: 'chats',
-        name: 'Chats',
-        href: '/chats',
-        icon: <MessageOutlined />,
       },
     ],
   },

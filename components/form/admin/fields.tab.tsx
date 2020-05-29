@@ -1,0 +1,101 @@
+import {PlusOutlined} from '@ant-design/icons/lib'
+import {Button, Form, Select, Space, Tabs} from 'antd'
+import {FormInstance} from 'antd/lib/form'
+import {TabPaneProps} from 'antd/lib/tabs'
+import React, {useCallback, useState} from 'react'
+import {AdminFormFieldFragment} from '../../../graphql/fragment/admin.form.fragment'
+import {availableTypes, FieldCard} from './field.card'
+
+interface Props extends TabPaneProps {
+  form: FormInstance
+  fields: AdminFormFieldFragment[]
+  onChangeFields: (fields: AdminFormFieldFragment[]) => any
+}
+
+export const FieldsTab: React.FC<Props> = props => {
+  const [nextType, setNextType] = useState('textfield')
+
+  const renderType = useCallback((field, index, remove) => {
+    return (
+      <FieldCard
+        form={props.form}
+        field={field}
+        index={index}
+        remove={remove}
+        fields={props.fields}
+        onChangeFields={props.onChangeFields}
+      />
+    )
+  }, [props.fields])
+
+  const addField = useCallback((add, index) => {
+    return (
+      <Form.Item
+        wrapperCol={{span: 24}}
+      >
+        <Space
+          style={{
+            width: '100%',
+            justifyContent: 'flex-end',
+          }}
+        >
+          <Select value={nextType} onChange={e => setNextType(e)} style={{ minWidth: 200 }}>
+            {Object.keys(availableTypes).map(type => <Select.Option value={type} key={type}>{type}</Select.Option> )}
+          </Select>
+          <Button
+            type="dashed"
+            onClick={() => {
+              const defaults: AdminFormFieldFragment = {
+                id: `NEW-${Date.now()}`,
+                type: nextType,
+                title: '',
+                description: '',
+                required: false,
+                value: '',
+              }
+
+              add(defaults)
+              const next = [...props.fields]
+              next.splice(index, 0, defaults)
+              props.onChangeFields(next)
+            }}
+          >
+            <PlusOutlined /> Add Field
+          </Button>
+        </Space>
+      </Form.Item>
+    )
+  }, [props.fields, nextType])
+
+
+  return (
+    <Tabs.TabPane {...props}>
+
+      <Form.List
+        name={['form', 'fields']}
+      >
+        {(fields, { add, remove, move }) => {
+          const addAndMove = (index) => (defaults) => {
+            add(defaults)
+            move(fields.length, index)
+          }
+
+          return (
+            <div>
+              {addField(addAndMove(0), 0)}
+              {fields.map((field, index) => (
+                <div key={field.key}>
+                  <Form.Item wrapperCol={{ span: 24 }}>
+                    {renderType(field, index, remove)}
+                  </Form.Item>
+                  {addField(addAndMove(index + 1), index + 1)}
+                </div>
+              ))}
+            </div>
+          )
+        }}
+      </Form.List>
+
+    </Tabs.TabPane>
+  )
+}

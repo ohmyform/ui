@@ -2,31 +2,30 @@ import {createWrapper, HYDRATE, MakeStore} from 'next-redux-wrapper'
 import {AnyAction, applyMiddleware, combineReducers, createStore} from 'redux'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import thunkMiddleware from 'redux-thunk'
+import {auth, AuthState} from './auth'
+
 
 export interface State {
+  auth: AuthState
 }
-
-const state = {}
 
 const root = (state: State, action: AnyAction) => {
   switch (action.type) {
     case HYDRATE:
       return {...state, ...action.payload};
-    default:
-      return state;
   }
+
+  const combined = combineReducers({
+    auth
+  })
+
+  return combined(state, action);
 };
 
 const makeStore: MakeStore<State> = (context) => {
   return createStore(
-    (state, action): State => {
-      const simple = combineReducers({
-        // TODO add child reducers
-      })
-
-      return root(simple, action)
-    },
-    {},
+    root,
+    undefined,
     composeWithDevTools(applyMiddleware(
       thunkMiddleware,
     ))

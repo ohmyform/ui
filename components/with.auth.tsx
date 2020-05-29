@@ -1,9 +1,14 @@
-import {Spin} from 'antd'
+import {useQuery} from '@apollo/react-hooks'
 import {AxiosRequestConfig} from 'axios'
-import getConfig from 'next/config'
-import React from 'react'
+import {useRouter} from 'next/router'
+import React, {useEffect, useState} from 'react'
+import {ME_QUERY, MeQueryData} from '../graphql/query/me.query'
+import {LoadingPage} from './loading.page'
 
-const { publicRuntimeConfig } = getConfig()
+export const setAuth = (access, refresh) => {
+  localStorage.setItem('access', access)
+  localStorage.setItem('refresh', refresh)
+}
 
 export const authConfig = async (config: AxiosRequestConfig = {}): Promise<AxiosRequestConfig> => {
   if (!config.headers) {
@@ -11,7 +16,12 @@ export const authConfig = async (config: AxiosRequestConfig = {}): Promise<Axios
   }
 
   try {
-    // TODO config.headers.Authorization = `Bearer ${session.getAccessToken().getJwtToken()}`
+    const token = localStorage.getItem('access')
+    // TODO check for validity / use refresh token
+
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`
+    }
   } catch (e) {
     return config
   }
@@ -19,39 +29,47 @@ export const authConfig = async (config: AxiosRequestConfig = {}): Promise<Axios
   return config
 }
 
-export const withAuth = (Component): React.FC => {
+export const withAuth = (Component, roles: string[] = []): React.FC => {
   return props => {
-    const [signedIn, setSignedIn] = React.useState(false);
-    const [loading, setLoading] = React.useState(true);
+    const router = useRouter()
+    const [access, setAccess] = useState(false)
+    const {loading, data, error} = useQuery<MeQueryData>(ME_QUERY)
 
+    useEffect(() => {
+      if (!error) {
+        return
+      }
 
-    React.useEffect(() => {
-      (async () => {
-        try {
-        } catch (err) {
-          console.error(err);
-        }
+      localStorage.clear()
+      const path = router.asPath || router.pathname
+      localStorage.setItem('redirect', path)
 
-        setLoading(false)
-      })();
-    }, []);
+      router.push('/login')
+    }, [error])
+
+    useEffect(() => {
+      if (!data || roles.length === 0) {
+        return
+      }
+
+      const next = roles
+        .map(role => data.me.roles.includes(role))
+        .filter(p => p)
+        .length > 0
+
+      setAccess(next)
+
+      if (!next) {
+        router.push('/')
+      }
+    }, [data])
 
     if (loading) {
-      return (
-        <div style={{
-          height: '100vh',
-          justifyContent: 'center',
-          alignItems: 'center',
-          display: 'flex',
-          flexDirection: 'column',
-        }}>
-          <Spin size="large"/>
-        </div>
-      )
+      return <LoadingPage message={'Loading Credentials'} />
     }
 
-    if (!signedIn) {
-      // TODO
+    if (!access) {
+      return <LoadingPage message={'Checking Credentials'} />
     }
 
     return <Component {...props} />

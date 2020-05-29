@@ -139,9 +139,7 @@ const Structure: FunctionComponent<Props> = (props) => {
             onClick: () => setSidebar(!sidebar),
           })}
 
-          <img src={require('assets/images/logo_white_small.png')} height={30} style={{marginRight: 16}} alt={'RecTag'} />
-
-          {publicRuntimeConfig.area.toUpperCase()}
+          <img src={require('assets/images/logo_white_small.png')} height={30} style={{marginRight: 16}} alt={'OhMyForm'} />
         </div>
         <div style={{float: 'right', display: 'flex', height: '100%'}}>
           <Dropdown
