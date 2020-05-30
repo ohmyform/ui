@@ -1,20 +1,24 @@
-import {Form, Input} from 'antd'
+import {Form} from 'antd'
 import React from 'react'
+import {StyledInput} from '../../styled/input'
 import {FieldTypeProps} from './type.props'
 
-export const LinkType: React.FC<FieldTypeProps> = ({field}) => {
+export const LinkType: React.FC<FieldTypeProps> = ({field, design}) => {
   return (
     <div>
       <Form.Item
-        label={'Default Link'}
         name={[field.id, 'value']}
         rules={[
           { required: field.required, message: 'Please provide Information' },
           { type: 'url', message: 'Must be a valid URL' }
         ]}
-        labelCol={{ span: 6 }}
       >
-        <Input type={'url'} />
+        <StyledInput
+          design={design}
+          allowClear
+          size={'large'}
+          defaultValue={field.value}
+        />
       </Form.Item>
     </div>
   )

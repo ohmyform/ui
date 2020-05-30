@@ -5,12 +5,12 @@ import ApolloClient from 'apollo-boost'
 import 'assets/global.scss'
 import 'assets/variables.scss'
 import axios from 'axios'
+import {authConfig} from 'components/with.auth'
 import {AppProps} from 'next/app'
 import getConfig from 'next/config'
 import Head from 'next/head'
 import React from 'react'
 import {wrapper} from 'store'
-import {authConfig} from '../components/with.auth'
 
 const { publicRuntimeConfig } = getConfig()
 

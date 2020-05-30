@@ -1,59 +1,38 @@
-import {useMutation, useQuery} from '@apollo/react-hooks'
+import {useMutation} from '@apollo/react-hooks'
 import {Button, Form, Input, message, Tabs} from 'antd'
 import {useForm} from 'antd/lib/form/Form'
 import {cleanInput} from 'components/clean.input'
 import {BaseDataTab} from 'components/form/admin/base.data.tab'
-import {DesignTab} from 'components/form/admin/design.tab'
-import {EndPageTab} from 'components/form/admin/end.page.tab'
-import {FieldsTab} from 'components/form/admin/fields.tab'
-import {RespondentNotificationsTab} from 'components/form/admin/respondent.notifications.tab'
-import {SelfNotificationsTab} from 'components/form/admin/self.notifications.tab'
-import {StartPageTab} from 'components/form/admin/start.page.tab'
 import Structure from 'components/structure'
 import {withAuth} from 'components/with.auth'
-import {AdminFormFieldFragment} from 'graphql/fragment/admin.form.fragment'
-import {
-  ADMIN_FORM_UPDATE_MUTATION,
-  AdminFormUpdateMutationData,
-  AdminFormUpdateMutationVariables
-} from 'graphql/mutation/admin.form.update.mutation'
-import {ADMIN_FORM_QUERY, AdminFormQueryData, AdminFormQueryVariables} from 'graphql/query/admin.form.query'
+import {AdminFormQueryData} from 'graphql/query/admin.form.query'
 import {NextPage} from 'next'
 import {useRouter} from 'next/router'
 import React, {useState} from 'react'
+import {
+  ADMIN_FORM_CREATE_MUTATION,
+  AdminFormCreateMutationData,
+  AdminFormCreateMutationVariables
+} from '../../../graphql/mutation/admin.form.create.mutation'
 
-const Index: NextPage = () => {
+const Create: NextPage = () => {
   const router = useRouter()
   const [form] = useForm()
   const [saving, setSaving] = useState(false)
-  const [fields, setFields] = useState<AdminFormFieldFragment[]>([])
-  const [update] = useMutation<AdminFormUpdateMutationData, AdminFormUpdateMutationVariables>(ADMIN_FORM_UPDATE_MUTATION)
-
-  const {data, loading, error} = useQuery<AdminFormQueryData, AdminFormQueryVariables>(ADMIN_FORM_QUERY, {
-    variables: {
-      id: router.query.id as string
-    },
-    onCompleted: next => {
-      form.setFieldsValue(next)
-      setFields(next.form.fields)
-    }
-  })
+  const [create] = useMutation<AdminFormCreateMutationData, AdminFormCreateMutationVariables>(ADMIN_FORM_CREATE_MUTATION)
 
   const save = async (formData: AdminFormQueryData) => {
     setSaving(true)
     console.log('try to save form!', formData)
 
-    formData.form.fields = formData.form.fields.filter(e => e && e.type)
-
     try {
-      const next = (await update({
+      const next = (await create({
         variables: cleanInput(formData),
       })).data
 
-      form.setFieldsValue(next)
-      setFields(next.form.fields)
+      message.success('Form Created')
 
-      message.success('Form Updated')
+      router.replace('/admin/forms/[id]', `/admin/forms/${next.form.id}`)
     } catch (e) {
       console.error('failed to save', e)
       message.error('Could not save Form')
@@ -62,12 +41,10 @@ const Index: NextPage = () => {
     setSaving(false)
   }
 
-
-
   return (
     <Structure
-      loading={loading || saving}
-      title={loading ? 'Loading Form' : `Edit Form "${data.form.title}"`}
+      loading={saving}
+      title={'Create New Form'}
       selected={'forms'}
       breadcrumbs={[
         { href: '/admin', name: 'Home' },
@@ -75,7 +52,7 @@ const Index: NextPage = () => {
       ]}
       extra={[
         <Button
-          key={'save'}
+          key={'create'}
           onClick={form.submit}
           type={'primary'}
         >
@@ -102,6 +79,7 @@ const Index: NextPage = () => {
         <Form.Item noStyle name={['form', 'id']}><Input type={'hidden'} /></Form.Item>
 
         <Tabs>
+          {/*
           <FieldsTab
             key={'fields'}
             tab={'Fields'}
@@ -109,7 +87,9 @@ const Index: NextPage = () => {
             onChangeFields={setFields}
             form={form}
           />
+          */}
           <BaseDataTab key={'base_data'} tab={'Base Data'} />
+          {/*
           <DesignTab key={'design'} tab={'Design'} />
           <SelfNotificationsTab
             key={'self_notifications'}
@@ -125,10 +105,11 @@ const Index: NextPage = () => {
           />
           <StartPageTab key={'start_page'} tab={'Start Page'} />
           <EndPageTab key={'end_page'} tab={'End Page'} />
+          */}
         </Tabs>
       </Form>
     </Structure>
   )
 }
 
-export default withAuth(Index, ['admin'])
+export default withAuth(Create, ['admin'])

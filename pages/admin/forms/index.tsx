@@ -2,20 +2,20 @@ import {DeleteOutlined, EditOutlined, GlobalOutlined} from '@ant-design/icons/li
 import {useQuery} from '@apollo/react-hooks'
 import {Button, Popconfirm, Space, Table, Tooltip} from 'antd'
 import {PaginationProps} from 'antd/es/pagination'
-import {NextPage} from 'next'
-import Link from 'next/link'
-import React, {useState} from 'react'
-import {DateTime} from '../../../components/date.time'
-import {FormIsLive} from '../../../components/form/admin/is.live'
-import Structure from '../../../components/structure'
-import {TimeAgo} from '../../../components/time.ago'
-import {withAuth} from '../../../components/with.auth'
+import {DateTime} from 'components/date.time'
+import {FormIsLive} from 'components/form/admin/is.live'
+import Structure from 'components/structure'
+import {TimeAgo} from 'components/time.ago'
+import {withAuth} from 'components/with.auth'
 import {
   PAGER_FORM_QUERY,
   PagerFormEntryQueryData,
   PagerFormQueryData,
   PagerFormQueryVariables
-} from '../../../graphql/query/pager.form.query'
+} from 'graphql/query/pager.form.query'
+import {NextPage} from 'next'
+import Link from 'next/link'
+import React, {useState} from 'react'
 
 const Index: NextPage = () => {
   const [pagination, setPagination] = useState<PaginationProps>({
@@ -118,6 +118,18 @@ const Index: NextPage = () => {
         { href: '/admin', name: 'Home' },
       ]}
       padded={false}
+      extra={[
+        <Link
+          key={'create'}
+          href={'/admin/forms/create'}
+        >
+          <Button
+            type={'primary'}
+          >
+            New Form
+          </Button>
+        </Link>,
+      ]}
     >
       <Table
         columns={columns}

@@ -1,15 +1,15 @@
 import {useQuery} from '@apollo/react-hooks'
+import {ErrorPage} from 'components/error.page'
+import {Field} from 'components/form/field'
+import {FormPage} from 'components/form/page'
+import {LoadingPage} from 'components/loading.page'
+import {useWindowSize} from 'components/use.window.size'
+import {FORM_QUERY, FormQueryData, FormQueryVariables} from 'graphql/query/form.query'
 import {NextPage} from 'next'
 import React, {useState} from 'react'
 import Swiper from 'react-id-swiper'
 import {ReactIdSwiperProps} from 'react-id-swiper/lib/types'
 import * as OriginalSwiper from 'swiper'
-import {ErrorPage} from '../../../components/error.page'
-import {Field} from '../../../components/form/field'
-import {FormPage} from '../../../components/form/page'
-import {LoadingPage} from '../../../components/loading.page'
-import {useWindowSize} from '../../../components/use.window.size'
-import {FORM_QUERY, FormQueryData, FormQueryVariables} from '../../../graphql/query/form.query'
 
 interface Props {
   id: string
@@ -62,14 +62,14 @@ const Index: NextPage<Props> = ({id}) => {
     }}>
       <Swiper {...swiperConfig}>
         {[
-          <FormPage
+          data.form.startPage.show ? <FormPage
             key={'start'}
             type={'start'}
             page={data.form.startPage}
             design={design}
             next={goNext}
             prev={goPrev}
-          />,
+          /> : undefined,
           ...data.form.fields.map(field => (
             <Field
               key={field.id}
@@ -79,15 +79,15 @@ const Index: NextPage<Props> = ({id}) => {
               prev={goPrev}
             />
           )),
-          <FormPage
+          data.form.endPage.show ? <FormPage
             key={'end'}
             type={'end'}
             page={data.form.endPage}
             design={design}
             next={goNext}
             prev={goPrev}
-          />
-        ]}
+          /> : undefined
+        ].filter(e => !!e)}
       </Swiper>
     </div>
   )

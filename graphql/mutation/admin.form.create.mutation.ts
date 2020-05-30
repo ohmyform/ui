@@ -10,7 +10,7 @@ export interface AdminFormCreateMutationVariables {
 }
 
 export const ADMIN_FORM_CREATE_MUTATION = gql`
-  mutation update($$form: FormCreateInput!) {
+  mutation update($form: FormCreateInput!) {
     form: createForm(form: $form) {
       ...AdminForm
     }

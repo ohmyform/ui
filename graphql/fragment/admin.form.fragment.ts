@@ -104,6 +104,7 @@ export const ADMIN_FORM_FRAGMENT = gql`
         questionColor
         answerColor
         buttonColor
+        buttonActiveColor
         buttonTextColor
       }
       font
@@ -118,6 +119,7 @@ export const ADMIN_FORM_FRAGMENT = gql`
         action
         text
         bgColor
+        activeColor
         color
       }
     }
@@ -131,6 +133,7 @@ export const ADMIN_FORM_FRAGMENT = gql`
         action
         text
         bgColor
+        activeColor
         color
       }
     }

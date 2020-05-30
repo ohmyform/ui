@@ -1,14 +1,14 @@
 import {useMutation} from '@apollo/react-hooks'
 import {Button, Form, Input, message} from 'antd'
 import {useForm} from 'antd/lib/form/Form'
+import {AuthFooter} from 'components/auth/footer'
+import {AuthLayout} from 'components/auth/layout'
+import {setAuth} from 'components/with.auth'
+import {LOGIN_MUTATION} from 'graphql/mutation/login.mutation'
 import {NextPage} from 'next'
 import Link from 'next/link'
 import {useRouter} from 'next/router'
 import React, {useState} from 'react'
-import {AuthFooter} from '../../components/auth/footer'
-import {AuthLayout} from '../../components/auth/layout'
-import {setAuth} from '../../components/with.auth'
-import {LOGIN_MUTATION} from '../../graphql/mutation/login.mutation'
 
 const Index: NextPage = () => {
   const [form] = useForm()

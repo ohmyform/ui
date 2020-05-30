@@ -1,8 +1,8 @@
 import {Alert} from 'antd'
+import {AuthFooter} from 'components/auth/footer'
+import {AuthLayout} from 'components/auth/layout'
 import {NextPage} from 'next'
 import React from 'react'
-import {AuthFooter} from '../../../components/auth/footer'
-import {AuthLayout} from '../../../components/auth/layout'
 
 const Index: NextPage = () => {
   return (

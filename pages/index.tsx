@@ -1,7 +1,7 @@
 import {Layout} from 'antd'
+import {AuthFooter} from 'components/auth/footer'
 import {NextPage} from 'next'
 import React from 'react'
-import {AuthFooter} from '../components/auth/footer'
 
 const Index: NextPage = () => {
   return (

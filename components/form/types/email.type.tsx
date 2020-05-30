@@ -1,20 +1,24 @@
-import {Form, Input} from 'antd'
+import {Form} from 'antd'
 import React from 'react'
+import {StyledInput} from '../../styled/input'
 import {FieldTypeProps} from './type.props'
 
-export const EmailType: React.FC<FieldTypeProps> = ({field}) => {
+export const EmailType: React.FC<FieldTypeProps> = ({field, design}) => {
   return (
     <div>
       <Form.Item
-        label={'Default Email'}
         name={[field.id, 'value']}
         rules={[
           { required: field.required, message: 'Please provide Information' },
           { type: 'email', message: 'Must be a valid email' }
         ]}
-        labelCol={{ span: 6 }}
       >
-        <Input type={'email'} />
+        <StyledInput
+          design={design}
+          allowClear
+          size={'large'}
+          defaultValue={field.value}
+        />
       </Form.Item>
     </div>
   )
