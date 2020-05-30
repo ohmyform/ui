@@ -1,11 +1,8 @@
 import {Form, Input} from 'antd'
 import React from 'react'
+import {AdminFieldTypeProps} from './type.props'
 
-interface Props {
-  field: any
-}
-
-export const TextType: React.FC<Props> = props => {
+export const TextType: React.FC<AdminFieldTypeProps> = props => {
   return (
     <div>
       <Form.Item

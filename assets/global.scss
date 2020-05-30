@@ -1,4 +1,5 @@
 @import "variables";
+@import "node_modules/swiper/swiper.scss";
 
 :root {
   --backgroundColor: #{$background-color};
@@ -25,4 +26,12 @@
 
 .ant-spin-nested-loading > div > .ant-spin {
   max-height: unset;
+}
+
+.swiper-container {
+  height: 100vh;
+
+  .swiper-wrapper {
+    position: fixed
+  }
 }

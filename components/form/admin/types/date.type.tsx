@@ -1,11 +1,8 @@
-import {Form, Input} from 'antd'
+import {DatePicker, Form} from 'antd'
 import React from 'react'
+import {AdminFieldTypeProps} from './type.props'
 
-interface Props {
-  field: any
-}
-
-export const DateType: React.FC<Props> = props => {
+export const DateType: React.FC<AdminFieldTypeProps> = props => {
   return (
     <div>
       <Form.Item
@@ -13,21 +10,21 @@ export const DateType: React.FC<Props> = props => {
         name={[props.field.name, 'value']}
         labelCol={{ span: 6 }}
       >
-        <Input type={'date'} />
+        <DatePicker />
       </Form.Item>
       <Form.Item
         label={'Min Date'}
-        name={[props.field.name, 'value']}
+        name={[props.field.name, 'min']}
         labelCol={{ span: 6 }}
       >
-        <Input />
+        <DatePicker />
       </Form.Item>
       <Form.Item
         label={'Max Date'}
-        name={[props.field.name, 'value']}
+        name={[props.field.name, 'max']}
         labelCol={{ span: 6 }}
       >
-        <Input />
+        <DatePicker />
       </Form.Item>
     </div>
   )

@@ -55,7 +55,14 @@ export const StartPageTab: React.FC<TabPaneProps> = props => {
                         <DeleteOutlined key={'delete'} onClick={() => remove(index)} />
                       ]}
                     >
-                      <Form.Item label={'Url'} name={[field.key, 'url']} labelCol={{ span: 6 }}>
+                      <Form.Item
+                        label={'Url'}
+                        name={[field.key, 'url']}
+                        rules={[
+                          {type: 'url', message: 'Must be a valid url'}
+                        ]}
+                        labelCol={{ span: 6 }}
+                      >
                         <Input />
                       </Form.Item>
                       <Form.Item label={'Action'} name={[field.key, 'action']} labelCol={{ span: 6 }}>
@@ -65,6 +72,9 @@ export const StartPageTab: React.FC<TabPaneProps> = props => {
                         <Input />
                       </Form.Item>
                       <Form.Item label={'Background Color'} name={[field.key, 'bgColor']} labelCol={{ span: 6 }}>
+                        <InputColor />
+                      </Form.Item>
+                      <Form.Item label={'Active Color'} name={[field.key, 'activeColor']} labelCol={{ span: 6 }}>
                         <InputColor />
                       </Form.Item>
                       <Form.Item label={'Color'} name={[field.key, 'color']} labelCol={{ span: 6 }}>

@@ -4,7 +4,8 @@ import {FormInstance} from 'antd/lib/form'
 import {TabPaneProps} from 'antd/lib/tabs'
 import React, {useCallback, useState} from 'react'
 import {AdminFormFieldFragment} from '../../../graphql/fragment/admin.form.fragment'
-import {availableTypes, FieldCard} from './field.card'
+import {FieldCard} from './field.card'
+import {adminTypes} from './types'
 
 interface Props extends TabPaneProps {
   form: FormInstance
@@ -40,7 +41,7 @@ export const FieldsTab: React.FC<Props> = props => {
           }}
         >
           <Select value={nextType} onChange={e => setNextType(e)} style={{ minWidth: 200 }}>
-            {Object.keys(availableTypes).map(type => <Select.Option value={type} key={type}>{type}</Select.Option> )}
+            {Object.keys(adminTypes).map(type => <Select.Option value={type} key={type}>{type}</Select.Option> )}
           </Select>
           <Button
             type="dashed"

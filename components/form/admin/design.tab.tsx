@@ -18,6 +18,7 @@ export const DesignTab: React.FC<TabPaneProps> = props => {
         {name: 'questionColor', label: 'Question Color'},
         {name: 'answerColor', label: 'Answer Color'},
         {name: 'buttonColor', label: 'Button Color'},
+        {name: 'buttonActiveColor', label: 'Button Active Color'},
         {name: 'buttonTextColor', label: 'Button Text Color'},
       ].map(({label, name}) => (
         <Form.Item key={name} label={label} name={['form', 'design', 'colors', name]}>

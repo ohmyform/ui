@@ -4,31 +4,8 @@ import {FormInstance} from 'antd/lib/form'
 import {FieldData} from 'rc-field-form/lib/interface'
 import React, {useEffect, useState} from 'react'
 import {AdminFormFieldFragment} from '../../../graphql/fragment/admin.form.fragment'
-import {DateType} from './types/date.type'
-import {DropdownType} from './types/dropdown.type'
-import {EmailType} from './types/email.type'
-import {HiddenType} from './types/hidden.type'
-import {LinkType} from './types/link.type'
-import {NumberType} from './types/number.type'
-import {RadioType} from './types/radio.type'
-import {RatingType} from './types/rating.type'
+import {adminTypes} from './types'
 import {TextType} from './types/text.type'
-import {TextareaType} from './types/textarea.type'
-import {YesNoType} from './types/yes_no.type'
-
-export const availableTypes = {
-  'textfield': TextType,
-  'date': DateType,
-  'email': EmailType,
-  'textarea': TextareaType,
-  'link': LinkType,
-  'dropdown': DropdownType,
-  'rating': RatingType,
-  'radio': RadioType,
-  'hidden': HiddenType,
-  'yes_no': YesNoType,
-  'number': NumberType,
-}
 
 interface Props {
   form: FormInstance
@@ -50,7 +27,7 @@ export const FieldCard: React.FC<Props> = props => {
   } = props
 
   const type = form.getFieldValue(['form', 'fields', field.name as string, 'type'])
-  const TypeComponent: React.FC<any> = availableTypes[type] || TextType
+  const TypeComponent = adminTypes[type] || TextType
 
   const [nextTitle, setNextTitle] = useState(form.getFieldValue(['form', 'fields', field.name as string, 'title']))
 
@@ -120,6 +97,7 @@ export const FieldCard: React.FC<Props> = props => {
         name={[field.name as string, 'required']}
         labelCol={{ span: 6 }}
         valuePropName={'checked'}
+        extra={type === 'hidden' && 'If required, default value must be set to enable users to submit form!'}
       >
         <Checkbox />
       </Form.Item>

@@ -1,11 +1,8 @@
 import {Form, Input} from 'antd'
 import React from 'react'
+import {AdminFieldTypeProps} from './type.props'
 
-interface Props {
-  field: any
-}
-
-export const DropdownType: React.FC<Props> = props => {
+export const DropdownType: React.FC<AdminFieldTypeProps> = props => {
   // TODO add dropdown options
   return (
     <div>
