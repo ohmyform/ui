@@ -13,18 +13,19 @@ interface Props {
   field: FormFieldFragment
   design: FormDesignFragment
 
+  save: (data: any) => any
   next: () => any
   prev: () => any
 }
 
-export const Field: React.FC<Props> = ({field, design, children, next, prev, ...props}) => {
+export const Field: React.FC<Props> = ({field, save, design, children, next, prev, ...props}) => {
   const [form] = useForm()
 
   const FieldInput: React.FC<FieldTypeProps> = fieldTypes[field.type] || TextType
 
   const finish = (data) => {
     console.log('received field data', data)
-
+    save(data)
     next()
   }
 

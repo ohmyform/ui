@@ -10,6 +10,7 @@ import React, {useState} from 'react'
 import Swiper from 'react-id-swiper'
 import {ReactIdSwiperProps} from 'react-id-swiper/lib/types'
 import * as OriginalSwiper from 'swiper'
+import {useSubmission} from '../../../components/use.submission'
 
 interface Props {
   id: string
@@ -18,6 +19,7 @@ interface Props {
 const Index: NextPage<Props> = ({id}) => {
   const windowSize = useWindowSize()
   const [swiper, setSwiper] = useState<OriginalSwiper.default>(null)
+  const submission = useSubmission(id)
 
   const {loading, data, error} = useQuery<FormQueryData, FormQueryVariables>(FORM_QUERY, {
     variables: {
@@ -70,11 +72,18 @@ const Index: NextPage<Props> = ({id}) => {
             next={goNext}
             prev={goPrev}
           /> : undefined,
-          ...data.form.fields.map(field => (
+          ...data.form.fields.map((field, i) => (
             <Field
               key={field.id}
               field={field}
               design={design}
+              save={values => {
+                submission.setField(field.id, values[field.id])
+
+                if (data.form.fields.length === i - 1) {
+                  submission.finish()
+                }
+              }}
               next={goNext}
               prev={goPrev}
             />
@@ -84,7 +93,7 @@ const Index: NextPage<Props> = ({id}) => {
             type={'end'}
             page={data.form.endPage}
             design={design}
-            next={goNext}
+            next={submission.finish}
             prev={goPrev}
           /> : undefined
         ].filter(e => !!e)}

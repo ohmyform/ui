@@ -33,7 +33,6 @@ export const FieldCard: React.FC<Props> = props => {
 
   useEffect(() => {
     const id = setTimeout(() => {
-      console.log('update fields')
       onChangeFields(fields.map((field, i) => {
         if (i === index) {
           return {
@@ -102,7 +101,10 @@ export const FieldCard: React.FC<Props> = props => {
         <Checkbox />
       </Form.Item>
 
-      <TypeComponent field={field} />
+      <TypeComponent
+        field={field}
+        form={form}
+      />
     </Card>
   )
 }

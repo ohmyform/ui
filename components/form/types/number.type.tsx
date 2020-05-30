@@ -1,20 +1,23 @@
-import {Form, InputNumber} from 'antd'
+import {Form} from 'antd'
 import React from 'react'
+import {StyledNumberInput} from '../../styled/number.input'
 import {FieldTypeProps} from './type.props'
 
-export const NumberType: React.FC<FieldTypeProps> = ({field}) => {
+export const NumberType: React.FC<FieldTypeProps> = ({field, design}) => {
   return (
     <div>
       <Form.Item
-        label={'Default Number'}
         name={[field.id, 'value']}
         rules={[
           { type: 'number', message: 'Must be a valid URL' },
           { required: field.required, message: 'Please provide Information' },
         ]}
-        labelCol={{ span: 6 }}
       >
-        <InputNumber />
+        <StyledNumberInput
+          design={design}
+          size={'large'}
+          defaultValue={parseFloat(field.value)}
+        />
       </Form.Item>
     </div>
   )

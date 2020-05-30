@@ -1,4 +1,4 @@
-import {DeleteOutlined, EditOutlined, GlobalOutlined} from '@ant-design/icons/lib'
+import {DeleteOutlined, EditOutlined, GlobalOutlined, UnorderedListOutlined} from '@ant-design/icons/lib'
 import {useQuery} from '@apollo/react-hooks'
 import {Button, Popconfirm, Space, Table, Tooltip} from 'antd'
 import {PaginationProps} from 'antd/es/pagination'
@@ -8,11 +8,11 @@ import Structure from 'components/structure'
 import {TimeAgo} from 'components/time.ago'
 import {withAuth} from 'components/with.auth'
 import {
-  PAGER_FORM_QUERY,
-  PagerFormEntryQueryData,
-  PagerFormQueryData,
-  PagerFormQueryVariables
-} from 'graphql/query/pager.form.query'
+  ADMIN_PAGER_FORM_QUERY,
+  AdminPagerFormEntryQueryData,
+  AdminPagerFormQueryData,
+  AdminPagerFormQueryVariables
+} from 'graphql/query/admin.pager.form.query'
 import {NextPage} from 'next'
 import Link from 'next/link'
 import React, {useState} from 'react'
@@ -21,9 +21,8 @@ const Index: NextPage = () => {
   const [pagination, setPagination] = useState<PaginationProps>({
     pageSize: 25,
   })
-  const [entries, setEntries] = useState<PagerFormEntryQueryData[]>()
-  // TODO limit forms if user is only admin!
-  const {loading, refetch} = useQuery<PagerFormQueryData, PagerFormQueryVariables>(PAGER_FORM_QUERY, {
+  const [entries, setEntries] = useState<AdminPagerFormEntryQueryData[]>()
+  const {loading, refetch} = useQuery<AdminPagerFormQueryData, AdminPagerFormQueryVariables>(ADMIN_PAGER_FORM_QUERY, {
     variables: {
       limit: pagination.pageSize,
       start: pagination.current * pagination.pageSize || 0
@@ -80,6 +79,15 @@ const Index: NextPage = () => {
       render: row => {
         return (
           <Space>
+            <Link
+              href={'/admin/forms/[id]/submissions'}
+              as={`/admin/forms/${row.id}/submissions`}
+            >
+              <Tooltip title={'Show Submissions'}>
+                <Button><UnorderedListOutlined /></Button>
+              </Tooltip>
+            </Link>
+
             <Link
               href={'/admin/forms/[id]'}
               as={`/admin/forms/${row.id}`}

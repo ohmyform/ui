@@ -1,6 +1,6 @@
 import {gql} from 'apollo-boost'
 
-export interface PagerFormEntryQueryData {
+export interface AdminPagerFormEntryQueryData {
   id: string
   created: string
   lastModified?: string
@@ -14,9 +14,9 @@ export interface PagerFormEntryQueryData {
   }
 }
 
-export interface PagerFormQueryData {
+export interface AdminPagerFormQueryData {
   pager: {
-    entries: PagerFormEntryQueryData[]
+    entries: AdminPagerFormEntryQueryData[]
 
     total: number
     limit: number
@@ -24,12 +24,12 @@ export interface PagerFormQueryData {
   }
 }
 
-export interface PagerFormQueryVariables {
+export interface AdminPagerFormQueryVariables {
   start?: number
   limit?: number
 }
 
-export const PAGER_FORM_QUERY = gql`
+export const ADMIN_PAGER_FORM_QUERY = gql`
   query pager($start: Int, $limit: Int){
     pager: listForms(start: $start, limit: $limit) {
       entries {

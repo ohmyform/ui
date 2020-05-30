@@ -4,14 +4,12 @@ import {AdminFieldTypeProps} from './type.props'
 
 export const TextType: React.FC<AdminFieldTypeProps> = props => {
   return (
-    <div>
-      <Form.Item
-        label={'Default Value'}
-        name={[props.field.name, 'value']}
-        labelCol={{ span: 6 }}
-      >
-        <Input />
-      </Form.Item>
-    </div>
+    <Form.Item
+      label={'Default Value'}
+      name={[props.field.name, 'value']}
+      labelCol={{ span: 6 }}
+    >
+      <Input />
+    </Form.Item>
   )
 }

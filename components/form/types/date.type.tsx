@@ -4,8 +4,9 @@ import React from 'react'
 import {StyledDateInput} from '../../styled/date.input'
 import {FieldTypeProps} from './type.props'
 
-export const DateType: React.FC<FieldTypeProps> = ({field, design}) => {
+export const DateType: React.FC<FieldTypeProps> = ({ field, design}) => {
   // TODO check min and max
+  // TODO if default is passed, then the changing should not be required
 
   return (
     <div>
@@ -14,6 +15,8 @@ export const DateType: React.FC<FieldTypeProps> = ({field, design}) => {
         rules={[
           { required: field.required, message: 'Please provide Information' },
         ]}
+        getValueFromEvent={e => e.format('YYYY-MM-DD')}
+        getValueProps={e => ({value: e ? moment(e) : undefined})}
       >
         <StyledDateInput
           size={'large'}
