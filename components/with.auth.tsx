@@ -5,6 +5,13 @@ import React, {useEffect, useState} from 'react'
 import {ME_QUERY, MeQueryData} from '../graphql/query/me.query'
 import {LoadingPage} from './loading.page'
 
+export const clearAuth = async () => {
+  localStorage.removeItem('access')
+  localStorage.removeItem('refresh')
+
+  // TODO logout on server!
+}
+
 export const setAuth = (access, refresh) => {
   localStorage.setItem('access', access)
   localStorage.setItem('refresh', refresh)

@@ -17,6 +17,7 @@ export const DateType: React.FC<AdminFieldTypeProps> = ({field, form}) => {
           format={'YYYY-MM-DD'}
         />
       </Form.Item>
+      {/* TODO add options
       <Form.Item
         label={'Min Date'}
         name={[field.name, 'min']}
@@ -35,6 +36,7 @@ export const DateType: React.FC<AdminFieldTypeProps> = ({field, form}) => {
       >
         <DatePicker />
       </Form.Item>
+      */}
     </div>
   )
 }

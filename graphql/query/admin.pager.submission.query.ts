@@ -1,9 +1,22 @@
 import {gql} from 'apollo-boost'
 
+export interface AdminPagerSubmissionFormFieldQueryData {
+  title: string
+  required: boolean
+}
+
 export interface AdminPagerSubmissionFormQueryData {
   id: string
   title: string
   isLive: boolean
+}
+
+export interface AdminPagerSubmissionEntryFieldQueryData {
+  id: string
+  value: string
+  type: string
+
+  field?: AdminPagerSubmissionFormFieldQueryData
 }
 
 export interface AdminPagerSubmissionEntryQueryData {
@@ -14,7 +27,14 @@ export interface AdminPagerSubmissionEntryQueryData {
   timeElapsed: number
   geoLocation: {
     country: string
+    city: string
   }
+  device: {
+    type: string
+    name: string
+  }
+
+  fields: AdminPagerSubmissionEntryFieldQueryData[]
 }
 
 export interface AdminPagerSubmissionQueryData {
@@ -52,12 +72,22 @@ export const ADMIN_PAGER_SUBMISSION_QUERY = gql`
         timeElapsed
         geoLocation {
           country
+          city
+        }
+        device {
+          type
+          name
         }
         
         fields {
           id
           value
           type
+      
+          field {
+            title
+            required
+          }
         }
       }
       total    

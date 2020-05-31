@@ -7,11 +7,11 @@ interface Props {
   design: FormDesignFragment
 }
 
-export const StyledP: React.FC<Props> = ({design, type, children, ...props}) => {
-  const Paragraph = styled.p`
-    color: ${type === 'question' ? design.colors.questionColor : design.colors.answerColor}
-  `
+const Paragraph = styled.p`
+  color: ${props => props.type === 'question' ? props.design.colors.questionColor : props.design.colors.answerColor}
+`
 
+export const StyledP: React.FC<Props> = ({children, ...props}) => {
   return (
     <Paragraph {...props}>{children}</Paragraph>
   )

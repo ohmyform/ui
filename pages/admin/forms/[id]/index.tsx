@@ -19,6 +19,7 @@ import {
 } from 'graphql/mutation/admin.form.update.mutation'
 import {ADMIN_FORM_QUERY, AdminFormQueryData, AdminFormQueryVariables} from 'graphql/query/admin.form.query'
 import {NextPage} from 'next'
+import Link from 'next/link'
 import {useRouter} from 'next/router'
 import React, {useState} from 'react'
 
@@ -41,7 +42,6 @@ const Index: NextPage = () => {
 
   const save = async (formData: AdminFormQueryData) => {
     setSaving(true)
-    console.log('try to save form!', formData)
 
     formData.form.fields = formData.form.fields.filter(e => e && e.type)
 
@@ -74,6 +74,13 @@ const Index: NextPage = () => {
         { href: '/admin/forms', name: 'Form' },
       ]}
       extra={[
+        <Link href={'/admin/forms/[id]/submissions'} as={`/admin/forms/${router.query.id}/submissions`}>
+          <Button
+            key={'submissions'}
+          >
+            Submissions
+          </Button>
+        </Link>,
         <Button
           key={'save'}
           onClick={form.submit}

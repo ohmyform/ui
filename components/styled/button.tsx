@@ -10,20 +10,20 @@ interface Props extends ButtonProps {
   color: any
 }
 
-export const StyledButton: React.FC<Props> = ({background, highlight, color, children, ...props}) => {
-  const StyledButton = styled(Button)`
-    background: ${background};
-    color: ${color};
-    border-color: ${darken(background, 10)};
-    
-    :hover {
-      color: ${highlight};
-      background-color: ${lighten(background, 10)};
-      border-color: ${darken(highlight, 10)};
-    }
-  `
+const Styled = styled(Button)`
+  background: ${props => props.background};
+  color: ${props => props.color};
+  border-color: ${props => darken(props.background, 10)};
+  
+  :hover {
+    color: ${props => props.highlight};
+    background-color: ${props => lighten(props.background, 10)};
+    border-color: ${props => darken(props.highlight, 10)};
+  }
+`
 
+export const StyledButton: React.FC<Props> = ({children, ...props}) => {
   return (
-    <StyledButton {...props}>{children}</StyledButton>
+    <Styled {...props}>{children}</Styled>
   )
 }

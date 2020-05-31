@@ -1,19 +1,23 @@
-import {Form, Input} from 'antd'
+import {Form} from 'antd'
 import React from 'react'
+import {StyledTextareaInput} from '../../styled/textarea.input'
 import {FieldTypeProps} from './type.props'
 
-export const TextareaType: React.FC<FieldTypeProps> = ({field}) => {
+export const TextareaType: React.FC<FieldTypeProps> = ({field, design}) => {
   return (
     <div>
       <Form.Item
-        label={'Default Value'}
         name={[field.id, 'value']}
         rules={[
           { required: field.required, message: 'Please provide Information' },
         ]}
-        labelCol={{ span: 6 }}
       >
-        <Input.TextArea autoSize />
+        <StyledTextareaInput
+          design={design}
+          allowClear
+          autoSize
+          defaultValue={field.value}
+        />
       </Form.Item>
     </div>
   )

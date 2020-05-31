@@ -1,15 +1,17 @@
-import {EditOutlined} from '@ant-design/icons/lib'
 import {useQuery} from '@apollo/react-hooks'
-import {Button, Space, Table} from 'antd'
+import {Button, Progress, Table} from 'antd'
 import {PaginationProps} from 'antd/es/pagination'
+import {ColumnsType} from 'antd/lib/table/interface'
 import {DateTime} from 'components/date.time'
 import Structure from 'components/structure'
 import {TimeAgo} from 'components/time.ago'
 import {withAuth} from 'components/with.auth'
+import dayjs from 'dayjs'
 import {NextPage} from 'next'
 import Link from 'next/link'
 import {useRouter} from 'next/router'
 import React, {useState} from 'react'
+import {SubmissionValues} from '../../../../components/form/admin/submission.values'
 import {
   ADMIN_PAGER_SUBMISSION_QUERY,
   AdminPagerSubmissionEntryQueryData,
@@ -29,7 +31,7 @@ const Submissions: NextPage = () => {
     variables: {
       form: router.query.id as string,
       limit: pagination.pageSize,
-      start: pagination.current * pagination.pageSize || 0
+      start: Math.max(0, pagination.current - 1) * pagination.pageSize || 0
     },
     onCompleted: ({pager, form}) => {
       setPagination({
@@ -41,11 +43,22 @@ const Submissions: NextPage = () => {
     }
   })
 
-  const columns = [
+  const columns:ColumnsType<AdminPagerSubmissionEntryQueryData> = [
     {
-      title: 'Values',
-      dataIndex: 'fields',
-      render: fields => <pre>{JSON.stringify(fields, null, 2)}</pre>
+      title: 'Progress',
+      render: (row: AdminPagerSubmissionEntryQueryData) => {
+        let status: any = 'active'
+
+        if (row.percentageComplete >= 1) {
+          status = 'success'
+        } else if (dayjs().diff(dayjs(row.lastModified), 'hour') > 4) {
+          status = 'exception'
+        }
+
+        return (
+          <Progress percent={Math.round(row.percentageComplete * 100)} status={status} />
+        )
+      }
     },
     {
       title: 'Created',
@@ -56,21 +69,6 @@ const Submissions: NextPage = () => {
       title: 'Last Change',
       dataIndex: 'lastModified',
       render: date => <TimeAgo date={date} />
-    },
-    {
-      render: row => {
-        return (
-          <Space>
-            <Link
-              href={'/admin/forms/[id]'}
-              as={`/admin/forms/${row.id}`}
-            >
-              <Button type={'primary'}><EditOutlined /></Button>
-            </Link>
-
-          </Space>
-        )
-      }
     },
   ]
 
@@ -97,11 +95,11 @@ const Submissions: NextPage = () => {
         </Link>,
         <Button
           key={'web'}
-          href={`/forms/${router.query.id}`}
+          href={`/form/${router.query.id}`}
           target={'_blank'}
           type={'primary'}
         >
-          Open Form
+          Add Submission
         </Button>,
       ]}
     >
@@ -110,8 +108,13 @@ const Submissions: NextPage = () => {
         dataSource={entries}
         rowKey={'id'}
         pagination={pagination}
+        expandable={{
+          expandedRowRender: record => <SubmissionValues form={form} submission={record} />,
+          rowExpandable: record => record.percentageComplete > 0,
+        }}
         onChange={next => {
-          setPagination(pagination)
+          setPagination(next)
+          refetch()
         }}
       />
     </Structure>

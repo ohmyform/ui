@@ -51,10 +51,6 @@ export const Field: React.FC<Props> = ({field, save, design, children, next, pre
         padding: 32,
         justifyContent: 'flex-end',
       }}>
-        <pre style={{
-          opacity: 0.3
-        }}>{JSON.stringify(field, null, 2)}</pre>
-
         <StyledH1 design={design} type={'question'}>{field.title}</StyledH1>
         {field.description && <StyledP design={design} type={'question'}>{field.description}</StyledP>}
 

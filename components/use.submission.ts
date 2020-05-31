@@ -19,7 +19,7 @@ export const useSubmission = (formId: string) => {
 
   useEffect(() => {
     (async () => {
-      const token = '123' // TODO generate secure token
+      const token = [...Array(40)].map(() => Math.random().toString(36)[2]).join('')
 
       const {data} = await start({
         variables: {
@@ -27,8 +27,8 @@ export const useSubmission = (formId: string) => {
           submission: {
             token,
             device: {
-              name: '',
-              type: ''
+              name: /Mobi/i.test(window.navigator.userAgent) ? 'mobile' : 'desktop',
+              type: window.navigator.userAgent
             }
           }
         }
@@ -58,8 +58,6 @@ export const useSubmission = (formId: string) => {
   const finish = useCallback(() => {
     console.log('finish submission!!', formId)
   }, [submission])
-
-  console.log('submission saver :D', formId)
 
   return {
     setField,

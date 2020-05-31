@@ -1,9 +1,9 @@
 import {useQuery} from '@apollo/react-hooks'
+import {Modal} from 'antd'
 import {ErrorPage} from 'components/error.page'
 import {Field} from 'components/form/field'
 import {FormPage} from 'components/form/page'
 import {LoadingPage} from 'components/loading.page'
-import {useWindowSize} from 'components/use.window.size'
 import {FORM_QUERY, FormQueryData, FormQueryVariables} from 'graphql/query/form.query'
 import {NextPage} from 'next'
 import React, {useState} from 'react'
@@ -17,7 +17,6 @@ interface Props {
 }
 
 const Index: NextPage<Props> = ({id}) => {
-  const windowSize = useWindowSize()
   const [swiper, setSwiper] = useState<OriginalSwiper.default>(null)
   const submission = useSubmission(id)
 
@@ -72,22 +71,47 @@ const Index: NextPage<Props> = ({id}) => {
             next={goNext}
             prev={goPrev}
           /> : undefined,
-          ...data.form.fields.map((field, i) => (
-            <Field
-              key={field.id}
-              field={field}
-              design={design}
-              save={values => {
-                submission.setField(field.id, values[field.id])
+          ...data.form.fields
+            .map((field, i) => {
+              if (field.type === 'hidden') {
+                return null
+              }
 
-                if (data.form.fields.length === i - 1) {
-                  submission.finish()
-                }
-              }}
-              next={goNext}
-              prev={goPrev}
-            />
-          )),
+              return (
+                <Field
+                  key={field.id}
+                  field={field}
+                  design={design}
+                  save={values => {
+                    submission.setField(field.id, values[field.id])
+
+                    if (data.form.fields.length === i + 1) {
+                      submission.finish()
+                    }
+                  }}
+                  next={() => {
+                    if (data.form.fields.length === i + 1) {
+                      // prevent going back!
+                      swiper.allowSlidePrev = true
+
+                      if (!data.form.endPage.show) {
+                        Modal.success({
+                          content: 'Thank you for your submission!',
+                          okText: 'Restart Form',
+                          onOk: () => {
+                            window.location.reload()
+                          }
+                        });
+                      }
+                    }
+
+                    goNext()
+                  }}
+                  prev={goPrev}
+                />
+              )
+            })
+            .filter(e => e !== null),
           data.form.endPage.show ? <FormPage
             key={'end'}
             type={'end'}

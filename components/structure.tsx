@@ -7,6 +7,7 @@ import {useRouter} from 'next/router'
 import React, {FunctionComponent} from 'react'
 import {sideMenu, SideMenuElement} from './sidemenu'
 import {useWindowSize} from './use.window.size'
+import {clearAuth} from './with.auth'
 
 const { publicRuntimeConfig } = getConfig()
 
@@ -117,7 +118,8 @@ const Structure: FunctionComponent<Props> = (props) => {
   }
 
   const signOut = async (): Promise<void> => {
-    // TODO sign out
+    await clearAuth()
+    router.reload()
   }
 
   return (
@@ -145,7 +147,7 @@ const Structure: FunctionComponent<Props> = (props) => {
           <Dropdown
             overlay={(
               <Menu>
-                <Menu.Item onClick={(): void => console.log('profile??')}>Profile</Menu.Item>
+                <Menu.Item onClick={() => router.push('/admin/profile')}>Profile</Menu.Item>
                 <Menu.Divider/>
                 <Menu.Item onClick={signOut}>Logout</Menu.Item>
               </Menu>

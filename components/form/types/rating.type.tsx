@@ -1,4 +1,4 @@
-import {Form, Input} from 'antd'
+import {Form, Rate} from 'antd'
 import React from 'react'
 import {FieldTypeProps} from './type.props'
 
@@ -8,14 +8,12 @@ export const RatingType: React.FC<FieldTypeProps> = ({field}) => {
   return (
     <div>
       <Form.Item
-        label={'Default Value'}
         name={[field.id, 'value']}
         rules={[
           { required: field.required, message: 'Please provide Information' },
         ]}
-        labelCol={{ span: 6 }}
       >
-        <Input />
+        <Rate allowHalf defaultValue={parseFloat(field.value)} />
       </Form.Item>
     </div>
   )

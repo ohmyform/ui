@@ -1,15 +1,15 @@
-import {InputNumber} from 'antd'
-import {InputNumberProps} from 'antd/lib/input-number'
+import {Input} from 'antd'
+import {TextAreaProps} from 'antd/lib/input/TextArea'
 import React from 'react'
 import styled from 'styled-components'
 import {FormDesignFragment} from '../../graphql/fragment/form.fragment'
 import {transparentize} from './color.change'
 
-interface Props extends InputNumberProps {
+interface Props extends TextAreaProps {
   design: FormDesignFragment
 }
 
-const Field = styled(InputNumber)`
+const Field = styled(Input.TextArea)`
   color: ${props => props.design.colors.answerColor};
   border-color: ${props => props.design.colors.answerColor};
   background: none !important;
@@ -17,19 +17,16 @@ const Field = styled(InputNumber)`
   border-top: none;
   border-left: none;
   border-radius: 0;
-  width: 100%;
   
   :focus {
-    outline: ${props => props.design.colors.answerColor} auto 5px
+    outline: none;
+    box-shadow: none;
+    border-color: ${props => props.design.colors.answerColor};
   }
   
   :hover,
   :active {
     border-color: ${props => props.design.colors.answerColor};
-  }
-  
-  &.ant-input-number {
-    box-shadow: none
   }
   
   input {
@@ -46,7 +43,7 @@ const Field = styled(InputNumber)`
   }
 `
 
-export const StyledNumberInput: React.FC<Props> = ({children, ...props}) => {
+export const StyledTextareaInput: React.FC<Props> = ({children, ...props}) => {
   return (
     <Field {...props}>{children}</Field>
   )

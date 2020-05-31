@@ -1,4 +1,5 @@
 import {HomeOutlined, MessageOutlined, TeamOutlined} from '@ant-design/icons'
+import {UserOutlined} from '@ant-design/icons/lib'
 import React from 'react'
 
 export interface SideMenuElement {
@@ -17,6 +18,12 @@ export const sideMenu: SideMenuElement[] = [
     name: 'Home',
     href: '/admin',
     icon: <HomeOutlined />,
+  },
+  {
+    key: 'profile',
+    name: 'Profile',
+    href: '/admin/profile',
+    icon: <UserOutlined />,
   },
   {
     key: 'public',

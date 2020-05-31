@@ -1,19 +1,18 @@
 import {gql} from 'apollo-boost'
 
-export interface AdminUserFragment {
+export interface AdminProfileFragment {
   id: string
   email: string
   username: string
   language: string
   firstName: string
   lastName: string
-  roles: string[]
   created: string
   lastModified?: string
 }
 
-export const ADMIN_USER_FRAGMENT = gql`
-  fragment AdminUser on User {
+export const ADMIN_PROFILE_FRAGMENT = gql`
+  fragment AdminProfile on Profile {
     id
     email
     username
