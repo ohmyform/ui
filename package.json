@@ -6,7 +6,7 @@
     "start:dev": "next dev -p 4000",
     "build": "next build",
     "export": "next build && next export",
-    "start": "next start -p 4010",
+    "start": "next start -p $PORT",
     "server": "node server.js"
   },
   "dependencies": {
@@ -18,9 +18,7 @@
     "apollo-boost": "^0.4.9",
     "axios": "^0.19.2",
     "dayjs": "^1.8.27",
-    "express": "^4.17.1",
     "graphql": "^15.0.0",
-    "http-proxy-middleware": "^1.0.4",
     "next": "9.4.0",
     "next-images": "^1.4.0",
     "next-redux-wrapper": "^6.0.0",

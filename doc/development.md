@@ -22,7 +22,7 @@ be copied to any static hosting site.
 
 ### SSR
 
-first build the current codebase by `yarn build` and then execute `yarn start`, any request
+first build the current codebase by `yarn build` and then execute `PORT=4000 yarn start`, any request
 coming into the system will then be rendered on the server. (great for SEO)
 
 ## Configuration Options
