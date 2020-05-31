@@ -1,15 +1,12 @@
 import {CaretDownOutlined, UserOutlined} from '@ant-design/icons'
 import {MenuFoldOutlined, MenuUnfoldOutlined} from '@ant-design/icons/lib'
 import {Dropdown, Layout, Menu, PageHeader, Spin, Tag} from 'antd'
-import getConfig from 'next/config'
 import Link from 'next/link'
 import {useRouter} from 'next/router'
 import React, {FunctionComponent} from 'react'
 import {sideMenu, SideMenuElement} from './sidemenu'
 import {useWindowSize} from './use.window.size'
 import {clearAuth} from './with.auth'
-
-const { publicRuntimeConfig } = getConfig()
 
 const { SubMenu, ItemGroup } = Menu
 const { Header, Content, Sider } = Layout
@@ -200,7 +197,7 @@ const Structure: FunctionComponent<Props> = (props) => {
                 marginTop: 40,
               }}
             >
-              Version: <Tag color="gold">{publicRuntimeConfig.version}</Tag>
+              Version: <Tag color="gold">{process.env.version}</Tag>
             </Menu.Item>
           </Menu>
         </Sider>

@@ -34,5 +34,11 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
   )
 }
 
-export default wrapper.withRedux(App)
-// export default App
+const WrappedApp = wrapper.withRedux(App)
+
+WrappedApp.getInitialProps = async (): Promise<any> => {
+  // important for now to pass public runtime config to clients!
+  return {}
+}
+
+export default WrappedApp

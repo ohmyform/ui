@@ -4,8 +4,11 @@ const p = require('./package.json')
 const version = p.version;
 
 module.exports = withImages({
+  poweredByHeader: false,
   publicRuntimeConfig: {
     endpoint: process.env.API_HOST || '/graphql',
+  },
+  env: {
     version,
   }
 })
