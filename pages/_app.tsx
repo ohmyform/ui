@@ -6,6 +6,7 @@ import 'assets/global.scss'
 import 'assets/variables.scss'
 import axios from 'axios'
 import {authConfig} from 'components/with.auth'
+import 'i18n'
 import {AppProps} from 'next/app'
 import getConfig from 'next/config'
 import Head from 'next/head'
@@ -34,11 +35,4 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
   )
 }
 
-const WrappedApp = wrapper.withRedux(App)
-
-WrappedApp.getInitialProps = async (): Promise<any> => {
-  // important for now to pass public runtime config to clients!
-  return {}
-}
-
-export default WrappedApp
+export default wrapper.withRedux(App)
