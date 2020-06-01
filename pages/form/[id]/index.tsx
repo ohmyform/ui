@@ -6,6 +6,7 @@ import {FormPage} from 'components/form/page'
 import {LoadingPage} from 'components/loading.page'
 import {FORM_QUERY, FormQueryData, FormQueryVariables} from 'graphql/query/form.query'
 import {NextPage} from 'next'
+import {useRouter} from 'next/router'
 import React, {useState} from 'react'
 import Swiper from 'react-id-swiper'
 import {ReactIdSwiperProps} from 'react-id-swiper/lib/types'
@@ -16,7 +17,9 @@ interface Props {
   id: string
 }
 
-const Index: NextPage<Props> = ({id}) => {
+const Index: NextPage<Props> = () => {
+  const router = useRouter()
+  const id = router.query.id as string
   const [swiper, setSwiper] = useState<OriginalSwiper.default>(null)
   const submission = useSubmission(id)
 
