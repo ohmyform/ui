@@ -39,7 +39,7 @@ With a local backend you could start ie the dev server with
 ## Used Tools / Libraries
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Ant Design](https://ant.design/components) - UI Framework used
+- [Ant Design](https://ant.design/components/overview/) - UI Framework used
 - [SwiperJS](https://swiperjs.com/) - Form Slides
 - [Apollo Client](https://www.apollographql.com/docs/react/) - GraphQL Client
 - [Styled Components](https://styled-components.com/) - Component Styling
