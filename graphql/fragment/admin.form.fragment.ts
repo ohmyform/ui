@@ -14,6 +14,20 @@ export interface AdminFormPageFragment {
   }[]
 }
 
+export interface AdminFormFieldOptionFragment {
+  key?: number
+  title?: string
+  value: string
+}
+
+export interface AdminFormFieldLogicJumpFragment {
+  fieldA?: string
+  valueB?: string
+  expressionString?: string
+  jumpTo?: string
+  enabled: boolean
+}
+
 export interface AdminFormFieldFragment {
   id: string
   title: string
@@ -21,6 +35,15 @@ export interface AdminFormFieldFragment {
   description: string
   required: boolean
   value: string
+
+  options: AdminFormFieldOptionFragment[]
+
+  logicJump: AdminFormFieldLogicJumpFragment
+
+  rating?: {
+    steps?: number
+    shape?: string
+  }
 }
 
 export interface AdminFormFragment {
@@ -82,6 +105,24 @@ export const ADMIN_FORM_FRAGMENT = gql`
       description
       required
       value
+      
+      options {
+        key
+        title
+        value
+      }
+      
+      logicJump {
+        fieldA
+        valueB
+        expressionString
+        jumpTo
+        enabled
+      }
+      rating {
+        steps
+        shape
+      }
     }
     
     selfNotifications {

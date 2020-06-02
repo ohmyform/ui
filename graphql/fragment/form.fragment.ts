@@ -15,6 +15,20 @@ export interface FormPageFragment {
   }[]
 }
 
+export interface FormFieldOptionFragment {
+  key?: number
+  title?: string
+  value: string
+}
+
+export interface FormFieldLogicJumpFragment {
+  fieldA?: string
+  valueB?: string
+  expressionString?: string
+  jumpTo?: string
+  enabled: boolean
+}
+
 export interface FormFieldFragment {
   id: string
   title: string
@@ -22,6 +36,15 @@ export interface FormFieldFragment {
   description: string
   required: boolean
   value: string
+
+  options: FormFieldOptionFragment[]
+
+  logicJump: FormFieldLogicJumpFragment
+
+  rating?: {
+    steps?: number
+    shape?: string
+  }
 }
 
 export interface FormDesignFragment {
@@ -62,6 +85,24 @@ export const FORM_FRAGMENT = gql`
       description
       required
       value
+      
+      options {
+        key
+        title
+        value
+      }
+      
+      logicJump {
+        fieldA
+        valueB
+        expressionString
+        jumpTo
+        enabled
+      }
+      rating {
+        steps
+        shape
+      }
     }
     
     design {
