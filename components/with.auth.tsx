@@ -47,6 +47,7 @@ export const withAuth = (Component, roles: string[] = []): React.FC => {
         setAccess(true)
         return
       }
+      setAccess(false)
       if (!error) {
         return
       }
