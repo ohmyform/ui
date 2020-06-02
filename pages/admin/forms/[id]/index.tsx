@@ -11,7 +11,11 @@ import {SelfNotificationsTab} from 'components/form/admin/self.notifications.tab
 import {StartPageTab} from 'components/form/admin/start.page.tab'
 import Structure from 'components/structure'
 import {withAuth} from 'components/with.auth'
-import {AdminFormFieldFragment} from 'graphql/fragment/admin.form.fragment'
+import {
+  AdminFormFieldFragment,
+  AdminFormFieldOptionFragment,
+  AdminFormFieldOptionKeysFragment
+} from 'graphql/fragment/admin.form.fragment'
 import {
   ADMIN_FORM_UPDATE_MUTATION,
   AdminFormUpdateMutationData,
@@ -32,11 +36,29 @@ const Index: NextPage = () => {
   const [fields, setFields] = useState<AdminFormFieldFragment[]>([])
   const [update] = useMutation<AdminFormUpdateMutationData, AdminFormUpdateMutationVariables>(ADMIN_FORM_UPDATE_MUTATION)
 
+  const processNext = (next: AdminFormQueryData): AdminFormQueryData => {
+    next.form.fields = next.form.fields.map(field => {
+      const keys: AdminFormFieldOptionKeysFragment = {}
+
+      field.options.forEach(option => {
+        if (option.key) {
+          keys[option.key] = option.value
+        }
+      })
+
+      field.optionKeys = keys
+      return field
+    })
+
+    return next
+  }
+
   const {data, loading, error} = useQuery<AdminFormQueryData, AdminFormQueryVariables>(ADMIN_FORM_QUERY, {
     variables: {
       id: router.query.id as string
     },
     onCompleted: next => {
+      next = processNext(next)
       form.setFieldsValue(next)
       setFields(next.form.fields)
     }
@@ -45,12 +67,27 @@ const Index: NextPage = () => {
   const save = async (formData: AdminFormQueryData) => {
     setSaving(true)
 
-    formData.form.fields = formData.form.fields.filter(e => e && e.type)
+    formData.form.fields = formData.form.fields.filter(e => e && e.type).map(({optionKeys, ...field}) => {
+      if (optionKeys) {
+        //
+        return {
+          ...field,
+          options: Object.keys(optionKeys).map((key): AdminFormFieldOptionFragment => {
+            return {
+              value: optionKeys[key],
+              key,
+            }
+          }).filter(e => !!e.value)
+        }
+      }
+
+      return field
+    })
 
     try {
-      const next = (await update({
+      const next = processNext((await update({
         variables: cleanInput(formData),
-      })).data
+      })).data)
 
       form.setFieldsValue(next)
       setFields(next.form.fields)
@@ -76,10 +113,12 @@ const Index: NextPage = () => {
         { href: '/admin/forms', name: t('admin:forms') },
       ]}
       extra={[
-        <Link href={'/admin/forms/[id]/submissions'} as={`/admin/forms/${router.query.id}/submissions`}>
-          <Button
-            key={'submissions'}
-          >
+        <Link
+          key={'submissions'}
+          href={'/admin/forms/[id]/submissions'}
+          as={`/admin/forms/${router.query.id}/submissions`}
+        >
+          <Button>
             Submissions
           </Button>
         </Link>,

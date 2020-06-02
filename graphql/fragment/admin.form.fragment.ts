@@ -15,9 +15,13 @@ export interface AdminFormPageFragment {
 }
 
 export interface AdminFormFieldOptionFragment {
-  key?: number
+  key?: string
   title?: string
   value: string
+}
+
+export interface AdminFormFieldOptionKeysFragment {
+  [key: string]: string
 }
 
 export interface AdminFormFieldLogicJumpFragment {
@@ -37,6 +41,7 @@ export interface AdminFormFieldFragment {
   value: string
 
   options: AdminFormFieldOptionFragment[]
+  optionKeys?: AdminFormFieldOptionKeysFragment
 
   logicJump: AdminFormFieldLogicJumpFragment
 

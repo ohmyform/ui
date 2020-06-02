@@ -17,26 +17,25 @@ export const DateType: React.FC<AdminFieldTypeProps> = ({field, form}) => {
           format={'YYYY-MM-DD'}
         />
       </Form.Item>
-      {/* TODO add options
       <Form.Item
         label={'Min Date'}
-        name={[field.name, 'min']}
+        name={[field.name, 'optionKeys', 'min']}
         labelCol={{ span: 6 }}
         getValueFromEvent={e => e.format('YYYY-MM-DD')}
         getValueProps={e => ({value: e ? moment(e) : undefined})}
       >
         <DatePicker />
       </Form.Item>
+
       <Form.Item
         label={'Max Date'}
-        name={[field.name, 'max']}
+        name={[field.name, 'optionKeys', 'max']}
         labelCol={{ span: 6 }}
         getValueFromEvent={e => e.format('YYYY-MM-DD')}
         getValueProps={e => ({value: e ? moment(e) : undefined})}
       >
         <DatePicker />
       </Form.Item>
-      */}
     </div>
   )
 }

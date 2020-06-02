@@ -16,7 +16,7 @@ export interface FormPageFragment {
 }
 
 export interface FormFieldOptionFragment {
-  key?: number
+  key?: string
   title?: string
   value: string
 }

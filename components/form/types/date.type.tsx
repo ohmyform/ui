@@ -1,12 +1,24 @@
 import {Form} from 'antd'
+import dayjs, {Dayjs} from 'dayjs'
 import moment from 'moment'
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import {StyledDateInput} from '../../styled/date.input'
 import {FieldTypeProps} from './type.props'
 
 export const DateType: React.FC<FieldTypeProps> = ({ field, design}) => {
-  // TODO check min and max
-  // TODO if default is passed, then the changing should not be required
+  const [min, setMin] = useState<Dayjs>()
+  const [max, setMax] = useState<Dayjs>()
+
+  useEffect(() => {
+    field.options.forEach(option => {
+      if (option.key === 'min') {
+        setMin(dayjs(option.value))
+      }
+      if (option.key === 'max') {
+        setMax(dayjs(option.value))
+      }
+    })
+  }, [field])
 
   return (
     <div>
@@ -23,6 +35,15 @@ export const DateType: React.FC<FieldTypeProps> = ({ field, design}) => {
           size={'large'}
           design={design}
           autoFocus
+          disabledDate={(d: any) => {
+            if (min && min.isAfter(d)) {
+              return true
+            }
+            if (max && max.isBefore(d)) {
+              return true
+            }
+            return false
+          }}
         />
       </Form.Item>
     </div>
