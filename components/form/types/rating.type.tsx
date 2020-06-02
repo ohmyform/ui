@@ -12,8 +12,9 @@ export const RatingType: React.FC<FieldTypeProps> = ({field}) => {
         rules={[
           { required: field.required, message: 'Please provide Information' },
         ]}
+        initialValue={parseFloat(field.value)}
       >
-        <Rate allowHalf defaultValue={parseFloat(field.value)} />
+        <Rate allowHalf />
       </Form.Item>
     </div>
   )

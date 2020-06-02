@@ -15,12 +15,12 @@ export const TextType: React.FC<FieldTypeProps> = ({field, design}) => {
         rules={[
           { required: field.required, message: 'Please provide Information' }
         ]}
+        initialValue={field.value}
       >
         <StyledInput
           design={design}
           allowClear
           size={'large'}
-          defaultValue={field.value}
         />
       </Form.Item>
     </div>

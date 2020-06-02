@@ -12,11 +12,11 @@ export const NumberType: React.FC<FieldTypeProps> = ({field, design}) => {
           { type: 'number', message: 'Must be a valid URL' },
           { required: field.required, message: 'Please provide Information' },
         ]}
+        initialValue={parseFloat(field.value)}
       >
         <StyledNumberInput
           design={design}
           size={'large'}
-          defaultValue={parseFloat(field.value)}
         />
       </Form.Item>
     </div>

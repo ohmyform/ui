@@ -10,6 +10,7 @@ export const YesNoType: React.FC<FieldTypeProps> = ({field}) => {
         rules={[
           { required: field.required, message: 'Please provide Information' },
         ]}
+        initialValue={field.value}
       >
         <Switch />
       </Form.Item>

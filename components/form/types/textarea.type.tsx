@@ -11,12 +11,12 @@ export const TextareaType: React.FC<FieldTypeProps> = ({field, design}) => {
         rules={[
           { required: field.required, message: 'Please provide Information' },
         ]}
+        initialValue={field.value}
       >
         <StyledTextareaInput
           design={design}
           allowClear
           autoSize
-          defaultValue={field.value}
         />
       </Form.Item>
     </div>

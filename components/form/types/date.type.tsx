@@ -17,10 +17,10 @@ export const DateType: React.FC<FieldTypeProps> = ({ field, design}) => {
         ]}
         getValueFromEvent={e => e.format('YYYY-MM-DD')}
         getValueProps={e => ({value: e ? moment(e) : undefined})}
+        initialValue={field.value ? moment(field.value) : undefined}
       >
         <StyledDateInput
           size={'large'}
-          defaultValue={field.value ? moment(field.value) : undefined}
           design={design}
           autoFocus
         />

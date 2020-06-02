@@ -12,12 +12,12 @@ export const LinkType: React.FC<FieldTypeProps> = ({field, design}) => {
           { required: field.required, message: 'Please provide Information' },
           { type: 'url', message: 'Must be a valid URL' }
         ]}
+        initialValue={field.value}
       >
         <StyledInput
           design={design}
           allowClear
           size={'large'}
-          defaultValue={field.value}
         />
       </Form.Item>
     </div>

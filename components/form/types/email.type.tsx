@@ -12,12 +12,12 @@ export const EmailType: React.FC<FieldTypeProps> = ({field, design}) => {
           { required: field.required, message: 'Please provide Information' },
           { type: 'email', message: 'Must be a valid email' }
         ]}
+        initialValue={field.value}
       >
         <StyledInput
           design={design}
           allowClear
           size={'large'}
-          defaultValue={field.value}
         />
       </Form.Item>
     </div>
