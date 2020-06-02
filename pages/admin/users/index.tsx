@@ -8,6 +8,7 @@ import {withAuth} from 'components/with.auth'
 import {NextPage} from 'next'
 import Link from 'next/link'
 import React, {useState} from 'react'
+import {useTranslation} from 'react-i18next'
 import {DateTime} from '../../../components/date.time'
 import {UserRole} from '../../../components/user/role'
 import {
@@ -23,6 +24,7 @@ import {
 } from '../../../graphql/query/admin.pager.user.query'
 
 const Index: NextPage = () => {
+  const { t } = useTranslation()
   const [pagination, setPagination] = useState<PaginationProps>({
     pageSize: 10,
   })
@@ -104,10 +106,10 @@ const Index: NextPage = () => {
 
   return (
     <Structure
-      title={'Users'}
+      title={t('admin:users')}
       loading={loading}
       breadcrumbs={[
-        { href: '/admin', name: 'Home' },
+        { href: '/admin', name: t('admin:home') },
       ]}
       padded={false}
     >

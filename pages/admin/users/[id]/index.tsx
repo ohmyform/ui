@@ -6,6 +6,7 @@ import {withAuth} from 'components/with.auth'
 import {NextPage} from 'next'
 import {useRouter} from 'next/router'
 import React, {useState} from 'react'
+import {useTranslation} from 'react-i18next'
 import {cleanInput} from '../../../../components/clean.input'
 import {BaseDataTab} from '../../../../components/user/admin/base.data.tab'
 import {
@@ -16,6 +17,7 @@ import {
 import {ADMIN_USER_QUERY, AdminUserQueryData, AdminUserQueryVariables} from '../../../../graphql/query/admin.user.query'
 
 const Index: NextPage = () => {
+  const { t } = useTranslation()
   const router = useRouter()
   const [form] = useForm()
   const [saving, setSaving] = useState(false)
@@ -33,11 +35,6 @@ const Index: NextPage = () => {
 
   const save = async (formData: AdminUserQueryData) => {
     setSaving(true)
-
-    console.log('data', formData)
-
-
-
     try {
       const next = (await update({
         variables: cleanInput(formData),
@@ -60,8 +57,8 @@ const Index: NextPage = () => {
       title={loading ? 'Loading User' : `Edit User "${data.user.email}"`}
       selected={'users'}
       breadcrumbs={[
-        { href: '/admin', name: 'Home' },
-        { href: '/admin/users', name: 'Users' },
+        { href: '/admin', name: t('admin:home') },
+        { href: '/admin/users', name: t('admin:users') },
       ]}
       extra={[
         <Button

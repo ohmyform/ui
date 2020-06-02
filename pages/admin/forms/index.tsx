@@ -17,6 +17,7 @@ import {
 import {NextPage} from 'next'
 import Link from 'next/link'
 import React, {useState} from 'react'
+import {useTranslation} from 'react-i18next'
 import {
   ADMIN_FORM_DELETE_MUTATION,
   AdminFormDeleteMutationData,
@@ -24,6 +25,7 @@ import {
 } from '../../../graphql/mutation/admin.form.delete.mutation'
 
 const Index: NextPage = () => {
+  const { t } = useTranslation()
   const [pagination, setPagination] = useState<PaginationProps>({
     pageSize: 25,
   })
@@ -144,11 +146,11 @@ const Index: NextPage = () => {
 
   return (
     <Structure
-      title={'Forms'}
+      title={t('admin:forms')}
       selected={'forms'}
       loading={loading}
       breadcrumbs={[
-        { href: '/admin', name: 'Home' },
+        { href: '/admin', name: t('admin:home') },
       ]}
       padded={false}
       extra={[

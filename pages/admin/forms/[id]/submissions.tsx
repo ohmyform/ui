@@ -11,6 +11,7 @@ import {NextPage} from 'next'
 import Link from 'next/link'
 import {useRouter} from 'next/router'
 import React, {useState} from 'react'
+import {useTranslation} from 'react-i18next'
 import {SubmissionValues} from '../../../../components/form/admin/submission.values'
 import {
   ADMIN_PAGER_SUBMISSION_QUERY,
@@ -21,6 +22,7 @@ import {
 } from '../../../../graphql/query/admin.pager.submission.query'
 
 const Submissions: NextPage = () => {
+  const { t } = useTranslation()
   const router = useRouter()
   const [pagination, setPagination] = useState<PaginationProps>({
     pageSize: 25,
@@ -74,12 +76,12 @@ const Submissions: NextPage = () => {
 
   return (
     <Structure
-      title={loading ? 'Loading Submissions' : 'Submissions'}
+      title={t('admin:submissions')}
       selected={'forms'}
       loading={loading}
       breadcrumbs={[
-        { href: '/admin', name: 'Home' },
-        { href: '/admin/forms', name: 'Form' },
+        { href: '/admin', name: t('admin:home') },
+        { href: '/admin/forms', name: t('admin:forms') },
         { href: '/admin/forms/[id]', name: loading || !form ? 'Loading Form' : `Edit Form "${form.title}"`, as: `/admin/forms/${router.query.id}` },
       ]}
       padded={false}

@@ -1,8 +1,26 @@
 import {Button} from 'antd'
 import Link from 'next/link'
+import {useRouter} from 'next/router'
 import React from 'react'
+import {useTranslation} from 'react-i18next'
+import {clearAuth, withAuth} from '../with.auth'
 
-export const AuthFooter: React.FC = () => {
+interface Props {
+  me?: {
+    id: string
+    username: string
+  }
+}
+
+const AuthFooterInner: React.FC<Props> = props => {
+  const { t } = useTranslation()
+  const router = useRouter()
+
+  const logout = () => {
+    clearAuth()
+    router.reload()
+  }
+
   return (
     <div
       style={{
@@ -17,25 +35,43 @@ export const AuthFooter: React.FC = () => {
           type={'link'}
           ghost
         >
-          Admin
+          {t('admin')}
         </Button>
       </Link>
-      <Link href={'/login'}>
-        <Button
-          type={'link'}
-          ghost
-        >
-          Login
-        </Button>
-      </Link>
-      <Link href={'/register'}>
-        <Button
-          type={'link'}
-          ghost
-        >
-          Register
-        </Button>
-      </Link>
+      {props.me ? (
+        [
+          <span style={{color: '#FFF'}}>
+            Hi, {props.me.username}
+          </span>,
+          <Button
+            key={'Logout'}
+            type={'link'}
+            ghost
+            onClick={logout}
+          >
+            {t('logout')}
+          </Button>
+        ]
+      ): (
+        [
+          <Link href={'/login'}>
+            <Button
+              type={'link'}
+              ghost
+            >
+              {t('login')}
+            </Button>
+          </Link>,
+          <Link href={'/register'}>
+            <Button
+              type={'link'}
+              ghost
+            >
+              {t('register')}
+            </Button>
+          </Link>
+        ]
+      )}
 
       <Button
         type={'link'}
@@ -52,3 +88,5 @@ export const AuthFooter: React.FC = () => {
     </div>
   )
 }
+
+export const AuthFooter = withAuth(AuthFooterInner)

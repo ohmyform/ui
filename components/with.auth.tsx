@@ -43,6 +43,10 @@ export const withAuth = (Component, roles: string[] = []): React.FC => {
     const {loading, data, error} = useQuery<MeQueryData>(ME_QUERY)
 
     useEffect(() => {
+      if (roles.length === 0) {
+        setAccess(true)
+        return
+      }
       if (!error) {
         return
       }
@@ -56,6 +60,7 @@ export const withAuth = (Component, roles: string[] = []): React.FC => {
 
     useEffect(() => {
       if (!data || roles.length === 0) {
+        setAccess(true)
         return
       }
 
@@ -79,6 +84,6 @@ export const withAuth = (Component, roles: string[] = []): React.FC => {
       return <LoadingPage message={'Checking Credentials'} />
     }
 
-    return <Component {...props} />
+    return <Component me={data && data.me} {...props} />
   };
 }

@@ -4,6 +4,7 @@ import Structure from 'components/structure'
 import {withAuth} from 'components/with.auth'
 import {NextPage} from 'next'
 import React from 'react'
+import {useTranslation} from 'react-i18next'
 import {
   ADMIN_STATISTIC_QUERY,
   AdminStatisticQueryData,
@@ -11,25 +12,26 @@ import {
 } from '../../graphql/query/admin.statistic.query'
 
 const Index: NextPage = () => {
+  const { t } = useTranslation()
   const {data, loading} = useQuery<AdminStatisticQueryData, AdminStatisticQueryVariables>(ADMIN_STATISTIC_QUERY)
 
   return (
     <Structure
-      title={'Home'}
+      title={t('admin:home')}
       selected={'home'}
       loading={loading}
     >
       <Row gutter={16}>
         <Col span={8}>
-          <Statistic title="Total Forms" value={data && data.forms.total} />
+          <Statistic title={t('statistic:total-forms')} value={data && data.forms.total} />
         </Col>
 
         <Col span={8}>
-          <Statistic title="Total Users" value={data && data.users.total} />
+          <Statistic title={t('statistic:total-users')} value={data && data.users.total} />
         </Col>
 
         <Col span={8}>
-          <Statistic title="Total Submissions" value={data && data.submissions.total} />
+          <Statistic title={t('statistic:total-submissions')} value={data && data.submissions.total} />
         </Col>
       </Row>
     </Structure>

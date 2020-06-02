@@ -22,8 +22,10 @@ import {NextPage} from 'next'
 import Link from 'next/link'
 import {useRouter} from 'next/router'
 import React, {useState} from 'react'
+import {useTranslation} from 'react-i18next'
 
 const Index: NextPage = () => {
+  const { t } = useTranslation()
   const router = useRouter()
   const [form] = useForm()
   const [saving, setSaving] = useState(false)
@@ -70,8 +72,8 @@ const Index: NextPage = () => {
       title={loading ? 'Loading Form' : `Edit Form "${data.form.title}"`}
       selected={'forms'}
       breadcrumbs={[
-        { href: '/admin', name: 'Home' },
-        { href: '/admin/forms', name: 'Form' },
+        { href: '/admin', name: t('admin:home') },
+        { href: '/admin/forms', name: t('admin:forms') },
       ]}
       extra={[
         <Link href={'/admin/forms/[id]/submissions'} as={`/admin/forms/${router.query.id}/submissions`}>

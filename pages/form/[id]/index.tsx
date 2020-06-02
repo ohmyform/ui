@@ -8,6 +8,7 @@ import {FORM_QUERY, FormQueryData, FormQueryVariables} from 'graphql/query/form.
 import {NextPage} from 'next'
 import {useRouter} from 'next/router'
 import React, {useState} from 'react'
+import {useTranslation} from 'react-i18next'
 import Swiper from 'react-id-swiper'
 import {ReactIdSwiperProps} from 'react-id-swiper/lib/types'
 import * as OriginalSwiper from 'swiper'
@@ -18,6 +19,7 @@ interface Props {
 }
 
 const Index: NextPage<Props> = () => {
+  const { t } = useTranslation()
   const router = useRouter()
   const id = router.query.id as string
   const [swiper, setSwiper] = useState<OriginalSwiper.default>(null)
@@ -31,7 +33,7 @@ const Index: NextPage<Props> = () => {
 
   if (loading) {
     return (
-      <LoadingPage message={'Building Form'} />
+      <LoadingPage message={t('form:build')} />
     )
   }
 
@@ -99,8 +101,8 @@ const Index: NextPage<Props> = () => {
 
                       if (!data.form.endPage.show) {
                         Modal.success({
-                          content: 'Thank you for your submission!',
-                          okText: 'Restart Form',
+                          content: t('form:submitted'),
+                          okText: t('from:restart'),
                           onOk: () => {
                             window.location.reload()
                           }

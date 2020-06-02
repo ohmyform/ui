@@ -9,8 +9,10 @@ import {NextPage} from 'next'
 import Link from 'next/link'
 import {useRouter} from 'next/router'
 import React, {useState} from 'react'
+import {useTranslation} from 'react-i18next'
 
 const Index: NextPage = () => {
+  const { t } = useTranslation()
   const [form] = useForm()
   const router = useRouter()
   const [loading, setLoading] = useState(false)
@@ -28,18 +30,18 @@ const Index: NextPage = () => {
         result.data.tokens.refresh
       )
 
-      message.success('Welcome back!')
+      message.success(t('login:welcome-back'))
 
       router.push('/admin')
     } catch (e) {
-      message.error('username / password are invalid')
+      message.error(t('login:invalid-login-credentials'))
     }
 
     setLoading(false)
   }
 
   const failed = () => {
-    message.error('mandatory fields missing')
+    message.error(t('mandatory-fields-missing'))
   }
 
   return (
@@ -69,21 +71,21 @@ const Index: NextPage = () => {
 
         <Form.Item
           name="username"
-          rules={[{ required: true, message: 'Please input your username!' }]}
+          rules={[{ required: true, message: t('login:username-required') }]}
         >
           <Input
             size="large"
-            placeholder="Username"
+            placeholder={t('login:username-placeholder')}
           />
         </Form.Item>
 
         <Form.Item
           name="password"
-          rules={[{ required: true, message: 'Please input your password!' }]}
+          rules={[{ required: true, message: t('login:password-required') }]}
         >
           <Input.Password
             size="large"
-            placeholder={'Password'}
+            placeholder={t('login:password-placeholder')}
           />
         </Form.Item>
 
@@ -94,7 +96,7 @@ const Index: NextPage = () => {
             htmlType="submit"
             block
           >
-            Login Now
+            {t('login:login-now')}
           </Button>
         </Form.Item>
 
@@ -110,7 +112,7 @@ const Index: NextPage = () => {
               type={'link'}
               ghost
             >
-              Create Account
+              {t('register')}
             </Button>
           </Link>
           <Link href={'/login/recover'}>
@@ -118,7 +120,7 @@ const Index: NextPage = () => {
               type={'link'}
               ghost
             >
-              Lost password
+              {t('recover')}
             </Button>
           </Link>
         </Button.Group>

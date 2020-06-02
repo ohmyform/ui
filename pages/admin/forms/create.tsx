@@ -9,6 +9,7 @@ import {AdminFormQueryData} from 'graphql/query/admin.form.query'
 import {NextPage} from 'next'
 import {useRouter} from 'next/router'
 import React, {useState} from 'react'
+import {useTranslation} from 'react-i18next'
 import {
   ADMIN_FORM_CREATE_MUTATION,
   AdminFormCreateMutationData,
@@ -16,6 +17,7 @@ import {
 } from '../../../graphql/mutation/admin.form.create.mutation'
 
 const Create: NextPage = () => {
+  const { t } = useTranslation()
   const router = useRouter()
   const [form] = useForm()
   const [saving, setSaving] = useState(false)
@@ -47,8 +49,8 @@ const Create: NextPage = () => {
       title={'Create New Form'}
       selected={'forms'}
       breadcrumbs={[
-        { href: '/admin', name: 'Home' },
-        { href: '/admin/forms', name: 'Form' },
+        { href: '/admin', name: t('admin:home') },
+        { href: '/admin/forms', name: t('admin:forms') },
       ]}
       extra={[
         <Button

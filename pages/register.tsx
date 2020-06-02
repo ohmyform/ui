@@ -9,8 +9,10 @@ import {NextPage} from 'next'
 import Link from 'next/link'
 import {useRouter} from 'next/router'
 import React, {useState} from 'react'
+import {useTranslation} from 'react-i18next'
 
 const Register: NextPage = () => {
+  const { t } = useTranslation()
   const [form] = useForm()
   const router = useRouter()
   const [loading, setLoading] = useState(false)
@@ -32,17 +34,17 @@ const Register: NextPage = () => {
         result.data.tokens.refresh
       )
 
-      message.success('Welcome, please also confirm your email')
+      message.success(t('register:welcome'))
 
       router.push('/')
     } catch (e) {
-      message.error('Some data already in use!')
+      message.error(t('register:credentials-already-in-use'))
       setLoading(false)
     }
   }
 
   const failed = () => {
-    message.error('mandatory fields missing')
+    message.error(t('mandatory-fields-missing'))
   }
 
   return (
@@ -72,19 +74,19 @@ const Register: NextPage = () => {
 
         <Form.Item
           name="username"
-          rules={[{ required: true, message: 'Please input your username!' }]}
+          rules={[{ required: true, message: t('login:username-required') }]}
         >
           <Input
             size="large"
-            placeholder="Username"
+            placeholder={t('login:username-placeholder')}
           />
         </Form.Item>
 
         <Form.Item
           name="email"
           rules={[
-            { required: true, message: 'Please input your email!' },
-            { type: 'email', message: 'Must be a valid email!' }
+            { required: true, message: t('register:email-required') },
+            { type: 'email', message: t('validation:invalid-email') }
           ]}
         >
           <Input
@@ -96,13 +98,13 @@ const Register: NextPage = () => {
         <Form.Item
           name="password"
           rules={[
-            { required: true, message: 'Please input your password!' },
-            { min: 5, message: 'Must be longer than or equal to 5 characters!' },
+            { required: true, message: t('login:password-required') },
+            { min: 5, message: t('register:password-min-length') },
           ]}
         >
           <Input.Password
             size="large"
-            placeholder={'Password'}
+            placeholder={t('login:password-placeholder')}
           />
         </Form.Item>
 
@@ -113,7 +115,7 @@ const Register: NextPage = () => {
             htmlType="submit"
             block
           >
-            Register Now
+            {t('register:register-now')}
           </Button>
         </Form.Item>
 
@@ -129,7 +131,7 @@ const Register: NextPage = () => {
               type={'link'}
               ghost
             >
-              Have an account? Go to login
+              {t('register:goto-login')}
             </Button>
           </Link>
         </Button.Group>
