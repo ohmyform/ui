@@ -40,7 +40,7 @@ const AuthFooterInner: React.FC<Props> = props => {
       </Link>
       {props.me ? (
         [
-          <span style={{color: '#FFF'}}>
+          <span style={{color: '#FFF'}} key={'user'}>
             Hi, {props.me.username}
           </span>,
           <Button
@@ -54,7 +54,7 @@ const AuthFooterInner: React.FC<Props> = props => {
         ]
       ): (
         [
-          <Link href={'/login'}>
+          <Link href={'/login'} key={'login'}>
             <Button
               type={'link'}
               ghost
@@ -62,7 +62,7 @@ const AuthFooterInner: React.FC<Props> = props => {
               {t('login')}
             </Button>
           </Link>,
-          <Link href={'/register'}>
+          <Link href={'/register'} key={'register'}>
             <Button
               type={'link'}
               ghost
