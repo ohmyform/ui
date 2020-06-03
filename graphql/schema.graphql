@@ -1,0 +1,391 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+interface Notification {
+  enabled: Boolean!
+  htmlTemplate: String
+  subject: String
+}
+
+type AuthToken {
+  accessToken: String!
+  refreshToken: String!
+}
+
+type Button {
+  action: String
+  activeColor: String
+  bgColor: String
+  color: String
+  text: String
+  url: String
+}
+
+type Colors {
+  answerColor: String!
+  backgroundColor: String!
+  buttonActiveColor: String!
+  buttonColor: String!
+  buttonTextColor: String!
+  questionColor: String!
+}
+
+type Deleted {
+  id: String!
+}
+
+type Design {
+  colors: Colors!
+  font: String
+}
+
+type Device {
+  name: String!
+  type: String!
+}
+
+type Form {
+  admin: User!
+  created: DateTime!
+  design: Design!
+  endPage: Page!
+  fields: [FormField!]!
+  id: ID!
+  isLive: Boolean!
+  language: String!
+  lastModified: DateTime
+  respondentNotifications: RespondentNotificationsModel!
+  selfNotifications: SelfNotificationsModel!
+  showFooter: Boolean!
+  startPage: Page!
+  title: String!
+}
+
+type FormField {
+  description: String!
+  id: ID!
+  logicJump: LogicJump!
+  options: [FormFieldOption!]!
+  rating: FormFieldRating
+  required: Boolean!
+  title: String!
+  type: String!
+  value: String!
+}
+
+type FormFieldOption {
+  key: String
+  title: String
+  value: String!
+}
+
+type FormFieldRating {
+  shape: String
+  steps: Int
+}
+
+type FormStatistic {
+  total: Int!
+}
+
+type GeoLocation {
+  city: String
+  country: String
+}
+
+type LogicJump {
+  enabled: Boolean!
+  expressionString: String
+  fieldA: ID
+  jumpTo: ID
+  valueB: String
+}
+
+type Mutation {
+  authLogin(password: String!, username: String!): AuthToken!
+  authRegister(user: UserCreateInput!): AuthToken!
+  createForm(form: FormCreateInput!): Form!
+  deleteForm(id: ID!): Deleted!
+  deleteUser(id: ID!): Deleted!
+  submissionSetField(field: SubmissionSetFieldInput!, submission: ID!): SubmissionProgress!
+  submissionStart(form: ID!, submission: SubmissionStartInput!): SubmissionProgress!
+  updateForm(form: FormUpdateInput!): Form!
+  updateProfile(user: ProfileUpdateInput!): Profile!
+  updateUser(user: UserUpdateInput!): User!
+}
+
+type Page {
+  buttonText: String
+  buttons: [Button!]!
+  paragraph: String
+  show: Boolean!
+  title: String
+}
+
+type PagerForm {
+  entries: [Form!]!
+  limit: Int!
+  start: Int!
+  total: Int!
+}
+
+type PagerSubmission {
+  entries: [Submission!]!
+  limit: Int!
+  start: Int!
+  total: Int!
+}
+
+type PagerUser {
+  entries: [User!]!
+  limit: Int!
+  start: Int!
+  total: Int!
+}
+
+type Profile {
+  created: DateTime!
+  email: String!
+  firstName: String
+  id: ID!
+  language: String!
+  lastModified: DateTime
+  lastName: String
+  roles: [String!]!
+  username: String!
+  verifiedEmail: Boolean!
+}
+
+type Query {
+  getFormById(id: ID!): Form!
+  getFormStatistic: FormStatistic!
+  getSubmissionStatistic: SubmissionStatistic!
+  getUserById(id: ID!): User!
+  getUserStatistic: UserStatistic!
+  listForms(limit: Int = 50, start: Int = 0): PagerForm!
+  listSubmissions(form: ID!, limit: Int = 50, start: Int = 0): PagerSubmission!
+  listUsers(limit: Int = 50, start: Int = 0): PagerUser!
+  me: Profile!
+  status: Version!
+}
+
+type RespondentNotificationsModel implements Notification {
+  enabled: Boolean!
+  fromEmail: String
+  htmlTemplate: String
+  subject: String
+  toField: String
+}
+
+type SelfNotificationsModel implements Notification {
+  enabled: Boolean!
+  fromField: String
+  htmlTemplate: String
+  subject: String
+  toEmail: String
+}
+
+type Submission {
+  created: DateTime!
+  device: Device!
+  fields: [SubmissionField!]!
+  geoLocation: GeoLocation!
+  id: ID!
+  ipAddr: String!
+  lastModified: DateTime
+  percentageComplete: Float!
+  timeElapsed: Float!
+}
+
+type SubmissionField {
+  field: FormField
+  id: ID!
+  type: String!
+  value: String!
+}
+
+type SubmissionProgress {
+  created: DateTime!
+  id: ID!
+  lastModified: DateTime
+  percentageComplete: Float!
+  timeElapsed: Float!
+}
+
+type SubmissionStatistic {
+  total: Int!
+}
+
+type User {
+  created: DateTime!
+  email: String!
+  firstName: String
+  id: ID!
+  language: String!
+  lastModified: DateTime
+  lastName: String
+  roles: [String!]!
+  username: String!
+  verifiedEmail: Boolean!
+}
+
+type UserStatistic {
+  total: Int!
+}
+
+type Version {
+  version: String!
+}
+
+input ButtonInput {
+  action: String
+  activeColor: String
+  bgColor: String
+  color: String
+  text: String
+  url: String
+}
+
+input ColorsInput {
+  answerColor: String!
+  backgroundColor: String!
+  buttonActiveColor: String!
+  buttonColor: String!
+  buttonTextColor: String!
+  questionColor: String!
+}
+
+input DesignInput {
+  colors: ColorsInput!
+  font: String
+}
+
+input DeviceInput {
+  name: String!
+  type: String!
+}
+
+input FormCreateInput {
+  isLive: Boolean
+  language: String!
+  showFooter: Boolean
+  title: String!
+}
+
+input FormFieldInput {
+  description: String!
+  id: ID!
+  logicJump: LogicJumpInput
+  options: [FormFieldOptionInput!]
+  rating: FormFieldRatingInput
+  required: Boolean!
+  title: String!
+  type: String!
+  value: String!
+}
+
+input FormFieldOptionInput {
+  key: String
+  title: String
+  value: String!
+}
+
+input FormFieldRatingInput {
+  shape: String
+  steps: Int
+}
+
+input FormUpdateInput {
+  design: DesignInput
+  endPage: PageInput
+  fields: [FormFieldInput!]
+  id: ID!
+  isLive: Boolean
+  language: String
+  respondentNotifications: RespondentNotificationsInput
+  selfNotifications: SelfNotificationsInput
+  showFooter: Boolean
+  startPage: PageInput
+  title: String
+}
+
+input LogicJumpInput {
+  enabled: Boolean
+  expressionString: String
+  fieldA: ID
+  jumpTo: ID
+  valueB: String
+}
+
+input PageInput {
+  buttonText: String
+  buttons: [ButtonInput!]!
+  paragraph: String
+  show: Boolean!
+  title: String
+}
+
+input ProfileUpdateInput {
+  email: String
+  firstName: String
+  id: ID!
+  language: String
+  lastName: String
+  password: String
+  username: String
+}
+
+input RespondentNotificationsInput {
+  enabled: Boolean!
+  fromEmail: String
+  htmlTemplate: String
+  subject: String
+  toField: String
+}
+
+input SelfNotificationsInput {
+  enabled: Boolean!
+  fromField: String
+  htmlTemplate: String
+  subject: String
+  toEmail: String
+}
+
+input SubmissionSetFieldInput {
+  data: String!
+  field: ID!
+  token: String!
+}
+
+input SubmissionStartInput {
+  device: DeviceInput!
+  token: String!
+}
+
+input UserCreateInput {
+  email: String!
+  firstName: String
+  language: String
+  lastName: String
+  password: String!
+  username: String!
+}
+
+input UserUpdateInput {
+  email: String
+  firstName: String
+  id: ID!
+  language: String
+  lastName: String
+  password: String
+  roles: [String!]
+  username: String
+}
+
+
+"A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format."
+scalar DateTime

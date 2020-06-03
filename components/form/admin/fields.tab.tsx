@@ -47,12 +47,16 @@ export const FieldsTab: React.FC<Props> = props => {
             type="dashed"
             onClick={() => {
               const defaults: AdminFormFieldFragment = {
+                logicJump: {
+                  enabled: false,
+                },
+                options: [],
                 id: `NEW-${Date.now()}`,
                 type: nextType,
                 title: '',
                 description: '',
                 required: false,
-                value: '',
+                value: ''
               }
 
               add(defaults)
