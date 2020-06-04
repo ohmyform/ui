@@ -46,6 +46,7 @@ const Index: NextPage = () => {
         }
       })
 
+      field.options = field.options.filter(option => !option.key)
       field.optionKeys = keys
       return field
     })
@@ -68,20 +69,25 @@ const Index: NextPage = () => {
     setSaving(true)
 
     formData.form.fields = formData.form.fields.filter(e => e && e.type).map(({optionKeys, ...field}) => {
+      const options = field.options
+
       if (optionKeys) {
-        //
-        return {
-          ...field,
-          options: Object.keys(optionKeys).map((key): AdminFormFieldOptionFragment => {
-            return {
-              value: optionKeys[key],
-              key,
-            }
-          }).filter(e => !!e.value)
-        }
+        Object.keys(optionKeys).forEach((key) => {
+          if (!optionKeys[key]) {
+            return
+          }
+
+          options.push({
+            value: optionKeys[key],
+            key,
+          })
+        })
       }
 
-      return field
+      return {
+        ...field,
+        options
+      }
     })
 
     try {
