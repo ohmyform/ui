@@ -67,6 +67,7 @@ export const SelfNotificationsTab: React.FC<Props> = props => {
             message: 'Please provide a Template',
           },
         ]}
+        extra={'You can also use <a href="https://mjml.io/try-it-live">MJML</a> to create your email templates'}
       >
         <Input.TextArea autoSize />
       </Form.Item>

@@ -41,7 +41,7 @@ const Index: NextPage = () => {
   }
 
   const failed = () => {
-    message.error(t('mandatory-fields-missing'))
+    message.error(t('validation:mandatoryFieldsMissing'))
   }
 
   return (

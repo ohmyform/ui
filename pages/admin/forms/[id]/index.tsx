@@ -98,21 +98,19 @@ const Index: NextPage = () => {
       form.setFieldsValue(next)
       setFields(next.form.fields)
 
-      message.success('Form Updated')
+      message.success(t('form:updated'))
     } catch (e) {
       console.error('failed to save', e)
-      message.error('Could not save Form')
+      message.error(t('form:updateError'))
     }
 
     setSaving(false)
   }
 
-
-
   return (
     <Structure
       loading={loading || saving}
-      title={loading ? 'Loading Form' : `Edit Form "${data.form.title}"`}
+      title={loading ? t('form:loading') : t('form:mange', { title: data.form.title })}
       selected={'forms'}
       breadcrumbs={[
         { href: '/admin', name: t('admin:home') },
@@ -124,17 +122,13 @@ const Index: NextPage = () => {
           href={'/admin/forms/[id]/submissions'}
           as={`/admin/forms/${router.query.id}/submissions`}
         >
-          <Button>
-            Submissions
-          </Button>
+          <Button>{t('admin:submissions')}</Button>
         </Link>,
         <Button
           key={'save'}
           onClick={form.submit}
           type={'primary'}
-        >
-          Save
-        </Button>,
+        >{t('form:updateNow')}</Button>,
       ]}
       style={{paddingTop: 0}}
     >
@@ -142,7 +136,8 @@ const Index: NextPage = () => {
         form={form}
         onFinish={save}
         onFinishFailed={errors => {
-          message.error('Required fields are missing')
+          // TODO process errors
+          message.error(t('validation:mandatoryFieldsMissing'))
         }}
         labelCol={{
           xs: { span: 24 },
@@ -163,8 +158,8 @@ const Index: NextPage = () => {
             onChangeFields={setFields}
             form={form}
           />
-          <BaseDataTab key={'base_data'} tab={'Base Data'} />
-          <DesignTab key={'design'} tab={'Design'} />
+          <BaseDataTab key={'base_data'} tab={t('form:baseData')} />
+          <DesignTab key={'design'} tab={'form:design'} />
           <SelfNotificationsTab
             key={'self_notifications'}
             tab={'Self Notifications'}
@@ -177,8 +172,8 @@ const Index: NextPage = () => {
             fields={fields}
             form={form}
           />
-          <StartPageTab key={'start_page'} tab={'Start Page'} />
-          <EndPageTab key={'end_page'} tab={'End Page'} />
+          <StartPageTab key={'start_page'} tab={t('form:startPage')} />
+          <EndPageTab key={'end_page'} tab={t('form:endPage')} />
         </Tabs>
       </Form>
     </Structure>

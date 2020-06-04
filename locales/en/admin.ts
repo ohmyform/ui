@@ -3,4 +3,6 @@ export const admin = {
   users: 'Users',
   forms: 'Forms',
   submissions: 'Submissions',
+  profile: 'Profile',
+  username: 'Username',
 }

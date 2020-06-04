@@ -1,15 +1,18 @@
 import {Form, Input} from 'antd'
 import React from 'react'
+import {useTranslation} from 'react-i18next'
 import {AdminFieldTypeProps} from './type.props'
 
 export const LinkType: React.FC<AdminFieldTypeProps> = props => {
+  const { t } = useTranslation()
+
   return (
     <div>
       <Form.Item
-        label={'Default Link'}
+        label={t('type:link.default')}
         name={[props.field.name, 'value']}
         rules={[
-          { type: 'url', message: 'Must be a valid URL' }
+          { type: 'url', message: t('validation:invalidUrl') }
         ]}
         labelCol={{ span: 6 }}
       >

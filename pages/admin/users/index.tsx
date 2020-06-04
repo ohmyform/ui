@@ -57,28 +57,29 @@ const Index: NextPage = () => {
       } else {
         setEntries(next)
       }
-      message.success('user deleted')
+      message.success(t('user:deleted'))
     } catch (e) {
-      message.error('could not delete user')
+      message.error(t('user:deleteError'))
     }
   }
 
   const columns: ColumnsType<AdminPagerUserEntryQueryData> = [
     {
-      title: 'Role',
+      title: t('user:row.roles'),
       dataIndex: 'roles',
       render: roles => <UserRole roles={roles} />
     },
     {
-      title: 'Email',
+      title: t('user:row.email'),
       render: row => <Tag color={row.verifiedEmail ? 'lime' : 'volcano' }>{row.email}</Tag>
     },
     {
-      title: 'Created',
+      title: t('user:row.created'),
       dataIndex: 'created',
       render: date => <DateTime date={date} />
     },
     {
+      title: t('user:row.menu'),
       align: 'right',
       render: row => {
         return (
@@ -91,9 +92,9 @@ const Index: NextPage = () => {
             </Link>
 
             <Popconfirm
-              title="Are you sure delete this user?"
+              title={t('user:confirmDelete')}
               onConfirm={() => deleteUser(row)}
-              okText={'Delete now!'}
+              okText={t('user:deleteNow')}
               okButtonProps={{ danger: true }}
             >
               <Button danger><DeleteOutlined /></Button>

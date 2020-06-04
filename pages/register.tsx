@@ -44,7 +44,7 @@ const Register: NextPage = () => {
   }
 
   const failed = () => {
-    message.error(t('mandatory-fields-missing'))
+    message.error(t('validation:mandatoryFieldsMissing'))
   }
 
   return (
@@ -86,7 +86,7 @@ const Register: NextPage = () => {
           name="email"
           rules={[
             { required: true, message: t('register:email-required') },
-            { type: 'email', message: t('validation:invalid-email') }
+            { type: 'email', message: t('validation:invalidEmail') }
           ]}
         >
           <Input

@@ -1,12 +1,15 @@
 import {Button, Col, Form, Input, Row} from 'antd'
 import React from 'react'
+import {useTranslation} from 'react-i18next'
 import {AdminFieldTypeProps} from './type.props'
 
 export const RadioType: React.FC<AdminFieldTypeProps> = props => {
+  const { t } = useTranslation()
+
   return (
     <div>
       <Form.Item
-        label={'Default Value'}
+        label={t('type:radio:default')}
         name={[props.field.name, 'value']}
         labelCol={{ span: 6 }}
       >

@@ -42,10 +42,10 @@ const Index: NextPage = () => {
 
       form.setFieldsValue(next)
 
-      message.success('User Updated')
+      message.success(t('user:updated'))
     } catch (e) {
       console.error('failed to save', e)
-      message.error('Could not save User')
+      message.error(t('user:updateError'))
     }
 
     setSaving(false)
@@ -54,7 +54,7 @@ const Index: NextPage = () => {
   return (
     <Structure
       loading={loading || saving}
-      title={loading ? 'Loading User' : `Edit User "${data.user.email}"`}
+      title={loading ? t('user:loading') : t('user:mange', { title: data.user.email })}
       selected={'users'}
       breadcrumbs={[
         { href: '/admin', name: t('admin:home') },
@@ -65,9 +65,7 @@ const Index: NextPage = () => {
           key={'save'}
           onClick={form.submit}
           type={'primary'}
-        >
-          Save
-        </Button>,
+        >{t('user:updateNow')}</Button>,
       ]}
       style={{paddingTop: 0}}
     >
@@ -75,7 +73,8 @@ const Index: NextPage = () => {
         form={form}
         onFinish={save}
         onFinishFailed={errors => {
-          message.error('Required fields are missing')
+          // TODO process errors
+          message.error(t('validation:mandatoryFieldsMissing'))
         }}
         labelCol={{
           xs: { span: 24 },
@@ -91,7 +90,7 @@ const Index: NextPage = () => {
         <Tabs>
           <BaseDataTab
             key={'base_data'}
-            tab={'Base Data'}
+            tab={t('user:baseData')}
           />
         </Tabs>
       </Form>

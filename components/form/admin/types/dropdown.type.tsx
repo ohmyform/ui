@@ -1,12 +1,15 @@
 import {Button, Col, Form, Input, Row} from 'antd'
 import React from 'react'
+import {useTranslation} from 'react-i18next'
 import {AdminFieldTypeProps} from './type.props'
 
 export const DropdownType: React.FC<AdminFieldTypeProps> = props => {
+  const { t } = useTranslation()
+
   return (
     <div>
       <Form.Item
-        label={'Default Value'}
+        label={t('type:dropdown.default')}
         name={[props.field.name, 'value']}
         labelCol={{ span: 6 }}
       >
@@ -26,7 +29,7 @@ export const DropdownType: React.FC<AdminFieldTypeProps> = props => {
                     sm: { offset: index === 0 ? 0 : 6 },
                   }}
                   labelCol={{ span: 6 }}
-                  label={index === 0 ? 'Options' : ''}
+                  label={index === 0 ? t('type:dropdown.options') : ''}
                   key={field.key}
                 >
                   <Row gutter={16}>
@@ -36,7 +39,7 @@ export const DropdownType: React.FC<AdminFieldTypeProps> = props => {
                         name={[field.name, 'title']}
                         style={{marginBottom: 0}}
                       >
-                        <Input placeholder={'Title'} />
+                        <Input placeholder={t('type:dropdown.titlePlaceholder')} />
                       </Form.Item>
                     </Col>
                     <Col span={8}>
@@ -45,15 +48,15 @@ export const DropdownType: React.FC<AdminFieldTypeProps> = props => {
                         name={[field.name, 'value']}
                         style={{marginBottom: 0}}
                         rules={[
-                          { required: true, message: 'Please provide a value' }
+                          { required: true, message: t('validation:valueRequired') }
                         ]}
                       >
-                        <Input placeholder={'Value'} />
+                        <Input placeholder={t('type:dropdown.valuePlaceholder')} />
                       </Form.Item>
                     </Col>
                     <Col span={4}>
                       <Button danger onClick={() => remove(index)}>
-                        Remove
+                        {t('type:dropdown.removeOption')}
                       </Button>
                     </Col>
                   </Row>
@@ -69,7 +72,8 @@ export const DropdownType: React.FC<AdminFieldTypeProps> = props => {
                 <Button
                   type={'dashed'}
                   onClick={() => add()}
-                >Add Option</Button>
+                >
+                  {t('type:dropdown.addOption')}</Button>
               </Form.Item>
             </div>
           )

@@ -47,7 +47,7 @@ const Submissions: NextPage = () => {
 
   const columns:ColumnsType<AdminPagerSubmissionEntryQueryData> = [
     {
-      title: 'Progress',
+      title: t('submission:progress'),
       render: (row: AdminPagerSubmissionEntryQueryData) => {
         let status: any = 'active'
 
@@ -63,12 +63,12 @@ const Submissions: NextPage = () => {
       }
     },
     {
-      title: 'Created',
+      title: t('submission:created'),
       dataIndex: 'created',
       render: date => <DateTime date={date} />
     },
     {
-      title: 'Last Change',
+      title: t('submission:lastModified'),
       dataIndex: 'lastModified',
       render: date => <TimeAgo date={date} />
     },
@@ -82,7 +82,7 @@ const Submissions: NextPage = () => {
       breadcrumbs={[
         { href: '/admin', name: t('admin:home') },
         { href: '/admin/forms', name: t('admin:forms') },
-        { href: '/admin/forms/[id]', name: loading || !form ? 'Loading Form' : `Edit Form "${form.title}"`, as: `/admin/forms/${router.query.id}` },
+        { href: '/admin/forms/[id]', name: loading || !form ? t('form:loading') : t('form:mange', { title: form.title }), as: `/admin/forms/${router.query.id}` },
       ]}
       padded={false}
       extra={[
@@ -91,18 +91,14 @@ const Submissions: NextPage = () => {
           href={'/admin/forms/[id]'}
           as={`/admin/forms/${router.query.id}`}
         >
-          <Button>
-            Edit
-          </Button>
+          <Button>{t('submission:edit')}</Button>
         </Link>,
         <Button
           key={'web'}
           href={`/form/${router.query.id}`}
           target={'_blank'}
           type={'primary'}
-        >
-          Add Submission
-        </Button>,
+        >{t('submission:add')}</Button>,
       ]}
     >
       <Table

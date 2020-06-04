@@ -22,7 +22,7 @@ const AuthFooterInner: React.FC<Props> = props => {
   }
 
   return (
-    <div
+    <footer
       style={{
         position: 'absolute',
         bottom: 0,
@@ -44,7 +44,7 @@ const AuthFooterInner: React.FC<Props> = props => {
             Hi, {props.me.username}
           </span>,
           <Button
-            key={'Logout'}
+            key={'logout'}
             type={'link'}
             ghost
             onClick={logout}
@@ -85,7 +85,7 @@ const AuthFooterInner: React.FC<Props> = props => {
       >
         &copy; OhMyForm
       </Button>
-    </div>
+    </footer>
   )
 }
 

@@ -4,5 +4,4 @@ export const common = {
   register: "Create Account",
   recover: 'Lost Password',
   admin: "Admin",
-  'mandatory-fields-missing': 'Mandatory fields missing',
 }

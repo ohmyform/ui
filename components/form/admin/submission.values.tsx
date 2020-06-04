@@ -1,6 +1,7 @@
 import {Descriptions, Table} from 'antd'
 import {ColumnsType} from 'antd/lib/table/interface'
 import React from 'react'
+import {useTranslation} from 'react-i18next'
 import {
   AdminPagerSubmissionEntryFieldQueryData,
   AdminPagerSubmissionEntryQueryData,
@@ -13,9 +14,11 @@ interface Props {
 }
 
 export const SubmissionValues: React.FC<Props> = props => {
+  const { t } = useTranslation()
+
   const columns: ColumnsType<AdminPagerSubmissionEntryFieldQueryData> = [
     {
-      title: 'Field',
+      title: t('submission:field'),
       render: (row: AdminPagerSubmissionEntryFieldQueryData) => {
 
         if (row.field) {
@@ -26,7 +29,7 @@ export const SubmissionValues: React.FC<Props> = props => {
       }
     },
     {
-      title: 'Value',
+      title: t('submission:value'),
       render: row => {
         try {
           const data = JSON.parse(row.value)
@@ -41,11 +44,11 @@ export const SubmissionValues: React.FC<Props> = props => {
 
   return (
     <div>
-      <Descriptions title={'Submission'}>
-        <Descriptions.Item label="Country">{props.submission.geoLocation.country}</Descriptions.Item>
-        <Descriptions.Item label="City">{props.submission.geoLocation.city}</Descriptions.Item>
-        <Descriptions.Item label="Device Type">{props.submission.device.type}</Descriptions.Item>
-        <Descriptions.Item label="Device Name">{props.submission.device.name}</Descriptions.Item>
+      <Descriptions title={t('submission:submission')}>
+        <Descriptions.Item label={t('submission:country')}>{props.submission.geoLocation.country}</Descriptions.Item>
+        <Descriptions.Item label={t('submission:city')}>{props.submission.geoLocation.city}</Descriptions.Item>
+        <Descriptions.Item label={t('submission:device.type')}>{props.submission.device.type}</Descriptions.Item>
+        <Descriptions.Item label={t('submission:device.name')}>{props.submission.device.name}</Descriptions.Item>
       </Descriptions>
 
       <Table

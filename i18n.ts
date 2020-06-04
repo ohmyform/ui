@@ -3,10 +3,7 @@ import detector from "i18next-browser-languagedetector"
 import {initReactI18next} from "react-i18next"
 import {resources} from './locales'
 
-export const languages = [
-  'de',
-  'en',
-]
+export const languages = Object.keys(resources)
 
 i18n
   .use(detector)

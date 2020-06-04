@@ -25,19 +25,18 @@ const Create: NextPage = () => {
 
   const save = async (formData: AdminFormQueryData) => {
     setSaving(true)
-    console.log('try to save form!', formData)
 
     try {
       const next = (await create({
         variables: cleanInput(formData),
       })).data
 
-      message.success('Form Created')
+      message.success(t('form:created'))
 
       router.replace('/admin/forms/[id]', `/admin/forms/${next.form.id}`)
     } catch (e) {
       console.error('failed to save', e)
-      message.error('Could not save Form')
+      message.error(t('form:creationError'))
     }
 
     setSaving(false)
@@ -46,7 +45,7 @@ const Create: NextPage = () => {
   return (
     <Structure
       loading={saving}
-      title={'Create New Form'}
+      title={t('form:create')}
       selected={'forms'}
       breadcrumbs={[
         { href: '/admin', name: t('admin:home') },
@@ -57,9 +56,7 @@ const Create: NextPage = () => {
           key={'create'}
           onClick={form.submit}
           type={'primary'}
-        >
-          Save
-        </Button>,
+        >{t('form:createNow')}</Button>,
       ]}
       style={{paddingTop: 0}}
     >
@@ -67,7 +64,8 @@ const Create: NextPage = () => {
         form={form}
         onFinish={save}
         onFinishFailed={errors => {
-          message.error('Required fields are missing')
+          // TODO process errors
+          message.error(t('validation:mandatoryFieldsMissing'))
         }}
         labelCol={{
           xs: { span: 24 },
@@ -81,33 +79,7 @@ const Create: NextPage = () => {
         <Form.Item noStyle name={['form', 'id']}><Input type={'hidden'} /></Form.Item>
 
         <Tabs>
-          {/*
-          <FieldsTab
-            key={'fields'}
-            tab={'Fields'}
-            fields={fields}
-            onChangeFields={setFields}
-            form={form}
-          />
-          */}
-          <BaseDataTab key={'base_data'} tab={'Base Data'} />
-          {/*
-          <DesignTab key={'design'} tab={'Design'} />
-          <SelfNotificationsTab
-            key={'self_notifications'}
-            tab={'Self Notifications'}
-            fields={fields}
-            form={form}
-          />
-          <RespondentNotificationsTab
-            key={'respondent_notifications'}
-            tab={'Respondent Notifications'}
-            fields={fields}
-            form={form}
-          />
-          <StartPageTab key={'start_page'} tab={'Start Page'} />
-          <EndPageTab key={'end_page'} tab={'End Page'} />
-          */}
+          <BaseDataTab key={'base_data'} tab={t('form:baseData')} />
         </Tabs>
       </Form>
     </Structure>

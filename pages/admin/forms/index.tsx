@@ -59,24 +59,24 @@ const Index: NextPage = () => {
         setEntries(next)
       }
 
-      message.success('form deleted')
+      message.success(t('form:deleted'))
     } catch (e) {
-      message.error('could not delete form')
+      message.error(t('form:deleteError'))
     }
   }
 
   const columns: ColumnsType<AdminPagerFormEntryQueryData> = [
     {
-      title: 'Live',
+      title: t('form:row.isLive'),
       dataIndex: 'isLive',
       render: live => <FormIsLive isLive={live} />
     },
     {
-      title: 'Title',
+      title: t('form:row.title'),
       dataIndex: 'title',
     },
     {
-      title: 'Owner',
+      title: t('form:row.admin'),
       dataIndex: 'admin',
       render: user => (
         <Link href={'/admin/users/[id]'} as={`/admin/users/${user.id}`}>
@@ -87,20 +87,21 @@ const Index: NextPage = () => {
       )
     },
     {
-      title: 'Language',
+      title: t('form:row.language'),
       dataIndex: 'language',
     },
     {
-      title: 'Created',
+      title: t('form:row.created'),
       dataIndex: 'created',
       render: date => <DateTime date={date} />
     },
     {
-      title: 'Last Change',
+      title: t('form:row.lastModified'),
       dataIndex: 'lastModified',
       render: date => <TimeAgo date={date} />
     },
     {
+      title: t('form:row.menu'),
       align: 'right',
       render: row => {
         return (
@@ -122,9 +123,9 @@ const Index: NextPage = () => {
             </Link>
 
             <Popconfirm
-              title="Are you sure delete this form with all submissions?"
+              title={t('form:confirmDelete')}
               onConfirm={() => deleteForm(row)}
-              okText={'Delete now!'}
+              okText={t('form:deleteNow')}
               okButtonProps={{ danger: true }}
             >
               <Button danger><DeleteOutlined /></Button>
@@ -160,9 +161,7 @@ const Index: NextPage = () => {
         >
           <Button
             type={'primary'}
-          >
-            New Form
-          </Button>
+          >{t('form:new')}</Button>
         </Link>,
       ]}
     >

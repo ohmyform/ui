@@ -4,6 +4,7 @@ import {useForm} from 'antd/lib/form/Form'
 import {NextPage} from 'next'
 import {useRouter} from 'next/router'
 import React, {useState} from 'react'
+import {useTranslation} from 'react-i18next'
 import {cleanInput} from '../../components/clean.input'
 import Structure from '../../components/structure'
 import {
@@ -20,6 +21,7 @@ import {AdminUserQueryData} from '../../graphql/query/admin.user.query'
 import {languages} from '../../i18n'
 
 const Profile: NextPage = () => {
+  const { t } = useTranslation()
   const router = useRouter()
   const [form] = useForm()
   const [saving, setSaving] = useState(false)
@@ -42,10 +44,10 @@ const Profile: NextPage = () => {
 
       form.setFieldsValue(next)
 
-      message.success('Profile Updated')
+      message.success(t('profile:updated'))
     } catch (e) {
       console.error('failed to save', e)
-      message.error('Could not save Profile')
+      message.error(t('profile:updateError'))
     }
 
     setSaving(false)
@@ -55,26 +57,25 @@ const Profile: NextPage = () => {
   return (
     <Structure
       loading={loading || saving}
-      title={'Profile'}
+      title={t('admin:profile')}
       selected={'profile'}
       breadcrumbs={[
-        { href: '/admin', name: 'Home' },
+        { href: '/admin', name: t('admin:home') },
       ]}
       extra={[
         <Button
           key={'save'}
           onClick={form.submit}
           type={'primary'}
-        >
-          Save
-        </Button>,
+        >{t('profile:updateNow')}</Button>,
       ]}
     >
       <Form
         form={form}
         onFinish={save}
         onFinishFailed={errors => {
-          message.error('Required fields are missing')
+          // TODO process errors
+          message.error(t('validation:mandatoryFieldsMissing'))
         }}
         labelCol={{
           xs: { span: 24 },
@@ -88,12 +89,12 @@ const Profile: NextPage = () => {
         <Form.Item noStyle name={['user', 'id']}><Input type={'hidden'} /></Form.Item>
 
         <Form.Item
-          label="Username"
+          label={t('profile:username')}
           name={['user', 'username']}
           rules={[
             {
               required: true,
-              message: 'Please provide a Username',
+              message: t('validation:usernameRequired'),
             },
           ]}
         >
@@ -101,16 +102,16 @@ const Profile: NextPage = () => {
         </Form.Item>
 
         <Form.Item
-          label="Email"
+          label={t('profile:email')}
           name={['user', 'email']}
           rules={[
             {
               required: true,
-              message: 'Please provide an email',
+              message: t('validation:emailRequired'),
             },
             {
               type: 'email',
-              message: 'Must be a valid email',
+              message: t('validation:invalidEmail'),
             },
           ]}
         >
@@ -118,12 +119,12 @@ const Profile: NextPage = () => {
         </Form.Item>
 
         <Form.Item
-          label="Language"
+          label={t('profile:language')}
           name={['user', 'language']}
           rules={[
             {
               required: true,
-              message: 'Please select a Language',
+              message: t('validation:languageRequired'),
             },
           ]}
         >
@@ -133,14 +134,14 @@ const Profile: NextPage = () => {
         </Form.Item>
 
         <Form.Item
-          label="First Name"
+          label={t('profile:firstName')}
           name={['user', 'firstName']}
         >
           <Input  />
         </Form.Item>
 
         <Form.Item
-          label="Last Name"
+          label={t('profile:lastName')}
           name={['user', 'lastName']}
         >
           <Input  />
