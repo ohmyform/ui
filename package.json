@@ -5,7 +5,7 @@
   "scripts": {
     "start:dev": "next dev -p 4000",
     "build": "next build",
-    "export": "next build && next export",
+    "export": "cross-env SPA=1 next build && next export",
     "start": "next start -p $PORT",
     "server": "node server.js"
   },
@@ -17,6 +17,7 @@
     "antd": "^4.2.2",
     "apollo-boost": "^0.4.9",
     "axios": "^0.19.2",
+    "cross-env": "^7.0.2",
     "dayjs": "^1.8.27",
     "graphql": "^15.0.0",
     "i18next": "^19.4.5",

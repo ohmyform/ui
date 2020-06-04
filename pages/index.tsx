@@ -1,9 +1,12 @@
 import {Layout} from 'antd'
 import {AuthFooter} from 'components/auth/footer'
 import {NextPage} from 'next'
+import getConfig from 'next/config'
 import {useRouter} from 'next/router'
 import React, {useEffect} from 'react'
 import {LoadingPage} from '../components/loading.page'
+
+const { publicRuntimeConfig } = getConfig()
 
 const Index: NextPage = () => {
   const router = useRouter()
@@ -27,9 +30,9 @@ const Index: NextPage = () => {
     }
   })
 
-  if (process.browser && router.pathname !== window.location.pathname) {
+  if (publicRuntimeConfig.spa || (process.browser && router.pathname !== window.location.pathname)) {
     return (
-      <LoadingPage message={'redirecting'} />
+      <LoadingPage message={'loading'} />
     )
   }
 
