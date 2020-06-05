@@ -1,6 +1,6 @@
 {
-  "credentialsAlreadyInUse": "Deine Daten werden bereits verwendet!",
-  "gotoLogin": "Sie haben schon einen Account? Weiter zur Anmeldung",
-  "registerNow": "Jetzt Registrieren",
-  "welcome": "Willkommen, bitte bestätige noch deine E-Mail"
+  "credentialsAlreadyInUse": "Some data already in use!",
+  "gotoLogin": "Have an account? Go to login",
+  "registerNow": "Register Now",
+  "welcome": "Welcome, please also confirm your email"
 }
