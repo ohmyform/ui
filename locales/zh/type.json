@@ -1,65 +1,65 @@
 {
-  "confirmDelete": "Wollen sie das Feld wirklich löschen? Bitte beachten sie das es keine Referenzen auf das Feld gibt!",
+  "confirmDelete": "Really remove this field? Check that it is not referenced anywhere!",
   "date": {
-    "default": "Standard Dateum",
-    "max": "Neuest mögliche Datum",
-    "min": "Ältest mögliche Datum",
-    "name": "Datum"
+    "default": "Default Date",
+    "max": "Max Date",
+    "min": "Min Date",
+    "name": "Date"
   },
-  "deleteNow": "Feld löschen",
-  "description": "Beschreibung",
+  "deleteNow": "Delete Field",
+  "description": "Description",
   "dropdown": {
-    "addOption": "Auswahl hinzufügen",
-    "default": "Standard Wert",
-    "name": "Auswahl Liste",
-    "options": "Auswahl",
-    "removeOption": "Entfernen",
-    "titlePlaceholder": "Titel",
-    "valuePlaceholder": "Wert"
+    "addOption": "Add Option",
+    "default": "Default Value",
+    "name": "Dropdown",
+    "options": "Options",
+    "removeOption": "Remove",
+    "titlePlaceholder": "Title",
+    "valuePlaceholder": "Value"
   },
   "email": {
-    "default": "Standard E-Mail",
-    "name": "E-Mail"
+    "default": "Default Email",
+    "name": "Email"
   },
   "hidden": {
-    "default": "Standard Wert",
-    "name": "Versteckt"
+    "default": "Default Value",
+    "name": "Hidden"
   },
   "link": {
-    "default": "Standard Url",
+    "default": "Default Link",
     "name": "URL"
   },
   "number": {
-    "default": "Standard Zahl",
-    "name": "Zahl"
+    "default": "Default Number",
+    "name": "Number"
   },
   "radio": {
-    "addOption": "Auswahl hinzufügen",
-    "default": "Standard Wert",
-    "name": "Knopf Auswahl Liste",
-    "options": "Auswahl",
-    "removeOption": "Entfernen",
-    "titlePlaceholder": "Titel",
-    "valuePlaceholder": "Wert"
+    "addOption": "Add Option",
+    "default": "Default Value",
+    "name": "Radio Switch",
+    "options": "Options",
+    "removeOption": "Remove",
+    "titlePlaceholder": "Title",
+    "valuePlaceholder": "Value"
   },
   "rating": {
-    "clearNote": "Erneut klicken um Auswahl aufzuheben",
-    "default": "Standard Bewertung",
-    "name": "Bewertung"
+    "clearNote": "Click again to remove the default value",
+    "default": "Default Value",
+    "name": "Rating"
   },
-  "required": "Pflichtfeld",
-  "requiredInfo": "Falls verpflichtend sollte ein Standard Wert gesetzt sein damit Nutzer fortfahren können!",
+  "required": "Required",
+  "requiredInfo": "If required, default value must be set to enable users to submit form!",
   "textarea": {
-    "default": "Standard Wert",
-    "name": "Mehrzeiliger Text"
+    "default": "Default Value",
+    "name": "Text Area"
   },
   "textfield": {
-    "default": "Standard Wert",
-    "name": "Einzeiliger Text"
+    "default": "Default Value",
+    "name": "Text Line"
   },
-  "title": "Titel",
+  "title": "Title",
   "yes_no": {
-    "default": "Standard Wert",
-    "name": "Ja / Nein"
+    "default": "Default Value",
+    "name": "Yes / No"
   }
 }
