@@ -1,7 +1,7 @@
 {
-  "invalidLoginCredentials": "username / password are invalid",
-  "loginNow": "Login Now",
-  "passwordPlaceholder": "Password",
-  "usernamePlaceholder": "Username",
-  "welcomeBack": "Welcome back!"
+  "invalidLoginCredentials": "Benutzername oder Passwort ist falsch",
+  "loginNow": "Jetzt Anmelden",
+  "passwordPlaceholder": "Passwort",
+  "usernamePlaceholder": "Benutzername",
+  "welcomeBack": "Willkomen zurück!"
 }
