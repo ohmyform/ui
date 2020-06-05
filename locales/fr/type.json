@@ -1,65 +1,65 @@
 {
-  "confirmDelete": "Voulez-vous vraiment supprimer ce champ ? Vérifiez qu'il n'est référencé nulle part !",
+  "confirmDelete": "Wollen sie das Feld wirklich löschen? Bitte beachten sie das es keine Referenzen auf das Feld gibt!",
   "date": {
-    "default": "Date par défaut",
-    "max": "Date maximale",
-    "min": "Date minimale",
-    "name": "Date"
+    "default": "Standard Dateum",
+    "max": "Neuest mögliche Datum",
+    "min": "Ältest mögliche Datum",
+    "name": "Datum"
   },
-  "deleteNow": "Supprimer le champ",
-  "description": "Description",
+  "deleteNow": "Feld löschen",
+  "description": "Beschreibung",
   "dropdown": {
-    "addOption": "Ajouter une option",
-    "default": "Valeur par Défaut",
-    "name": "Menu déroulant",
-    "options": "Options",
-    "removeOption": "Supprimer",
-    "titlePlaceholder": "Titre",
-    "valuePlaceholder": "Valeur"
+    "addOption": "Auswahl hinzufügen",
+    "default": "Standard Wert",
+    "name": "Auswahl Liste",
+    "options": "Auswahl",
+    "removeOption": "Entfernen",
+    "titlePlaceholder": "Titel",
+    "valuePlaceholder": "Wert"
   },
   "email": {
-    "default": "E-mail par défaut",
-    "name": "Email"
+    "default": "Standard E-Mail",
+    "name": "E-Mail"
   },
   "hidden": {
-    "default": "Valeur par Défaut",
-    "name": "Caché"
+    "default": "Standard Wert",
+    "name": "Versteckt"
   },
   "link": {
-    "default": "Lien par Défaut",
+    "default": "Standard Url",
     "name": "URL"
   },
   "number": {
-    "default": "Numéro par défaut",
-    "name": "Nombre"
+    "default": "Standard Zahl",
+    "name": "Zahl"
   },
   "radio": {
-    "addOption": "Ajouter une option",
-    "default": "Valeur par Défaut",
-    "name": "Interrupteur radio",
-    "options": "Options",
-    "removeOption": "Supprimer",
-    "titlePlaceholder": "Titre",
-    "valuePlaceholder": "Valeur"
+    "addOption": "Auswahl hinzufügen",
+    "default": "Standard Wert",
+    "name": "Knopf Auswahl Liste",
+    "options": "Auswahl",
+    "removeOption": "Entfernen",
+    "titlePlaceholder": "Titel",
+    "valuePlaceholder": "Wert"
   },
   "rating": {
-    "clearNote": "Cliquez à nouveau pour supprimer la valeur par défaut",
-    "default": "Valeur par Défaut",
-    "name": "Note"
+    "clearNote": "Erneut klicken um Auswahl aufzuheben",
+    "default": "Standard Bewertung",
+    "name": "Bewertung"
   },
-  "required": "Obligatoire",
-  "requiredInfo": "Si nécessaire, la valeur par défaut doit être définie pour permettre aux utilisateurs de soumettre le formulaire !",
+  "required": "Pflichtfeld",
+  "requiredInfo": "Falls verpflichtend sollte ein Standard Wert gesetzt sein damit Nutzer fortfahren können!",
   "textarea": {
-    "default": "Valeur par Défaut",
-    "name": "Zone de texte"
+    "default": "Standard Wert",
+    "name": "Mehrzeiliger Text"
   },
   "textfield": {
-    "default": "Valeur par Défaut",
-    "name": "Ligne de texte"
+    "default": "Standard Wert",
+    "name": "Einzeiliger Text"
   },
-  "title": "Titre",
+  "title": "Titel",
   "yes_no": {
-    "default": "Valeur par Défaut",
-    "name": "Oui / Non"
+    "default": "Standard Wert",
+    "name": "Ja / Nein"
   }
 }
