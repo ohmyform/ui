@@ -1,8 +1,8 @@
 {
-  "forms": "Module",
-  "home": "acceuil",
-  "profile": "Profile",
-  "submissions": "proposer",
-  "username": "nom d'utilisateur",
-  "users": "Utilisateurs"
+  "forms": "Formulare",
+  "home": "Home",
+  "profile": "Profil",
+  "submissions": "Eingaben",
+  "username": "Benutzername",
+  "users": "Benutzer"
 }
