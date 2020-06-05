@@ -1,15 +1,15 @@
 {
-  "emailFieldRequired": "Please select an Email Field",
-  "emailRequired": "Please provide an Email",
-  "invalidEmail": "Must be a valid email!",
-  "invalidUrl": "Must be a valid URL",
-  "languageRequired": "Please select a Language",
-  "mandatoryFieldsMissing": "Mandatory fields missing",
-  "passwordMinLength": "Must be longer than or equal to 5 characters!",
-  "passwordRequired": "Please input your password!",
-  "subjectRequired": "Please provide a subject",
-  "templateRequired": "Please provide a template",
-  "titleRequired": "Please provide a title",
-  "usernameRequired": "Please provide a Username",
-  "valueRequired": "Please provide a Value"
+  "emailFieldRequired": "Veuillez sélectionner un champ email",
+  "emailRequired": "Veuillez renseigner une adresse email",
+  "invalidEmail": "Doit être une adresse email valide !",
+  "invalidUrl": "Doit être une URL valide",
+  "languageRequired": "Veuillez sélectionner une langue",
+  "mandatoryFieldsMissing": "Champs obligatoires manquants",
+  "passwordMinLength": "Doit être plus long ou égal à 5 caractères !",
+  "passwordRequired": "Veuillez saisir votre mot de passe !",
+  "subjectRequired": "Veuillez saisir un objet",
+  "templateRequired": "Veuillez fournir un modèle",
+  "titleRequired": "Veuillez fournir un titre",
+  "usernameRequired": "Veuillez fournir un nom d'utilisateur",
+  "valueRequired": "Veuillez fournir une valeur"
 }
