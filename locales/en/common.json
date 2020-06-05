@@ -1,7 +1,9 @@
 {
-  "logout": "Logout",
+  "admin": "Admin",
+  "checkingCredentials": "Checking Credentials",
+  "loadingCredentials": "Loading Credentials",
   "login": "Login",
-  "register": "Create Account",
+  "logout": "Logout",
   "recover": "Lost Password",
-  "admin": "Admin"
+  "register": "Create Account"
 }

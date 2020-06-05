@@ -1,6 +1,6 @@
 {
-  "welcome": "Willkommen, bitte bestätige noch deine E-Mail",
   "credentialsAlreadyInUse": "Deine Daten werden bereits verwendet!",
+  "gotoLogin": "Sie haben schon einen Account? Weiter zur Anmeldung",
   "registerNow": "Jetzt Registrieren",
-  "gotoLogin": "Sie haben schon einen Account? Weiter zur Anmeldung"
+  "welcome": "Willkommen, bitte bestätige noch deine E-Mail"
 }

@@ -1,8 +1,8 @@
 {
-  "home": "Home",
-  "users": "Benutzer",
   "forms": "Formulare",
-  "submissions": "Eingaben",
+  "home": "Home",
   "profile": "Profil",
-  "username": "Benutzername"
+  "submissions": "Eingaben",
+  "username": "Benutzername",
+  "users": "Benutzer"
 }

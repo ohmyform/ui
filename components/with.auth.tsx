@@ -2,6 +2,7 @@ import {useQuery} from '@apollo/react-hooks'
 import {AxiosRequestConfig} from 'axios'
 import {useRouter} from 'next/router'
 import React, {useEffect, useState} from 'react'
+import {useTranslation} from 'react-i18next'
 import {ME_QUERY, MeQueryData} from '../graphql/query/me.query'
 import {LoadingPage} from './loading.page'
 
@@ -38,6 +39,7 @@ export const authConfig = async (config: AxiosRequestConfig = {}): Promise<Axios
 
 export const withAuth = (Component, roles: string[] = []): React.FC => {
   return props => {
+    const { t } = useTranslation()
     const router = useRouter()
     const [access, setAccess] = useState(false)
     const {loading, data, error} = useQuery<MeQueryData>(ME_QUERY)
@@ -78,11 +80,11 @@ export const withAuth = (Component, roles: string[] = []): React.FC => {
     }, [data])
 
     if (loading) {
-      return <LoadingPage message={'Loading Credentials'} />
+      return <LoadingPage message={t('loadingCredentials')} />
     }
 
     if (!access) {
-      return <LoadingPage message={'Checking Credentials'} />
+      return <LoadingPage message={t('checkingCredentials')} />
     }
 
     return <Component me={data && data.me} {...props} />

@@ -23,15 +23,15 @@ const Index: NextPage = () => {
     >
       <Row gutter={16}>
         <Col span={8}>
-          <Statistic title={t('statistic:total-forms')} value={data && data.forms.total} />
+          <Statistic title={t('statistic:totalForms')} value={data && data.forms.total} />
         </Col>
 
         <Col span={8}>
-          <Statistic title={t('statistic:total-users')} value={data && data.users.total} />
+          <Statistic title={t('statistic:totalUsers')} value={data && data.users.total} />
         </Col>
 
         <Col span={8}>
-          <Statistic title={t('statistic:total-submissions')} value={data && data.submissions.total} />
+          <Statistic title={t('statistic:totalSubmissions')} value={data && data.submissions.total} />
         </Col>
       </Row>
     </Structure>

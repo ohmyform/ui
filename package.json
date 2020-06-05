@@ -7,7 +7,8 @@
     "build": "next build",
     "export": "cross-env SPA=1 next build && next export",
     "start": "next start -p $PORT",
-    "server": "node server.js"
+    "translation:sort": "cross-env TS_NODE_TRANSPILE_ONLY=true ts-node-script locales/sort.ts",
+    "translation:missing": "cross-env TS_NODE_TRANSPILE_ONLY=true ts-node locales/missing.ts"
   },
   "dependencies": {
     "@ant-design/icons": "^4.1.0",
@@ -42,6 +43,10 @@
   "devDependencies": {
     "@types/node": "^14.0.1",
     "@types/react": "^16.9.35",
+    "commander": "^5.1.0",
+    "glob": "^7.1.6",
+    "lodash.merge": "^4.6.2",
+    "ts-node": "^8.10.2",
     "typescript": "^3.9.2"
   }
 }

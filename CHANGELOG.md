@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 - `SPA` env variable to have static page with loading spinner before redirect
 - `de`, `fr`, `es`, `it`, `cn` base folders for translations
+- finish translating `de` and `en`
+- add `yarn translation:sort` to order translations (to ensure the same order 
+  when we add / change translations)
+- add `yarn translation:missing <lang>` to print a list of missing translations 
+  for the given language (this takes `en` as a baseline)
 
 ### Changed
 

@@ -4,12 +4,14 @@ import {NextPage} from 'next'
 import getConfig from 'next/config'
 import {useRouter} from 'next/router'
 import React, {useEffect} from 'react'
+import {useTranslation} from 'react-i18next'
 import {LoadingPage} from '../components/loading.page'
 
 const { publicRuntimeConfig } = getConfig()
 
 const Index: NextPage = () => {
   const router = useRouter()
+  const { t } = useTranslation()
 
   useEffect(() => {
     if (router.pathname !== window.location.pathname) {
@@ -32,7 +34,7 @@ const Index: NextPage = () => {
 
   if (publicRuntimeConfig.spa || (process.browser && router.pathname !== window.location.pathname)) {
     return (
-      <LoadingPage message={'loading'} />
+      <LoadingPage message={t('loading')} />
     )
   }
 
