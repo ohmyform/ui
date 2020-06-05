@@ -1,65 +1,65 @@
 {
-  "confirmDelete": "Really remove this field? Check that it is not referenced anywhere!",
+  "confirmDelete": "Voulez-vous vraiment supprimer ce champ ? Vérifiez qu'il n'est référencé nulle part !",
   "date": {
-    "default": "Default Date",
-    "max": "Max Date",
-    "min": "Min Date",
+    "default": "Date par défaut",
+    "max": "Date maximale",
+    "min": "Date minimale",
     "name": "Date"
   },
-  "deleteNow": "Delete Field",
+  "deleteNow": "Supprimer le champ",
   "description": "Description",
   "dropdown": {
-    "addOption": "Add Option",
-    "default": "Default Value",
-    "name": "Dropdown",
+    "addOption": "Ajouter une option",
+    "default": "Valeur par Défaut",
+    "name": "Menu déroulant",
     "options": "Options",
-    "removeOption": "Remove",
-    "titlePlaceholder": "Title",
-    "valuePlaceholder": "Value"
+    "removeOption": "Supprimer",
+    "titlePlaceholder": "Titre",
+    "valuePlaceholder": "Valeur"
   },
   "email": {
-    "default": "Default Email",
+    "default": "E-mail par défaut",
     "name": "Email"
   },
   "hidden": {
-    "default": "Default Value",
-    "name": "Hidden"
+    "default": "Valeur par Défaut",
+    "name": "Caché"
   },
   "link": {
-    "default": "Default Link",
+    "default": "Lien par Défaut",
     "name": "URL"
   },
   "number": {
-    "default": "Default Number",
-    "name": "Number"
+    "default": "Numéro par défaut",
+    "name": "Nombre"
   },
   "radio": {
-    "addOption": "Add Option",
-    "default": "Default Value",
-    "name": "Radio Switch",
+    "addOption": "Ajouter une option",
+    "default": "Valeur par Défaut",
+    "name": "Interrupteur radio",
     "options": "Options",
-    "removeOption": "Remove",
-    "titlePlaceholder": "Title",
-    "valuePlaceholder": "Value"
+    "removeOption": "Supprimer",
+    "titlePlaceholder": "Titre",
+    "valuePlaceholder": "Valeur"
   },
   "rating": {
-    "clearNote": "Click again to remove the default value",
-    "default": "Default Value",
-    "name": "Rating"
+    "clearNote": "Cliquez à nouveau pour supprimer la valeur par défaut",
+    "default": "Valeur par Défaut",
+    "name": "Note"
   },
-  "required": "Required",
-  "requiredInfo": "If required, default value must be set to enable users to submit form!",
+  "required": "Obligatoire",
+  "requiredInfo": "Si nécessaire, la valeur par défaut doit être définie pour permettre aux utilisateurs de soumettre le formulaire !",
   "textarea": {
-    "default": "Default Value",
-    "name": "Text Area"
+    "default": "Valeur par Défaut",
+    "name": "Zone de texte"
   },
   "textfield": {
-    "default": "Default Value",
-    "name": "Text Line"
+    "default": "Valeur par Défaut",
+    "name": "Ligne de texte"
   },
-  "title": "Title",
+  "title": "Titre",
   "yes_no": {
-    "default": "Default Value",
-    "name": "Yes / No"
+    "default": "Valeur par Défaut",
+    "name": "Oui / Non"
   }
 }
