@@ -1,18 +1,18 @@
 {
-  "baseData": "Données de base",
-  "confirmDelete": "Êtes-vous sûr de vouloir supprimer cet utilisateur ?",
-  "deleteError": "impossible de supprimer l'utilisateur",
-  "deleteNow": "Supprimer maintenant!",
-  "deleted": "Utilisateur supprimé",
-  "loading": "Chargement de l'utilisateur",
-  "mange": "Modifier l'utilisateur \"{{email}}\"",
+  "baseData": "Basis Daten",
+  "confirmDelete": "Wollen sie diesen Benutzer wirklich löschen?",
+  "deleteError": "Benutzer konnte nicht gelöscht werden",
+  "deleteNow": "Jetzt löschen!",
+  "deleted": "Benutzer gelöscht",
+  "loading": "Benutzer wird geladen",
+  "mange": "Benutzer \"{{email}}\" bearbeiten",
   "row": {
-    "created": "Créé",
-    "email": "Email",
+    "created": "Erstellt",
+    "email": "E-Mail",
     "menu": "",
-    "roles": "Rôle"
+    "roles": "Rolle"
   },
-  "updateError": "Impossible de mettre à jour l'utilisateur",
-  "updateNow": "Sauvegarder",
-  "updated": "Utilisateur mis à jour"
+  "updateError": "Konnte Benutzer nicht aktualisieren",
+  "updateNow": "Speichern",
+  "updated": "Benutzer aktualisiert updated"
 }
