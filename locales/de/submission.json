@@ -1,16 +1,16 @@
 {
-  "add": "Add Submission",
-  "city": "City",
-  "country": "Country",
-  "created": "Created",
+  "add": "Neue Eingabe starten",
+  "city": "Stadt",
+  "country": "Land",
+  "created": "Erstellt",
   "device": {
-    "name": "Device Name",
-    "type": "Device Type"
+    "name": "Geräte Name",
+    "type": "Geräte Typ"
   },
-  "edit": "Edit",
-  "field": "Field",
-  "lastModified": "Last Change",
-  "progress": "Progress",
-  "submission": "Submission",
-  "value": "Value"
+  "edit": "Formular bearbeiten",
+  "field": "Feld",
+  "lastModified": "Letzte Änderung",
+  "progress": "Fortschritt",
+  "submission": "Eingabe",
+  "value": "Wert"
 }
