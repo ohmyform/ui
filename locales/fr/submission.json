@@ -1,16 +1,16 @@
 {
-  "add": "Add Submission",
-  "city": "City",
-  "country": "Country",
-  "created": "Created",
+  "add": "Ajouter une soumission",
+  "city": "Ville",
+  "country": "Pays",
+  "created": "Créé",
   "device": {
-    "name": "Device Name",
-    "type": "Device Type"
+    "name": "Nom de l'appareil",
+    "type": "Type d'appareil"
   },
-  "edit": "Edit",
-  "field": "Field",
-  "lastModified": "Last Change",
-  "progress": "Progress",
-  "submission": "Submission",
-  "value": "Value"
+  "edit": "Modifier",
+  "field": "Champ",
+  "lastModified": "Dernière modification",
+  "progress": "Avancement",
+  "submission": "Soumission",
+  "value": "Valeur"
 }
