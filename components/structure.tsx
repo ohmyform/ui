@@ -1,9 +1,11 @@
 import {CaretDownOutlined, UserOutlined} from '@ant-design/icons'
 import {MenuFoldOutlined, MenuUnfoldOutlined} from '@ant-design/icons/lib'
-import {Dropdown, Layout, Menu, PageHeader, Spin, Tag} from 'antd'
+import {Dropdown, Layout, Menu, PageHeader, Select, Spin, Tag} from 'antd'
 import Link from 'next/link'
 import {useRouter} from 'next/router'
 import React, {FunctionComponent} from 'react'
+import {useTranslation} from 'react-i18next'
+import {languages} from '../i18n'
 import {sideMenu, SideMenuElement} from './sidemenu'
 import {useWindowSize} from './use.window.size'
 import {clearAuth} from './with.auth'
@@ -32,6 +34,7 @@ interface Props {
 }
 
 const Structure: FunctionComponent<Props> = (props) => {
+  const { t, i18n } = useTranslation()
   const size = useWindowSize()
   const [userMenu, setUserMenu] = React.useState(false)
   const [open, setOpen] = React.useState<string[]>()
@@ -120,7 +123,7 @@ const Structure: FunctionComponent<Props> = (props) => {
   }
 
   return (
-    <Layout style={{ height: '100vh' }}>
+    <Layout style={{ height: '100vh' }} className={'admin'}>
       <Header
         style={{
           paddingLeft: 0,
@@ -177,9 +180,11 @@ const Structure: FunctionComponent<Props> = (props) => {
             maxHeight: '100%',
             overflow: 'auto',
           }}
+          className={'sidemenu'}
         >
           <Menu
             mode="inline"
+            style={{ flex: 1 }}
             defaultSelectedKeys={['1']}
             selectedKeys={selected}
             onSelect={(s): void => setSelected(s.keyPath)}
@@ -192,11 +197,19 @@ const Structure: FunctionComponent<Props> = (props) => {
             mode="inline"
             selectable={false}
             >
-            <Menu.Item
-              style={{
-                marginTop: 40,
-              }}
-            >
+            <Menu.Item className={'language-selector'}>
+              <Select
+                bordered={false}
+                value={i18n.language.replace(/-.*/, '')}
+                onChange={next => i18n.changeLanguage(next)}
+                style={{
+                  width: '100%',
+                }}
+              >
+                {languages.map(language => <Select.Option value={language} key={language}>{t(`language:${language}`)}</Select.Option> )}
+              </Select>
+            </Menu.Item>
+            <Menu.Item>
               Version: <Tag color="gold">{process.env.version}</Tag>
             </Menu.Item>
           </Menu>

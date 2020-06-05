@@ -3,6 +3,7 @@ import {Button, Form, Select, Space, Tabs} from 'antd'
 import {FormInstance} from 'antd/lib/form'
 import {TabPaneProps} from 'antd/lib/tabs'
 import React, {useCallback, useState} from 'react'
+import {useTranslation} from 'react-i18next'
 import {AdminFormFieldFragment} from '../../../graphql/fragment/admin.form.fragment'
 import {FieldCard} from './field.card'
 import {adminTypes} from './types'
@@ -14,6 +15,7 @@ interface Props extends TabPaneProps {
 }
 
 export const FieldsTab: React.FC<Props> = props => {
+  const { t } = useTranslation()
   const [nextType, setNextType] = useState('textfield')
 
   const renderType = useCallback((field, index, remove) => {
@@ -41,7 +43,7 @@ export const FieldsTab: React.FC<Props> = props => {
           }}
         >
           <Select value={nextType} onChange={e => setNextType(e)} style={{ minWidth: 200 }}>
-            {Object.keys(adminTypes).map(type => <Select.Option value={type} key={type}>{type}</Select.Option> )}
+            {Object.keys(adminTypes).map(type => <Select.Option value={type} key={type}>{t(`type:${type}.name`)}</Select.Option> )}
           </Select>
           <Button
             type="dashed"

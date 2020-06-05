@@ -2,13 +2,16 @@ import {DeleteOutlined, PlusOutlined} from '@ant-design/icons/lib'
 import {Button, Card, Form, Input, Switch, Tabs} from 'antd'
 import {TabPaneProps} from 'antd/lib/tabs'
 import React from 'react'
+import {useTranslation} from 'react-i18next'
 import {InputColor} from '../../input/color'
 
 export const StartPageTab: React.FC<TabPaneProps> = props => {
+  const { t } = useTranslation()
+
   return (
     <Tabs.TabPane {...props}>
       <Form.Item
-        label={'Show'}
+        label={t('form:startPage.show')}
         name={['form', 'startPage', 'show']}
         valuePropName={'checked'}
       >
@@ -16,21 +19,21 @@ export const StartPageTab: React.FC<TabPaneProps> = props => {
       </Form.Item>
 
       <Form.Item
-        label={'Title'}
+        label={t('form:startPage.title')}
         name={['form', 'startPage', 'title']}
       >
         <Input />
       </Form.Item>
 
       <Form.Item
-        label={'Paragraph'}
+        label={t('form:startPage.paragraph')}
         name={['form', 'startPage', 'paragraph']}
       >
         <Input.TextArea autoSize />
       </Form.Item>
 
       <Form.Item
-        label={'Continue Button Text'}
+        label={t('form:startPage.continueButtonText')}
         name={['form', 'startPage', 'buttonText']}
       >
         <Input />
@@ -47,7 +50,7 @@ export const StartPageTab: React.FC<TabPaneProps> = props => {
                     wrapperCol={{
                       sm: { offset: index === 0 ? 0 : 6 },
                     }}
-                    label={index === 0 ? 'Buttons' : ''}
+                    label={index === 0 ? t('form:startPage.buttons') : ''}
                     key={field.key}
                   >
                     <Card
@@ -56,28 +59,28 @@ export const StartPageTab: React.FC<TabPaneProps> = props => {
                       ]}
                     >
                       <Form.Item
-                        label={'Url'}
+                        label={t('form:startPage.url')}
                         name={[field.key, 'url']}
                         rules={[
-                          {type: 'url', message: 'Must be a valid url'}
+                          {type: 'url', message: t('validation:invalidUrl')}
                         ]}
                         labelCol={{ span: 6 }}
                       >
                         <Input />
                       </Form.Item>
-                      <Form.Item label={'Action'} name={[field.key, 'action']} labelCol={{ span: 6 }}>
+                      <Form.Item label={t('form:startPage.action')} name={[field.key, 'action']} labelCol={{ span: 6 }}>
                         <Input />
                       </Form.Item>
-                      <Form.Item label={'Text'} name={[field.key, 'text']} labelCol={{ span: 6 }}>
+                      <Form.Item label={t('form:startPage.text')} name={[field.key, 'text']} labelCol={{ span: 6 }}>
                         <Input />
                       </Form.Item>
-                      <Form.Item label={'Background Color'} name={[field.key, 'bgColor']} labelCol={{ span: 6 }}>
+                      <Form.Item label={t('form:startPage.bgColor')} name={[field.key, 'bgColor']} labelCol={{ span: 6 }}>
                         <InputColor />
                       </Form.Item>
-                      <Form.Item label={'Active Color'} name={[field.key, 'activeColor']} labelCol={{ span: 6 }}>
+                      <Form.Item label={t('form:startPage.activeColor')} name={[field.key, 'activeColor']} labelCol={{ span: 6 }}>
                         <InputColor />
                       </Form.Item>
-                      <Form.Item label={'Color'} name={[field.key, 'color']} labelCol={{ span: 6 }}>
+                      <Form.Item label={t('form:startPage.color')} name={[field.key, 'color']} labelCol={{ span: 6 }}>
                         <InputColor />
                       </Form.Item>
                     </Card>
@@ -96,7 +99,7 @@ export const StartPageTab: React.FC<TabPaneProps> = props => {
                   }}
                   style={{ width: '60%' }}
                 >
-                  <PlusOutlined /> Add Button
+                  <PlusOutlined /> {t('form:startPage.addButton')}
                 </Button>
               </Form.Item>
             </div>

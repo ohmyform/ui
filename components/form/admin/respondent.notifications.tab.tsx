@@ -1,7 +1,9 @@
+import {InfoCircleOutlined} from '@ant-design/icons/lib'
 import {Form, Input, Select, Switch, Tabs} from 'antd'
 import {FormInstance} from 'antd/lib/form'
 import {TabPaneProps} from 'antd/lib/tabs'
 import React, {useEffect, useState} from 'react'
+import {Trans, useTranslation} from 'react-i18next'
 import {AdminFormFieldFragment} from '../../../graphql/fragment/admin.form.fragment'
 
 interface Props extends TabPaneProps {
@@ -10,6 +12,7 @@ interface Props extends TabPaneProps {
 }
 
 export const RespondentNotificationsTab: React.FC<Props> = props => {
+  const { t } = useTranslation()
   const [enabled, setEnabled] = useState<boolean>()
 
   useEffect(() => {
@@ -40,7 +43,7 @@ export const RespondentNotificationsTab: React.FC<Props> = props => {
   return (
     <Tabs.TabPane {...props}>
       <Form.Item
-        label={'Enabled'}
+        label={t('form:respondentNotifications.enabled')}
         name={['form', 'respondentNotifications', 'enabled']}
         valuePropName={'checked'}
       >
@@ -48,12 +51,12 @@ export const RespondentNotificationsTab: React.FC<Props> = props => {
       </Form.Item>
 
       <Form.Item
-        label={'Subject'}
+        label={t('form:respondentNotifications.subject')}
         name={['form', 'respondentNotifications', 'subject']}
         rules={[
           {
             required: enabled,
-            message: 'Please provide a Subject',
+            message: t('validation:subjectRequired'),
           },
         ]}
       >
@@ -61,26 +64,40 @@ export const RespondentNotificationsTab: React.FC<Props> = props => {
       </Form.Item>
 
       <Form.Item
-        label={'HTML Template'}
+        label={t('form:respondentNotifications.htmlTemplate')}
         name={['form', 'respondentNotifications', 'htmlTemplate']}
         rules={[
           {
             required: enabled,
-            message: 'Please provide a Template',
+            message: t('validation:templateRequired'),
           },
         ]}
+        extra={(
+          <div>
+            <Trans>form:respondentNotifications.htmlTemplateInfo</Trans>
+            <a
+              href={'https://mjml.io/try-it-live'}
+              target={'_blank'}
+              style={{
+                marginLeft: 16,
+              }}
+            >
+              <InfoCircleOutlined />
+            </a>
+          </div>
+        )}
       >
         <Input.TextArea autoSize />
       </Form.Item>
 
       <Form.Item
-        label={'Email Field'}
+        label={t('form:respondentNotifications.toField')}
         name={['form', 'respondentNotifications', 'toField']}
-        extra={'Field with Email for receipt'}
+        extra={t('form:respondentNotifications.toFieldInfo')}
         rules={[
           {
             required: enabled,
-            message: 'Please provide a Email Field',
+            message: t('validation:emailFieldRequired'),
           },
         ]}
       >
@@ -96,9 +113,9 @@ export const RespondentNotificationsTab: React.FC<Props> = props => {
       </Form.Item>
 
       <Form.Item
-        label={'Sender Email'}
+        label={t('form:respondentNotifications.fromEmail')}
         name={['form', 'respondentNotifications', 'fromEmail']}
-        extra={'Make sure your mailserver can send from this email'}
+        extra={t('form:respondentNotifications.fromEmailInfo')}
       >
         <Input />
       </Form.Item>

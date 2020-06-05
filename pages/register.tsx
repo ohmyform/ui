@@ -38,7 +38,7 @@ const Register: NextPage = () => {
 
       router.push('/')
     } catch (e) {
-      message.error(t('register:credentials-already-in-use'))
+      message.error(t('register:credentialsAlreadyInUse'))
       setLoading(false)
     }
   }
@@ -74,18 +74,18 @@ const Register: NextPage = () => {
 
         <Form.Item
           name="username"
-          rules={[{ required: true, message: t('login:username-required') }]}
+          rules={[{ required: true, message: t('validation:usernameRequired') }]}
         >
           <Input
             size="large"
-            placeholder={t('login:username-placeholder')}
+            placeholder={t('login:usernamePlaceholder')}
           />
         </Form.Item>
 
         <Form.Item
           name="email"
           rules={[
-            { required: true, message: t('register:email-required') },
+            { required: true, message: t('validation:emailRequired') },
             { type: 'email', message: t('validation:invalidEmail') }
           ]}
         >
@@ -98,13 +98,13 @@ const Register: NextPage = () => {
         <Form.Item
           name="password"
           rules={[
-            { required: true, message: t('login:password-required') },
-            { min: 5, message: t('register:password-min-length') },
+            { required: true, message: t('validation:passwordRequired') },
+            { min: 5, message: t('validation:passwordMinLength') },
           ]}
         >
           <Input.Password
             size="large"
-            placeholder={t('login:password-placeholder')}
+            placeholder={t('login:passwordPlaceholder')}
           />
         </Form.Item>
 
@@ -115,7 +115,7 @@ const Register: NextPage = () => {
             htmlType="submit"
             block
           >
-            {t('register:register-now')}
+            {t('register:registerNow')}
           </Button>
         </Form.Item>
 
@@ -131,7 +131,7 @@ const Register: NextPage = () => {
               type={'link'}
               ghost
             >
-              {t('register:goto-login')}
+              {t('register:gotoLogin')}
             </Button>
           </Link>
         </Button.Group>

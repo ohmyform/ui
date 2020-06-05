@@ -3,6 +3,7 @@ import {Button, Card, Checkbox, Form, Input, Popconfirm, Tag} from 'antd'
 import {FormInstance} from 'antd/lib/form'
 import {FieldData} from 'rc-field-form/lib/interface'
 import React, {useEffect, useState} from 'react'
+import {useTranslation} from 'react-i18next'
 import {AdminFormFieldFragment} from '../../../graphql/fragment/admin.form.fragment'
 import {adminTypes} from './types'
 import {TextType} from './types/text.type'
@@ -17,6 +18,7 @@ interface Props {
 }
 
 export const FieldCard: React.FC<Props> = props => {
+  const { t } = useTranslation()
   const {
     form,
     field,
@@ -54,11 +56,11 @@ export const FieldCard: React.FC<Props> = props => {
       type={'inner'}
       extra={(
         <div>
-          <Tag color={'blue'}>{type}</Tag>
+          <Tag color={'blue'}>{t(`type:${type}.name`)}</Tag>
           <Popconfirm
             placement={'left'}
-            title={'Really remove this field? Check that it is not referenced anywhere!'}
-            okText={'Delete Field'}
+            title={t('type:confirmDelete')}
+            okText={t('type:deleteNow')}
             okButtonProps={{ danger: true }}
             onConfirm={() => {
               remove(index)
@@ -75,7 +77,7 @@ export const FieldCard: React.FC<Props> = props => {
     >
       <Form.Item name={[field.name as string, 'type']} noStyle><Input type={'hidden'} /></Form.Item>
       <Form.Item
-        label={'Title'}
+        label={t('type:title')}
         name={[field.name as string, 'title']}
         rules={[
           { required: true, message: 'Title is required' }
@@ -85,18 +87,18 @@ export const FieldCard: React.FC<Props> = props => {
         <Input onChange={e => setNextTitle(e.target.value)}/>
       </Form.Item>
       <Form.Item
-        label={'Description'}
+        label={t('type:description')}
         name={[field.name as string, 'description']}
         labelCol={{ span: 6 }}
       >
         <Input.TextArea autoSize />
       </Form.Item>
       <Form.Item
-        label={'Required'}
+        label={t('type:required')}
         name={[field.name as string, 'required']}
         labelCol={{ span: 6 }}
         valuePropName={'checked'}
-        extra={type === 'hidden' && 'If required, default value must be set to enable users to submit form!'}
+        extra={type === 'hidden' && t('type:requiredInfo')}
       >
         <Checkbox />
       </Form.Item>

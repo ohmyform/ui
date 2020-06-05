@@ -1,13 +1,16 @@
 import {Form, Input, Select, Switch, Tabs} from 'antd'
 import {TabPaneProps} from 'antd/lib/tabs'
 import React from 'react'
+import {useTranslation} from 'react-i18next'
 import {languages} from '../../../i18n'
 
 export const BaseDataTab: React.FC<TabPaneProps> = props => {
+  const { t } = useTranslation()
+
   return (
     <Tabs.TabPane {...props}>
       <Form.Item
-        label="Is Live"
+        label={t('form:baseData.isLive')}
         name={['form', 'isLive']}
         valuePropName={'checked'}
       >
@@ -15,12 +18,12 @@ export const BaseDataTab: React.FC<TabPaneProps> = props => {
       </Form.Item>
 
       <Form.Item
-        label="Title"
+        label={t('form:baseData.title')}
         name={['form', 'title']}
         rules={[
           {
             required: true,
-            message: 'Please provide a Title',
+            message: t('validation:titleRequired'),
           },
         ]}
       >
@@ -28,22 +31,22 @@ export const BaseDataTab: React.FC<TabPaneProps> = props => {
       </Form.Item>
 
       <Form.Item
-        label="Language"
+        label={t('form:baseData.language')}
         name={['form', 'language']}
         rules={[
           {
             required: true,
-            message: 'Please select a Language',
+            message: t('validation:languageRequired'),
           },
         ]}
       >
         <Select>
-          {languages.map(language => <Select.Option value={language} key={language}>{language.toUpperCase()}</Select.Option> )}
+          {languages.map(language => <Select.Option value={language} key={language}>{t(`language:${language}`)}</Select.Option> )}
         </Select>
       </Form.Item>
 
       <Form.Item
-        label="Show Footer"
+        label={t('form:baseData.showFooter')}
         name={['form', 'showFooter']}
         valuePropName={'checked'}
       >

@@ -1,8 +1,10 @@
-import {Button} from 'antd'
+import {UpOutlined} from '@ant-design/icons/lib'
+import {Button, Menu, Select} from 'antd'
 import Link from 'next/link'
 import {useRouter} from 'next/router'
 import React from 'react'
 import {useTranslation} from 'react-i18next'
+import {languages} from '../../i18n'
 import {clearAuth, withAuth} from '../with.auth'
 
 interface Props {
@@ -13,7 +15,7 @@ interface Props {
 }
 
 const AuthFooterInner: React.FC<Props> = props => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const router = useRouter()
 
   const logout = () => {
@@ -28,6 +30,8 @@ const AuthFooterInner: React.FC<Props> = props => {
         bottom: 0,
         left: 0,
         right: 0,
+        display: 'flex',
+        flexDirection: 'row',
       }}
     >
       <Link href={'/admin'}>
@@ -72,14 +76,24 @@ const AuthFooterInner: React.FC<Props> = props => {
           </Link>
         ]
       )}
-
+      <div style={{flex: 1}} />
+      <Select
+        bordered={false}
+        value={i18n.language.replace(/-.*/, '')}
+        onChange={next => i18n.changeLanguage(next)}
+        style={{
+          color: '#FFF',
+        }}
+        suffixIcon={false}
+      >
+        {languages.map(language => <Select.Option value={language} key={language}>{t(`language:${language}`)}</Select.Option> )}
+      </Select>
       <Button
         type={'link'}
         target={'_blank'}
         ghost
         href={'https://www.ohmyform.com'}
         style={{
-          float: 'right',
           color: '#FFF'
         }}
       >

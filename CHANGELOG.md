@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 
 - `SPA` env variable to have static page with loading spinner before redirect
+- `de`, `fr`, `es`, `it`, `cn` base folders for translations
 
 ### Changed
 

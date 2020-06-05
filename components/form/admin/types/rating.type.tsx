@@ -13,7 +13,7 @@ export const RatingType: React.FC<AdminFieldTypeProps> = props => {
         label={t('type:rating:default')}
         name={[props.field.name, 'value']}
         labelCol={{ span: 6 }}
-        extra={'Click again to remove default value'}
+        extra={t('type:rating.clearNote')}
       >
         <Rate
           allowHalf

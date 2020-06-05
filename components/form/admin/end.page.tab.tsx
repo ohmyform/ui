@@ -2,13 +2,16 @@ import {DeleteOutlined, PlusOutlined} from '@ant-design/icons/lib'
 import {Button, Card, Form, Input, Switch, Tabs} from 'antd'
 import {TabPaneProps} from 'antd/lib/tabs'
 import React from 'react'
+import {useTranslation} from 'react-i18next'
 import {InputColor} from '../../input/color'
 
 export const EndPageTab: React.FC<TabPaneProps> = props => {
+  const { t } = useTranslation()
+
   return (
     <Tabs.TabPane {...props}>
       <Form.Item
-        label={'Show'}
+        label={t('form:endPage.show')}
         name={['form', 'endPage', 'show']}
         valuePropName={'checked'}
       >
@@ -16,21 +19,21 @@ export const EndPageTab: React.FC<TabPaneProps> = props => {
       </Form.Item>
 
       <Form.Item
-        label={'Title'}
+        label={t('form:endPage.title')}
         name={['form', 'endPage', 'title']}
       >
         <Input />
       </Form.Item>
 
       <Form.Item
-        label={'Paragraph'}
+        label={t('form:endPage.paragraph')}
         name={['form', 'endPage', 'paragraph']}
       >
         <Input.TextArea autoSize />
       </Form.Item>
 
       <Form.Item
-        label={'Continue Button Text'}
+        label={t('form:endPage.continueButtonText')}
         name={['form', 'endPage', 'buttonText']}
       >
         <Input />
@@ -47,7 +50,7 @@ export const EndPageTab: React.FC<TabPaneProps> = props => {
                     wrapperCol={{
                       sm: { offset: index === 0 ? 0 : 6 },
                     }}
-                    label={index === 0 ? 'Buttons' : ''}
+                    label={index === 0 ? t('form:endPage.buttons') : ''}
                     key={field.key}
                   >
                     <Card
@@ -56,28 +59,28 @@ export const EndPageTab: React.FC<TabPaneProps> = props => {
                       ]}
                     >
                       <Form.Item
-                        label={'Url'}
+                        label={t('form:endPage.url')}
                         name={[field.key, 'url']}
                         rules={[
-                          {type: 'url', message: 'Must be a valid url'}
+                          {type: 'url', message: t('validation:invalidUrl')}
                         ]}
                         labelCol={{ span: 6 }}
                       >
                         <Input />
                       </Form.Item>
-                      <Form.Item label={'Action'} name={[field.key, 'action']} labelCol={{ span: 6 }}>
+                      <Form.Item label={t('form:endPage.action')} name={[field.key, 'action']} labelCol={{ span: 6 }}>
                         <Input />
                       </Form.Item>
-                      <Form.Item label={'Text'} name={[field.key, 'text']} labelCol={{ span: 6 }}>
+                      <Form.Item label={t('form:endPage.text')} name={[field.key, 'text']} labelCol={{ span: 6 }}>
                         <Input />
                       </Form.Item>
-                      <Form.Item label={'Background Color'} name={[field.key, 'bgColor']} labelCol={{ span: 6 }}>
+                      <Form.Item label={t('form:endPage.bgColor')} name={[field.key, 'bgColor']} labelCol={{ span: 6 }}>
                         <InputColor />
                       </Form.Item>
-                      <Form.Item label={'Active Color'} name={[field.key, 'activeColor']} labelCol={{ span: 6 }}>
+                      <Form.Item label={t('form:endPage.activeColor')} name={[field.key, 'activeColor']} labelCol={{ span: 6 }}>
                         <InputColor />
                       </Form.Item>
-                      <Form.Item label={'Color'} name={[field.key, 'color']} labelCol={{ span: 6 }}>
+                      <Form.Item label={t('form:endPage.color')} name={[field.key, 'color']} labelCol={{ span: 6 }}>
                         <InputColor />
                       </Form.Item>
                     </Card>
@@ -96,7 +99,7 @@ export const EndPageTab: React.FC<TabPaneProps> = props => {
                   }}
                   style={{ width: '60%' }}
                 >
-                  <PlusOutlined /> Add Button
+                  <PlusOutlined /> {t('form:endPage.addButton')}
                 </Button>
               </Form.Item>
             </div>

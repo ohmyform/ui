@@ -14,5 +14,7 @@ i18n
     defaultNS: 'common',
     react: {
       useSuspense: process.browser,
+      transSupportBasicHtmlNodes: true,
+      transKeepBasicHtmlNodesFor: ['br', 'strong', 'i', 'em', 'u'],
     }
   })

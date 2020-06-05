@@ -153,27 +153,27 @@ const Index: NextPage = () => {
         <Tabs>
           <FieldsTab
             key={'fields'}
-            tab={'Fields'}
+            tab={t('form:fieldsTab')}
             fields={fields}
             onChangeFields={setFields}
             form={form}
           />
-          <BaseDataTab key={'base_data'} tab={t('form:baseData')} />
-          <DesignTab key={'design'} tab={'form:design'} />
+          <BaseDataTab key={'base_data'} tab={t('form:baseDataTab')} />
+          <DesignTab key={'design'} tab={t('form:designTab')} />
           <SelfNotificationsTab
             key={'self_notifications'}
-            tab={'Self Notifications'}
+            tab={t('form:selfNotificationsTab')}
             fields={fields}
             form={form}
           />
           <RespondentNotificationsTab
             key={'respondent_notifications'}
-            tab={'Respondent Notifications'}
+            tab={t('form:respondentNotificationsTab')}
             fields={fields}
             form={form}
           />
-          <StartPageTab key={'start_page'} tab={t('form:startPage')} />
-          <EndPageTab key={'end_page'} tab={t('form:endPage')} />
+          <StartPageTab key={'start_page'} tab={t('form:startPageTab')} />
+          <EndPageTab key={'end_page'} tab={t('form:endPageTab')} />
         </Tabs>
       </Form>
     </Structure>

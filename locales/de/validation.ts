@@ -1,0 +1,15 @@
+export const validation = {
+  invalidEmail: 'ungültige E-Mail!',
+  mandatoryFieldsMissing: 'Nicht alle Pflichfelder befüllt',
+  usernameRequired: 'Bitte einen Benutzernamen angeben',
+  emailRequired: 'Bitte eine E-Mail angeben',
+  emailFieldRequired: 'Bitte ein E-Mail Feld auswählen',
+  languageRequired: 'Bitte eine Sprache angeben',
+  valueRequired: 'Bitte einen Wert angeben',
+  invalidUrl: 'ungültige Url',
+  titleRequired: 'Bitte einen Titel angeben',
+  templateRequired: 'Bitte ein Template angeben',
+  subjectRequired: 'Bitte einen Betreff angeben',
+  passwordRequired: 'Bitte ein Passwort angeben',
+  passwordMinLength: 'Passwort muss mindestens 5 Zeichen haben!',
+}

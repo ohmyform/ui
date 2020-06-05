@@ -35,3 +35,16 @@
     position: fixed
   }
 }
+
+.admin {
+  .sidemenu {
+    .ant-layout-sider-children {
+      display: flex;
+      flex-direction: column;
+
+      .language-selector {
+        padding-left: 12px !important;
+      }
+    }
+  }
+}

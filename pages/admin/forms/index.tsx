@@ -89,6 +89,7 @@ const Index: NextPage = () => {
     {
       title: t('form:row.language'),
       dataIndex: 'language',
+      render: lang => t(`language:${lang}`)
     },
     {
       title: t('form:row.created'),

@@ -29,7 +29,7 @@ export const RadioType: React.FC<AdminFieldTypeProps> = props => {
                     sm: { offset: index === 0 ? 0 : 6 },
                   }}
                   labelCol={{ span: 6 }}
-                  label={index === 0 ? 'Options' : ''}
+                  label={index === 0 ? t('type:radio:options') : ''}
                   key={field.key}
                 >
                   <Row gutter={16}>
@@ -39,7 +39,7 @@ export const RadioType: React.FC<AdminFieldTypeProps> = props => {
                         name={[field.name, 'title']}
                         style={{marginBottom: 0}}
                       >
-                        <Input placeholder={'Title'} />
+                        <Input placeholder={t('type:radio:titlePlaceholder')} />
                       </Form.Item>
                     </Col>
                     <Col span={8}>
@@ -48,15 +48,15 @@ export const RadioType: React.FC<AdminFieldTypeProps> = props => {
                         name={[field.name, 'value']}
                         style={{marginBottom: 0}}
                         rules={[
-                          { required: true, message: 'Please provide a value' }
+                          { required: true, message: t('validation:valueRequired') }
                         ]}
                       >
-                        <Input placeholder={'Value'} />
+                        <Input placeholder={t('type:radio:valuePlaceholder')} />
                       </Form.Item>
                     </Col>
                     <Col span={4}>
                       <Button danger onClick={() => remove(index)}>
-                        Remove
+                        {t('type:radio:removeOption')}
                       </Button>
                     </Col>
                   </Row>
@@ -72,7 +72,9 @@ export const RadioType: React.FC<AdminFieldTypeProps> = props => {
                 <Button
                   type={'dashed'}
                   onClick={() => add()}
-                >Add Option</Button>
+                >
+                  {t('type:radio:addOption')}
+                </Button>
               </Form.Item>
             </div>
           )

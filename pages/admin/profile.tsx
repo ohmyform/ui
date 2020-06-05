@@ -129,7 +129,7 @@ const Profile: NextPage = () => {
           ]}
         >
           <Select>
-            {languages.map(language => <Select.Option value={language} key={language}>{language.toUpperCase()}</Select.Option> )}
+            {languages.map(language => <Select.Option value={language} key={language}>{t(`language:${language}`)}</Select.Option> )}
           </Select>
         </Form.Item>
 

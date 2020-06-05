@@ -30,11 +30,11 @@ const Index: NextPage = () => {
         result.data.tokens.refresh
       )
 
-      message.success(t('login:welcome-back'))
+      message.success(t('login:welcomeBack'))
 
       router.push('/admin')
     } catch (e) {
-      message.error(t('login:invalid-login-credentials'))
+      message.error(t('login:invalidLoginCredentials'))
     }
 
     setLoading(false)
@@ -71,21 +71,21 @@ const Index: NextPage = () => {
 
         <Form.Item
           name="username"
-          rules={[{ required: true, message: t('login:username-required') }]}
+          rules={[{ required: true, message: t('validation:usernameRequired') }]}
         >
           <Input
             size="large"
-            placeholder={t('login:username-placeholder')}
+            placeholder={t('login:usernamePlaceholder')}
           />
         </Form.Item>
 
         <Form.Item
           name="password"
-          rules={[{ required: true, message: t('login:password-required') }]}
+          rules={[{ required: true, message: t('validation:passwordRequired') }]}
         >
           <Input.Password
             size="large"
-            placeholder={t('login:password-placeholder')}
+            placeholder={t('login:passwordPlaceholder')}
           />
         </Form.Item>
 
@@ -96,7 +96,7 @@ const Index: NextPage = () => {
             htmlType="submit"
             block
           >
-            {t('login:login-now')}
+            {t('login:loginNow')}
           </Button>
         </Form.Item>
 

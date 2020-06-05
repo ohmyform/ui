@@ -11,8 +11,8 @@ export const user = {
     created: 'Created',
     menu: ''
   },
-  updated: 'Form updated',
-  updateError: 'Could not update form',
+  updated: 'User updated',
+  updateError: 'Could not update user',
   updateNow: 'Save',
   baseData: 'Base Data',
 }

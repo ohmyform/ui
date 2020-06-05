@@ -7,7 +7,7 @@ import {LoadingPage} from 'components/loading.page'
 import {FORM_QUERY, FormQueryData, FormQueryVariables} from 'graphql/query/form.query'
 import {NextPage} from 'next'
 import {useRouter} from 'next/router'
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import Swiper from 'react-id-swiper'
 import {ReactIdSwiperProps} from 'react-id-swiper/lib/types'
@@ -19,7 +19,7 @@ interface Props {
 }
 
 const Index: NextPage<Props> = () => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const router = useRouter()
   const id = router.query.id as string
   const [swiper, setSwiper] = useState<OriginalSwiper.default>(null)
@@ -30,6 +30,17 @@ const Index: NextPage<Props> = () => {
       id,
     }
   })
+
+  useEffect(() => {
+    // check form language to switch to!
+    if (!data) {
+      return
+    }
+
+    if (i18n.language !== data.form.language) {
+      i18n.changeLanguage(data.form.language)
+    }
+  }, [data])
 
   if (loading) {
     return (

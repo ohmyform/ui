@@ -1,7 +1,9 @@
+import {InfoCircleOutlined} from '@ant-design/icons/lib'
 import {Form, Input, Select, Switch, Tabs} from 'antd'
 import {FormInstance} from 'antd/lib/form'
 import {TabPaneProps} from 'antd/lib/tabs'
 import React, {useEffect, useState} from 'react'
+import {Trans, useTranslation} from 'react-i18next'
 import {AdminFormFieldFragment} from '../../../graphql/fragment/admin.form.fragment'
 
 interface Props extends TabPaneProps {
@@ -10,6 +12,7 @@ interface Props extends TabPaneProps {
 }
 
 export const SelfNotificationsTab: React.FC<Props> = props => {
+  const { t } = useTranslation()
   const [enabled, setEnabled] = useState<boolean>()
 
   useEffect(() => {
@@ -38,7 +41,7 @@ export const SelfNotificationsTab: React.FC<Props> = props => {
   return (
     <Tabs.TabPane {...props}>
       <Form.Item
-        label={'Enabled'}
+        label={t('form:selfNotifications.enabled')}
         name={['form', 'selfNotifications', 'enabled']}
         valuePropName={'checked'}
       >
@@ -46,12 +49,12 @@ export const SelfNotificationsTab: React.FC<Props> = props => {
       </Form.Item>
 
       <Form.Item
-        label={'Subject'}
+        label={t('form:selfNotifications.subject')}
         name={['form', 'selfNotifications', 'subject']}
         rules={[
           {
             required: enabled,
-            message: 'Please provide a Subject',
+            message: t('validation:subjectRequired'),
           },
         ]}
       >
@@ -59,23 +62,36 @@ export const SelfNotificationsTab: React.FC<Props> = props => {
       </Form.Item>
 
       <Form.Item
-        label={'HTML Template'}
+        label={t('form:selfNotifications.htmlTemplate')}
         name={['form', 'selfNotifications', 'htmlTemplate']}
         rules={[
           {
             required: enabled,
-            message: 'Please provide a Template',
+            message: t('validation:templateRequired'),
           },
         ]}
-        extra={'You can also use <a href="https://mjml.io/try-it-live">MJML</a> to create your email templates'}
+        extra={(
+          <div>
+            <Trans>form:selfNotifications.htmlTemplateInfo</Trans>
+            <a
+              href={'https://mjml.io/try-it-live'}
+              target={'_blank'}
+              style={{
+                marginLeft: 16,
+              }}
+            >
+              <InfoCircleOutlined />
+            </a>
+          </div>
+        )}
       >
         <Input.TextArea autoSize />
       </Form.Item>
 
       <Form.Item
-        label={'Email Field'}
+        label={t('form:selfNotifications.fromField')}
         name={['form', 'selfNotifications', 'fromField']}
-        extra={'Field with Email, will set the Reply-To header'}
+        extra={t('form:selfNotifications.fromFieldInfo')}
       >
         <Select>
           {Object.keys(groups).map(key => (
@@ -89,9 +105,9 @@ export const SelfNotificationsTab: React.FC<Props> = props => {
       </Form.Item>
 
       <Form.Item
-        label={'Your Email'}
+        label={t('form:selfNotifications.toEmail')}
         name={['form', 'selfNotifications', 'toEmail']}
-        extra={'If not set will send to the admin of the form'}
+        extra={t('form:selfNotifications.toEmailInfo')}
       >
         <Input />
       </Form.Item>

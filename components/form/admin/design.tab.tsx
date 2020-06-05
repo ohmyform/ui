@@ -1,27 +1,30 @@
 import {Form, Input, Tabs} from 'antd'
 import {TabPaneProps} from 'antd/lib/tabs'
 import React from 'react'
+import {useTranslation} from 'react-i18next'
 import {InputColor} from '../../input/color'
 
 export const DesignTab: React.FC<TabPaneProps> = props => {
+  const { t } = useTranslation()
+
   return (
     <Tabs.TabPane {...props}>
       <Form.Item
-        label="Font"
+        label={t('form:design.font')}
         name={['form', 'design', 'font']}
       >
         <Input />
       </Form.Item>
 
       {[
-        {name: 'backgroundColor', label: 'Background Color'},
-        {name: 'questionColor', label: 'Question Color'},
-        {name: 'answerColor', label: 'Answer Color'},
-        {name: 'buttonColor', label: 'Button Color'},
-        {name: 'buttonActiveColor', label: 'Button Active Color'},
-        {name: 'buttonTextColor', label: 'Button Text Color'},
-      ].map(({label, name}) => (
-        <Form.Item key={name} label={label} name={['form', 'design', 'colors', name]}>
+        'backgroundColor',
+        'questionColor',
+        'answerColor',
+        'buttonColor',
+        'buttonActiveColor',
+        'buttonTextColor',
+      ].map(name => (
+        <Form.Item key={name} label={t(`form:design.${name}`)} name={['form', 'design', 'colors', name]}>
           <InputColor />
         </Form.Item>
       ))}
