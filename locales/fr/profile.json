@@ -1,10 +1,10 @@
 {
-  "email": "Email",
-  "firstName": "Prénom",
-  "language": "Langue",
-  "lastName": "Nom De Famille",
-  "updateError": "Impossible de mettre à jour le profil",
-  "updateNow": "Sauvegarder",
-  "updated": "Profil mis à jour",
-  "username": "Nom d'utilisateur"
+  "email": "E-Mail",
+  "firstName": "Vorname",
+  "language": "Sprache",
+  "lastName": "Nachname",
+  "updateError": "Profil konnte nicht aktualisiert werden",
+  "updateNow": "Speichern",
+  "updated": "Profil Aktualisieren",
+  "username": "Benutzername"
 }
