@@ -1,15 +1,15 @@
 {
-  "emailFieldRequired": "Bitte ein E-Mail Feld auswählen",
-  "emailRequired": "Bitte eine E-Mail angeben",
-  "invalidEmail": "ungültige E-Mail!",
-  "invalidUrl": "ungültige Url",
-  "languageRequired": "Bitte eine Sprache angeben",
-  "mandatoryFieldsMissing": "Nicht alle Pflichfelder befüllt",
-  "passwordMinLength": "Passwort muss mindestens 5 Zeichen haben!",
-  "passwordRequired": "Bitte ein Passwort angeben",
-  "subjectRequired": "Bitte einen Betreff angeben",
-  "templateRequired": "Bitte ein Template angeben",
-  "titleRequired": "Bitte einen Titel angeben",
-  "usernameRequired": "Bitte einen Benutzernamen angeben",
-  "valueRequired": "Bitte einen Wert angeben"
+  "emailFieldRequired": "Please select an Email Field",
+  "emailRequired": "Please provide an Email",
+  "invalidEmail": "Must be a valid email!",
+  "invalidUrl": "Must be a valid URL",
+  "languageRequired": "Please select a Language",
+  "mandatoryFieldsMissing": "Mandatory fields missing",
+  "passwordMinLength": "Must be longer than or equal to 5 characters!",
+  "passwordRequired": "Please input your password!",
+  "subjectRequired": "Please provide a subject",
+  "templateRequired": "Please provide a template",
+  "titleRequired": "Please provide a title",
+  "usernameRequired": "Please provide a Username",
+  "valueRequired": "Please provide a Value"
 }
