@@ -54,7 +54,7 @@ const compare = (original, compareTo, path, file) => {
 dirs.forEach(dir => {
   const files: string[] = glob.sync(`${dir}*.json`)
 
-  const existingFiles = files.map(file => file.replace(/^.*\/([a-z]+)\.json$/, '$1'))
+  const existingFiles = files.map(file => file.replace(/^.*\/([a-z]+)\.json$/, '$1')).push('language')
   Object
     .keys(all)
     .filter(file => !existingFiles.includes(file))
