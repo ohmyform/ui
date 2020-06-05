@@ -1,16 +1,16 @@
 {
-  "add": "Ajouter une soumission",
-  "city": "Ville",
-  "country": "Pays",
-  "created": "Créé",
+  "add": "Neue Eingabe starten",
+  "city": "Stadt",
+  "country": "Land",
+  "created": "Erstellt",
   "device": {
-    "name": "Nom de l'appareil",
-    "type": "Type d'appareil"
+    "name": "Geräte Name",
+    "type": "Geräte Typ"
   },
-  "edit": "Modifier",
-  "field": "Champ",
-  "lastModified": "Dernière modification",
-  "progress": "Avancement",
-  "submission": "Soumission",
-  "value": "Valeur"
+  "edit": "Formular bearbeiten",
+  "field": "Feld",
+  "lastModified": "Letzte Änderung",
+  "progress": "Fortschritt",
+  "submission": "Eingabe",
+  "value": "Wert"
 }
