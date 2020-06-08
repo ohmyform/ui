@@ -3,3 +3,11 @@ files:
     translation: /locales/%two_letters_code%/%original_file_name%
   - source: locales/de/*.json
     translation: locales/%two_letters_code%/%file_name%.json
+  - source: locales/cn/*.json
+    translation: locales/%two_letters_code%/%file_name%.json
+  - source: locales/es/*.json
+    translation: locales/%two_letters_code%/%file_name%.json
+  - source: locales/it/*.json
+    translation: locales/%two_letters_code%/%file_name%.json
+  - source: locales/fr/*.json
+    translation: locales/%two_letters_code%/%file_name%.json
