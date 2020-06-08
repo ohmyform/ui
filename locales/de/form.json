@@ -24,7 +24,7 @@
     "font": "Schriftart",
     "questionColor": "Fragen Farbe"
   },
-  "designTab": "Design",
+  "designTab": "Gestaltung",
   "endPage": {
     "action": "Aktion",
     "activeColor": "Aktive Farbe",
@@ -46,8 +46,8 @@
   "respondentNotifications": {
     "enabled": "Aktiv",
     "fromEmail": "Absender E-Mail",
-    "fromEmailInfo": "Der E-Mail Server muss den versand von dieser E-Mail zulassen",
-    "htmlTemplate": "HTML Template",
+    "fromEmailInfo": "Der E-Mail Server muss den Versand von dieser E-Mail zulassen",
+    "htmlTemplate": "HTML-Vorlage",
     "htmlTemplateInfo": "Sie können auch <u>MJML</u> verwenden um das Template zu gestalten",
     "subject": "Betreff",
     "toField": "Empfänger E-Mail",
@@ -68,7 +68,7 @@
     "enabled": "Aktiv",
     "fromField": "Absender E-Mail",
     "fromFieldInfo": "Formular E-Mail Feld für Benachrichtigung, wird as Reply-To gesetzt",
-    "htmlTemplate": "HTML Template",
+    "htmlTemplate": "HTML-Vorlage",
     "htmlTemplateInfo": "Sie können auch <u>MJML</u> verwenden um das Template zu gestalten",
     "subject": "Betreff",
     "toEmail": "Empfänger E-Mail",
@@ -89,7 +89,7 @@
     "title": "Titel",
     "url": "Url"
   },
-  "startPageTab": "Eröffnungs Seite",
+  "startPageTab": "Startseite",
   "submitted": "Vielen dank für ihre Eingaben!",
   "updateError": "Formular konnte nicht aktualisiert werden",
   "updateNow": "Speichern",
