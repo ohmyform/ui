@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
  
 ### Added
 
+- Fetch Server Settings to determine if signup is available
 - `SPA` env variable to have static page with loading spinner before redirect
 - `de`, `fr`, `es`, `it`, `cn` base folders for translations
 - finish translating `de` and `en`

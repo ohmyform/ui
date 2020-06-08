@@ -1,9 +1,11 @@
 import {UpOutlined} from '@ant-design/icons/lib'
+import {useQuery} from '@apollo/react-hooks'
 import {Button, Menu, Select} from 'antd'
 import Link from 'next/link'
 import {useRouter} from 'next/router'
 import React from 'react'
 import {useTranslation} from 'react-i18next'
+import {SETTINGS_QUERY, SettingsQueryData} from '../../graphql/query/settings.query'
 import {languages} from '../../i18n'
 import {clearAuth, withAuth} from '../with.auth'
 
@@ -17,6 +19,7 @@ interface Props {
 const AuthFooterInner: React.FC<Props> = props => {
   const { t, i18n } = useTranslation()
   const router = useRouter()
+  const {data} = useQuery<SettingsQueryData>(SETTINGS_QUERY)
 
   const logout = () => {
     clearAuth()
@@ -70,6 +73,7 @@ const AuthFooterInner: React.FC<Props> = props => {
             <Button
               type={'link'}
               ghost
+              disabled={data ? data.disabledSignUp.value : false}
             >
               {t('register')}
             </Button>
