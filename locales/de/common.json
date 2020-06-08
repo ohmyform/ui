@@ -1,9 +1,9 @@
 {
-  "admin": "Admin",
-  "checkingCredentials": "Checking Credentials",
-  "loadingCredentials": "Loading Credentials",
-  "login": "Login",
-  "logout": "Logout",
-  "recover": "Lost Password",
-  "register": "Create Account"
+  "admin": "Administration",
+  "checkingCredentials": "Zugangsdaten werden geprüft",
+  "loadingCredentials": "Lade Zugangsdaten",
+  "login": "Anmelden",
+  "logout": "Abmelden",
+  "recover": "Passwort vergessen",
+  "register": "Benutzer erstellen"
 }
