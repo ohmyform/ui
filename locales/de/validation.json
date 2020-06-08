@@ -1,15 +1,15 @@
 {
-  "emailFieldRequired": "Bitte ein E-Mail Feld auswählen",
-  "emailRequired": "Bitte eine E-Mail angeben",
-  "invalidEmail": "ungültige E-Mail!",
-  "invalidUrl": "ungültige Url",
-  "languageRequired": "Bitte eine Sprache angeben",
-  "mandatoryFieldsMissing": "Nicht alle Pflichfelder befüllt",
-  "passwordMinLength": "Passwort muss mindestens 5 Zeichen haben!",
-  "passwordRequired": "Bitte ein Passwort angeben",
-  "subjectRequired": "Bitte einen Betreff angeben",
-  "templateRequired": "Bitte ein Template angeben",
-  "titleRequired": "Bitte einen Titel angeben",
-  "usernameRequired": "Bitte einen Benutzernamen angeben",
-  "valueRequired": "Bitte einen Wert angeben"
+    "emailFieldRequired": "Bitte ein E-Mail Feld auswählen",
+    "emailRequired": "Bitte eine E-Mail angeben",
+    "invalidEmail": "ungültige E-Mail!",
+    "invalidUrl": "ungültige Url",
+    "languageRequired": "Bitte eine Sprache angeben",
+    "mandatoryFieldsMissing": "Nicht alle Pflichfelder befüllt",
+    "passwordMinLength": "Passwort muss mindestens 5 Zeichen haben!",
+    "passwordRequired": "Bitte ein Passwort angeben",
+    "subjectRequired": "Bitte einen Betreff angeben",
+    "templateRequired": "Bitte ein Template angeben",
+    "titleRequired": "Bitte einen Titel angeben",
+    "usernameRequired": "Bitte einen Benutzernamen angeben",
+    "valueRequired": "Bitte einen Wert angeben"
 }

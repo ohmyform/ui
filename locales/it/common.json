@@ -1,9 +1,9 @@
 {
-  "admin": "Admin",
-  "checkingCredentials": "Verifica delle credenziali",
-  "loadingCredentials": "Caricamento delle credenziali",
-  "login": "Entra",
-  "logout": "Logout",
-  "recover": "Password dimenticata",
-  "register": "Crea account"
+    "admin": "Admin",
+    "checkingCredentials": "Verifica delle credenziali",
+    "loadingCredentials": "Caricamento delle credenziali",
+    "login": "Entra",
+    "logout": "Logout",
+    "recover": "Password dimenticata",
+    "register": "Crea account"
 }

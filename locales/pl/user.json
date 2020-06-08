@@ -1,0 +1,7 @@
+{
+    "baseData": "Dane podstawowe",
+    "row": {
+        "email": "E-mail",
+        "roles": "Rola"
+    }
+}
