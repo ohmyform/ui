@@ -1,12 +1,10 @@
 {
-  "confirmDelete": "Wollen sie das Feld wirklich löschen? Bitte beachten sie das es keine Referenzen auf das Feld gibt!",
   "date": {
     "default": "Standard Dateum",
     "max": "Neuest mögliche Datum",
     "min": "Ältest mögliche Datum",
     "name": "Datum"
   },
-  "deleteNow": "Feld löschen",
   "description": "Beschreibung",
   "dropdown": {
     "addOption": "Auswahl hinzufügen",
@@ -60,6 +58,6 @@
   "title": "Titel",
   "yes_no": {
     "default": "Standard Wert",
-    "name": "Ja / Nein"
+    "name": "Ja \/ Nein"
   }
 }

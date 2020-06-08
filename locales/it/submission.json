@@ -1,16 +1,15 @@
 {
-  "add": "Add Submission",
-  "city": "City",
-  "country": "Country",
-  "created": "Created",
+  "add": "Aggiungi invio",
+  "city": "Città",
+  "country": "Nazione",
   "device": {
-    "name": "Device Name",
-    "type": "Device Type"
+    "name": "Nome del dispositivo",
+    "type": "Tipo di dispositivo"
   },
-  "edit": "Edit",
-  "field": "Field",
-  "lastModified": "Last Change",
-  "progress": "Progress",
-  "submission": "Submission",
-  "value": "Value"
+  "edit": "modificare",
+  "field": "Campo",
+  "lastModified": "Ultima modifica",
+  "progress": "Progresso",
+  "submission": "Presentazione",
+  "value": "Valore"
 }

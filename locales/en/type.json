@@ -1,12 +1,10 @@
 {
-  "confirmDelete": "Really remove this field? Check that it is not referenced anywhere!",
   "date": {
     "default": "Default Date",
     "max": "Max Date",
     "min": "Min Date",
     "name": "Date"
   },
-  "deleteNow": "Delete Field",
   "description": "Description",
   "dropdown": {
     "addOption": "Add Option",
@@ -60,6 +58,6 @@
   "title": "Title",
   "yes_no": {
     "default": "Default Value",
-    "name": "Yes / No"
+    "name": "Yes \/ No"
   }
 }

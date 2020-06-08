@@ -2,7 +2,6 @@
   "add": "Add Submission",
   "city": "City",
   "country": "Country",
-  "created": "Created",
   "device": {
     "name": "Device Name",
     "type": "Device Type"

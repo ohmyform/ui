@@ -1,0 +1,15 @@
+{
+  "add": "Agregar sumisión",
+  "city": "Ciudad",
+  "country": "País",
+  "device": {
+    "name": "Nombre del dispositivo",
+    "type": "Tipo de dispositivo"
+  },
+  "edit": "Editar",
+  "field": "Campo",
+  "lastModified": "Ultimo cambio",
+  "progress": "Progreso",
+  "submission": "Sumisión",
+  "value": "Valor"
+}

@@ -2,9 +2,5 @@
   "email": "Email",
   "firstName": "First Name",
   "language": "Language",
-  "lastName": "Last Name",
-  "updateError": "Could not update Profile",
-  "updateNow": "Save",
-  "updated": "Profile updated",
-  "username": "Username"
+  "lastName": "Last Name"
 }
