@@ -12,7 +12,7 @@
   "createNow": "Save",
   "created": "Form Created",
   "creationError": "Could not create form",
-  "deleteError": "could not delete form",
+  "deleteError": "Could not delete form",
   "deleteNow": "Delete Now!",
   "deleted": "Form deleted",
   "design": {
@@ -69,7 +69,7 @@
     "fromField": "Sender Email",
     "fromFieldInfo": "Field with Email, will set the Reply-To header",
     "htmlTemplate": "HTML Template",
-    "htmlTemplateInfo": "You can also use <strong>MJML</strong> to create your email templates",
+    "htmlTemplateInfo": "You can also use <u>MJML</u> to create your email templates",
     "subject": "Subject",
     "toEmail": "Your Email",
     "toEmailInfo": "If not set will send to the admin of the form"
