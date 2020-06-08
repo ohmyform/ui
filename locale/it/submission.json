@@ -1,0 +1,15 @@
+{
+    "add": "Aggiungi invio",
+    "city": "Città",
+    "country": "Nazione",
+    "device": {
+        "name": "Nome del dispositivo",
+        "type": "Tipo di dispositivo"
+    },
+    "edit": "modificare",
+    "field": "Campo",
+    "lastModified": "Ultima modifica",
+    "progress": "Progresso",
+    "submission": "Presentazione",
+    "value": "Valore"
+}
