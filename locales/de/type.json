@@ -60,6 +60,6 @@
   "title": "Titel",
   "yes_no": {
     "default": "Standard Wert",
-    "name": "Ja / Nein"
+    "name": "Ja \/ Nein"
   }
 }

@@ -1,0 +1,10 @@
+{
+  "email": "电子邮件",
+  "firstName": "名字",
+  "language": "语言",
+  "lastName": "姓",
+  "updated": "个人资料已更新",
+  "updateError": "无法更新个人资料",
+  "updateNow": "救",
+  "username": "用户名"
+}
