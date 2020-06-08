@@ -1,9 +1,9 @@
 {
   "confirmDelete": "Wollen sie das Feld wirklich löschen? Bitte beachten sie das es keine Referenzen auf das Feld gibt!",
   "date": {
-    "default": "Standard Dateum",
+    "default": "Standard Datum",
     "max": "Neuest mögliche Datum",
-    "min": "Ältest mögliche Datum",
+    "min": "Ältest mögliches Datum",
     "name": "Datum"
   },
   "deleteNow": "Feld löschen",
