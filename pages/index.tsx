@@ -3,7 +3,7 @@ import { AuthFooter } from 'components/auth/footer'
 import { NextPage } from 'next'
 import getConfig from 'next/config'
 import { useRouter } from 'next/router'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { LoadingPage } from '../components/loading.page'
 
@@ -17,9 +17,14 @@ const { publicRuntimeConfig } = getConfig() as {
 const Index: NextPage = () => {
   const router = useRouter()
   const { t } = useTranslation()
+  const [loading, setLoading] = useState<boolean>(
+    publicRuntimeConfig.spa ||
+      (process.browser &&
+        router.pathname !== window.location.pathname)
+  )
 
   useEffect(() => {
-    if (router.pathname !== window.location.pathname && window.location.pathname.length > 2) {
+    if (router.pathname !== window.location.pathname) {
       let href = router.asPath
       const as = router.asPath
       const possible = [/(\/form\/)[^/]+/i, /(\/admin\/forms\/)[^/]+/i, /(\/admin\/users\/)[^/]+/i]
@@ -36,12 +41,15 @@ const Index: NextPage = () => {
     }
   })
 
-  if (
-    publicRuntimeConfig.spa ||
-    (process.browser &&
-      router.pathname !== window.location.pathname &&
-      window.location.pathname.length > 2)
-  ) {
+  useEffect(() => {
+    if (loading) {
+      setTimeout(() => {
+        setLoading(false)
+      }, 10000)
+    }
+  }, [loading])
+
+  if (loading) {
     return <LoadingPage message={t('loading')} />
   }
 
