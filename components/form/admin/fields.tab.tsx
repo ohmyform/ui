@@ -2,6 +2,7 @@ import { PlusOutlined } from '@ant-design/icons/lib'
 import { Button, Form, Select, Space, Tabs } from 'antd'
 import { FormInstance } from 'antd/lib/form'
 import { TabPaneProps } from 'antd/lib/tabs'
+import { FieldData } from 'rc-field-form/lib/interface'
 import React, { useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { AdminFormFieldFragment } from '../../../graphql/fragment/admin.form.fragment'
@@ -19,7 +20,7 @@ export const FieldsTab: React.FC<Props> = (props) => {
   const [nextType, setNextType] = useState('textfield')
 
   const renderType = useCallback(
-    (field, index, remove) => {
+    (field: FieldData, index: number, remove: (index: number) => void) => {
       return (
         <FieldCard
           form={props.form}
@@ -35,7 +36,7 @@ export const FieldsTab: React.FC<Props> = (props) => {
   )
 
   const addField = useCallback(
-    (add, index) => {
+    (add: (defaults: unknown) => void, index: number) => {
       return (
         <Form.Item wrapperCol={{ span: 24 }}>
           <Space

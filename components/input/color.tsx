@@ -18,7 +18,7 @@ export const InputColor: React.FC<Props> = (props) => {
       triangle={'hide'}
       width={'100%'}
       color={props.value}
-      onChange={(e) => props.onChange(e.hex)}
+      onChange={(e: { hex: string }) => props.onChange(e.hex)}
       styles={{
         default: {
           card: {

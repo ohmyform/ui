@@ -10,13 +10,13 @@ export const DropdownType: React.FC<AdminFieldTypeProps> = (props) => {
     <div>
       <Form.Item
         label={t('type:dropdown.default')}
-        name={[props.field.name, 'value']}
+        name={[props.field.name as string, 'value']}
         labelCol={{ span: 6 }}
       >
         <Input />
       </Form.Item>
 
-      <Form.List name={[props.field.name, 'options']}>
+      <Form.List name={[props.field.name as string, 'options']}>
         {(fields, { add, remove }) => {
           return (
             <div>

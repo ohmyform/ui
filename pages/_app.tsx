@@ -13,13 +13,18 @@ import Head from 'next/head'
 import React from 'react'
 import { wrapper } from 'store'
 
-const { publicRuntimeConfig } = getConfig()
+const { publicRuntimeConfig } = getConfig() as {
+  publicRuntimeConfig: {
+    endpoint: string
+  }
+}
 
 const client = new ApolloClient({
   uri: publicRuntimeConfig.endpoint,
-  fetch: buildAxiosFetch(axios),
-  request: async (operation): Promise<void> => {
-    operation.setContext(await authConfig())
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-explicit-any
+  fetch: buildAxiosFetch(axios) as any,
+  request: (operation): void => {
+    operation.setContext(authConfig())
   },
 })
 

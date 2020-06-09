@@ -8,27 +8,28 @@ interface Props extends RadioProps {
   design: FormDesignFragment
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment
 const Field = styled(Radio)`
-  color: ${(props) => props.design.colors.answerColor};
-  border-color: ${(props) => props.design.colors.answerColor};
+  color: ${(props: Props) => props.design.colors.answerColor};
+  border-color: ${(props: Props) => props.design.colors.answerColor};
   background: none;
 
   .ant-radio {
     .ant-radio-inner {
-      border-color: ${(props) => props.design.colors.answerColor};
+      border-color: ${(props: Props) => props.design.colors.answerColor};
 
       &::after {
-        background: ${(props) => props.design.colors.answerColor};
+        background: ${(props: Props) => props.design.colors.answerColor};
       }
     }
 
     &::after {
-      border-color: ${(props) => props.design.colors.answerColor};
+      border-color: ${(props: Props) => props.design.colors.answerColor};
     }
   }
 
   .anticon {
-    color: ${(props) => props.design.colors.answerColor};
+    color: ${(props: Props) => props.design.colors.answerColor};
   }
 `
 

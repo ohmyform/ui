@@ -50,7 +50,7 @@ const Index: NextPage = () => {
     AdminUserDeleteMutationVariables
   >(ADMIN_USER_DELETE_MUTATION)
 
-  const deleteUser = async (form) => {
+  const deleteUser = async (form: AdminPagerUserEntryQueryData) => {
     try {
       await executeDelete({
         variables: {
@@ -63,9 +63,9 @@ const Index: NextPage = () => {
       } else {
         setEntries(next)
       }
-      message.success(t('user:deleted'))
+      await message.success(t('user:deleted'))
     } catch (e) {
-      message.error(t('user:deleteError'))
+      await message.error(t('user:deleteError'))
     }
   }
 
@@ -73,27 +73,27 @@ const Index: NextPage = () => {
     {
       title: t('user:row.roles'),
       dataIndex: 'roles',
-      render(roles) {
+      render(roles: string[]) {
         return <UserRole roles={roles} />
       },
     },
     {
       title: t('user:row.email'),
-      render(row) {
+      render(row: AdminPagerUserEntryQueryData) {
         return <Tag color={row.verifiedEmail ? 'lime' : 'volcano'}>{row.email}</Tag>
       },
     },
     {
       title: t('user:row.created'),
       dataIndex: 'created',
-      render(date) {
+      render(date: string) {
         return <DateTime date={date} />
       },
     },
     {
       title: t('user:row.menu'),
       align: 'right',
-      render(row) {
+      render(row: AdminPagerUserEntryQueryData) {
         return (
           <Space>
             <Link href={'/admin/users/[id]'} as={`/admin/users/${row.id}`}>
@@ -130,9 +130,9 @@ const Index: NextPage = () => {
         dataSource={entries}
         rowKey={'id'}
         pagination={pagination}
-        onChange={(next) => {
+        onChange={async (next) => {
           setPagination(next)
-          refetch()
+          await refetch()
         }}
       />
     </Structure>

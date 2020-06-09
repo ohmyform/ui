@@ -35,12 +35,12 @@ const Create: NextPage = () => {
         })
       ).data
 
-      message.success(t('form:created'))
+      await message.success(t('form:created'))
 
-      router.replace('/admin/forms/[id]', `/admin/forms/${next.form.id}`)
+      await router.replace('/admin/forms/[id]', `/admin/forms/${next.form.id}`)
     } catch (e) {
       console.error('failed to save', e)
-      message.error(t('form:creationError'))
+      await message.error(t('form:creationError'))
     }
 
     setSaving(false)
@@ -65,9 +65,9 @@ const Create: NextPage = () => {
       <Form
         form={form}
         onFinish={save}
-        onFinishFailed={() => {
+        onFinishFailed={async () => {
           // TODO process errors
-          message.error(t('validation:mandatoryFieldsMissing'))
+          await message.error(t('validation:mandatoryFieldsMissing'))
         }}
         labelCol={{
           xs: { span: 24 },

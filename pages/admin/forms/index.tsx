@@ -15,6 +15,7 @@ import { TimeAgo } from 'components/time.ago'
 import { withAuth } from 'components/with.auth'
 import {
   ADMIN_PAGER_FORM_QUERY,
+  AdminPagerFormEntryAdminQueryData,
   AdminPagerFormEntryQueryData,
   AdminPagerFormQueryData,
   AdminPagerFormQueryVariables,
@@ -56,7 +57,7 @@ const Index: NextPage = () => {
     AdminFormDeleteMutationVariables
   >(ADMIN_FORM_DELETE_MUTATION)
 
-  const deleteForm = async (form) => {
+  const deleteForm = async (form: AdminFormDeleteMutationVariables) => {
     try {
       await executeDelete({
         variables: {
@@ -70,9 +71,9 @@ const Index: NextPage = () => {
         setEntries(next)
       }
 
-      message.success(t('form:deleted'))
+      await message.success(t('form:deleted'))
     } catch (e) {
-      message.error(t('form:deleteError'))
+      await message.error(t('form:deleteError'))
     }
   }
 
@@ -80,7 +81,7 @@ const Index: NextPage = () => {
     {
       title: t('form:row.isLive'),
       dataIndex: 'isLive',
-      render(live) {
+      render(live: boolean) {
         return <FormIsLive isLive={live} />
       },
     },
@@ -91,7 +92,7 @@ const Index: NextPage = () => {
     {
       title: t('form:row.admin'),
       dataIndex: 'admin',
-      render(user) {
+      render(user: AdminPagerFormEntryAdminQueryData) {
         return (
           <Link href={'/admin/users/[id]'} as={`/admin/users/${user.id}`}>
             <Tooltip title={user.email}>
@@ -104,28 +105,28 @@ const Index: NextPage = () => {
     {
       title: t('form:row.language'),
       dataIndex: 'language',
-      render(lang) {
+      render(lang: string) {
         return t(`language:${lang}`)
       },
     },
     {
       title: t('form:row.created'),
       dataIndex: 'created',
-      render(date) {
+      render(date: string) {
         return <DateTime date={date} />
       },
     },
     {
       title: t('form:row.lastModified'),
       dataIndex: 'lastModified',
-      render(date) {
+      render(date: string) {
         return <TimeAgo date={date} />
       },
     },
     {
       title: t('form:row.menu'),
       align: 'right',
-      render(row) {
+      render(row: AdminPagerFormEntryQueryData) {
         return (
           <Space>
             <Link href={'/admin/forms/[id]/submissions'} as={`/admin/forms/${row.id}/submissions`}>
@@ -182,9 +183,9 @@ const Index: NextPage = () => {
         dataSource={entries}
         rowKey={'id'}
         pagination={pagination}
-        onChange={(next) => {
+        onChange={async (next) => {
           setPagination(next)
-          refetch()
+          await refetch()
         }}
       />
     </Structure>

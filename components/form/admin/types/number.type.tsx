@@ -10,7 +10,7 @@ export const NumberType: React.FC<AdminFieldTypeProps> = (props) => {
     <div>
       <Form.Item
         label={t('type:number:default')}
-        name={[props.field.name, 'value']}
+        name={[props.field.name as string, 'value']}
         labelCol={{ span: 6 }}
       >
         <InputNumber />

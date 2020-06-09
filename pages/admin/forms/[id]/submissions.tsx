@@ -70,14 +70,14 @@ const Submissions: NextPage = () => {
     {
       title: t('submission:created'),
       dataIndex: 'created',
-      render(date) {
+      render(date: string) {
         return <DateTime date={date} />
       },
     },
     {
       title: t('submission:lastModified'),
       dataIndex: 'lastModified',
-      render(date) {
+      render(date: string) {
         return <TimeAgo date={date} />
       },
     },
@@ -94,15 +94,24 @@ const Submissions: NextPage = () => {
         {
           href: '/admin/forms/[id]',
           name: loading || !form ? t('form:loading') : t('form:mange', { title: form.title }),
-          as: `/admin/forms/${router.query.id}`,
+          as: `/admin/forms/${router.query.id as string}`,
         },
       ]}
       padded={false}
       extra={[
-        <Link key={'edit'} href={'/admin/forms/[id]'} as={`/admin/forms/${router.query.id}`}>
+        <Link
+          key={'edit'}
+          href={'/admin/forms/[id]'}
+          as={`/admin/forms/${router.query.id as string}`}
+        >
           <Button>{t('submission:edit')}</Button>
         </Link>,
-        <Button key={'web'} href={`/form/${router.query.id}`} target={'_blank'} type={'primary'}>
+        <Button
+          key={'web'}
+          href={`/form/${router.query.id as string}`}
+          target={'_blank'}
+          type={'primary'}
+        >
           {t('submission:add')}
         </Button>,
       ]}
@@ -120,9 +129,9 @@ const Submissions: NextPage = () => {
             return record.percentageComplete > 0
           },
         }}
-        onChange={(next) => {
+        onChange={async (next) => {
           setPagination(next)
-          refetch()
+          await refetch()
         }}
       />
     </Structure>

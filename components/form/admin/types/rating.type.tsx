@@ -11,7 +11,7 @@ export const RatingType: React.FC<AdminFieldTypeProps> = (props) => {
     <div>
       <Form.Item
         label={t('type:rating:default')}
-        name={[props.field.name, 'value']}
+        name={[props.field.name as string, 'value']}
         labelCol={{ span: 6 }}
         extra={t('type:rating.clearNote')}
       >

@@ -4,7 +4,12 @@ import { useForm } from 'antd/lib/form/Form'
 import { AuthFooter } from 'components/auth/footer'
 import { AuthLayout } from 'components/auth/layout'
 import { setAuth } from 'components/with.auth'
-import { REGISTER_MUTATION } from 'graphql/mutation/register.mutation'
+import {
+  REGISTER_MUTATION,
+  RegisterMutationData,
+  RegisterMutationVariables,
+  RegisterUserData,
+} from 'graphql/mutation/register.mutation'
 import { NextPage } from 'next'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -20,9 +25,9 @@ const Register: NextPage = () => {
   const [loading, setLoading] = useState(false)
   const { data } = useQuery<SettingsQueryData>(SETTINGS_QUERY)
 
-  const [register] = useMutation(REGISTER_MUTATION)
+  const [register] = useMutation<RegisterMutationData, RegisterMutationVariables>(REGISTER_MUTATION)
 
-  const finish = async (data) => {
+  const finish = async (data: RegisterUserData) => {
     setLoading(true)
 
     try {
@@ -32,19 +37,19 @@ const Register: NextPage = () => {
         },
       })
 
-      await setAuth(result.data.tokens.access, result.data.tokens.refresh)
+      setAuth(result.data.tokens.access, result.data.tokens.refresh)
 
-      message.success(t('register:welcome'))
+      await message.success(t('register:welcome'))
 
-      router.push('/')
+      await router.push('/')
     } catch (e) {
-      message.error(t('register:credentialsAlreadyInUse'))
+      await message.error(t('register:credentialsAlreadyInUse'))
       setLoading(false)
     }
   }
 
-  const failed = () => {
-    message.error(t('validation:mandatoryFieldsMissing'))
+  const failed = async () => {
+    await message.error(t('validation:mandatoryFieldsMissing'))
   }
 
   if (data && data.disabledSignUp.value) {
@@ -65,7 +70,7 @@ const Register: NextPage = () => {
         }}
       >
         <img
-          src={require('../assets/images/logo_white_small.png')}
+          src={require('../assets/images/logo_white_small.png') as string}
           alt={'OhMyForm'}
           style={{
             display: 'block',

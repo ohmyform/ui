@@ -53,10 +53,10 @@ const Index: NextPage = () => {
 
       form.setFieldsValue(next)
 
-      message.success(t('user:updated'))
+      await message.success(t('user:updated'))
     } catch (e) {
       console.error('failed to save', e)
-      message.error(t('user:updateError'))
+      await message.error(t('user:updateError'))
     }
 
     setSaving(false)
@@ -81,9 +81,9 @@ const Index: NextPage = () => {
       <Form
         form={form}
         onFinish={save}
-        onFinishFailed={() => {
+        onFinishFailed={async () => {
           // TODO process errors
-          message.error(t('validation:mandatoryFieldsMissing'))
+          await message.error(t('validation:mandatoryFieldsMissing'))
         }}
         labelCol={{
           xs: { span: 24 },

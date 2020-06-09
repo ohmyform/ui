@@ -1,5 +1,11 @@
 import { gql } from 'apollo-boost'
 
+export interface AdminPagerFormEntryAdminQueryData {
+  id: string
+  email: string
+  username: string
+}
+
 export interface AdminPagerFormEntryQueryData {
   id: string
   created: string
@@ -7,11 +13,7 @@ export interface AdminPagerFormEntryQueryData {
   title: string
   isLive: boolean
   language: string
-  admin: {
-    id: string
-    email: string
-    username: string
-  }
+  admin: AdminPagerFormEntryAdminQueryData
 }
 
 export interface AdminPagerFormQueryData {

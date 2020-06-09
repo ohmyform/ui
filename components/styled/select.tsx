@@ -9,10 +9,11 @@ interface Props extends SelectProps<string> {
   design: FormDesignFragment
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment
 const Field = styled(Select)`
   .ant-select-selector {
-    color: ${(props) => props.design.colors.answerColor};
-    border-color: ${(props) => props.design.colors.answerColor} !important;
+    color: ${(props: Props) => props.design.colors.answerColor};
+    border-color: ${(props: Props) => props.design.colors.answerColor} !important;
     background: none !important;
     border-right: none !important;
     border-top: none !important;
@@ -22,25 +23,25 @@ const Field = styled(Select)`
   }
 
   :focus {
-    outline: ${(props) => props.design.colors.answerColor} auto 5px;
+    outline: ${(props: Props) => props.design.colors.answerColor} auto 5px;
   }
 
   :hover,
   :active {
-    border-color: ${(props) => props.design.colors.answerColor};
+    border-color: ${(props: Props) => props.design.colors.answerColor};
   }
 
   input {
     background: none !important;
-    color: ${(props) => props.design.colors.answerColor};
+    color: ${(props: Props) => props.design.colors.answerColor};
 
     ::placeholder {
-      color: ${(props) => transparentize(props.design.colors.answerColor, 60)};
+      color: ${(props: Props) => transparentize(props.design.colors.answerColor, 60)};
     }
   }
 
   .anticon {
-    color: ${(props) => props.design.colors.answerColor};
+    color: ${(props: Props) => props.design.colors.answerColor};
   }
 `
 

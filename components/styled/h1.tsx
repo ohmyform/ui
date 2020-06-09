@@ -8,7 +8,7 @@ interface Props {
 }
 
 const Header = styled.h1`
-  color: ${(props) =>
+  color: ${(props: Props) =>
     props.type === 'question'
       ? props.design.colors.questionColor
       : props.design.colors.answerColor};

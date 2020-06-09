@@ -11,7 +11,7 @@ export const YesNoType: React.FC<AdminFieldTypeProps> = (props) => {
     <div>
       <Form.Item
         label={t('type:yes_no:default')}
-        name={[props.field.name, 'value']}
+        name={[props.field.name as string, 'value']}
         labelCol={{ span: 6 }}
       >
         <Input />

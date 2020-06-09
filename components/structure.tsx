@@ -105,9 +105,9 @@ const Structure: FunctionComponent<Props> = (props) => {
 
         return (
           <Menu.Item
-            onClick={(): void => {
+            onClick={async () => {
               if (element.href) {
-                router.push(element.href)
+                await router.push(element.href)
               }
             }}
             key={element.key}
@@ -120,8 +120,8 @@ const Structure: FunctionComponent<Props> = (props) => {
     )
   }
 
-  const signOut = async (): Promise<void> => {
-    await clearAuth()
+  const signOut = (): void => {
+    clearAuth()
     router.reload()
   }
 
@@ -147,7 +147,7 @@ const Structure: FunctionComponent<Props> = (props) => {
           })}
 
           <img
-            src={require('assets/images/logo_white_small.png')}
+            src={require('assets/images/logo_white_small.png') as string}
             height={30}
             style={{ marginRight: 16 }}
             alt={'OhMyForm'}

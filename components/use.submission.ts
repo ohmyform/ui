@@ -13,7 +13,7 @@ import {
 
 interface Submission {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  setField: (fieldId: string, data: any) => Promise<void>
+  setField: (fieldId: string, data: unknown) => Promise<void>
   finish: () => void
 }
 
@@ -28,27 +28,28 @@ export const useSubmission = (formId: string): Submission => {
   )
 
   useEffect(() => {
-    ;(async () => {
-      const token = [...Array(40)].map(() => Math.random().toString(36)[2]).join('')
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    const token = [...Array(40)].map(() => Math.random().toString(36)[2]).join('')
 
-      const { data } = await start({
-        variables: {
-          form: formId,
-          submission: {
-            token,
-            device: {
-              name: /Mobi/i.test(window.navigator.userAgent) ? 'mobile' : 'desktop',
-              type: window.navigator.userAgent,
-            },
+    start({
+      variables: {
+        form: formId,
+        submission: {
+          token,
+          device: {
+            name: /Mobi/i.test(window.navigator.userAgent) ? 'mobile' : 'desktop',
+            type: window.navigator.userAgent,
           },
         },
+      },
+    })
+      .then(({ data }) => {
+        setSubmission({
+          id: data.submission.id,
+          token,
+        })
       })
-
-      setSubmission({
-        id: data.submission.id,
-        token,
-      })
-    })()
+      .catch((e: Error) => console.error('failed to start submission', e))
   }, [formId])
 
   const setField = useCallback(

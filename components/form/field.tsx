@@ -30,8 +30,8 @@ export const Field: React.FC<Props> = ({ field, save, design, next, prev, ...pro
     next()
   }
 
-  const error = () => {
-    message.error('Check inputs!')
+  const error = async () => {
+    await message.error('Check inputs!')
   }
 
   return (

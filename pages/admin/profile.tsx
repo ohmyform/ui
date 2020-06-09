@@ -49,10 +49,10 @@ const Profile: NextPage = () => {
 
       form.setFieldsValue(next)
 
-      message.success(t('profile:updated'))
+      await message.success(t('profile:updated'))
     } catch (e) {
       console.error('failed to save', e)
-      message.error(t('profile:updateError'))
+      await message.error(t('profile:updateError'))
     }
 
     setSaving(false)
@@ -73,9 +73,9 @@ const Profile: NextPage = () => {
       <Form
         form={form}
         onFinish={save}
-        onFinishFailed={() => {
+        onFinishFailed={async () => {
           // TODO process errors
-          message.error(t('validation:mandatoryFieldsMissing'))
+          await message.error(t('validation:mandatoryFieldsMissing'))
         }}
         labelCol={{
           xs: { span: 24 },

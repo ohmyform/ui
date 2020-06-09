@@ -19,7 +19,7 @@ export const SubmissionValues: React.FC<Props> = (props) => {
   const columns: ColumnsType<AdminPagerSubmissionEntryFieldQueryData> = [
     {
       title: t('submission:field'),
-      render: (row: AdminPagerSubmissionEntryFieldQueryData) => {
+      render(row: AdminPagerSubmissionEntryFieldQueryData) {
         if (row.field) {
           return `${row.field.title}${row.field.required ? '*' : ''}`
         }
@@ -29,9 +29,9 @@ export const SubmissionValues: React.FC<Props> = (props) => {
     },
     {
       title: t('submission:value'),
-      render: (row) => {
+      render(row: AdminPagerSubmissionEntryFieldQueryData) {
         try {
-          const data = JSON.parse(row.value)
+          const data = JSON.parse(row.value) as { value: string }
 
           return data.value
         } catch (e) {

@@ -1,3 +1,4 @@
+/* eslint-disable */
 /**
  * @link https://css-tricks.com/snippets/javascript/lighten-darken-color/
  *

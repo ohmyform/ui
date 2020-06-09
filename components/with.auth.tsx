@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next'
 import { ME_QUERY, MeQueryData } from '../graphql/query/me.query'
 import { LoadingPage } from './loading.page'
 
-export const clearAuth = async (): Promise<void> => {
+export const clearAuth = (): void => {
   localStorage.removeItem('access')
   localStorage.removeItem('refresh')
 
@@ -18,7 +18,7 @@ export const setAuth = (access: string, refresh: string): void => {
   localStorage.setItem('refresh', refresh)
 }
 
-export const authConfig = async (config: AxiosRequestConfig = {}): Promise<AxiosRequestConfig> => {
+export const authConfig = (config: AxiosRequestConfig = {}): AxiosRequestConfig => {
   if (!config.headers) {
     config.headers = {}
   }
@@ -28,6 +28,7 @@ export const authConfig = async (config: AxiosRequestConfig = {}): Promise<Axios
     // TODO check for validity / use refresh token
 
     if (token) {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       config.headers.Authorization = `Bearer ${token}`
     }
   } catch (e) {
@@ -60,7 +61,7 @@ export const withAuth = (Component: any, roles: string[] = []): React.FC => {
       const path = router.asPath || router.pathname
       localStorage.setItem('redirect', path)
 
-      router.push('/login')
+      router.push('/login').catch((e: Error) => console.error('failed to redirect to login', e))
     }, [error])
 
     useEffect(() => {
@@ -74,7 +75,7 @@ export const withAuth = (Component: any, roles: string[] = []): React.FC => {
       setAccess(next)
 
       if (!next) {
-        router.push('/')
+        router.push('/').catch((e: Error) => console.error('failed to redirect to /', e))
       }
     }, [data])
 

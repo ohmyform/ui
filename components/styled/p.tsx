@@ -7,8 +7,9 @@ interface Props {
   design: FormDesignFragment
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-assignment
 const Paragraph = styled.p`
-  color: ${(props) =>
+  color: ${(props: Props) =>
     props.type === 'question'
       ? props.design.colors.questionColor
       : props.design.colors.answerColor};

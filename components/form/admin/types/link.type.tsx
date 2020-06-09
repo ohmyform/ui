@@ -10,7 +10,7 @@ export const LinkType: React.FC<AdminFieldTypeProps> = (props) => {
     <div>
       <Form.Item
         label={t('type:link.default')}
-        name={[props.field.name, 'value']}
+        name={[props.field.name as string, 'value']}
         rules={[{ type: 'url', message: t('validation:invalidUrl') }]}
         labelCol={{ span: 6 }}
       >

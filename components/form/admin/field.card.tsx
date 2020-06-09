@@ -21,10 +21,10 @@ export const FieldCard: React.FC<Props> = (props) => {
   const { t } = useTranslation()
   const { form, field, fields, onChangeFields, remove, index } = props
 
-  const type = form.getFieldValue(['form', 'fields', field.name as string, 'type'])
+  const type = form.getFieldValue(['form', 'fields', field.name as string, 'type']) as string
   const TypeComponent = adminTypes[type] || TextType
 
-  const [nextTitle, setNextTitle] = useState(
+  const [nextTitle, setNextTitle] = useState<string>(
     form.getFieldValue(['form', 'fields', field.name as string, 'title'])
   )
 

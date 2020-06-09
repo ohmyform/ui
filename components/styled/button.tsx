@@ -10,15 +10,16 @@ interface Props extends ButtonProps {
   color: string
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment
 const Styled = styled(Button)`
-  background: ${(props) => props.background};
-  color: ${(props) => props.color};
-  border-color: ${(props) => darken(props.background, 10)};
+  background: ${(props: Props) => props.background};
+  color: ${(props: Props) => props.color};
+  border-color: ${(props: Props) => darken(props.background, 10)};
 
   :hover {
-    color: ${(props) => props.highlight};
-    background-color: ${(props) => lighten(props.background, 10)};
-    border-color: ${(props) => darken(props.highlight, 10)};
+    color: ${(props: Props) => props.highlight};
+    background-color: ${(props: Props) => lighten(props.background, 10)};
+    border-color: ${(props: Props) => darken(props.highlight, 10)};
   }
 `
 

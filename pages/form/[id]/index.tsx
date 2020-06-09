@@ -38,7 +38,9 @@ const Index: NextPage<Props> = () => {
     }
 
     if (i18n.language !== data.form.language) {
-      i18n.changeLanguage(data.form.language)
+      i18n
+        .changeLanguage(data.form.language)
+        .catch((e: Error) => console.error('failed to change language', e))
     }
   }, [data])
 
@@ -98,8 +100,8 @@ const Index: NextPage<Props> = () => {
                   key={field.id}
                   field={field}
                   design={design}
-                  save={(values) => {
-                    submission.setField(field.id, values[field.id])
+                  save={async (values: { [key: string]: unknown }) => {
+                    await submission.setField(field.id, values[field.id])
 
                     if (data.form.fields.length === i + 1) {
                       submission.finish()
@@ -144,7 +146,7 @@ const Index: NextPage<Props> = () => {
   )
 }
 
-Index.getInitialProps = async ({ query }) => {
+Index.getInitialProps = ({ query }) => {
   return {
     id: query.id as string,
   }

@@ -10,7 +10,7 @@ export const HiddenType: React.FC<AdminFieldTypeProps> = (props) => {
     <div>
       <Form.Item
         label={t('type:hidden.default')}
-        name={[props.field.name, 'value']}
+        name={[props.field.name as string, 'value']}
         labelCol={{ span: 6 }}
       >
         <Input />

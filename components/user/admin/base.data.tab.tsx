@@ -55,7 +55,7 @@ export const BaseDataTab: React.FC<TabPaneProps> = (props) => {
               return ['user']
           }
         }}
-        getValueProps={(v) => {
+        getValueProps={(v: string[]) => {
           let role = 'user'
 
           if (v && v.includes('superuser')) {

@@ -8,9 +8,10 @@ import { transparentize } from './color.change'
 
 type Props = { design: FormDesignFragment } & PickerProps<Moment>
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment
 const Field = styled(DatePicker)`
-  color: ${(props) => props.design.colors.answerColor};
-  border-color: ${(props) => props.design.colors.answerColor};
+  color: ${(props: Props) => props.design.colors.answerColor};
+  border-color: ${(props: Props) => props.design.colors.answerColor};
   background: none !important;
   border-right: none;
   border-top: none;
@@ -20,7 +21,7 @@ const Field = styled(DatePicker)`
 
   :hover,
   :active {
-    border-color: ${(props) => props.design.colors.answerColor};
+    border-color: ${(props: Props) => props.design.colors.answerColor};
   }
 
   &.ant-picker {
@@ -32,15 +33,15 @@ const Field = styled(DatePicker)`
   }
 
   input {
-    color: ${(props) => props.design.colors.answerColor};
+    color: ${(props: Props) => props.design.colors.answerColor};
 
     ::placeholder {
-      color: ${(props) => transparentize(props.design.colors.answerColor, 60)};
+      color: ${(props: Props) => transparentize(props.design.colors.answerColor, 60)};
     }
   }
 
   .anticon {
-    color: ${(props) => props.design.colors.answerColor};
+    color: ${(props: Props) => props.design.colors.answerColor};
   }
 `
 

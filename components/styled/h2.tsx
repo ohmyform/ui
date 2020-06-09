@@ -7,7 +7,7 @@ interface Props {
   design: FormDesignFragment
 }
 const Header = styled.h2`
-  color: ${(props) =>
+  color: ${(props: Props) =>
     props.type === 'question'
       ? props.design.colors.questionColor
       : props.design.colors.answerColor};

@@ -16,7 +16,7 @@ export const RespondentNotificationsTab: React.FC<Props> = (props) => {
   const [enabled, setEnabled] = useState<boolean>()
 
   useEffect(() => {
-    const next = props.form.getFieldValue(['form', 'respondentNotifications', 'enabled'])
+    const next = props.form.getFieldValue(['form', 'respondentNotifications', 'enabled']) as boolean
 
     if (next !== enabled) {
       setEnabled(next)
@@ -24,14 +24,18 @@ export const RespondentNotificationsTab: React.FC<Props> = (props) => {
   }, [props.form.getFieldValue(['form', 'respondentNotifications', 'enabled'])])
 
   useEffect(() => {
-    props.form.validateFields([
-      ['form', 'respondentNotifications', 'subject'],
-      ['form', 'respondentNotifications', 'htmlTemplate'],
-      ['form', 'respondentNotifications', 'toField'],
-    ])
+    props.form
+      .validateFields([
+        ['form', 'respondentNotifications', 'subject'],
+        ['form', 'respondentNotifications', 'htmlTemplate'],
+        ['form', 'respondentNotifications', 'toField'],
+      ])
+      .catch((e: Error) => console.error('failed to validate fields', e))
   }, [enabled])
 
-  const groups = {}
+  const groups: {
+    [key: string]: AdminFormFieldFragment[]
+  } = {}
 
   props.fields.forEach((field) => {
     if (!groups[field.type]) {

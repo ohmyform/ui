@@ -4,7 +4,11 @@ import { useForm } from 'antd/lib/form/Form'
 import { AuthFooter } from 'components/auth/footer'
 import { AuthLayout } from 'components/auth/layout'
 import { setAuth } from 'components/with.auth'
-import { LOGIN_MUTATION } from 'graphql/mutation/login.mutation'
+import {
+  LOGIN_MUTATION,
+  LoginMutationData,
+  LoginMutationVariables,
+} from 'graphql/mutation/login.mutation'
 import { NextPage } from 'next'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -16,29 +20,29 @@ const Index: NextPage = () => {
   const [form] = useForm()
   const router = useRouter()
   const [loading, setLoading] = useState(false)
-  const [login] = useMutation(LOGIN_MUTATION)
+  const [login] = useMutation<LoginMutationData, LoginMutationVariables>(LOGIN_MUTATION)
 
-  const finish = async (data) => {
+  const finish = async (data: LoginMutationVariables) => {
     setLoading(true)
     try {
       const result = await login({
         variables: data,
       })
 
-      await setAuth(result.data.tokens.access, result.data.tokens.refresh)
+      setAuth(result.data.tokens.access, result.data.tokens.refresh)
 
-      message.success(t('login:welcomeBack'))
+      await message.success(t('login:welcomeBack'))
 
-      router.push('/admin')
+      await router.push('/admin')
     } catch (e) {
-      message.error(t('login:invalidLoginCredentials'))
+      await message.error(t('login:invalidLoginCredentials'))
     }
 
     setLoading(false)
   }
 
-  const failed = () => {
-    message.error(t('validation:mandatoryFieldsMissing'))
+  const failed = async () => {
+    await message.error(t('validation:mandatoryFieldsMissing'))
   }
 
   return (
@@ -55,7 +59,7 @@ const Index: NextPage = () => {
         }}
       >
         <img
-          src={require('../../assets/images/logo_white_small.png')}
+          src={require('../../assets/images/logo_white_small.png') as string}
           alt={'OhMyForm'}
           style={{
             display: 'block',

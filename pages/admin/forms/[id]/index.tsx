@@ -112,10 +112,10 @@ const Index: NextPage = () => {
       form.setFieldsValue(next)
       setFields(next.form.fields)
 
-      message.success(t('form:updated'))
+      await message.success(t('form:updated'))
     } catch (e) {
       console.error('failed to save', e)
-      message.error(t('form:updateError'))
+      await message.error(t('form:updateError'))
     }
 
     setSaving(false)
@@ -134,7 +134,7 @@ const Index: NextPage = () => {
         <Link
           key={'submissions'}
           href={'/admin/forms/[id]/submissions'}
-          as={`/admin/forms/${router.query.id}/submissions`}
+          as={`/admin/forms/${router.query.id as string}/submissions`}
         >
           <Button>{t('admin:submissions')}</Button>
         </Link>,
@@ -147,9 +147,9 @@ const Index: NextPage = () => {
       <Form
         form={form}
         onFinish={save}
-        onFinishFailed={() => {
+        onFinishFailed={async () => {
           // TODO process errors
-          message.error(t('validation:mandatoryFieldsMissing'))
+          await message.error(t('validation:mandatoryFieldsMissing'))
         }}
         labelCol={{
           xs: { span: 24 },

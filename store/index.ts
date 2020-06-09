@@ -8,10 +8,10 @@ export interface State {
   auth: AuthState
 }
 
-const root = (state: State, action: AnyAction) => {
+const root = (state: State, action: AnyAction): State => {
   switch (action.type) {
     case HYDRATE:
-      return { ...state, ...action.payload }
+      return { ...state, ...action.payload } as State
   }
 
   const combined = combineReducers({

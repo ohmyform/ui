@@ -7,7 +7,12 @@ import React, { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { LoadingPage } from '../components/loading.page'
 
-const { publicRuntimeConfig } = getConfig()
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+const { publicRuntimeConfig } = getConfig() as {
+  publicRuntimeConfig: {
+    spa: boolean
+  }
+}
 
 const Index: NextPage = () => {
   const router = useRouter()
@@ -17,14 +22,17 @@ const Index: NextPage = () => {
     if (router.pathname !== window.location.pathname) {
       let href = router.asPath
       const as = router.asPath
+      const possible = [/(\/form\/)[^/]+/i, /(\/admin\/forms\/)[^/]+/i, /(\/admin\/users\/)[^/]+/i]
 
-      ;[/(\/form\/)[^/]+/i, /(\/admin\/forms\/)[^/]+/i, /(\/admin\/users\/)[^/]+/i].forEach((r) => {
+      possible.forEach((r) => {
         if (r.test(as)) {
           href = href.replace(r, '$1[id]')
         }
       })
 
-      router.replace(href, as)
+      router.replace(href, as).catch((e: Error) => {
+        console.error('failed redirect', e)
+      })
     }
   })
 
@@ -50,7 +58,7 @@ const Index: NextPage = () => {
           width: 500,
           textAlign: 'center',
         }}
-        src={require('../assets/images/logo_white.png')}
+        src={require('../assets/images/logo_white.png') as string}
       />
 
       <AuthFooter />

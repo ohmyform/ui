@@ -16,7 +16,7 @@ export const SelfNotificationsTab: React.FC<Props> = (props) => {
   const [enabled, setEnabled] = useState<boolean>()
 
   useEffect(() => {
-    const next = props.form.getFieldValue(['form', 'selfNotifications', 'enabled'])
+    const next = props.form.getFieldValue(['form', 'selfNotifications', 'enabled']) as boolean
 
     if (next !== enabled) {
       setEnabled(next)
@@ -24,13 +24,17 @@ export const SelfNotificationsTab: React.FC<Props> = (props) => {
   }, [props.form.getFieldValue(['form', 'selfNotifications', 'enabled'])])
 
   useEffect(() => {
-    props.form.validateFields([
-      ['form', 'selfNotifications', 'subject'],
-      ['form', 'selfNotifications', 'htmlTemplate'],
-    ])
+    props.form
+      .validateFields([
+        ['form', 'selfNotifications', 'subject'],
+        ['form', 'selfNotifications', 'htmlTemplate'],
+      ])
+      .catch((e: Error) => console.error('failed to validate', e))
   }, [enabled])
 
-  const groups = {}
+  const groups: {
+    [key: string]: AdminFormFieldFragment[]
+  } = {}
   props.fields.forEach((field) => {
     if (!groups[field.type]) {
       groups[field.type] = []

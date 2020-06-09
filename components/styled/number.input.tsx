@@ -9,9 +9,10 @@ interface Props extends InputNumberProps {
   design: FormDesignFragment
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment
 const Field = styled(InputNumber)`
-  color: ${(props) => props.design.colors.answerColor};
-  border-color: ${(props) => props.design.colors.answerColor};
+  color: ${(props: Props) => props.design.colors.answerColor};
+  border-color: ${(props: Props) => props.design.colors.answerColor};
   background: none !important;
   border-right: none;
   border-top: none;
@@ -20,12 +21,12 @@ const Field = styled(InputNumber)`
   width: 100%;
 
   :focus {
-    outline: ${(props) => props.design.colors.answerColor} auto 5px;
+    outline: ${(props: Props) => props.design.colors.answerColor} auto 5px;
   }
 
   :hover,
   :active {
-    border-color: ${(props) => props.design.colors.answerColor};
+    border-color: ${(props: Props) => props.design.colors.answerColor};
   }
 
   &.ant-input-number {
@@ -34,15 +35,15 @@ const Field = styled(InputNumber)`
 
   input {
     background: none !important;
-    color: ${(props) => props.design.colors.answerColor};
+    color: ${(props: Props) => props.design.colors.answerColor};
 
     ::placeholder {
-      color: ${(props) => transparentize(props.design.colors.answerColor, 60)};
+      color: ${(props: Props) => transparentize(props.design.colors.answerColor, 60)};
     }
   }
 
   .anticon {
-    color: ${(props) => props.design.colors.answerColor};
+    color: ${(props: Props) => props.design.colors.answerColor};
   }
 `
 

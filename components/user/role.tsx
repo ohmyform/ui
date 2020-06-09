@@ -6,7 +6,7 @@ interface Props {
 }
 
 export const UserRole: React.FC<Props> = (props) => {
-  let color
+  let color: string
   let level = 'unknown'
   const css: CSSProperties = {}
 

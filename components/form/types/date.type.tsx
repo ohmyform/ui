@@ -25,8 +25,8 @@ export const DateType: React.FC<FieldTypeProps> = ({ field, design }) => {
       <Form.Item
         name={[field.id, 'value']}
         rules={[{ required: field.required, message: 'Please provide Information' }]}
-        getValueFromEvent={(e) => e.format('YYYY-MM-DD')}
-        getValueProps={(e) => ({ value: e ? moment(e) : undefined })}
+        getValueFromEvent={(e: Moment) => e.format('YYYY-MM-DD')}
+        getValueProps={(e: string) => ({ value: e ? moment(e) : undefined })}
         initialValue={field.value ? moment(field.value) : undefined}
       >
         <StyledDateInput
