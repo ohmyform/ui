@@ -11,7 +11,7 @@ import type from './type.json'
 import user from './user.json'
 import validation from './validation.json'
 
-export const es = {
+export const pl = {
   admin,
   common,
   form,
