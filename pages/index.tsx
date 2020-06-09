@@ -19,7 +19,7 @@ const Index: NextPage = () => {
   const { t } = useTranslation()
 
   useEffect(() => {
-    if (router.pathname !== window.location.pathname) {
+    if (router.pathname !== window.location.pathname && window.location.pathname.length > 2) {
       let href = router.asPath
       const as = router.asPath
       const possible = [/(\/form\/)[^/]+/i, /(\/admin\/forms\/)[^/]+/i, /(\/admin\/users\/)[^/]+/i]
@@ -38,7 +38,9 @@ const Index: NextPage = () => {
 
   if (
     publicRuntimeConfig.spa ||
-    (process.browser && router.pathname !== window.location.pathname)
+    (process.browser &&
+      router.pathname !== window.location.pathname &&
+      window.location.pathname.length > 2)
   ) {
     return <LoadingPage message={t('loading')} />
   }

@@ -1,6 +1,5 @@
 # OhMyForm UI
 
-![Project Status](https://badgen.net/github/checks/ohmyform/ui)
 [![Build Status](https://travis-ci.org/ohmyform/ui.svg?branch=master)](https://travis-ci.org/ohmyform/ui)
 ![Latest Release](https://badgen.net/github/tag/ohmyform/ui)
 ![Docker Pulls](https://badgen.net/docker/pulls/ohmyform/ui)

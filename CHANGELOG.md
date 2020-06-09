@@ -27,6 +27,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 
 - [OMF#93](https://github.com/ohmyform/ohmyform/issues/93) dropdown options are not saved
+- redirect attempts on static export
  
 ## [0.9.2] - 2020-06-04
 
