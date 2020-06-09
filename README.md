@@ -1,6 +1,7 @@
 # OhMyForm UI
 
 ![Project Status](https://badgen.net/github/checks/ohmyform/ui)
+![Travis Status](https://badgen.net/travis/ohmyform/ui)
 ![Latest Release](https://badgen.net/github/tag/ohmyform/ui)
 ![Docker Pulls](https://badgen.net/docker/pulls/ohmyform/ui)
 [![Lokalise](https://badgen.net/badge/Lokalise/EN/green?icon=libraries)](https://app.lokalise.com/public/379418475ede5d5c6937b0.31012044/)
