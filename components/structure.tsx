@@ -79,7 +79,7 @@ const Structure: FunctionComponent<Props> = (props) => {
                     }}
                   >
                     {element.icon}
-                    {element.name}
+                    {t(element.name)}
                   </div>
                 }
               >
@@ -94,7 +94,7 @@ const Structure: FunctionComponent<Props> = (props) => {
               title={
                 <span>
                   {element.icon}
-                  {element.name}
+                  {t(element.name)}
                 </span>
               }
             >
@@ -113,7 +113,7 @@ const Structure: FunctionComponent<Props> = (props) => {
             key={element.key}
           >
             {element.icon}
-            {element.name}
+            {t(element.name)}
           </Menu.Item>
         )
       }

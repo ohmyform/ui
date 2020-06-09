@@ -15,24 +15,24 @@ export interface SideMenuElement {
 export const sideMenu: SideMenuElement[] = [
   {
     key: 'home',
-    name: 'Home',
+    name: 'admin:home',
     href: '/admin',
     icon: <HomeOutlined />,
   },
   {
     key: 'profile',
-    name: 'Profile',
+    name: 'admin:profile',
     href: '/admin/profile',
     icon: <UserOutlined />,
   },
   {
     key: 'public',
-    name: 'Forms',
+    name: 'admin:forms',
     group: true,
     items: [
       {
         key: 'forms',
-        name: 'Forms',
+        name: 'admin:forms',
         href: '/admin/forms',
         icon: <MessageOutlined />,
       },
@@ -40,12 +40,12 @@ export const sideMenu: SideMenuElement[] = [
   },
   {
     key: 'administration',
-    name: 'Administration',
+    name: 'admin:administration',
     group: true,
     items: [
       {
         key: 'users',
-        name: 'Users',
+        name: 'admin:users',
         href: '/admin/users',
         icon: <TeamOutlined />,
       },
