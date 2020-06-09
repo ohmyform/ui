@@ -133,6 +133,13 @@ type PagerForm {
   total: Int!
 }
 
+type PagerSetting {
+  entries: [Setting!]!
+  limit: Int!
+  start: Int!
+  total: Int!
+}
+
 type PagerSubmission {
   entries: [Submission!]!
   limit: Int!
@@ -163,6 +170,8 @@ type Profile {
 type Query {
   getFormById(id: ID!): Form!
   getFormStatistic: FormStatistic!
+  getSetting(key: ID!): Setting!
+  getSettings: PagerSetting!
   getSubmissionStatistic: SubmissionStatistic!
   getUserById(id: ID!): User!
   getUserStatistic: UserStatistic!
@@ -187,6 +196,13 @@ type SelfNotificationsModel implements Notification {
   htmlTemplate: String
   subject: String
   toEmail: String
+}
+
+type Setting {
+  isFalse: Boolean!
+  isTrue: Boolean!
+  key: ID!
+  value: String!
 }
 
 type Submission {
