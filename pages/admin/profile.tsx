@@ -1,46 +1,51 @@
-import {useMutation, useQuery} from '@apollo/react-hooks'
-import {Button, Form, Input, message, Select} from 'antd'
-import {useForm} from 'antd/lib/form/Form'
-import {NextPage} from 'next'
-import {useRouter} from 'next/router'
-import React, {useState} from 'react'
-import {useTranslation} from 'react-i18next'
-import {cleanInput} from '../../components/clean.input'
+import { useMutation, useQuery } from '@apollo/react-hooks'
+import { Button, Form, Input, message, Select } from 'antd'
+import { useForm } from 'antd/lib/form/Form'
+import { NextPage } from 'next'
+import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { cleanInput } from '../../components/clean.input'
 import Structure from '../../components/structure'
 import {
   ADMIN_PROFILE_UPDATE_MUTATION,
   AdminProfileUpdateMutationData,
-  AdminProfileUpdateMutationVariables
+  AdminProfileUpdateMutationVariables,
 } from '../../graphql/mutation/admin.profile.update.mutation'
 import {
   ADMIN_PROFILE_QUERY,
   AdminProfileQueryData,
-  AdminProfileQueryVariables
+  AdminProfileQueryVariables,
 } from '../../graphql/query/admin.profile.query'
-import {AdminUserQueryData} from '../../graphql/query/admin.user.query'
-import {languages} from '../../i18n'
+import { AdminUserQueryData } from '../../graphql/query/admin.user.query'
+import { languages } from '../../i18n'
 
 const Profile: NextPage = () => {
   const { t } = useTranslation()
-  const router = useRouter()
   const [form] = useForm()
   const [saving, setSaving] = useState(false)
 
-  const {data, loading, error} = useQuery<AdminProfileQueryData, AdminProfileQueryVariables>(ADMIN_PROFILE_QUERY, {
-    onCompleted: next => {
-      form.setFieldsValue(next)
-    },
-  })
+  const { loading } = useQuery<AdminProfileQueryData, AdminProfileQueryVariables>(
+    ADMIN_PROFILE_QUERY,
+    {
+      onCompleted: (next) => {
+        form.setFieldsValue(next)
+      },
+    }
+  )
 
-  const [update] = useMutation<AdminProfileUpdateMutationData, AdminProfileUpdateMutationVariables>(ADMIN_PROFILE_UPDATE_MUTATION)
+  const [update] = useMutation<AdminProfileUpdateMutationData, AdminProfileUpdateMutationVariables>(
+    ADMIN_PROFILE_UPDATE_MUTATION
+  )
 
   const save = async (formData: AdminUserQueryData) => {
     setSaving(true)
 
     try {
-      const next = (await update({
-        variables: cleanInput(formData),
-      })).data
+      const next = (
+        await update({
+          variables: cleanInput(formData),
+        })
+      ).data
 
       form.setFieldsValue(next)
 
@@ -53,27 +58,22 @@ const Profile: NextPage = () => {
     setSaving(false)
   }
 
-
   return (
     <Structure
       loading={loading || saving}
       title={t('admin:profile')}
       selected={'profile'}
-      breadcrumbs={[
-        { href: '/admin', name: t('admin:home') },
-      ]}
+      breadcrumbs={[{ href: '/admin', name: t('admin:home') }]}
       extra={[
-        <Button
-          key={'save'}
-          onClick={form.submit}
-          type={'primary'}
-        >{t('profile:updateNow')}</Button>,
+        <Button key={'save'} onClick={form.submit} type={'primary'}>
+          {t('profile:updateNow')}
+        </Button>,
       ]}
     >
       <Form
         form={form}
         onFinish={save}
-        onFinishFailed={errors => {
+        onFinishFailed={() => {
           // TODO process errors
           message.error(t('validation:mandatoryFieldsMissing'))
         }}
@@ -86,7 +86,9 @@ const Profile: NextPage = () => {
           sm: { span: 18 },
         }}
       >
-        <Form.Item noStyle name={['user', 'id']}><Input type={'hidden'} /></Form.Item>
+        <Form.Item noStyle name={['user', 'id']}>
+          <Input type={'hidden'} />
+        </Form.Item>
 
         <Form.Item
           label={t('profile:username')}
@@ -129,22 +131,20 @@ const Profile: NextPage = () => {
           ]}
         >
           <Select>
-            {languages.map(language => <Select.Option value={language} key={language}>{t(`language:${language}`)}</Select.Option> )}
+            {languages.map((language) => (
+              <Select.Option value={language} key={language}>
+                {t(`language:${language}`)}
+              </Select.Option>
+            ))}
           </Select>
         </Form.Item>
 
-        <Form.Item
-          label={t('profile:firstName')}
-          name={['user', 'firstName']}
-        >
-          <Input  />
+        <Form.Item label={t('profile:firstName')} name={['user', 'firstName']}>
+          <Input />
         </Form.Item>
 
-        <Form.Item
-          label={t('profile:lastName')}
-          name={['user', 'lastName']}
-        >
-          <Input  />
+        <Form.Item label={t('profile:lastName')} name={['user', 'lastName']}>
+          <Input />
         </Form.Item>
       </Form>
     </Structure>

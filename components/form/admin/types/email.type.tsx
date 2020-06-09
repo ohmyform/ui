@@ -1,9 +1,9 @@
-import {Form, Input} from 'antd'
+import { Form, Input } from 'antd'
 import React from 'react'
-import {useTranslation} from 'react-i18next'
-import {AdminFieldTypeProps} from './type.props'
+import { useTranslation } from 'react-i18next'
+import { AdminFieldTypeProps } from './type.props'
 
-export const EmailType: React.FC<AdminFieldTypeProps> = props => {
+export const EmailType: React.FC<AdminFieldTypeProps> = (props) => {
   const { t } = useTranslation()
 
   return (
@@ -11,9 +11,7 @@ export const EmailType: React.FC<AdminFieldTypeProps> = props => {
       <Form.Item
         label={t('type:email.default')}
         name={[props.field.name, 'value']}
-        rules={[
-          { type: 'email', message: t('validation:emailRequired') }
-        ]}
+        rules={[{ type: 'email', message: t('validation:emailRequired') }]}
         labelCol={{ span: 6 }}
       >
         <Input type={'email'} />

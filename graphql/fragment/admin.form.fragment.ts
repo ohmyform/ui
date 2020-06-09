@@ -1,4 +1,4 @@
-import {gql} from 'apollo-boost'
+import { gql } from 'apollo-boost'
 
 export interface AdminFormPageFragment {
   show: boolean
@@ -102,7 +102,7 @@ export const ADMIN_FORM_FRAGMENT = gql`
     language
     showFooter
     isLive
-    
+
     fields {
       id
       title
@@ -110,13 +110,13 @@ export const ADMIN_FORM_FRAGMENT = gql`
       description
       required
       value
-      
+
       options {
         key
         title
         value
       }
-      
+
       logicJump {
         fieldA
         valueB
@@ -129,7 +129,7 @@ export const ADMIN_FORM_FRAGMENT = gql`
         shape
       }
     }
-    
+
     selfNotifications {
       enabled
       subject

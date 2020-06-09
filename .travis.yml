@@ -9,4 +9,3 @@ cache:
 script:
   - yarn
   - yarn lint
-  - yarn build

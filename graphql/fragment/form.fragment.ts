@@ -1,4 +1,4 @@
-import {gql} from 'apollo-boost'
+import { gql } from 'apollo-boost'
 
 export interface FormPageFragment {
   show: boolean
@@ -77,7 +77,7 @@ export const FORM_FRAGMENT = gql`
     title
     language
     showFooter
-    
+
     fields {
       id
       title
@@ -85,13 +85,13 @@ export const FORM_FRAGMENT = gql`
       description
       required
       value
-      
+
       options {
         key
         title
         value
       }
-      
+
       logicJump {
         fieldA
         valueB
@@ -104,7 +104,7 @@ export const FORM_FRAGMENT = gql`
         shape
       }
     }
-    
+
     design {
       colors {
         backgroundColor
@@ -116,7 +116,7 @@ export const FORM_FRAGMENT = gql`
       }
       font
     }
-    
+
     startPage {
       show
       title
@@ -131,7 +131,7 @@ export const FORM_FRAGMENT = gql`
         color
       }
     }
-    
+
     endPage {
       show
       title

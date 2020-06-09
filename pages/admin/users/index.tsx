@@ -1,26 +1,26 @@
-import {DeleteOutlined, EditOutlined} from '@ant-design/icons/lib'
-import {useMutation, useQuery} from '@apollo/react-hooks'
-import {Button, message, Popconfirm, Space, Table, Tag} from 'antd'
-import {PaginationProps} from 'antd/es/pagination'
-import {ColumnsType} from 'antd/lib/table/interface'
+import { DeleteOutlined, EditOutlined } from '@ant-design/icons/lib'
+import { useMutation, useQuery } from '@apollo/react-hooks'
+import { Button, message, Popconfirm, Space, Table, Tag } from 'antd'
+import { PaginationProps } from 'antd/es/pagination'
+import { ColumnsType } from 'antd/lib/table/interface'
 import Structure from 'components/structure'
-import {withAuth} from 'components/with.auth'
-import {NextPage} from 'next'
+import { withAuth } from 'components/with.auth'
+import { NextPage } from 'next'
 import Link from 'next/link'
-import React, {useState} from 'react'
-import {useTranslation} from 'react-i18next'
-import {DateTime} from '../../../components/date.time'
-import {UserRole} from '../../../components/user/role'
+import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { DateTime } from '../../../components/date.time'
+import { UserRole } from '../../../components/user/role'
 import {
   ADMIN_USER_DELETE_MUTATION,
   AdminUserDeleteMutationData,
-  AdminUserDeleteMutationVariables
+  AdminUserDeleteMutationVariables,
 } from '../../../graphql/mutation/admin.user.delete.mutation'
 import {
   ADMIN_PAGER_USER_QUERY,
   AdminPagerUserEntryQueryData,
   AdminPagerUserQueryData,
-  AdminPagerUserQueryVariables
+  AdminPagerUserQueryVariables,
 } from '../../../graphql/query/admin.pager.user.query'
 
 const Index: NextPage = () => {
@@ -29,29 +29,35 @@ const Index: NextPage = () => {
     pageSize: 10,
   })
   const [entries, setEntries] = useState<AdminPagerUserEntryQueryData[]>()
-  const {loading, refetch} = useQuery<AdminPagerUserQueryData, AdminPagerUserQueryVariables>(ADMIN_PAGER_USER_QUERY, {
-    variables: {
-      limit: pagination.pageSize,
-      start: Math.max(0, pagination.current - 1) * pagination.pageSize || 0
-    },
-    onCompleted: ({pager}) => {
-      setPagination({
-        ...pagination,
-        total: pager.total,
-      })
-      setEntries(pager.entries)
+  const { loading, refetch } = useQuery<AdminPagerUserQueryData, AdminPagerUserQueryVariables>(
+    ADMIN_PAGER_USER_QUERY,
+    {
+      variables: {
+        limit: pagination.pageSize,
+        start: Math.max(0, pagination.current - 1) * pagination.pageSize || 0,
+      },
+      onCompleted: ({ pager }) => {
+        setPagination({
+          ...pagination,
+          total: pager.total,
+        })
+        setEntries(pager.entries)
+      },
     }
-  })
-  const [executeDelete] = useMutation<AdminUserDeleteMutationData, AdminUserDeleteMutationVariables>(ADMIN_USER_DELETE_MUTATION)
+  )
+  const [executeDelete] = useMutation<
+    AdminUserDeleteMutationData,
+    AdminUserDeleteMutationVariables
+  >(ADMIN_USER_DELETE_MUTATION)
 
   const deleteUser = async (form) => {
     try {
       await executeDelete({
         variables: {
-          id: form.id
-        }
+          id: form.id,
+        },
       })
-      const next = entries.filter(entry => entry.id !== form.id)
+      const next = entries.filter((entry) => entry.id !== form.id)
       if (next.length === 0) {
         setPagination({ ...pagination, current: 1 })
       } else {
@@ -67,28 +73,33 @@ const Index: NextPage = () => {
     {
       title: t('user:row.roles'),
       dataIndex: 'roles',
-      render: roles => <UserRole roles={roles} />
+      render(roles) {
+        return <UserRole roles={roles} />
+      },
     },
     {
       title: t('user:row.email'),
-      render: row => <Tag color={row.verifiedEmail ? 'lime' : 'volcano' }>{row.email}</Tag>
+      render(row) {
+        return <Tag color={row.verifiedEmail ? 'lime' : 'volcano'}>{row.email}</Tag>
+      },
     },
     {
       title: t('user:row.created'),
       dataIndex: 'created',
-      render: date => <DateTime date={date} />
+      render(date) {
+        return <DateTime date={date} />
+      },
     },
     {
       title: t('user:row.menu'),
       align: 'right',
-      render: row => {
+      render(row) {
         return (
           <Space>
-            <Link
-              href={'/admin/users/[id]'}
-              as={`/admin/users/${row.id}`}
-            >
-              <Button type={'primary'}><EditOutlined /></Button>
+            <Link href={'/admin/users/[id]'} as={`/admin/users/${row.id}`}>
+              <Button type={'primary'}>
+                <EditOutlined />
+              </Button>
             </Link>
 
             <Popconfirm
@@ -97,11 +108,13 @@ const Index: NextPage = () => {
               okText={t('user:deleteNow')}
               okButtonProps={{ danger: true }}
             >
-              <Button danger><DeleteOutlined /></Button>
+              <Button danger>
+                <DeleteOutlined />
+              </Button>
             </Popconfirm>
           </Space>
         )
-      }
+      },
     },
   ]
 
@@ -109,9 +122,7 @@ const Index: NextPage = () => {
     <Structure
       title={t('admin:users')}
       loading={loading}
-      breadcrumbs={[
-        { href: '/admin', name: t('admin:home') },
-      ]}
+      breadcrumbs={[{ href: '/admin', name: t('admin:home') }]}
       padded={false}
     >
       <Table
@@ -119,7 +130,7 @@ const Index: NextPage = () => {
         dataSource={entries}
         rowKey={'id'}
         pagination={pagination}
-        onChange={next => {
+        onChange={(next) => {
           setPagination(next)
           refetch()
         }}

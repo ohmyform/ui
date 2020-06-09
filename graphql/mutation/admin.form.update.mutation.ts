@@ -1,5 +1,5 @@
-import {gql} from 'apollo-boost'
-import {ADMIN_FORM_FRAGMENT, AdminFormFragment} from '../fragment/admin.form.fragment'
+import { gql } from 'apollo-boost'
+import { ADMIN_FORM_FRAGMENT, AdminFormFragment } from '../fragment/admin.form.fragment'
 
 export interface AdminFormUpdateMutationData {
   form: AdminFormFragment
@@ -15,6 +15,6 @@ export const ADMIN_FORM_UPDATE_MUTATION = gql`
       ...AdminForm
     }
   }
-  
+
   ${ADMIN_FORM_FRAGMENT}
 `

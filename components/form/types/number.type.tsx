@@ -1,9 +1,9 @@
-import {Form} from 'antd'
+import { Form } from 'antd'
 import React from 'react'
-import {StyledNumberInput} from '../../styled/number.input'
-import {FieldTypeProps} from './type.props'
+import { StyledNumberInput } from '../../styled/number.input'
+import { FieldTypeProps } from './type.props'
 
-export const NumberType: React.FC<FieldTypeProps> = ({field, design}) => {
+export const NumberType: React.FC<FieldTypeProps> = ({ field, design }) => {
   return (
     <div>
       <Form.Item
@@ -14,10 +14,7 @@ export const NumberType: React.FC<FieldTypeProps> = ({field, design}) => {
         ]}
         initialValue={parseFloat(field.value)}
       >
-        <StyledNumberInput
-          design={design}
-          size={'large'}
-        />
+        <StyledNumberInput design={design} size={'large'} />
       </Form.Item>
     </div>
   )

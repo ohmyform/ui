@@ -1,10 +1,10 @@
-import {Form, Input, Select, Switch, Tabs} from 'antd'
-import {TabPaneProps} from 'antd/lib/tabs'
+import { Form, Input, Select, Switch, Tabs } from 'antd'
+import { TabPaneProps } from 'antd/lib/tabs'
 import React from 'react'
-import {useTranslation} from 'react-i18next'
-import {languages} from '../../../i18n'
+import { useTranslation } from 'react-i18next'
+import { languages } from '../../../i18n'
 
-export const BaseDataTab: React.FC<TabPaneProps> = props => {
+export const BaseDataTab: React.FC<TabPaneProps> = (props) => {
   const { t } = useTranslation()
 
   return (
@@ -41,7 +41,11 @@ export const BaseDataTab: React.FC<TabPaneProps> = props => {
         ]}
       >
         <Select>
-          {languages.map(language => <Select.Option value={language} key={language}>{t(`language:${language}`)}</Select.Option> )}
+          {languages.map((language) => (
+            <Select.Option value={language} key={language}>
+              {t(`language:${language}`)}
+            </Select.Option>
+          ))}
         </Select>
       </Form.Item>
 
@@ -52,7 +56,6 @@ export const BaseDataTab: React.FC<TabPaneProps> = props => {
       >
         <Switch />
       </Form.Item>
-
     </Tabs.TabPane>
   )
 }

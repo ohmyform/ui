@@ -1,9 +1,9 @@
-import {Form, Rate} from 'antd'
+import { Form, Rate } from 'antd'
 import React from 'react'
-import {useTranslation} from 'react-i18next'
-import {AdminFieldTypeProps} from './type.props'
+import { useTranslation } from 'react-i18next'
+import { AdminFieldTypeProps } from './type.props'
 
-export const RatingType: React.FC<AdminFieldTypeProps> = props => {
+export const RatingType: React.FC<AdminFieldTypeProps> = (props) => {
   const { t } = useTranslation()
 
   // TODO add ratings
@@ -15,10 +15,7 @@ export const RatingType: React.FC<AdminFieldTypeProps> = props => {
         labelCol={{ span: 6 }}
         extra={t('type:rating.clearNote')}
       >
-        <Rate
-          allowHalf
-          allowClear
-        />
+        <Rate allowHalf allowClear />
       </Form.Item>
     </div>
   )

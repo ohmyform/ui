@@ -1,24 +1,24 @@
-import {useMutation, useQuery} from '@apollo/react-hooks'
-import {Button, Form, Input, message} from 'antd'
-import {useForm} from 'antd/lib/form/Form'
-import {AuthFooter} from 'components/auth/footer'
-import {AuthLayout} from 'components/auth/layout'
-import {setAuth} from 'components/with.auth'
-import {REGISTER_MUTATION} from 'graphql/mutation/register.mutation'
-import {NextPage} from 'next'
+import { useMutation, useQuery } from '@apollo/react-hooks'
+import { Button, Form, Input, message } from 'antd'
+import { useForm } from 'antd/lib/form/Form'
+import { AuthFooter } from 'components/auth/footer'
+import { AuthLayout } from 'components/auth/layout'
+import { setAuth } from 'components/with.auth'
+import { REGISTER_MUTATION } from 'graphql/mutation/register.mutation'
+import { NextPage } from 'next'
 import Link from 'next/link'
-import {useRouter} from 'next/router'
-import React, {useState} from 'react'
-import {useTranslation} from 'react-i18next'
-import {ErrorPage} from '../components/error.page'
-import {SETTINGS_QUERY, SettingsQueryData} from '../graphql/query/settings.query'
+import { useRouter } from 'next/router'
+import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { ErrorPage } from '../components/error.page'
+import { SETTINGS_QUERY, SettingsQueryData } from '../graphql/query/settings.query'
 
 const Register: NextPage = () => {
   const { t } = useTranslation()
   const [form] = useForm()
   const router = useRouter()
   const [loading, setLoading] = useState(false)
-  const {data} = useQuery<SettingsQueryData>(SETTINGS_QUERY)
+  const { data } = useQuery<SettingsQueryData>(SETTINGS_QUERY)
 
   const [register] = useMutation(REGISTER_MUTATION)
 
@@ -28,14 +28,11 @@ const Register: NextPage = () => {
     try {
       const result = await register({
         variables: {
-          user: data
+          user: data,
         },
       })
 
-      await setAuth(
-        result.data.tokens.access,
-        result.data.tokens.refresh
-      )
+      await setAuth(result.data.tokens.access, result.data.tokens.refresh)
 
       message.success(t('register:welcome'))
 
@@ -51,9 +48,7 @@ const Register: NextPage = () => {
   }
 
   if (data && data.disabledSignUp.value) {
-    return (
-      <ErrorPage />
-    )
+    return <ErrorPage />
   }
 
   return (
@@ -85,23 +80,17 @@ const Register: NextPage = () => {
           name="username"
           rules={[{ required: true, message: t('validation:usernameRequired') }]}
         >
-          <Input
-            size="large"
-            placeholder={t('login:usernamePlaceholder')}
-          />
+          <Input size="large" placeholder={t('login:usernamePlaceholder')} />
         </Form.Item>
 
         <Form.Item
           name="email"
           rules={[
             { required: true, message: t('validation:emailRequired') },
-            { type: 'email', message: t('validation:invalidEmail') }
+            { type: 'email', message: t('validation:invalidEmail') },
           ]}
         >
-          <Input
-            size="large"
-            placeholder="Email"
-          />
+          <Input size="large" placeholder="Email" />
         </Form.Item>
 
         <Form.Item
@@ -111,19 +100,11 @@ const Register: NextPage = () => {
             { min: 5, message: t('validation:passwordMinLength') },
           ]}
         >
-          <Input.Password
-            size="large"
-            placeholder={t('login:passwordPlaceholder')}
-          />
+          <Input.Password size="large" placeholder={t('login:passwordPlaceholder')} />
         </Form.Item>
 
         <Form.Item>
-          <Button
-            size="large"
-            type="primary"
-            htmlType="submit"
-            block
-          >
+          <Button size="large" type="primary" htmlType="submit" block>
             {t('register:registerNow')}
           </Button>
         </Form.Item>
@@ -136,10 +117,7 @@ const Register: NextPage = () => {
           }}
         >
           <Link href={'/login'}>
-            <Button
-              type={'link'}
-              ghost
-            >
+            <Button type={'link'} ghost>
               {t('register:gotoLogin')}
             </Button>
           </Link>

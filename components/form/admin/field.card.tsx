@@ -1,50 +1,47 @@
-import {DeleteOutlined} from '@ant-design/icons/lib'
-import {Button, Card, Checkbox, Form, Input, Popconfirm, Tag} from 'antd'
-import {FormInstance} from 'antd/lib/form'
-import {FieldData} from 'rc-field-form/lib/interface'
-import React, {useEffect, useState} from 'react'
-import {useTranslation} from 'react-i18next'
-import {AdminFormFieldFragment} from '../../../graphql/fragment/admin.form.fragment'
-import {adminTypes} from './types'
-import {TextType} from './types/text.type'
+import { DeleteOutlined } from '@ant-design/icons/lib'
+import { Button, Card, Checkbox, Form, Input, Popconfirm, Tag } from 'antd'
+import { FormInstance } from 'antd/lib/form'
+import { FieldData } from 'rc-field-form/lib/interface'
+import React, { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { AdminFormFieldFragment } from '../../../graphql/fragment/admin.form.fragment'
+import { adminTypes } from './types'
+import { TextType } from './types/text.type'
 
 interface Props {
   form: FormInstance
   fields: AdminFormFieldFragment[]
-  onChangeFields: (fields: AdminFormFieldFragment[]) => any
+  onChangeFields: (fields: AdminFormFieldFragment[]) => void
   field: FieldData
   remove: (index: number) => void
   index: number
 }
 
-export const FieldCard: React.FC<Props> = props => {
+export const FieldCard: React.FC<Props> = (props) => {
   const { t } = useTranslation()
-  const {
-    form,
-    field,
-    fields,
-    onChangeFields,
-    remove,
-    index,
-  } = props
+  const { form, field, fields, onChangeFields, remove, index } = props
 
   const type = form.getFieldValue(['form', 'fields', field.name as string, 'type'])
   const TypeComponent = adminTypes[type] || TextType
 
-  const [nextTitle, setNextTitle] = useState(form.getFieldValue(['form', 'fields', field.name as string, 'title']))
+  const [nextTitle, setNextTitle] = useState(
+    form.getFieldValue(['form', 'fields', field.name as string, 'title'])
+  )
 
   useEffect(() => {
     const id = setTimeout(() => {
-      onChangeFields(fields.map((field, i) => {
-        if (i === index) {
-          return {
-            ...field,
-            title: nextTitle,
+      onChangeFields(
+        fields.map((field, i) => {
+          if (i === index) {
+            return {
+              ...field,
+              title: nextTitle,
+            }
+          } else {
+            return field
           }
-        } else {
-          return field
-        }
-      }))
+        })
+      )
     }, 500)
 
     return () => clearTimeout(id)
@@ -54,7 +51,7 @@ export const FieldCard: React.FC<Props> = props => {
     <Card
       title={nextTitle}
       type={'inner'}
-      extra={(
+      extra={
         <div>
           <Tag color={'blue'}>{t(`type:${type}.name`)}</Tag>
           <Popconfirm
@@ -67,24 +64,24 @@ export const FieldCard: React.FC<Props> = props => {
               onChangeFields(fields.filter((e, i) => i !== index))
             }}
           >
-            <Button danger><DeleteOutlined /></Button>
+            <Button danger>
+              <DeleteOutlined />
+            </Button>
           </Popconfirm>
         </div>
-      )}
-      actions={[
-        <DeleteOutlined key={'delete'} onClick={() => remove(index)} />
-      ]}
+      }
+      actions={[<DeleteOutlined key={'delete'} onClick={() => remove(index)} />]}
     >
-      <Form.Item name={[field.name as string, 'type']} noStyle><Input type={'hidden'} /></Form.Item>
+      <Form.Item name={[field.name as string, 'type']} noStyle>
+        <Input type={'hidden'} />
+      </Form.Item>
       <Form.Item
         label={t('type:title')}
         name={[field.name as string, 'title']}
-        rules={[
-          { required: true, message: 'Title is required' }
-        ]}
+        rules={[{ required: true, message: 'Title is required' }]}
         labelCol={{ span: 6 }}
       >
-        <Input onChange={e => setNextTitle(e.target.value)}/>
+        <Input onChange={(e) => setNextTitle(e.target.value)} />
       </Form.Item>
       <Form.Item
         label={t('type:description')}
@@ -103,10 +100,7 @@ export const FieldCard: React.FC<Props> = props => {
         <Checkbox />
       </Form.Item>
 
-      <TypeComponent
-        field={field}
-        form={form}
-      />
+      <TypeComponent field={field} form={form} />
     </Card>
   )
 }

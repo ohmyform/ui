@@ -1,4 +1,4 @@
-import {gql} from 'apollo-boost'
+import { gql } from 'apollo-boost'
 
 export interface AdminPagerFormEntryQueryData {
   id: string
@@ -30,7 +30,7 @@ export interface AdminPagerFormQueryVariables {
 }
 
 export const ADMIN_PAGER_FORM_QUERY = gql`
-  query pager($start: Int, $limit: Int){
+  query pager($start: Int, $limit: Int) {
     pager: listForms(start: $start, limit: $limit) {
       entries {
         id
@@ -45,7 +45,7 @@ export const ADMIN_PAGER_FORM_QUERY = gql`
           username
         }
       }
-      total    
+      total
       limit
       start
     }

@@ -1,4 +1,4 @@
-import {gql} from 'apollo-boost'
+import { gql } from 'apollo-boost'
 
 export interface AdminPagerSubmissionFormFieldQueryData {
   title: string
@@ -56,13 +56,13 @@ export interface AdminPagerSubmissionQueryVariables {
 }
 
 export const ADMIN_PAGER_SUBMISSION_QUERY = gql`
-  query pager($form: ID!, $start: Int, $limit: Int){
+  query pager($form: ID!, $start: Int, $limit: Int) {
     form: getFormById(id: $form) {
       id
       title
       isLive
     }
-  
+
     pager: listSubmissions(form: $form, start: $start, limit: $limit) {
       entries {
         id
@@ -78,19 +78,19 @@ export const ADMIN_PAGER_SUBMISSION_QUERY = gql`
           type
           name
         }
-        
+
         fields {
           id
           value
           type
-      
+
           field {
             title
             required
           }
         }
       }
-      total    
+      total
       limit
       start
     }

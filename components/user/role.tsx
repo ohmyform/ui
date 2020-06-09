@@ -1,15 +1,14 @@
-import {Tag} from "antd"
-import React, {CSSProperties} from 'react'
+import { Tag } from 'antd'
+import React, { CSSProperties } from 'react'
 
 interface Props {
   roles: string[]
 }
 
-export const UserRole: React.FC<Props> = props => {
+export const UserRole: React.FC<Props> = (props) => {
   let color
   let level = 'unknown'
   const css: CSSProperties = {}
-
 
   if (props.roles.includes('superuser')) {
     color = 'red'
@@ -24,10 +23,7 @@ export const UserRole: React.FC<Props> = props => {
   }
 
   return (
-    <Tag
-      color={color}
-      style={css}
-    >
+    <Tag color={color} style={css}>
       {level.toUpperCase()}
     </Tag>
   )

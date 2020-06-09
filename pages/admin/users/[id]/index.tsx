@@ -1,20 +1,24 @@
-import {useMutation, useQuery} from '@apollo/react-hooks'
-import {Button, Form, Input, message, Tabs} from 'antd'
-import {useForm} from 'antd/lib/form/Form'
+import { useMutation, useQuery } from '@apollo/react-hooks'
+import { Button, Form, Input, message, Tabs } from 'antd'
+import { useForm } from 'antd/lib/form/Form'
 import Structure from 'components/structure'
-import {withAuth} from 'components/with.auth'
-import {NextPage} from 'next'
-import {useRouter} from 'next/router'
-import React, {useState} from 'react'
-import {useTranslation} from 'react-i18next'
-import {cleanInput} from '../../../../components/clean.input'
-import {BaseDataTab} from '../../../../components/user/admin/base.data.tab'
+import { withAuth } from 'components/with.auth'
+import { NextPage } from 'next'
+import { useRouter } from 'next/router'
+import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { cleanInput } from '../../../../components/clean.input'
+import { BaseDataTab } from '../../../../components/user/admin/base.data.tab'
 import {
   ADMIN_USER_UPDATE_MUTATION,
   AdminUserUpdateMutationData,
-  AdminUserUpdateMutationVariables
+  AdminUserUpdateMutationVariables,
 } from '../../../../graphql/mutation/admin.user.update.mutation'
-import {ADMIN_USER_QUERY, AdminUserQueryData, AdminUserQueryVariables} from '../../../../graphql/query/admin.user.query'
+import {
+  ADMIN_USER_QUERY,
+  AdminUserQueryData,
+  AdminUserQueryVariables,
+} from '../../../../graphql/query/admin.user.query'
 
 const Index: NextPage = () => {
   const { t } = useTranslation()
@@ -22,23 +26,30 @@ const Index: NextPage = () => {
   const [form] = useForm()
   const [saving, setSaving] = useState(false)
 
-  const {data, loading, error} = useQuery<AdminUserQueryData, AdminUserQueryVariables>(ADMIN_USER_QUERY, {
-    variables: {
-      id: router.query.id as string
-    },
-    onCompleted: next => {
-      form.setFieldsValue(next)
-    },
-  })
+  const { data, loading } = useQuery<AdminUserQueryData, AdminUserQueryVariables>(
+    ADMIN_USER_QUERY,
+    {
+      variables: {
+        id: router.query.id as string,
+      },
+      onCompleted: (next) => {
+        form.setFieldsValue(next)
+      },
+    }
+  )
 
-  const [update] = useMutation<AdminUserUpdateMutationData, AdminUserUpdateMutationVariables>(ADMIN_USER_UPDATE_MUTATION)
+  const [update] = useMutation<AdminUserUpdateMutationData, AdminUserUpdateMutationVariables>(
+    ADMIN_USER_UPDATE_MUTATION
+  )
 
   const save = async (formData: AdminUserQueryData) => {
     setSaving(true)
     try {
-      const next = (await update({
-        variables: cleanInput(formData),
-      })).data
+      const next = (
+        await update({
+          variables: cleanInput(formData),
+        })
+      ).data
 
       form.setFieldsValue(next)
 
@@ -61,18 +72,16 @@ const Index: NextPage = () => {
         { href: '/admin/users', name: t('admin:users') },
       ]}
       extra={[
-        <Button
-          key={'save'}
-          onClick={form.submit}
-          type={'primary'}
-        >{t('user:updateNow')}</Button>,
+        <Button key={'save'} onClick={form.submit} type={'primary'}>
+          {t('user:updateNow')}
+        </Button>,
       ]}
-      style={{paddingTop: 0}}
+      style={{ paddingTop: 0 }}
     >
       <Form
         form={form}
         onFinish={save}
-        onFinishFailed={errors => {
+        onFinishFailed={() => {
           // TODO process errors
           message.error(t('validation:mandatoryFieldsMissing'))
         }}
@@ -85,13 +94,12 @@ const Index: NextPage = () => {
           sm: { span: 18 },
         }}
       >
-        <Form.Item noStyle name={['user', 'id']}><Input type={'hidden'} /></Form.Item>
+        <Form.Item noStyle name={['user', 'id']}>
+          <Input type={'hidden'} />
+        </Form.Item>
 
         <Tabs>
-          <BaseDataTab
-            key={'base_data'}
-            tab={t('user:baseData')}
-          />
+          <BaseDataTab key={'base_data'} tab={t('user:baseData')} />
         </Tabs>
       </Form>
     </Structure>

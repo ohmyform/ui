@@ -1,14 +1,14 @@
-import {CaretDownOutlined, UserOutlined} from '@ant-design/icons'
-import {MenuFoldOutlined, MenuUnfoldOutlined} from '@ant-design/icons/lib'
-import {Dropdown, Layout, Menu, PageHeader, Select, Spin, Tag} from 'antd'
+import { CaretDownOutlined, UserOutlined } from '@ant-design/icons'
+import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons/lib'
+import { Dropdown, Layout, Menu, PageHeader, Select, Spin, Tag } from 'antd'
 import Link from 'next/link'
-import {useRouter} from 'next/router'
-import React, {FunctionComponent} from 'react'
-import {useTranslation} from 'react-i18next'
-import {languages} from '../i18n'
-import {sideMenu, SideMenuElement} from './sidemenu'
-import {useWindowSize} from './use.window.size'
-import {clearAuth} from './with.auth'
+import { useRouter } from 'next/router'
+import React, { CSSProperties, FunctionComponent } from 'react'
+import { useTranslation } from 'react-i18next'
+import { languages } from '../i18n'
+import { sideMenu, SideMenuElement } from './sidemenu'
+import { useWindowSize } from './use.window.size'
+import { clearAuth } from './with.auth'
 
 const { SubMenu, ItemGroup } = Menu
 const { Header, Content, Sider } = Layout
@@ -22,15 +22,14 @@ interface BreadcrumbEntry {
 interface Props {
   loading?: boolean
   padded?: boolean
-  style?: any
+  style?: CSSProperties
 
   selected?: string
-
 
   breadcrumbs?: BreadcrumbEntry[]
   title?: string
   subTitle?: string
-  extra?: any[]
+  extra?: JSX.Element[]
 }
 
 const Structure: FunctionComponent<Props> = (props) => {
@@ -63,58 +62,62 @@ const Structure: FunctionComponent<Props> = (props) => {
   }, [props.selected])
 
   const buildMenu = (data: SideMenuElement[]): JSX.Element[] => {
-    return data.map((element): JSX.Element => {
-      if (element.items && element.items.length > 0) {
-        if (element.group) {
+    return data.map(
+      (element): JSX.Element => {
+        if (element.items && element.items.length > 0) {
+          if (element.group) {
+            return (
+              <ItemGroup
+                key={element.key}
+                title={
+                  <div
+                    style={{
+                      textTransform: 'uppercase',
+                      paddingTop: 16,
+                      fontWeight: 'bold',
+                      color: '#444',
+                    }}
+                  >
+                    {element.icon}
+                    {element.name}
+                  </div>
+                }
+              >
+                {buildMenu(element.items)}
+              </ItemGroup>
+            )
+          }
+
           return (
-            <ItemGroup
+            <SubMenu
               key={element.key}
-              title={(
-                <div style={{
-                  textTransform: 'uppercase',
-                  paddingTop: 16,
-                  fontWeight: 'bold',
-                  color: '#444'
-                }}>
+              title={
+                <span>
                   {element.icon}
                   {element.name}
-                </div>
-              )}
+                </span>
+              }
             >
               {buildMenu(element.items)}
-            </ItemGroup>
+            </SubMenu>
           )
         }
 
         return (
-          <SubMenu
+          <Menu.Item
+            onClick={(): void => {
+              if (element.href) {
+                router.push(element.href)
+              }
+            }}
             key={element.key}
-            title={
-              <span>
-                {element.icon}
-                {element.name}
-              </span>
-            }
           >
-            {buildMenu(element.items)}
-          </SubMenu>
+            {element.icon}
+            {element.name}
+          </Menu.Item>
         )
       }
-
-      return (
-        <Menu.Item
-          onClick={(): void => {
-            if (element.href) {
-              router.push(element.href)
-            }
-          }}
-          key={element.key}
-        >
-          {element.icon}
-          {element.name}
-        </Menu.Item>
-      )
-    })
+    )
   }
 
   const signOut = async (): Promise<void> => {
@@ -129,46 +132,57 @@ const Structure: FunctionComponent<Props> = (props) => {
           paddingLeft: 0,
         }}
       >
-        <div style={{
-          float: 'left',
-          color: '#FFF',
-          fontSize: 14,
-          marginRight: 26,
-          fontWeight: 'bold'
-        }}>
+        <div
+          style={{
+            float: 'left',
+            color: '#FFF',
+            fontSize: 14,
+            marginRight: 26,
+            fontWeight: 'bold',
+          }}
+        >
           {React.createElement(sidebar ? MenuUnfoldOutlined : MenuFoldOutlined, {
             className: 'sidebar-toggle',
             onClick: () => setSidebar(!sidebar),
           })}
 
-          <img src={require('assets/images/logo_white_small.png')} height={30} style={{marginRight: 16}} alt={'OhMyForm'} />
+          <img
+            src={require('assets/images/logo_white_small.png')}
+            height={30}
+            style={{ marginRight: 16 }}
+            alt={'OhMyForm'}
+          />
         </div>
-        <div style={{float: 'right', display: 'flex', height: '100%'}}>
+        <div style={{ float: 'right', display: 'flex', height: '100%' }}>
           <Dropdown
-            overlay={(
+            overlay={
               <Menu>
                 <Menu.Item onClick={() => router.push('/admin/profile')}>Profile</Menu.Item>
-                <Menu.Divider/>
+                <Menu.Divider />
                 <Menu.Item onClick={signOut}>Logout</Menu.Item>
               </Menu>
-            )}
+            }
             onVisibleChange={setUserMenu}
             visible={userMenu}
           >
-            <a style={{
-              color: '#FFF',
-              alignItems: 'center',
-              display: 'inline-flex',
-            }}>
-              <UserOutlined style={{fontSize: 24}} />
+            <div
+              style={{
+                color: '#FFF',
+                alignItems: 'center',
+                display: 'inline-flex',
+              }}
+            >
+              <UserOutlined style={{ fontSize: 24 }} />
               <CaretDownOutlined />
-            </a>
+            </div>
           </Dropdown>
         </div>
       </Header>
-      <Layout style={{
-        height: '100%',
-      }}>
+      <Layout
+        style={{
+          height: '100%',
+        }}
+      >
         <Sider
           collapsed={sidebar}
           trigger={null}
@@ -193,20 +207,21 @@ const Structure: FunctionComponent<Props> = (props) => {
           >
             {buildMenu(sideMenu)}
           </Menu>
-          <Menu
-            mode="inline"
-            selectable={false}
-            >
+          <Menu mode="inline" selectable={false}>
             <Menu.Item className={'language-selector'}>
               <Select
                 bordered={false}
                 value={i18n.language.replace(/-.*/, '')}
-                onChange={next => i18n.changeLanguage(next)}
+                onChange={(next) => i18n.changeLanguage(next)}
                 style={{
                   width: '100%',
                 }}
               >
-                {languages.map(language => <Select.Option value={language} key={language}>{t(`language:${language}`)}</Select.Option> )}
+                {languages.map((language) => (
+                  <Select.Option value={language} key={language}>
+                    {t(`language:${language}`)}
+                  </Select.Option>
+                ))}
               </Select>
             </Menu.Item>
             <Menu.Item>
@@ -222,17 +237,17 @@ const Structure: FunctionComponent<Props> = (props) => {
               extra={props.extra}
               breadcrumb={{
                 routes: [
-                  ...(props.breadcrumbs || []).map(b => ({
+                  ...(props.breadcrumbs || []).map((b) => ({
                     breadcrumbName: b.name,
-                    path: ''
+                    path: '',
                   })),
                   {
                     breadcrumbName: props.title,
-                    path: ''
-                  }
+                    path: '',
+                  },
                 ],
                 params: props.breadcrumbs,
-                itemRender: (route, params: BreadcrumbEntry[], routes, paths) => {
+                itemRender(route, params: BreadcrumbEntry[], routes) {
                   if (routes.indexOf(route) === routes.length - 1) {
                     return <span>{route.breadcrumbName}</span>
                   }
@@ -240,27 +255,22 @@ const Structure: FunctionComponent<Props> = (props) => {
                   const entry = params[routes.indexOf(route)]
 
                   return (
-                    <Link
-                      href={entry.href}
-                      as={entry.as || entry.href}
-                    >
-                      <a>
-                        {entry.name}
-                      </a>
+                    <Link href={entry.href} as={entry.as || entry.href}>
+                      {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                      <a>{entry.name}</a>
                     </Link>
                   )
-              }}}
+                },
+              }}
             />
           )}
 
-          <Spin
-            spinning={!!props.loading}
-          >
+          <Spin spinning={!!props.loading}>
             <Content
               style={{
                 background: props.padded ? '#fff' : null,
                 padding: props.padded ? 24 : 0,
-                ...props.style
+                ...props.style,
               }}
             >
               {props.children}

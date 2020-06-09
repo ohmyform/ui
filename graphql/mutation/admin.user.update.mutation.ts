@@ -1,5 +1,5 @@
-import {gql} from 'apollo-boost'
-import {ADMIN_USER_FRAGMENT, AdminUserFragment} from '../fragment/admin.user.fragment'
+import { gql } from 'apollo-boost'
+import { ADMIN_USER_FRAGMENT, AdminUserFragment } from '../fragment/admin.user.fragment'
 
 export interface AdminUserUpdateMutationData {
   user: AdminUserFragment
@@ -15,6 +15,6 @@ export const ADMIN_USER_UPDATE_MUTATION = gql`
       ...AdminUser
     }
   }
-  
+
   ${ADMIN_USER_FRAGMENT}
 `

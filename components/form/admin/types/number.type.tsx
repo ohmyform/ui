@@ -1,9 +1,9 @@
-import {Form, InputNumber} from 'antd'
+import { Form, InputNumber } from 'antd'
 import React from 'react'
-import {useTranslation} from 'react-i18next'
-import {AdminFieldTypeProps} from './type.props'
+import { useTranslation } from 'react-i18next'
+import { AdminFieldTypeProps } from './type.props'
 
-export const NumberType: React.FC<AdminFieldTypeProps> = props => {
+export const NumberType: React.FC<AdminFieldTypeProps> = (props) => {
   const { t } = useTranslation()
 
   return (

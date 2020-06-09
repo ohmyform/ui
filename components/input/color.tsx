@@ -1,12 +1,12 @@
-import React, {useEffect} from 'react'
-import {BlockPicker} from 'react-color'
+import React, { useEffect } from 'react'
+import { BlockPicker } from 'react-color'
 
 interface Props {
   value?: string
-  onChange?: any
+  onChange?: (value: string) => void
 }
 
-export const InputColor: React.FC<Props> = props => {
+export const InputColor: React.FC<Props> = (props) => {
   useEffect(() => {
     if (!props.value) {
       props.onChange('#FFF')
@@ -18,13 +18,13 @@ export const InputColor: React.FC<Props> = props => {
       triangle={'hide'}
       width={'100%'}
       color={props.value}
-      onChange={e => props.onChange(e.hex)}
+      onChange={(e) => props.onChange(e.hex)}
       styles={{
         default: {
           card: {
             flexDirection: 'row',
             display: 'flex',
-            boxShadow: 'none'
+            boxShadow: 'none',
           },
           head: {
             flex: 1,

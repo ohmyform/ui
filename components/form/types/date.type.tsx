@@ -1,16 +1,16 @@
-import {Form} from 'antd'
-import dayjs, {Dayjs} from 'dayjs'
-import moment from 'moment'
-import React, {useEffect, useState} from 'react'
-import {StyledDateInput} from '../../styled/date.input'
-import {FieldTypeProps} from './type.props'
+import { Form } from 'antd'
+import dayjs, { Dayjs } from 'dayjs'
+import moment, { Moment } from 'moment'
+import React, { useEffect, useState } from 'react'
+import { StyledDateInput } from '../../styled/date.input'
+import { FieldTypeProps } from './type.props'
 
-export const DateType: React.FC<FieldTypeProps> = ({ field, design}) => {
+export const DateType: React.FC<FieldTypeProps> = ({ field, design }) => {
   const [min, setMin] = useState<Dayjs>()
   const [max, setMax] = useState<Dayjs>()
 
   useEffect(() => {
-    field.options.forEach(option => {
+    field.options.forEach((option) => {
       if (option.key === 'min') {
         setMin(dayjs(option.value))
       }
@@ -24,22 +24,19 @@ export const DateType: React.FC<FieldTypeProps> = ({ field, design}) => {
     <div>
       <Form.Item
         name={[field.id, 'value']}
-        rules={[
-          { required: field.required, message: 'Please provide Information' },
-        ]}
-        getValueFromEvent={e => e.format('YYYY-MM-DD')}
-        getValueProps={e => ({value: e ? moment(e) : undefined})}
+        rules={[{ required: field.required, message: 'Please provide Information' }]}
+        getValueFromEvent={(e) => e.format('YYYY-MM-DD')}
+        getValueProps={(e) => ({ value: e ? moment(e) : undefined })}
         initialValue={field.value ? moment(field.value) : undefined}
       >
         <StyledDateInput
           size={'large'}
           design={design}
-          autoFocus
-          disabledDate={(d: any) => {
-            if (min && min.isAfter(d)) {
+          disabledDate={(d: Moment) => {
+            if (min && min.isAfter(d.toDate())) {
               return true
             }
-            if (max && max.isBefore(d)) {
+            if (max && max.isBefore(d.toDate())) {
               return true
             }
             return false

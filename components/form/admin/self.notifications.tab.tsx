@@ -1,17 +1,17 @@
-import {InfoCircleOutlined} from '@ant-design/icons/lib'
-import {Form, Input, Select, Switch, Tabs} from 'antd'
-import {FormInstance} from 'antd/lib/form'
-import {TabPaneProps} from 'antd/lib/tabs'
-import React, {useEffect, useState} from 'react'
-import {Trans, useTranslation} from 'react-i18next'
-import {AdminFormFieldFragment} from '../../../graphql/fragment/admin.form.fragment'
+import { InfoCircleOutlined } from '@ant-design/icons/lib'
+import { Form, Input, Select, Switch, Tabs } from 'antd'
+import { FormInstance } from 'antd/lib/form'
+import { TabPaneProps } from 'antd/lib/tabs'
+import React, { useEffect, useState } from 'react'
+import { Trans, useTranslation } from 'react-i18next'
+import { AdminFormFieldFragment } from '../../../graphql/fragment/admin.form.fragment'
 
 interface Props extends TabPaneProps {
   form: FormInstance
   fields: AdminFormFieldFragment[]
 }
 
-export const SelfNotificationsTab: React.FC<Props> = props => {
+export const SelfNotificationsTab: React.FC<Props> = (props) => {
   const { t } = useTranslation()
   const [enabled, setEnabled] = useState<boolean>()
 
@@ -31,7 +31,7 @@ export const SelfNotificationsTab: React.FC<Props> = props => {
   }, [enabled])
 
   const groups = {}
-  props.fields.forEach(field => {
+  props.fields.forEach((field) => {
     if (!groups[field.type]) {
       groups[field.type] = []
     }
@@ -45,7 +45,7 @@ export const SelfNotificationsTab: React.FC<Props> = props => {
         name={['form', 'selfNotifications', 'enabled']}
         valuePropName={'checked'}
       >
-        <Switch onChange={e => setEnabled(e.valueOf())} />
+        <Switch onChange={(e) => setEnabled(e.valueOf())} />
       </Form.Item>
 
       <Form.Item
@@ -70,12 +70,13 @@ export const SelfNotificationsTab: React.FC<Props> = props => {
             message: t('validation:templateRequired'),
           },
         ]}
-        extra={(
+        extra={
           <div>
             <Trans>form:selfNotifications.htmlTemplateInfo</Trans>
             <a
               href={'https://mjml.io/try-it-live'}
               target={'_blank'}
+              rel={'noreferrer'}
               style={{
                 marginLeft: 16,
               }}
@@ -83,7 +84,7 @@ export const SelfNotificationsTab: React.FC<Props> = props => {
               <InfoCircleOutlined />
             </a>
           </div>
-        )}
+        }
       >
         <Input.TextArea autoSize />
       </Form.Item>
@@ -94,10 +95,12 @@ export const SelfNotificationsTab: React.FC<Props> = props => {
         extra={t('form:selfNotifications.fromFieldInfo')}
       >
         <Select>
-          {Object.keys(groups).map(key => (
+          {Object.keys(groups).map((key) => (
             <Select.OptGroup label={key.toUpperCase()} key={key}>
-              {groups[key].map(field => (
-                <Select.Option value={field.id} key={field.id}>{field.title}</Select.Option>
+              {groups[key].map((field) => (
+                <Select.Option value={field.id} key={field.id}>
+                  {field.title}
+                </Select.Option>
               ))}
             </Select.OptGroup>
           ))}

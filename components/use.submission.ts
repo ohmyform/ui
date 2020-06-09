@@ -1,37 +1,47 @@
-import {useMutation} from '@apollo/react-hooks'
-import {useCallback, useEffect, useState} from 'react'
+import { useMutation } from '@apollo/react-hooks'
+import { useCallback, useEffect, useState } from 'react'
 import {
   SUBMISSION_SET_FIELD_MUTATION,
   SubmissionSetFieldMutationData,
-  SubmissionSetFieldMutationVariables
+  SubmissionSetFieldMutationVariables,
 } from '../graphql/mutation/submission.set.field.mutation'
 import {
   SUBMISSION_START_MUTATION,
   SubmissionStartMutationData,
-  SubmissionStartMutationVariables
+  SubmissionStartMutationVariables,
 } from '../graphql/mutation/submission.start.mutation'
 
-export const useSubmission = (formId: string) => {
-  const [submission, setSubmission] = useState<{ id: string, token: string }>()
+interface Submission {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  setField: (fieldId: string, data: any) => Promise<void>
+  finish: () => void
+}
 
-  const [start] = useMutation<SubmissionStartMutationData, SubmissionStartMutationVariables>(SUBMISSION_START_MUTATION)
-  const [save] = useMutation<SubmissionSetFieldMutationData, SubmissionSetFieldMutationVariables>(SUBMISSION_SET_FIELD_MUTATION)
+export const useSubmission = (formId: string): Submission => {
+  const [submission, setSubmission] = useState<{ id: string; token: string }>()
+
+  const [start] = useMutation<SubmissionStartMutationData, SubmissionStartMutationVariables>(
+    SUBMISSION_START_MUTATION
+  )
+  const [save] = useMutation<SubmissionSetFieldMutationData, SubmissionSetFieldMutationVariables>(
+    SUBMISSION_SET_FIELD_MUTATION
+  )
 
   useEffect(() => {
-    (async () => {
+    ;(async () => {
       const token = [...Array(40)].map(() => Math.random().toString(36)[2]).join('')
 
-      const {data} = await start({
+      const { data } = await start({
         variables: {
           form: formId,
           submission: {
             token,
             device: {
               name: /Mobi/i.test(window.navigator.userAgent) ? 'mobile' : 'desktop',
-              type: window.navigator.userAgent
-            }
-          }
-        }
+              type: window.navigator.userAgent,
+            },
+          },
+        },
       })
 
       setSubmission({
@@ -41,19 +51,23 @@ export const useSubmission = (formId: string) => {
     })()
   }, [formId])
 
-  const setField = useCallback(async (fieldId: string, data: any) => {
-    console.log('just save', fieldId, data)
-    await save({
-      variables: {
-        submission: submission.id,
-        field: {
-          token: submission.token,
-          field: fieldId,
-          data: JSON.stringify(data)
-        }
-      }
-    })
-  }, [submission])
+  const setField = useCallback(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    async (fieldId: string, data: any) => {
+      console.log('just save', fieldId, data)
+      await save({
+        variables: {
+          submission: submission.id,
+          field: {
+            token: submission.token,
+            field: fieldId,
+            data: JSON.stringify(data),
+          },
+        },
+      })
+    },
+    [submission]
+  )
 
   const finish = useCallback(() => {
     console.log('finish submission!!', formId)

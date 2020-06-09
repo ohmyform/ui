@@ -1,5 +1,5 @@
-import {gql} from 'apollo-boost'
-import {FORM_FRAGMENT, FormFragment} from '../fragment/form.fragment'
+import { gql } from 'apollo-boost'
+import { FORM_FRAGMENT, FormFragment } from '../fragment/form.fragment'
 
 export interface FormQueryData {
   form: FormFragment
@@ -10,11 +10,11 @@ export interface FormQueryVariables {
 }
 
 export const FORM_QUERY = gql`
-  query form($id: ID!){
-    form:getFormById(id: $id) {
+  query form($id: ID!) {
+    form: getFormById(id: $id) {
       ...Form
     }
   }
-  
+
   ${FORM_FRAGMENT}
 `

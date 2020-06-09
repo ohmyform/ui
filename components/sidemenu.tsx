@@ -1,5 +1,5 @@
-import {HomeOutlined, MessageOutlined, TeamOutlined} from '@ant-design/icons'
-import {UserOutlined} from '@ant-design/icons/lib'
+import { HomeOutlined, MessageOutlined, TeamOutlined } from '@ant-design/icons'
+import { UserOutlined } from '@ant-design/icons/lib'
 import React from 'react'
 
 export interface SideMenuElement {
@@ -9,7 +9,7 @@ export interface SideMenuElement {
   name: string
   group?: boolean
   href?: string
-  icon?: any
+  icon?: JSX.Element
 }
 
 export const sideMenu: SideMenuElement[] = [
@@ -36,7 +36,7 @@ export const sideMenu: SideMenuElement[] = [
         href: '/admin/forms',
         icon: <MessageOutlined />,
       },
-    ]
+    ],
   },
   {
     key: 'administration',

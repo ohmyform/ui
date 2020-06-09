@@ -1,7 +1,7 @@
-import {Alert} from 'antd'
-import {AuthFooter} from 'components/auth/footer'
-import {AuthLayout} from 'components/auth/layout'
-import {NextPage} from 'next'
+import { Alert } from 'antd'
+import { AuthFooter } from 'components/auth/footer'
+import { AuthLayout } from 'components/auth/layout'
+import { NextPage } from 'next'
 import React from 'react'
 
 const Recover: NextPage = () => {

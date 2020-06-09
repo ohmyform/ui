@@ -1,4 +1,4 @@
-import {gql} from 'apollo-boost'
+import { gql } from 'apollo-boost'
 
 export interface AdminStatisticQueryData {
   forms: {
@@ -12,13 +12,12 @@ export interface AdminStatisticQueryData {
   }
 }
 
-export interface AdminStatisticQueryVariables {
-}
+export interface AdminStatisticQueryVariables {}
 
 export const ADMIN_STATISTIC_QUERY = gql`
   query {
     forms: getFormStatistic {
-      total    
+      total
     }
     submissions: getSubmissionStatistic {
       total

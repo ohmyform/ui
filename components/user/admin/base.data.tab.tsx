@@ -1,9 +1,9 @@
-import {Form, Input, Select, Tabs} from 'antd'
-import {TabPaneProps} from 'antd/lib/tabs'
+import { Form, Input, Select, Tabs } from 'antd'
+import { TabPaneProps } from 'antd/lib/tabs'
 import React from 'react'
-import {languages} from '../../../i18n'
+import { languages } from '../../../i18n'
 
-export const BaseDataTab: React.FC<TabPaneProps> = props => {
+export const BaseDataTab: React.FC<TabPaneProps> = (props) => {
   return (
     <Tabs.TabPane {...props}>
       <Form.Item
@@ -45,7 +45,7 @@ export const BaseDataTab: React.FC<TabPaneProps> = props => {
             message: 'Please select a role',
           },
         ]}
-        getValueFromEvent={e => {
+        getValueFromEvent={(e) => {
           switch (e) {
             case 'superuser':
               return ['user', 'admin', 'superuser']
@@ -55,7 +55,7 @@ export const BaseDataTab: React.FC<TabPaneProps> = props => {
               return ['user']
           }
         }}
-        getValueProps={v => {
+        getValueProps={(v) => {
           let role = 'user'
 
           if (v && v.includes('superuser')) {
@@ -65,12 +65,16 @@ export const BaseDataTab: React.FC<TabPaneProps> = props => {
           }
 
           return {
-            value: role
+            value: role,
           }
         }}
       >
         <Select>
-          {['user', 'admin', 'superuser'].map(role => <Select.Option value={role} key={role}>{role.toUpperCase()}</Select.Option> )}
+          {['user', 'admin', 'superuser'].map((role) => (
+            <Select.Option value={role} key={role}>
+              {role.toUpperCase()}
+            </Select.Option>
+          ))}
         </Select>
       </Form.Item>
 
@@ -85,24 +89,21 @@ export const BaseDataTab: React.FC<TabPaneProps> = props => {
         ]}
       >
         <Select>
-          {languages.map(language => <Select.Option value={language} key={language}>{language.toUpperCase()}</Select.Option> )}
+          {languages.map((language) => (
+            <Select.Option value={language} key={language}>
+              {language.toUpperCase()}
+            </Select.Option>
+          ))}
         </Select>
       </Form.Item>
 
-      <Form.Item
-        label="First Name"
-        name={['user', 'firstName']}
-      >
-        <Input  />
+      <Form.Item label="First Name" name={['user', 'firstName']}>
+        <Input />
       </Form.Item>
 
-      <Form.Item
-        label="Last Name"
-        name={['user', 'lastName']}
-      >
-        <Input  />
+      <Form.Item label="Last Name" name={['user', 'lastName']}>
+        <Input />
       </Form.Item>
-
     </Tabs.TabPane>
   )
 }

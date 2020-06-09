@@ -7,13 +7,15 @@ interface Props {
   hideTime?: boolean
 }
 
-export const DateTime: React.FC<Props> = props => {
+export const DateTime: React.FC<Props> = (props) => {
   const format = props.hideTime ? 'YYYY-MM-DD' : 'YYYY-MM-DD HH:mm'
 
   return (
-    <div style={{
-      display: 'inline-block'
-    }}>
+    <div
+      style={{
+        display: 'inline-block',
+      }}
+    >
       {dayjs(props.date).format(format)}
     </div>
   )

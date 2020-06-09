@@ -1,4 +1,4 @@
-import {gql} from 'apollo-boost'
+import { gql } from 'apollo-boost'
 
 export interface SubmissionSetFieldMutationData {
   submission: {
@@ -17,7 +17,7 @@ export interface SubmissionSetFieldMutationVariables {
 }
 
 export const SUBMISSION_SET_FIELD_MUTATION = gql`
-  mutation start($submission: ID!,$field: SubmissionSetFieldInput!) {
+  mutation start($submission: ID!, $field: SubmissionSetFieldInput!) {
     submission: submissionSetField(submission: $submission, field: $field) {
       id
       percentageComplete

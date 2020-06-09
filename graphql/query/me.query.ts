@@ -1,4 +1,4 @@
-import {gql} from 'apollo-boost'
+import { gql } from 'apollo-boost'
 
 export interface MeQueryData {
   me: {
@@ -11,7 +11,7 @@ export interface MeQueryData {
 export const ME_QUERY = gql`
   query {
     me {
-      id 
+      id
       roles
       username
     }

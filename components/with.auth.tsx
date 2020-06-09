@@ -1,19 +1,19 @@
-import {useQuery} from '@apollo/react-hooks'
-import {AxiosRequestConfig} from 'axios'
-import {useRouter} from 'next/router'
-import React, {useEffect, useState} from 'react'
-import {useTranslation} from 'react-i18next'
-import {ME_QUERY, MeQueryData} from '../graphql/query/me.query'
-import {LoadingPage} from './loading.page'
+import { useQuery } from '@apollo/react-hooks'
+import { AxiosRequestConfig } from 'axios'
+import { useRouter } from 'next/router'
+import React, { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { ME_QUERY, MeQueryData } from '../graphql/query/me.query'
+import { LoadingPage } from './loading.page'
 
-export const clearAuth = async () => {
+export const clearAuth = async (): Promise<void> => {
   localStorage.removeItem('access')
   localStorage.removeItem('refresh')
 
   // TODO logout on server!
 }
 
-export const setAuth = (access, refresh) => {
+export const setAuth = (access: string, refresh: string): void => {
   localStorage.setItem('access', access)
   localStorage.setItem('refresh', refresh)
 }
@@ -37,12 +37,14 @@ export const authConfig = async (config: AxiosRequestConfig = {}): Promise<Axios
   return config
 }
 
-export const withAuth = (Component, roles: string[] = []): React.FC => {
-  return props => {
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types,@typescript-eslint/no-explicit-any
+export const withAuth = (Component: any, roles: string[] = []): React.FC => {
+  // eslint-disable-next-line react/display-name
+  return (props) => {
     const { t } = useTranslation()
     const router = useRouter()
     const [access, setAccess] = useState(false)
-    const {loading, data, error} = useQuery<MeQueryData>(ME_QUERY)
+    const { loading, data, error } = useQuery<MeQueryData>(ME_QUERY)
 
     useEffect(() => {
       if (roles.length === 0) {
@@ -67,10 +69,7 @@ export const withAuth = (Component, roles: string[] = []): React.FC => {
         return
       }
 
-      const next = roles
-        .map(role => data.me.roles.includes(role))
-        .filter(p => p)
-        .length > 0
+      const next = roles.map((role) => data.me.roles.includes(role)).filter((p) => p).length > 0
 
       setAccess(next)
 
@@ -88,5 +87,5 @@ export const withAuth = (Component, roles: string[] = []): React.FC => {
     }
 
     return <Component me={data && data.me} {...props} />
-  };
+  }
 }
