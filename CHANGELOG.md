@@ -17,6 +17,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
   when we add / change translations)
 - add `yarn translation:missing <lang>` to print a list of missing translations 
   for the given language (this takes `en` as a baseline)
+- travis for tests
+- eslint with prettier
 
 ### Changed
 
