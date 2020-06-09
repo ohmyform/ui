@@ -1,0 +1,10 @@
+{
+  "email": "Correo electrónico",
+  "firstName": "Nombre de pila",
+  "language": "Idioma",
+  "lastName": "Apellido",
+  "updated": "Perfil actualizado",
+  "updateError": "No se pudo actualizar el perfil",
+  "updateNow": "Salvar",
+  "username": "Nombre de usuario"
+}

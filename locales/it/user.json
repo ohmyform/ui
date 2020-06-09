@@ -1,18 +1,18 @@
 {
-  "baseData": "Base Data",
-  "confirmDelete": "Are you sure delete this user?",
-  "deleteError": "could not delete user",
-  "deleteNow": "Delete Now!",
-  "deleted": "User deleted",
-  "loading": "Loading User",
-  "mange": "Edit User \"{{email}}\"",
+  "baseData": "Dati di base",
+  "confirmDelete": "Sei sicuro di eliminare questo utente?",
+  "deleted": "Utente cancellato",
+  "deleteError": "impossibile eliminare l'utente",
+  "deleteNow": "Cancella ora!",
+  "loading": "Caricamento utente",
+  "mange": "Modifica utente \" {{email}} \"",
   "row": {
-    "created": "Created",
-    "email": "Email",
+    "created": "Creato",
+    "email": "E-mail",
     "menu": "",
-    "roles": "Role"
+    "roles": "Ruolo"
   },
-  "updateError": "Could not update user",
-  "updateNow": "Save",
-  "updated": "User updated"
+  "updated": "Utente aggiornato",
+  "updateError": "Impossibile aggiornare l'utente",
+  "updateNow": "Salva"
 }

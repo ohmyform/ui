@@ -1,0 +1,15 @@
+{
+  "emailFieldRequired": "Selecione um campo de email",
+  "emailRequired": "Forneça um email",
+  "invalidEmail": "Deve ser um email válido!",
+  "invalidUrl": "Deve ser um URL válido",
+  "languageRequired": "Por favor selecione um idioma",
+  "mandatoryFieldsMissing": "Campos obrigatórios ausentes",
+  "passwordMinLength": "Deve ser maior ou igual a 5 caracteres!",
+  "passwordRequired": "Por favor insira sua senha!",
+  "subjectRequired": "Forneça um assunto",
+  "templateRequired": "Forneça um modelo",
+  "titleRequired": "Forneça um título",
+  "usernameRequired": "Forneça um nome de usuário",
+  "valueRequired": "Forneça um valor"
+}

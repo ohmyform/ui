@@ -9,12 +9,12 @@
   "building": "Building Form",
   "confirmDelete": "Are you sure delete this form with all submissions?",
   "create": "Create new form",
-  "createNow": "Save",
   "created": "Form Created",
+  "createNow": "Save",
   "creationError": "Could not create form",
+  "deleted": "Form deleted",
   "deleteError": "Could not delete form",
   "deleteNow": "Delete Now!",
-  "deleted": "Form deleted",
   "design": {
     "answerColor": "Answer Color",
     "backgroundColor": "Background Color",
@@ -48,7 +48,7 @@
     "fromEmail": "Sender Email",
     "fromEmailInfo": "Make sure your mailserver can send from this email",
     "htmlTemplate": "HTML Template",
-    "htmlTemplateInfo": "You can also use <u>MJML</u> to create your email templates",
+    "htmlTemplateInfo": "You can also use <u>MJML<\/u> to create your email templates",
     "subject": "Subject",
     "toField": "Email Field",
     "toFieldInfo": "Field with Email for receipt"
@@ -69,7 +69,7 @@
     "fromField": "Sender Email",
     "fromFieldInfo": "Field with Email, will set the Reply-To header",
     "htmlTemplate": "HTML Template",
-    "htmlTemplateInfo": "You can also use <u>MJML</u> to create your email templates",
+    "htmlTemplateInfo": "You can also use <u>MJML<\/u> to create your email templates",
     "subject": "Subject",
     "toEmail": "Your Email",
     "toEmailInfo": "If not set will send to the admin of the form"
@@ -91,7 +91,7 @@
   },
   "startPageTab": "Start Page",
   "submitted": "Thank you for your submission!",
+  "updated": "Form updated",
   "updateError": "Could not update form",
-  "updateNow": "Save",
-  "updated": "Form updated"
+  "updateNow": "Save"
 }

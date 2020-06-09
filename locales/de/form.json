@@ -9,12 +9,12 @@
   "building": "Formular wird aufgebaut",
   "confirmDelete": "Wollen sie dieses Formular mit allen Eintragungen löschen?",
   "create": "Neues Formular erstellen",
-  "createNow": "Jetzt Anlegen",
   "created": "Formular Erstellt",
+  "createNow": "Jetzt Anlegen",
   "creationError": "Formular konnte nicht erstellt werden",
+  "deleted": "Formular gelöscht",
   "deleteError": "Formular konnte nicht gelöscht werden",
   "deleteNow": "Jetzt löschen!",
-  "deleted": "Formular gelöscht",
   "design": {
     "answerColor": "Antworten Farbe",
     "backgroundColor": "Hintergrund Farbe",
@@ -48,7 +48,7 @@
     "fromEmail": "Absender E-Mail",
     "fromEmailInfo": "Der E-Mail Server muss den versand von dieser E-Mail zulassen",
     "htmlTemplate": "HTML Template",
-    "htmlTemplateInfo": "Sie können auch <u>MJML</u> verwenden um das Template zu gestalten",
+    "htmlTemplateInfo": "Sie können auch <u>MJML<\/u> verwenden um das Template zu gestalten",
     "subject": "Betreff",
     "toField": "Empfänger E-Mail",
     "toFieldInfo": "Formular E-Mail Feld für Benachrichtigung"
@@ -69,7 +69,7 @@
     "fromField": "Absender E-Mail",
     "fromFieldInfo": "Formular E-Mail Feld für Benachrichtigung, wird as Reply-To gesetzt",
     "htmlTemplate": "HTML Template",
-    "htmlTemplateInfo": "Sie können auch <u>MJML</u> verwenden um das Template zu gestalten",
+    "htmlTemplateInfo": "Sie können auch <u>MJML<\/u> verwenden um das Template zu gestalten",
     "subject": "Betreff",
     "toEmail": "Empfänger E-Mail",
     "toEmailInfo": "Als Standard wird die E-Mail des Verwalters verwendet"
@@ -91,7 +91,7 @@
   },
   "startPageTab": "Eröffnungs Seite",
   "submitted": "Vielen dank für ihre Eingaben!",
+  "updated": "Formular aktualisiert",
   "updateError": "Formular konnte nicht aktualisiert werden",
-  "updateNow": "Speichern",
-  "updated": "Formular aktualisiert"
+  "updateNow": "Speichern"
 }

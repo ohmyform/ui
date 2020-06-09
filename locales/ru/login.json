@@ -1,0 +1,7 @@
+{
+  "invalidLoginCredentials": "имя пользователя \/ пароль неверны",
+  "loginNow": "Войти сейчас",
+  "passwordPlaceholder": "пароль",
+  "usernamePlaceholder": "имя пользователя",
+  "welcomeBack": "Добро пожаловать!"
+}
