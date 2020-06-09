@@ -8,7 +8,7 @@ export interface SettingsQueryData {
 
 export const SETTINGS_QUERY = gql`
   query {
-    disabledSignUp: getByKey(key: "SIGNUP_DISABLED") {
+    disabledSignUp: getSetting(key: "SIGNUP_DISABLED") {
       value: isTrue
     }
   }
