@@ -5,7 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
  
-## [Unreleased]
+## UNRELEASED
+
+### Added
+### Changed
+### Fixed
+### Security
+ 
+## [0.9.4] - 2020-06-09
  
 ### Added
 

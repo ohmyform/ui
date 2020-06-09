@@ -18,9 +18,7 @@ const Index: NextPage = () => {
   const router = useRouter()
   const { t } = useTranslation()
   const [loading, setLoading] = useState<boolean>(
-    publicRuntimeConfig.spa ||
-      (process.browser &&
-        router.pathname !== window.location.pathname)
+    publicRuntimeConfig.spa || (process.browser && router.pathname !== window.location.pathname)
   )
 
   useEffect(() => {
