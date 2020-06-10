@@ -12,8 +12,12 @@ export const NumberType: React.FC<AdminFieldTypeProps> = (props) => {
         label={t('type:number:default')}
         name={[props.field.name as string, 'value']}
         labelCol={{ span: 6 }}
+        getValueFromEvent={(value: number) =>
+          typeof value === 'number' ? value.toFixed(2) : value
+        }
+        getValueProps={(value: string) => ({ value: value ? parseFloat(value) : undefined })}
       >
-        <InputNumber />
+        <InputNumber precision={2} />
       </Form.Item>
     </div>
   )

@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - yes / no field fixed on admin and user view
 - prev property error on div
 - rating field default on admin
+- number field defaults
 
 ### Security
  

@@ -12,7 +12,11 @@ export const NumberType: React.FC<FieldTypeProps> = ({ field, design }) => {
           { type: 'number', message: 'Must be a valid URL' },
           { required: field.required, message: 'Please provide Information' },
         ]}
-        initialValue={parseFloat(field.value)}
+        initialValue={typeof field.value === 'number' ? parseFloat(field.value) : undefined}
+        getValueFromEvent={(value: number) =>
+          typeof value === 'number' ? value.toFixed(2) : value
+        }
+        getValueProps={(value: string) => ({ value: value ? parseFloat(value) : undefined })}
       >
         <StyledNumberInput design={design} size={'large'} />
       </Form.Item>
