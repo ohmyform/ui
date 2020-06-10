@@ -1,5 +1,5 @@
-import {Form, Input, Switch} from 'antd'
-import moment, {Moment} from 'moment'
+import { Form, Input, Switch } from 'antd'
+import moment, { Moment } from 'moment'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { AdminFieldTypeProps } from './type.props'

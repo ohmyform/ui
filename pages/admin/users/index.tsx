@@ -10,7 +10,7 @@ import Link from 'next/link'
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { DateTime } from '../../../components/date.time'
-import {useWindowSize} from '../../../components/use.window.size'
+import { useWindowSize } from '../../../components/use.window.size'
 import { UserRole } from '../../../components/user/role'
 import {
   ADMIN_USER_DELETE_MUTATION,

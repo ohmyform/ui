@@ -24,7 +24,7 @@ import { NextPage } from 'next'
 import Link from 'next/link'
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import {useWindowSize} from '../../../components/use.window.size'
+import { useWindowSize } from '../../../components/use.window.size'
 import {
   ADMIN_FORM_DELETE_MUTATION,
   AdminFormDeleteMutationData,
