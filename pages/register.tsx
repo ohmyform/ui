@@ -17,6 +17,7 @@ import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { ErrorPage } from '../components/error.page'
 import { SETTINGS_QUERY, SettingsQueryData } from '../graphql/query/settings.query'
+import scss from './register.module.scss'
 
 const Register: NextPage = () => {
   const { t } = useTranslation()
@@ -114,13 +115,7 @@ const Register: NextPage = () => {
           </Button>
         </Form.Item>
 
-        <Button.Group
-          style={{
-            width: '100%',
-            justifyContent: 'center',
-            display: 'flex',
-          }}
-        >
+        <Button.Group className={scss.otherActions}>
           <Link href={'/login'}>
             <Button type={'link'} ghost>
               {t('register:gotoLogin')}

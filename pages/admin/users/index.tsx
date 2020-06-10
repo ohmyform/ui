@@ -10,6 +10,7 @@ import Link from 'next/link'
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { DateTime } from '../../../components/date.time'
+import {useWindowSize} from '../../../components/use.window.size'
 import { UserRole } from '../../../components/user/role'
 import {
   ADMIN_USER_DELETE_MUTATION,
@@ -24,6 +25,7 @@ import {
 } from '../../../graphql/query/admin.pager.user.query'
 
 const Index: NextPage = () => {
+  const { width } = useWindowSize()
   const { t } = useTranslation()
   const [pagination, setPagination] = useState<PaginationProps>({
     pageSize: 10,
@@ -76,6 +78,7 @@ const Index: NextPage = () => {
       render(roles: string[]) {
         return <UserRole roles={roles} />
       },
+      responsive: ['md'],
     },
     {
       title: t('user:row.email'),
@@ -89,13 +92,14 @@ const Index: NextPage = () => {
       render(date: string) {
         return <DateTime date={date} />
       },
+      responsive: ['lg'],
     },
     {
       title: t('user:row.menu'),
       align: 'right',
       render(row: AdminPagerUserEntryQueryData) {
         return (
-          <Space>
+          <Space direction={width < 600 ? 'vertical' : 'horizontal'}>
             <Link href={'/admin/users/[id]'} as={`/admin/users/${row.id}`}>
               <Button type={'primary'}>
                 <EditOutlined />

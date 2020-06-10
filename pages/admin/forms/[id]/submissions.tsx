@@ -73,6 +73,7 @@ const Submissions: NextPage = () => {
       render(date: string) {
         return <DateTime date={date} />
       },
+      responsive: ['lg'],
     },
     {
       title: t('submission:lastModified'),
@@ -80,6 +81,7 @@ const Submissions: NextPage = () => {
       render(date: string) {
         return <TimeAgo date={date} />
       },
+      responsive: ['lg'],
     },
   ]
 

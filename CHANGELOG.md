@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## UNRELEASED
 
 ### Added
+
+- mobile improvements for lists and home page
+
 ### Changed
 ### Fixed
 ### Security

@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next'
 import { SETTINGS_QUERY, SettingsQueryData } from '../../graphql/query/settings.query'
 import { languages } from '../../i18n'
 import { clearAuth, withAuth } from '../with.auth'
+import scss from './footer.module.scss'
 
 interface Props {
   me?: {
@@ -26,16 +27,7 @@ const AuthFooterInner: React.FC<Props> = (props) => {
   }
 
   return (
-    <footer
-      style={{
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        display: 'flex',
-        flexDirection: 'row',
-      }}
-    >
+    <footer className={scss.footer}>
       <Link href={'/admin'}>
         <Button type={'link'} ghost>
           {t('admin')}
@@ -69,6 +61,7 @@ const AuthFooterInner: React.FC<Props> = (props) => {
         onChange={(next) => i18n.changeLanguage(next)}
         style={{
           color: '#FFF',
+          paddingLeft: 18,
         }}
         suffixIcon={false}
       >

@@ -24,6 +24,7 @@ import { NextPage } from 'next'
 import Link from 'next/link'
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import {useWindowSize} from '../../../components/use.window.size'
 import {
   ADMIN_FORM_DELETE_MUTATION,
   AdminFormDeleteMutationData,
@@ -32,6 +33,7 @@ import {
 
 const Index: NextPage = () => {
   const { t } = useTranslation()
+  const { width } = useWindowSize()
   const [pagination, setPagination] = useState<PaginationProps>({
     pageSize: 25,
   })
@@ -84,6 +86,7 @@ const Index: NextPage = () => {
       render(live: boolean) {
         return <FormIsLive isLive={live} />
       },
+      responsive: ['md'],
     },
     {
       title: t('form:row.title'),
@@ -101,6 +104,7 @@ const Index: NextPage = () => {
           </Link>
         )
       },
+      responsive: ['lg'],
     },
     {
       title: t('form:row.language'),
@@ -108,6 +112,7 @@ const Index: NextPage = () => {
       render(lang: string) {
         return t(`language:${lang}`)
       },
+      responsive: ['lg'],
     },
     {
       title: t('form:row.created'),
@@ -115,6 +120,7 @@ const Index: NextPage = () => {
       render(date: string) {
         return <DateTime date={date} />
       },
+      responsive: ['lg'],
     },
     {
       title: t('form:row.lastModified'),
@@ -122,13 +128,14 @@ const Index: NextPage = () => {
       render(date: string) {
         return <TimeAgo date={date} />
       },
+      responsive: ['md'],
     },
     {
       title: t('form:row.menu'),
       align: 'right',
       render(row: AdminPagerFormEntryQueryData) {
         return (
-          <Space>
+          <Space direction={width < 600 ? 'vertical' : 'horizontal'}>
             <Link href={'/admin/forms/[id]/submissions'} as={`/admin/forms/${row.id}/submissions`}>
               <Tooltip title={'Show Submissions'}>
                 <Button>

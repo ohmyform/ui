@@ -14,6 +14,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import scss from './index.module.scss'
 
 const Index: NextPage = () => {
   const { t } = useTranslation()
@@ -90,13 +91,7 @@ const Index: NextPage = () => {
           </Button>
         </Form.Item>
 
-        <Button.Group
-          style={{
-            width: '100%',
-            justifyContent: 'center',
-            display: 'flex',
-          }}
-        >
+        <Button.Group className={scss.otherActions}>
           <Link href={'/register'}>
             <Button type={'link'} ghost>
               {t('register')}

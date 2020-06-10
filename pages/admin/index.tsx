@@ -20,15 +20,15 @@ const Index: NextPage = () => {
   return (
     <Structure title={t('admin:home')} selected={'home'} loading={loading}>
       <Row gutter={16}>
-        <Col span={8}>
+        <Col span-sm={8} span-xs={24}>
           <Statistic title={t('statistic:totalForms')} value={data && data.forms.total} />
         </Col>
 
-        <Col span={8}>
+        <Col span-sm={8} span-xs={24}>
           <Statistic title={t('statistic:totalUsers')} value={data && data.users.total} />
         </Col>
 
-        <Col span={8}>
+        <Col span-sm={8} span-xs={24}>
           <Statistic
             title={t('statistic:totalSubmissions')}
             value={data && data.submissions.total}
