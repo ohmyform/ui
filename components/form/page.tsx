@@ -14,7 +14,7 @@ interface Props {
   prev: () => void
 }
 
-export const FormPage: React.FC<Props> = ({ page, design, next, ...props }) => {
+export const FormPage: React.FC<Props> = ({ page, design, next, prev, ...props }) => {
   if (!page.show) {
     return null
   }
@@ -49,6 +49,7 @@ export const FormPage: React.FC<Props> = ({ page, design, next, ...props }) => {
           display: 'flex',
         }}
       >
+        {prev && <div />}
         {page.buttons.length > 0 && (
           <Space>
             {page.buttons.map((button, key) => {
