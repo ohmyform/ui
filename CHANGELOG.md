@@ -13,6 +13,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 ### Fixed
+
+- yes / no field fixed on admin and user view
+
 ### Security
  
 ## [0.9.4] - 2020-06-09

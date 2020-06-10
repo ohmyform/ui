@@ -1,4 +1,5 @@
-import { Form, Input } from 'antd'
+import {Form, Input, Switch} from 'antd'
+import moment, {Moment} from 'moment'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { AdminFieldTypeProps } from './type.props'
@@ -13,8 +14,11 @@ export const YesNoType: React.FC<AdminFieldTypeProps> = (props) => {
         label={t('type:yes_no:default')}
         name={[props.field.name as string, 'value']}
         labelCol={{ span: 6 }}
+        valuePropName={'checked'}
+        getValueFromEvent={(checked: boolean) => (checked ? '1' : '')}
+        getValueProps={(e: string) => ({ checked: !!e })}
       >
-        <Input />
+        <Switch />
       </Form.Item>
     </div>
   )
