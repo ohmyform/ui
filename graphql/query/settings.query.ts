@@ -7,6 +7,9 @@ export interface SettingsQueryData {
   loginNote: {
     value: string
   }
+  hideContrib: {
+    value: string
+  }
 }
 
 export const SETTINGS_QUERY = gql`
@@ -16,6 +19,9 @@ export const SETTINGS_QUERY = gql`
     }
     loginNote: getSetting(key: "LOGIN_NOTE") {
       value
+    }
+    hideContrib: getSetting(key: "HIDE_CONTRIB") {
+      value: isTrue
     }
   }
 `
