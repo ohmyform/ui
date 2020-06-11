@@ -12,6 +12,7 @@ import { useTranslation } from 'react-i18next'
 import Swiper from 'react-id-swiper'
 import { ReactIdSwiperProps } from 'react-id-swiper/lib/types'
 import * as OriginalSwiper from 'swiper'
+import {Omf} from '../../../components/omf'
 import { useSubmission } from '../../../components/use.submission'
 
 interface Props {
@@ -77,6 +78,7 @@ const Index: NextPage<Props> = () => {
         background: design.colors.backgroundColor,
       }}
     >
+      <Omf />
       <Swiper {...swiperConfig}>
         {[
           data.form.startPage.show ? (

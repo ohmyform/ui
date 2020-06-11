@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { LoadingPage } from '../components/loading.page'
+import {Omf} from '../components/omf'
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 const { publicRuntimeConfig } = getConfig() as {
@@ -58,6 +59,7 @@ const Index: NextPage = () => {
         background: '#437fdc',
       }}
     >
+      <Omf />
       <img
         alt={'OhMyForm'}
         style={{

@@ -14,6 +14,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import {Omf} from '../../components/omf'
 import scss from './index.module.scss'
 
 const Index: NextPage = () => {
@@ -48,6 +49,7 @@ const Index: NextPage = () => {
 
   return (
     <AuthLayout loading={loading}>
+      <Omf />
       <Form
         form={form}
         name="login"

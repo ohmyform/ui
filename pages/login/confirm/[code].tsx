@@ -3,10 +3,12 @@ import { AuthFooter } from 'components/auth/footer'
 import { AuthLayout } from 'components/auth/layout'
 import { NextPage } from 'next'
 import React from 'react'
+import {Omf} from '../../../components/omf'
 
 const Index: NextPage = () => {
   return (
     <AuthLayout>
+      <Omf />
       <Alert
         style={{
           margin: 'auto',
