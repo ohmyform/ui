@@ -74,7 +74,7 @@ export const FieldsTab: React.FC<Props> = (props) => {
                 props.onChangeFields(next)
               }}
             >
-              <PlusOutlined /> Add Field
+              <PlusOutlined /> {t('type:add')}
             </Button>
           </Space>
         </Form.Item>

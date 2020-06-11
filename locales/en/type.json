@@ -1,4 +1,5 @@
 {
+  "add": "Add Field",
   "confirmDelete": "Really remove this field? Check that it is not referenced anywhere!",
   "date": {
     "default": "Default Date",
