@@ -8,6 +8,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## UNRELEASED
 
 ### Added
+### Changed
+### Fixed
+### Security
+ 
+## [0.9.5] - 2020-06-10
+
+### Added
 
 - mobile improvements for lists and home page
 - markdown support for page paragraphs and field description
@@ -17,6 +24,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - github stars in multiple places
 
 ### Changed
+
+- verified spanish translations https://github.com/ohmyform/ui/pull/23
+
 ### Fixed
 
 - yes / no field fixed on admin and user view
@@ -26,8 +36,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - translations for field validation
 - number validation
 - side menu only shows accessible entries
-
-### Security
  
 ## [0.9.4] - 2020-06-09
  
