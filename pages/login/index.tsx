@@ -1,5 +1,5 @@
-import { useMutation } from '@apollo/react-hooks'
-import { Button, Form, Input, message } from 'antd'
+import { useMutation, useQuery } from '@apollo/react-hooks'
+import { Alert, Button, Form, Input, message } from 'antd'
 import { useForm } from 'antd/lib/form/Form'
 import { AuthFooter } from 'components/auth/footer'
 import { AuthLayout } from 'components/auth/layout'
@@ -14,7 +14,9 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import {Omf} from '../../components/omf'
+import ReactMarkdown from 'react-markdown'
+import { Omf } from '../../components/omf'
+import { SETTINGS_QUERY, SettingsQueryData } from '../../graphql/query/settings.query'
 import scss from './index.module.scss'
 
 const Index: NextPage = () => {
@@ -23,6 +25,7 @@ const Index: NextPage = () => {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
   const [login] = useMutation<LoginMutationData, LoginMutationVariables>(LOGIN_MUTATION)
+  const { data } = useQuery<SettingsQueryData>(SETTINGS_QUERY)
 
   const finish = async (data: LoginMutationVariables) => {
     setLoading(true)
@@ -73,6 +76,18 @@ const Index: NextPage = () => {
           }}
         />
 
+        {data && (
+          <Alert
+            type="warning"
+            showIcon
+            message={t('login:note')}
+            description={<ReactMarkdown escapeHtml={false} source={data.loginNote.value} />}
+            style={{
+              marginBottom: 24,
+            }}
+          />
+        )}
+
         <Form.Item
           name="username"
           rules={[{ required: true, message: t('validation:usernameRequired') }]}
@@ -94,11 +109,13 @@ const Index: NextPage = () => {
         </Form.Item>
 
         <Button.Group className={scss.otherActions}>
-          <Link href={'/register'}>
-            <Button type={'link'} ghost>
-              {t('register')}
-            </Button>
-          </Link>
+          {(!data || !data.disabledSignUp.value) && (
+            <Link href={'/register'}>
+              <Button type={'link'} ghost>
+                {t('register')}
+              </Button>
+            </Link>
+          )}
           <Link href={'/login/recover'}>
             <Button type={'link'} ghost>
               {t('recover')}

@@ -7,7 +7,7 @@ interface Props {
 
 export const AuthLayout: React.FC<Props> = (props) => {
   return (
-    <Spin spinning={props.loading}>
+    <Spin spinning={props.loading || false}>
       <Layout
         style={{
           height: '100vh',

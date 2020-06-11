@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - mobile improvements for lists and home page
 - markdown support for page paragraphs and field description
 - omf badge
+- login notes
 
 ### Changed
 ### Fixed

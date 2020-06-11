@@ -12,7 +12,7 @@ import { useTranslation } from 'react-i18next'
 import Swiper from 'react-id-swiper'
 import { ReactIdSwiperProps } from 'react-id-swiper/lib/types'
 import * as OriginalSwiper from 'swiper'
-import {Omf} from '../../../components/omf'
+import { Omf } from '../../../components/omf'
 import { useSubmission } from '../../../components/use.submission'
 
 interface Props {

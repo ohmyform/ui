@@ -16,7 +16,7 @@ import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { ErrorPage } from '../components/error.page'
-import {Omf} from '../components/omf'
+import { Omf } from '../components/omf'
 import { SETTINGS_QUERY, SettingsQueryData } from '../graphql/query/settings.query'
 import scss from './register.module.scss'
 
