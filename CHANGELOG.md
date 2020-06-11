@@ -19,6 +19,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - prev property error on div
 - rating field default on admin
 - number field defaults
+- translations for field validation
+- number validation
 
 ### Security
  

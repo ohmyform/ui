@@ -2,6 +2,7 @@
   "emailFieldRequired": "Please select an Email Field",
   "emailRequired": "Please provide an Email",
   "invalidEmail": "Must be a valid email!",
+  "invalidNumber": "Must be a valid number!",
   "invalidUrl": "Must be a valid URL",
   "languageRequired": "Please select a Language",
   "mandatoryFieldsMissing": "Mandatory fields missing",

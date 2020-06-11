@@ -4,38 +4,26 @@ import { FormDesignFragment, FormPageFragment } from '../../graphql/fragment/for
 import { StyledButton } from '../styled/button'
 import { StyledH1 } from '../styled/h1'
 import { StyledMarkdown } from '../styled/markdown'
+import scss from './page.module.scss'
 
 interface Props {
   type: 'start' | 'end'
   page: FormPageFragment
   design: FormDesignFragment
+  className?: string
 
   next: () => void
   prev: () => void
 }
 
-export const FormPage: React.FC<Props> = ({ page, design, next, prev, ...props }) => {
+export const FormPage: React.FC<Props> = ({ page, design, next, prev, className, ...props }) => {
   if (!page.show) {
     return null
   }
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-      }}
-      {...props}
-    >
-      <div
-        style={{
-          flex: 1,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          flexDirection: 'column',
-        }}
-      >
+    <div className={[scss.main, className].filter((c) => !!c).join(' ')} {...props}>
+      <div className={scss.content}>
         <StyledH1 design={design} type={'question'}>
           {page.title}
         </StyledH1>

@@ -1,16 +1,18 @@
 import { Form, Select } from 'antd'
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { StyledSelect } from '../../styled/select'
 import { FieldTypeProps } from './type.props'
 
 export const DropdownType: React.FC<FieldTypeProps> = ({ field, design }) => {
   const [open, setOpen] = useState(false)
+  const { t } = useTranslation()
 
   return (
     <div>
       <Form.Item
         name={[field.id, 'value']}
-        rules={[{ required: field.required, message: 'Please provide Information' }]}
+        rules={[{ required: field.required, message: t('validation:valueRequired') }]}
         initialValue={field.value || null}
       >
         <StyledSelect
