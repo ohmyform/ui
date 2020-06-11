@@ -10,6 +10,7 @@ export interface SideMenuElement {
   group?: boolean
   href?: string
   icon?: JSX.Element
+  role?: 'superuser' | 'admin'
 }
 
 export const sideMenu: SideMenuElement[] = [
@@ -42,6 +43,7 @@ export const sideMenu: SideMenuElement[] = [
     key: 'administration',
     name: 'admin:administration',
     group: true,
+    role: 'superuser',
     items: [
       {
         key: 'users',

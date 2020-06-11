@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - markdown support for page paragraphs and field description
 - hideable omf badge
 - login notes
+- username in admin toolbar
+- github stars in multiple places
 
 ### Changed
 ### Fixed
@@ -23,6 +25,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - number field defaults
 - translations for field validation
 - number validation
+- side menu only shows accessible entries
 
 ### Security
  

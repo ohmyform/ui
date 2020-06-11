@@ -1,12 +1,16 @@
 import { CaretDownOutlined, UserOutlined } from '@ant-design/icons'
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons/lib'
-import { Dropdown, Layout, Menu, PageHeader, Select, Spin, Tag } from 'antd'
+import { useQuery } from '@apollo/react-hooks'
+import { Dropdown, Layout, Menu, PageHeader, Select, Space, Spin, Tag } from 'antd'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { CSSProperties, FunctionComponent } from 'react'
 import { useTranslation } from 'react-i18next'
+import { ME_QUERY, MeQueryData } from '../graphql/query/me.query'
+import { SETTINGS_QUERY, SettingsQueryData } from '../graphql/query/settings.query'
 import { languages } from '../i18n'
 import { sideMenu, SideMenuElement } from './sidemenu'
+import GitHubButton from 'react-github-button'
 import { useWindowSize } from './use.window.size'
 import { clearAuth } from './with.auth'
 
@@ -40,6 +44,7 @@ const Structure: FunctionComponent<Props> = (props) => {
   const [selected, setSelected] = React.useState<string[]>()
   const [sidebar, setSidebar] = React.useState(size.width < 700)
   const router = useRouter()
+  const user = useQuery<MeQueryData>(ME_QUERY)
 
   React.useEffect(() => {
     if (sidebar !== size.width < 700) {
@@ -62,62 +67,74 @@ const Structure: FunctionComponent<Props> = (props) => {
   }, [props.selected])
 
   const buildMenu = (data: SideMenuElement[]): JSX.Element[] => {
-    return data.map(
-      (element): JSX.Element => {
-        if (element.items && element.items.length > 0) {
-          if (element.group) {
+    return data
+      .filter((element) => {
+        if (!element.role) {
+          return true
+        }
+
+        if (user.loading) {
+          return false
+        }
+
+        return user.data.me.roles.includes(element.role)
+      })
+      .map(
+        (element): JSX.Element => {
+          if (element.items && element.items.length > 0) {
+            if (element.group) {
+              return (
+                <ItemGroup
+                  key={element.key}
+                  title={
+                    <div
+                      style={{
+                        textTransform: 'uppercase',
+                        paddingTop: 16,
+                        fontWeight: 'bold',
+                        color: '#444',
+                      }}
+                    >
+                      {element.icon}
+                      {t(element.name)}
+                    </div>
+                  }
+                >
+                  {buildMenu(element.items)}
+                </ItemGroup>
+              )
+            }
+
             return (
-              <ItemGroup
+              <SubMenu
                 key={element.key}
                 title={
-                  <div
-                    style={{
-                      textTransform: 'uppercase',
-                      paddingTop: 16,
-                      fontWeight: 'bold',
-                      color: '#444',
-                    }}
-                  >
+                  <span>
                     {element.icon}
                     {t(element.name)}
-                  </div>
+                  </span>
                 }
               >
                 {buildMenu(element.items)}
-              </ItemGroup>
+              </SubMenu>
             )
           }
 
           return (
-            <SubMenu
+            <Menu.Item
+              onClick={async () => {
+                if (element.href) {
+                  await router.push(element.href)
+                }
+              }}
               key={element.key}
-              title={
-                <span>
-                  {element.icon}
-                  {t(element.name)}
-                </span>
-              }
             >
-              {buildMenu(element.items)}
-            </SubMenu>
+              {element.icon}
+              {t(element.name)}
+            </Menu.Item>
           )
         }
-
-        return (
-          <Menu.Item
-            onClick={async () => {
-              if (element.href) {
-                await router.push(element.href)
-              }
-            }}
-            key={element.key}
-          >
-            {element.icon}
-            {t(element.name)}
-          </Menu.Item>
-        )
-      }
-    )
+      )
   }
 
   const signOut = (): void => {
@@ -165,16 +182,17 @@ const Structure: FunctionComponent<Props> = (props) => {
             onVisibleChange={setUserMenu}
             visible={userMenu}
           >
-            <div
+            <Space
               style={{
                 color: '#FFF',
                 alignItems: 'center',
                 display: 'inline-flex',
               }}
             >
+              <div>Hi {user.data && user.data.me.username},</div>
               <UserOutlined style={{ fontSize: 24 }} />
               <CaretDownOutlined />
-            </div>
+            </Space>
           </Dropdown>
         </div>
       </Header>
@@ -223,6 +241,9 @@ const Structure: FunctionComponent<Props> = (props) => {
                   </Select.Option>
                 ))}
               </Select>
+            </Menu.Item>
+            <Menu.Item style={{ display: 'flex', alignItems: 'center' }}>
+              <GitHubButton type="stargazers" namespace="ohmyform" repo="ohmyform" />
             </Menu.Item>
             <Menu.Item>
               Version: <Tag color="gold">{process.env.version}</Tag>

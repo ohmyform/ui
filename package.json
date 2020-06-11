@@ -1,6 +1,6 @@
 {
   "name": "ohmyform-react",
-  "version": "0.9.1",
+  "version": "0.9.5",
   "license": "AGPL-3.0-or-later",
   "scripts": {
     "start:dev": "next dev -p 4000",
@@ -29,6 +29,7 @@
     "react": "16.13.1",
     "react-color": "^2.18.1",
     "react-dom": "16.13.1",
+    "react-github-button": "^0.1.11",
     "react-i18next": "^11.5.0",
     "react-icons": "^3.10.0",
     "react-id-swiper": "^3.0.0",

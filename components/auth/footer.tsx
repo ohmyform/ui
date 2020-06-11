@@ -3,6 +3,7 @@ import { Button, Select } from 'antd'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
+import GitHubButton from 'react-github-button'
 import { useTranslation } from 'react-i18next'
 import { SETTINGS_QUERY, SettingsQueryData } from '../../graphql/query/settings.query'
 import { languages } from '../../i18n'
@@ -71,6 +72,7 @@ const AuthFooterInner: React.FC<Props> = (props) => {
           </Select.Option>
         ))}
       </Select>
+      <GitHubButton type="stargazers" namespace="ohmyform" repo="ohmyform" />
       <Button
         type={'link'}
         target={'_blank'}
@@ -81,7 +83,7 @@ const AuthFooterInner: React.FC<Props> = (props) => {
           color: '#FFF',
         }}
       >
-        &copy; OhMyForm
+        OhMyForm
       </Button>
     </footer>
   )
