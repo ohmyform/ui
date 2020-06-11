@@ -6,6 +6,8 @@
 [![Lokalise](https://badgen.net/badge/Lokalise/EN/green?icon=libraries)](https://app.lokalise.com/public/379418475ede5d5c6937b0.31012044/)
 ![Last Commit](https://badgen.net/github/last-commit/ohmyform/ui)
 
+[Demo](https://demo.ohmyform.com/login)
+
 > An *open source alternative to TypeForm* that can create stunning mobile-ready forms, surveys and questionnaires.
 
 [![Discord](https://img.shields.io/discord/595773457862492190.svg?label=Discord%20Chat)](https://discord.gg/MJqAuAZ)
