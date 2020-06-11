@@ -5,16 +5,16 @@
     "showFooter": "Mostrar pie de página",
     "title": "Título"
   },
-  "baseDataTab": "Datos base",
+  "baseDataTab": "Datos Generales",
   "building": "Formulario de construcción",
   "confirmDelete": "¿Estás seguro de eliminar este formulario con todos los envíos?",
   "create": "Crear nuevo formulario",
   "created": "Formulario creado",
-  "createNow": "Salvar",
+  "createNow": "Guardar",
   "creationError": "No se pudo crear el formulario",
   "deleted": "Formulario eliminado",
   "deleteError": "No se pudo eliminar el formulario",
-  "deleteNow": "¡Elimina ahora!",
+  "deleteNow": "¡Eliminar ahora!",
   "design": {
     "answerColor": "Color de respuesta",
     "backgroundColor": "Color de fondo",
@@ -40,18 +40,19 @@
     "url": "Url"
   },
   "endPageTab": "Página final",
+  "fieldsTab": "Campos",
   "loading": "Formulario de carga",
   "mange": "Editar formulario \" {{title}} \"",
-  "new": "Nueva forma",
+  "new": "Nuevo formulario",
   "respondentNotifications": {
     "enabled": "Habilitado",
     "fromEmail": "Correo electrónico del remitente",
     "fromEmailInfo": "Asegúrese de que su servidor de correo pueda enviar desde este correo electrónico",
     "htmlTemplate": "Plantilla HTML",
     "htmlTemplateInfo": "También puede usar <u> MJML <\/u> para crear sus plantillas de correo electrónico",
-    "subject": "Tema",
-    "toField": "Campo de correo electrónico",
-    "toFieldInfo": "Campo con correo electrónico para recibo"
+    "subject": "Asunto",
+    "toField": "Correo electrónico de destino",
+    "toFieldInfo": "Dirección de correo electrónico que recibirá las notificaiones"
   },
   "respondentNotificationsTab": "Notificaciones de encuestados",
   "restart": "Reiniciar formulario",
@@ -67,7 +68,7 @@
   "selfNotifications": {
     "enabled": "Habilitado",
     "fromField": "Correo electrónico del remitente",
-    "fromFieldInfo": "Campo con correo electrónico, establecerá el encabezado Responder a",
+    "fromFieldInfo": "Asegúrese de que su servidor de correo pueda enviar desde este correo electrónico",
     "htmlTemplate": "Plantilla HTML",
     "htmlTemplateInfo": "También puede usar <u> MJML <\/u> para crear sus plantillas de correo electrónico",
     "subject": "Tema",
@@ -82,7 +83,7 @@
     "bgColor": "Color de fondo",
     "buttons": "Botones",
     "color": "Color",
-    "continueButtonText": "Continuar texto del botón",
+    "continueButtonText": "Texto del botón continuar",
     "paragraph": "Párrafo",
     "show": "mostrar",
     "text": "Texto",
@@ -93,5 +94,5 @@
   "submitted": "Gracias por tu presentación!",
   "updated": "Formulario actualizado",
   "updateError": "No se pudo actualizar el formulario",
-  "updateNow": "Salvar"
+  "updateNow": "Guardar"
 }

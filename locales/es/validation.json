@@ -1,15 +1,15 @@
 {
-  "emailFieldRequired": "Por favor seleccione un campo de correo electrónico",
-  "emailRequired": "Por favor proporcione un correo electrónico",
-  "invalidEmail": "¡Debe ser un correo electrónico válido!",
+  "emailFieldRequired": "Por favor, introduzca una dirección de correo electrónico",
+  "emailRequired": "Por favor, introduzca una dirección de correo electrónico",
+  "invalidEmail": "¡Debe ser una dirección de correo electrónico válida!",
   "invalidUrl": "Debe ser una URL válida",
   "languageRequired": "Por favor, seleccione un idioma",
   "mandatoryFieldsMissing": "Faltan campos obligatorios",
-  "passwordMinLength": "¡Debe tener más de 5 caracteres o más!",
-  "passwordRequired": "Por favor ingrese su contraseña!",
-  "subjectRequired": "Por favor proporcione un tema",
-  "templateRequired": "Por favor proporcione una plantilla",
-  "titleRequired": "Por favor proporcione un título",
-  "usernameRequired": "Por favor proporcione un nombre de usuario",
-  "valueRequired": "Por favor proporcione un valor"
+  "passwordMinLength": "¡Debe tener 5 caracteres o más!",
+  "passwordRequired": "Por favor, introduzca su contraseña!",
+  "subjectRequired": "Por favor, introduzca un tema",
+  "templateRequired": "Por favor, introduzca una plantilla",
+  "titleRequired": "Por favor, introduzca un título",
+  "usernameRequired": "Por favor, introduzca un nombre de usuario",
+  "valueRequired": "Por favor, introduzca un valor"
 }

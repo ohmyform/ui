@@ -1,5 +1,5 @@
 {
-  "add": "Agregar sumisión",
+  "add": "Agregar Envío",
   "city": "Ciudad",
   "country": "País",
   "created": "Creado",
@@ -11,6 +11,6 @@
   "field": "Campo",
   "lastModified": "Ultimo cambio",
   "progress": "Progreso",
-  "submission": "Sumisión",
+  "submission": "Envío",
   "value": "Valor"
 }
