@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 
 - mobile improvements for lists and home page
+- markdown support for page paragraphs and field description
 
 ### Changed
 ### Fixed

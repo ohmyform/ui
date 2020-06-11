@@ -87,6 +87,7 @@ export const FieldCard: React.FC<Props> = (props) => {
         label={t('type:description')}
         name={[field.name as string, 'description']}
         labelCol={{ span: 6 }}
+        extra={t('type:descriptionInfo')}
       >
         <Input.TextArea autoSize />
       </Form.Item>

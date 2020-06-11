@@ -8,6 +8,7 @@
   },
   "deleteNow": "Delete Field",
   "description": "Description",
+  "descriptionInfo": "Use markdown for advanced formatting",
   "dropdown": {
     "addOption": "Add Option",
     "default": "Default Value",

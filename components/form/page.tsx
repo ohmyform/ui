@@ -3,7 +3,7 @@ import React from 'react'
 import { FormDesignFragment, FormPageFragment } from '../../graphql/fragment/form.fragment'
 import { StyledButton } from '../styled/button'
 import { StyledH1 } from '../styled/h1'
-import { StyledP } from '../styled/p'
+import { StyledMarkdown } from '../styled/markdown'
 
 interface Props {
   type: 'start' | 'end'
@@ -39,9 +39,7 @@ export const FormPage: React.FC<Props> = ({ page, design, next, prev, ...props }
         <StyledH1 design={design} type={'question'}>
           {page.title}
         </StyledH1>
-        <StyledP design={design} type={'question'}>
-          {page.paragraph}
-        </StyledP>
+        <StyledMarkdown design={design} type={'question'} source={page.paragraph} />
       </div>
       <div
         style={{

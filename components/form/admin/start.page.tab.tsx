@@ -22,7 +22,11 @@ export const StartPageTab: React.FC<TabPaneProps> = (props) => {
         <Input />
       </Form.Item>
 
-      <Form.Item label={t('form:startPage.paragraph')} name={['form', 'startPage', 'paragraph']}>
+      <Form.Item
+        label={t('form:startPage.paragraph')}
+        name={['form', 'startPage', 'paragraph']}
+        extra={t('form:startPage.paragraphInfo')}
+      >
         <Input.TextArea autoSize />
       </Form.Item>
 

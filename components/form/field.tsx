@@ -4,7 +4,7 @@ import React from 'react'
 import { FormDesignFragment, FormFieldFragment } from '../../graphql/fragment/form.fragment'
 import { StyledButton } from '../styled/button'
 import { StyledH1 } from '../styled/h1'
-import { StyledP } from '../styled/p'
+import { StyledMarkdown } from '../styled/markdown'
 import { fieldTypes } from './types'
 import { TextType } from './types/text.type'
 import { FieldTypeProps } from './types/type.props'
@@ -58,9 +58,7 @@ export const Field: React.FC<Props> = ({ field, save, design, next, prev, ...pro
           {field.title}
         </StyledH1>
         {field.description && (
-          <StyledP design={design} type={'question'}>
-            {field.description}
-          </StyledP>
+          <StyledMarkdown design={design} type={'question'} source={field.description} />
         )}
 
         <FieldInput design={design} field={field} />

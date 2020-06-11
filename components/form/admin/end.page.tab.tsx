@@ -22,7 +22,11 @@ export const EndPageTab: React.FC<TabPaneProps> = (props) => {
         <Input />
       </Form.Item>
 
-      <Form.Item label={t('form:endPage.paragraph')} name={['form', 'endPage', 'paragraph']}>
+      <Form.Item
+        label={t('form:endPage.paragraph')}
+        name={['form', 'endPage', 'paragraph']}
+        extra={t('type:descriptionInfo')}
+      >
         <Input.TextArea autoSize />
       </Form.Item>
 
