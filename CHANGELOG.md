@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 ### Changed
 ### Fixed
+
+- typo in dropdown options https://github.com/ohmyform/ohmyform/issues/96
+
 ### Security
  
 ## [0.9.5] - 2020-06-10

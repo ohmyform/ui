@@ -26,7 +26,7 @@ export const DropdownType: React.FC<FieldTypeProps> = ({ field, design }) => {
             .filter((option) => option.key === null)
             .map((option) => (
               <Select.Option value={option.value} key={option.value}>
-                OK{option.title || option.value}
+                {option.title || option.value}
               </Select.Option>
             ))}
         </StyledSelect>
