@@ -14,6 +14,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - typo in dropdown options https://github.com/ohmyform/ohmyform/issues/96
 
 ### Security
+
+- container now runs as non root user
  
 ## [0.9.5] - 2020-06-10
 
