@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 ### Changed
+
+- minify containers to reduce layer size
+
 ### Fixed
 
 - do not show login note if it is not set
