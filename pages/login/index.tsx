@@ -76,7 +76,7 @@ const Index: NextPage = () => {
           }}
         />
 
-        {data && (
+        {data && data.loginNote && (
           <Alert
             type="warning"
             showIcon

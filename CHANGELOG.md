@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 ### Fixed
 
+- do not show login note if it is not set
 - typo in dropdown options https://github.com/ohmyform/ohmyform/issues/96
 
 ### Security
