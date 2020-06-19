@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## UNRELEASED
 
 ### Added
+
+- slug for fields to be able to set value by url parameter
+
 ### Changed
 
 - minify containers to reduce layer size

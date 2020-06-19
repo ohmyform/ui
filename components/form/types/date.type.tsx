@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next'
 import { StyledDateInput } from '../../styled/date.input'
 import { FieldTypeProps } from './type.props'
 
-export const DateType: React.FC<FieldTypeProps> = ({ field, design }) => {
+export const DateType: React.FC<FieldTypeProps> = ({ field, design, urlValue }) => {
   const [min, setMin] = useState<Dayjs>()
   const [max, setMax] = useState<Dayjs>()
   const { t } = useTranslation()
@@ -22,6 +22,16 @@ export const DateType: React.FC<FieldTypeProps> = ({ field, design }) => {
     })
   }, [field])
 
+  let initialValue: Moment = undefined
+
+  if (field.value) {
+    initialValue = moment(field.value)
+  }
+
+  if (urlValue) {
+    initialValue = moment(field.value)
+  }
+
   return (
     <div>
       <Form.Item
@@ -29,7 +39,7 @@ export const DateType: React.FC<FieldTypeProps> = ({ field, design }) => {
         rules={[{ required: field.required, message: t('validation:valueRequired') }]}
         getValueFromEvent={(e: Moment) => e.format('YYYY-MM-DD')}
         getValueProps={(e: string) => ({ value: e ? moment(e) : undefined })}
-        initialValue={field.value ? moment(field.value) : undefined}
+        initialValue={initialValue}
       >
         <StyledDateInput
           size={'large'}

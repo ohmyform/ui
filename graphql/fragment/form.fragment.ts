@@ -32,6 +32,7 @@ export interface FormFieldLogicJumpFragment {
 export interface FormFieldFragment {
   id: string
   title: string
+  slug?: string
   type: string
   description: string
   required: boolean
@@ -81,6 +82,7 @@ export const FORM_FRAGMENT = gql`
     fields {
       id
       title
+      slug
       type
       description
       required

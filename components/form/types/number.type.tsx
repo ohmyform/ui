@@ -4,8 +4,18 @@ import { useTranslation } from 'react-i18next'
 import { StyledNumberInput } from '../../styled/number.input'
 import { FieldTypeProps } from './type.props'
 
-export const NumberType: React.FC<FieldTypeProps> = ({ field, design }) => {
+export const NumberType: React.FC<FieldTypeProps> = ({ field, design, urlValue }) => {
   const { t } = useTranslation()
+
+  let initialValue: number = undefined
+
+  if (field.value) {
+    initialValue = parseFloat(field.value)
+  }
+
+  if (urlValue) {
+    initialValue = parseFloat(urlValue)
+  }
 
   return (
     <div>
@@ -15,7 +25,7 @@ export const NumberType: React.FC<FieldTypeProps> = ({ field, design }) => {
           { type: 'number', message: t('validation:invalidNumber') },
           { required: field.required, message: t('validation:valueRequired') },
         ]}
-        initialValue={typeof field.value === 'number' ? parseFloat(field.value) : undefined}
+        initialValue={initialValue}
       >
         <StyledNumberInput design={design} size={'large'} />
       </Form.Item>

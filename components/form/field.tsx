@@ -1,5 +1,6 @@
 import { Form, message } from 'antd'
 import { useForm } from 'antd/lib/form/Form'
+import { useRouter } from 'next/router'
 import React from 'react'
 import { FormDesignFragment, FormFieldFragment } from '../../graphql/fragment/form.fragment'
 import { StyledButton } from '../styled/button'
@@ -21,6 +22,7 @@ interface Props {
 
 export const Field: React.FC<Props> = ({ field, save, design, next, prev, ...props }) => {
   const [form] = useForm()
+  const router = useRouter()
 
   const FieldInput: React.FC<FieldTypeProps> = fieldTypes[field.type] || TextType
 
@@ -32,6 +34,18 @@ export const Field: React.FC<Props> = ({ field, save, design, next, prev, ...pro
 
   const error = async () => {
     await message.error('Check inputs!')
+  }
+
+  const getUrlDefault = (): string => {
+    if (router.query[field.id]) {
+      return router.query[field.id] as string
+    }
+
+    if (router.query[field.slug]) {
+      return router.query[field.slug] as string
+    }
+
+    return undefined
   }
 
   return (
@@ -61,7 +75,7 @@ export const Field: React.FC<Props> = ({ field, save, design, next, prev, ...pro
           <StyledMarkdown design={design} type={'question'} source={field.description} />
         )}
 
-        <FieldInput design={design} field={field} />
+        <FieldInput design={design} field={field} urlValue={getUrlDefault()} />
       </div>
       <div
         style={{

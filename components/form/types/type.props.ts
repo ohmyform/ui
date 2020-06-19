@@ -3,4 +3,5 @@ import { FormDesignFragment, FormFieldFragment } from '../../../graphql/fragment
 export interface FieldTypeProps {
   field: FormFieldFragment
   design: FormDesignFragment
+  urlValue?: string
 }

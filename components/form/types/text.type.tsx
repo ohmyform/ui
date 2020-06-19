@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { StyledInput } from '../../styled/input'
 import { FieldTypeProps } from './type.props'
 
-export const TextType: React.FC<FieldTypeProps> = ({ field, design }) => {
+export const TextType: React.FC<FieldTypeProps> = ({ field, design, urlValue }) => {
   const { t } = useTranslation()
   // TODO focus when becomes visible
 
@@ -13,7 +13,7 @@ export const TextType: React.FC<FieldTypeProps> = ({ field, design }) => {
       <Form.Item
         name={[field.id, 'value']}
         rules={[{ required: field.required, message: t('validation:valueRequired') }]}
-        initialValue={field.value}
+        initialValue={urlValue || field.value}
       >
         <StyledInput design={design} allowClear size={'large'} />
       </Form.Item>

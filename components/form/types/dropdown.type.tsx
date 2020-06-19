@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { StyledSelect } from '../../styled/select'
 import { FieldTypeProps } from './type.props'
 
-export const DropdownType: React.FC<FieldTypeProps> = ({ field, design }) => {
+export const DropdownType: React.FC<FieldTypeProps> = ({ field, design, urlValue }) => {
   const [open, setOpen] = useState(false)
   const { t } = useTranslation()
 
@@ -13,7 +13,7 @@ export const DropdownType: React.FC<FieldTypeProps> = ({ field, design }) => {
       <Form.Item
         name={[field.id, 'value']}
         rules={[{ required: field.required, message: t('validation:valueRequired') }]}
-        initialValue={field.value || null}
+        initialValue={urlValue || field.value || null}
       >
         <StyledSelect
           design={design}

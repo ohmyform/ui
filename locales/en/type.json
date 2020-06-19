@@ -51,6 +51,8 @@
   },
   "required": "Required",
   "requiredInfo": "If required, default value must be set to enable users to submit form!",
+  "slug": "Slug",
+  "slugInfo": "Use slug to pass the default dynamic as url parameter ?slug=value",
   "textarea": {
     "default": "Default Value",
     "name": "Text Area"

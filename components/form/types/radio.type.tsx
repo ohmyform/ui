@@ -4,8 +4,18 @@ import { useTranslation } from 'react-i18next'
 import { StyledRadio } from '../../styled/radio'
 import { FieldTypeProps } from './type.props'
 
-export const RadioType: React.FC<FieldTypeProps> = ({ field, design }) => {
+export const RadioType: React.FC<FieldTypeProps> = ({ field, design, urlValue }) => {
   const { t } = useTranslation()
+
+  let initialValue: string = undefined
+
+  if (field.value) {
+    initialValue = field.value
+  }
+
+  if (urlValue) {
+    initialValue = urlValue
+  }
 
   return (
     <div>
@@ -14,7 +24,7 @@ export const RadioType: React.FC<FieldTypeProps> = ({ field, design }) => {
         rules={[{ required: field.required, message: t('validation:valueRequired') }]}
         initialValue={field.options
           .map((option) => option.value)
-          .find((value) => value === field.value)}
+          .find((value) => value === initialValue)}
       >
         <Radio.Group>
           {field.options

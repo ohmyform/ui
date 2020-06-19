@@ -3,6 +3,7 @@
   "emailRequired": "Please provide an Email",
   "invalidEmail": "Must be a valid email!",
   "invalidNumber": "Must be a valid number!",
+  "invalidSlug": "Slug can only contain lowercase a-z, 0-9 and _",
   "invalidUrl": "Must be a valid URL",
   "languageRequired": "Please select a Language",
   "mandatoryFieldsMissing": "Mandatory fields missing",

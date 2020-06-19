@@ -1,5 +1,5 @@
 import { DeleteOutlined } from '@ant-design/icons/lib'
-import { Button, Card, Checkbox, Form, Input, Popconfirm, Tag } from 'antd'
+import { Button, Card, Checkbox, Form, Input, Popconfirm, Popover, Tag } from 'antd'
 import { FormInstance } from 'antd/lib/form'
 import { FieldData } from 'rc-field-form/lib/interface'
 import React, { useEffect, useState } from 'react'
@@ -53,7 +53,27 @@ export const FieldCard: React.FC<Props> = (props) => {
       type={'inner'}
       extra={
         <div>
-          <Tag color={'blue'}>{t(`type:${type}.name`)}</Tag>
+          <Popover
+            placement={'left'}
+            content={
+              <Form.Item
+                name={[field.name as string, 'slug']}
+                label={false}
+                rules={[
+                  {
+                    pattern: /^[a-z0-9_]+$/,
+                    message: t('validation:invalidSlug'),
+                  },
+                ]}
+                help={t('type:slugInfo')}
+              >
+                <Input />
+              </Form.Item>
+            }
+            title={t('type:slug')}
+          >
+            <Tag color={'blue'}>{t(`type:${type}.name`)}</Tag>
+          </Popover>
           <Popconfirm
             placement={'left'}
             title={t('type:confirmDelete')}
