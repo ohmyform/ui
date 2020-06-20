@@ -49,13 +49,16 @@ export const HooksTab: React.FC<Props> = (props) => {
                   <Form.Item wrapperCol={{ span: 24 }}>
                     <Card
                       title={
-                        <Form.Item
-                          name={[hook.name, 'enabled']}
-                          valuePropName={'checked'}
-                          noStyle
-                        >
-                          <Checkbox /> {t('form:hooks.enabled')}
-                        </Form.Item>
+                        <div>
+                          <Form.Item
+                            name={[hook.name, 'enabled']}
+                            valuePropName={'checked'}
+                            noStyle
+                          >
+                            <Checkbox />
+                          </Form.Item>
+                          &nbsp;{t('form:hooks.enabled')}
+                        </div>
                       }
                       type={'inner'}
                       extra={
