@@ -42,6 +42,13 @@
   },
   "endPageTab": "End Page",
   "fieldsTab": "Form Fields",
+  "hooksTab": "WebHooks",
+  "hooks": {
+    "add": "Add",
+    "enabled": "Enabled",
+    "confirmDelete": "",
+    "deleteNow": ""
+  },
   "loading": "Loading Form",
   "mange": "Edit Form \"{{title}}\"",
   "new": "New Form",

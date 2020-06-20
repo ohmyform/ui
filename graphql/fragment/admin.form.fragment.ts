@@ -52,6 +52,13 @@ export interface AdminFormFieldFragment {
   }
 }
 
+export interface AdminFormHookFragment {
+  id: string
+  enabled: boolean
+  url?: string
+  format?: string
+}
+
 export interface AdminFormFragment {
   id?: string
   title: string
@@ -61,6 +68,7 @@ export interface AdminFormFragment {
   showFooter: boolean
   isLive: boolean
   fields: AdminFormFieldFragment[]
+  hooks: AdminFormHookFragment[]
   selfNotifications: {
     enabled: boolean
     subject?: string
@@ -103,6 +111,13 @@ export const ADMIN_FORM_FRAGMENT = gql`
     language
     showFooter
     isLive
+    
+    hooks {
+      id
+      enabled
+      format
+      url
+    }
 
     fields {
       id

@@ -30,6 +30,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { HooksTab } from '../../../../components/form/admin/hooks.tab'
 
 const Index: NextPage = () => {
   const { t } = useTranslation()
@@ -188,6 +189,7 @@ const Index: NextPage = () => {
           />
           <StartPageTab key={'start_page'} tab={t('form:startPageTab')} />
           <EndPageTab key={'end_page'} tab={t('form:endPageTab')} />
+          <HooksTab key={'hooks'} tab={t('form:hooksTab')} />
         </Tabs>
       </Form>
     </Structure>

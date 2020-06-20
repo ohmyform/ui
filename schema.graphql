@@ -49,11 +49,12 @@ type Device {
 }
 
 type Form {
-  admin: User!
+  admin: User
   created: DateTime!
   design: Design!
   endPage: Page!
   fields: [FormField!]!
+  hooks: [FormHook!]!
   id: ID!
   isLive: Boolean!
   language: String!
@@ -72,6 +73,7 @@ type FormField {
   options: [FormFieldOption!]!
   rating: FormFieldRating
   required: Boolean!
+  slug: String
   title: String!
   type: String!
   value: String!
@@ -86,6 +88,13 @@ type FormFieldOption {
 type FormFieldRating {
   shape: String
   steps: Int
+}
+
+type FormHook {
+  enabled: Boolean!
+  format: String
+  id: ID!
+  url: String
 }
 
 type FormStatistic {
@@ -202,7 +211,7 @@ type Setting {
   isFalse: Boolean!
   isTrue: Boolean!
   key: ID!
-  value: String!
+  value: String
 }
 
 type Submission {
@@ -299,6 +308,7 @@ input FormFieldInput {
   options: [FormFieldOptionInput!]
   rating: FormFieldRatingInput
   required: Boolean!
+  slug: String
   title: String!
   type: String!
   value: String!
@@ -315,10 +325,18 @@ input FormFieldRatingInput {
   steps: Int
 }
 
+input FormHookInput {
+  enabled: Boolean!
+  format: String
+  id: ID!
+  url: String
+}
+
 input FormUpdateInput {
   design: DesignInput
   endPage: PageInput
   fields: [FormFieldInput!]
+  hooks: [FormHookInput!]
   id: ID!
   isLive: Boolean
   language: String

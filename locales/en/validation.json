@@ -13,5 +13,6 @@
   "templateRequired": "Please provide a template",
   "titleRequired": "Please provide a title",
   "usernameRequired": "Please provide a Username",
-  "valueRequired": "Please provide a Value"
+  "valueRequired": "Please provide a Value",
+  "urlRequired": "Please provide a Url"
 }

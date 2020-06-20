@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 
 - slug for fields to be able to set value by url parameter
+- form submission hokks
 
 ### Changed
 
