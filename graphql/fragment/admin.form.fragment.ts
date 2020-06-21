@@ -111,7 +111,7 @@ export const ADMIN_FORM_FRAGMENT = gql`
     language
     showFooter
     isLive
-    
+
     hooks {
       id
       enabled

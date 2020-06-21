@@ -1,16 +1,10 @@
 import { DeleteOutlined, PlusOutlined } from '@ant-design/icons/lib'
-import { Button, Card, Checkbox, Form, Input, Popconfirm, Popover, Select, Space, Tabs, Tag } from 'antd'
-import { FormInstance } from 'antd/lib/form'
+import { Button, Card, Checkbox, Form, Input, Popconfirm, Space, Tabs } from 'antd'
 import { TabPaneProps } from 'antd/lib/tabs'
-import { FieldData } from 'rc-field-form/lib/interface'
-import React, { useCallback, useState } from 'react'
+import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { AdminFormFieldFragment } from '../../../graphql/fragment/admin.form.fragment'
-import { FieldCard } from './field.card'
-import { adminTypes } from './types'
 
-interface Props extends TabPaneProps {
-}
+interface Props extends TabPaneProps {}
 
 export const HooksTab: React.FC<Props> = (props) => {
   const { t } = useTranslation()
@@ -18,7 +12,7 @@ export const HooksTab: React.FC<Props> = (props) => {
   return (
     <Tabs.TabPane {...props}>
       <Form.List name={['form', 'hooks']}>
-        {(hooks, { add, remove, move }) => {
+        {(hooks, { add, remove }) => {
           return (
             <div>
               <Form.Item wrapperCol={{ span: 24 }}>
@@ -34,7 +28,7 @@ export const HooksTab: React.FC<Props> = (props) => {
                       const defaults = {
                         id: `NEW-${Date.now()}`,
                         enabled: false,
-                        url: ''
+                        url: '',
                       }
 
                       add(defaults)
@@ -85,11 +79,11 @@ export const HooksTab: React.FC<Props> = (props) => {
                         name={[hook.name, 'url']}
                         rules={[
                           { required: true, message: t('validation:urlRequired') },
-                          { type: 'url', message: t('validation:invalidUrl')},
+                          { type: 'url', message: t('validation:invalidUrl') },
                         ]}
                         labelCol={{ span: 6 }}
                       >
-                        <Input  />
+                        <Input />
                       </Form.Item>
                     </Card>
                   </Form.Item>
