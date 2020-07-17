@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
+### Changed
+
+### Fixed
+
+### Security
+ 
+## [0.9.6] - 2020-07-17
+
+### Added
+
 - slug for fields to be able to set value by url parameter
 - form submission hokks
 
