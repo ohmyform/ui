@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - do not show login note if it is not set
 - typo in dropdown options https://github.com/ohmyform/ohmyform/issues/96
 - query parms are not parsed https://github.com/ohmyform/ui/pull/27 https://github.com/ohmyform/ohmyform/issues/100
+- errors because of missing user reference (https://github.com/ohmyform/ohmyform/issues/102)
 
 ### Security
 

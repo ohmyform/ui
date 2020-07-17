@@ -1,19 +1,19 @@
-import React from 'react';
-import {useRouter as useNextRouter} from 'next/router';
+import { NextRouter, useRouter as useNextRouter } from 'next/router'
 
+const parseQuery = (path) => {
+  const query = {}
+  const regex = /[?&]([^&$=]+)(=([^&$]+))?/g
+  let param: RegExpExecArray
 
-function parseQuery(path) {
-  const query = {};
-  const regex = /[?&]([^&$=]+)(=([^&$]+))?/g;
-  let param;
   while ((param = regex.exec(path)) !== null) {
-    query[decodeURIComponent(param[1])] = decodeURIComponent(param[3]);
+    query[decodeURIComponent(param[1])] = decodeURIComponent(param[3])
   }
-  return query;
+
+  return query
 }
 
-export function useRouter() {
-  const router = useNextRouter();
-  router.query = {...router.query, ...parseQuery(router.asPath)};
-  return router;
+export const useRouter = (): NextRouter => {
+  const router = useNextRouter()
+  router.query = { ...router.query, ...parseQuery(router.asPath) }
+  return router
 }
