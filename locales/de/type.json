@@ -1,9 +1,9 @@
 {
-  "confirmDelete": "Wollen sie das Feld wirklich löschen? Bitte beachten sie das es keine Referenzen auf das Feld gibt!",
+  "confirmDelete": "Wollen Sie das Feld wirklich löschen? Bitte achten Sie darauf, dass es keine Referenzen mehr auf dieses Feld gibt!",
   "date": {
     "default": "Standard Dateum",
-    "max": "Neuest mögliche Datum",
-    "min": "Ältest mögliche Datum",
+    "max": "Neustes mögliches Datum",
+    "min": "Ältestes mögliches Datum",
     "name": "Datum"
   },
   "deleteNow": "Feld löschen",
@@ -48,7 +48,7 @@
     "name": "Bewertung"
   },
   "required": "Pflichtfeld",
-  "requiredInfo": "Falls verpflichtend sollte ein Standard Wert gesetzt sein damit Nutzer fortfahren können!",
+  "requiredInfo": "Falls verpflichtend sollte ein Standard Wert gesetzt sein, damit Nutzer fortfahren können!",
   "textarea": {
     "default": "Standard Wert",
     "name": "Mehrzeiliger Text"
