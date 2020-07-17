@@ -5,7 +5,7 @@ import {
   UnorderedListOutlined,
 } from '@ant-design/icons/lib'
 import { useMutation, useQuery } from '@apollo/react-hooks'
-import { Button, message, Popconfirm, Space, Table, Tooltip } from 'antd'
+import { Button, message, Popconfirm, Space, Table, Tag, Tooltip } from 'antd'
 import { PaginationProps } from 'antd/es/pagination'
 import { ColumnsType } from 'antd/lib/table/interface'
 import { DateTime } from 'components/date.time'
@@ -96,6 +96,10 @@ const Index: NextPage = () => {
       title: t('form:row.admin'),
       dataIndex: 'admin',
       render(user: AdminPagerFormEntryAdminQueryData) {
+        if (!user) {
+          return <Tag color={'red'} title={t('form:row.adminMissing')} />
+        }
+
         return (
           <Link href={'/admin/users/[id]'} as={`/admin/users/${user.id}`}>
             <Tooltip title={user.email}>
