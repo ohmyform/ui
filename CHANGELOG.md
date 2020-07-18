@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 
+- improved german translation (https://github.com/ohmyform/ui/pull/28)
+
 ### Fixed
 
 ### Security
