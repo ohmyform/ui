@@ -111,13 +111,25 @@ const Index: NextPage = () => {
         <Button.Group className={scss.otherActions}>
           {(!data || !data.disabledSignUp.value) && (
             <Link href={'/register'}>
-              <Button type={'link'} ghost>
+              <Button
+                type={'link'}
+                ghost
+                style={{
+                  color: '#FFF',
+                }}
+              >
                 {t('register')}
               </Button>
             </Link>
           )}
           <Link href={'/login/recover'}>
-            <Button type={'link'} ghost>
+            <Button
+              type={'link'}
+              ghost
+              style={{
+                color: '#FFF',
+              }}
+            >
               {t('recover')}
             </Button>
           </Link>

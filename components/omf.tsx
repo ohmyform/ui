@@ -6,7 +6,7 @@ import scss from './omf.module.scss'
 export const Omf: React.FC = () => {
   const { data, loading } = useQuery<SettingsQueryData>(SETTINGS_QUERY)
 
-  if (loading || data.hideContrib.value) {
+  if (loading || (data && data.hideContrib.value)) {
     return null
   }
 

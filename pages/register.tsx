@@ -119,7 +119,13 @@ const Register: NextPage = () => {
 
         <Button.Group className={scss.otherActions}>
           <Link href={'/login'}>
-            <Button type={'link'} ghost>
+            <Button
+              type={'link'}
+              ghost
+              style={{
+                color: '#FFF',
+              }}
+            >
               {t('register:gotoLogin')}
             </Button>
           </Link>

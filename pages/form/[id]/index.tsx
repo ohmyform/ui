@@ -65,7 +65,6 @@ const Index: NextPage<Props> = () => {
   const goPrev = () => swiper && swiper.slidePrev()
 
   const swiperConfig: ReactIdSwiperProps = {
-    getSwiper: setSwiper,
     direction: 'vertical',
     allowSlideNext: false,
     allowSlidePrev: true,
@@ -79,7 +78,8 @@ const Index: NextPage<Props> = () => {
       }}
     >
       <Omf />
-      <Swiper {...swiperConfig}>
+      {/* eslint-disable-next-line @typescript-eslint/no-unsafe-member-access */}
+      <Swiper {...swiperConfig} ref={(element) => element && setSwiper((element as any).swiper)}>
         {[
           data.form.startPage.show ? (
             <FormPage

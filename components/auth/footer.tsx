@@ -30,7 +30,13 @@ const AuthFooterInner: React.FC<Props> = (props) => {
   return (
     <footer className={scss.footer}>
       <Link href={'/admin'}>
-        <Button type={'link'} ghost>
+        <Button
+          type={'link'}
+          ghost
+          style={{
+            color: '#FFF',
+          }}
+        >
           {t('admin')}
         </Button>
       </Link>
@@ -39,18 +45,39 @@ const AuthFooterInner: React.FC<Props> = (props) => {
             <span style={{ color: '#FFF' }} key={'user'}>
               Hi, {props.me.username}
             </span>,
-            <Button key={'logout'} type={'link'} ghost onClick={logout}>
+            <Button
+              key={'logout'}
+              type={'link'}
+              ghost
+              onClick={logout}
+              style={{
+                color: '#FFF',
+              }}
+            >
               {t('logout')}
             </Button>,
           ]
         : [
             <Link href={'/login'} key={'login'}>
-              <Button type={'link'} ghost>
+              <Button
+                type={'link'}
+                ghost
+                style={{
+                  color: '#FFF',
+                }}
+              >
                 {t('login')}
               </Button>
             </Link>,
             <Link href={'/register'} key={'register'}>
-              <Button type={'link'} ghost disabled={data ? data.disabledSignUp.value : false}>
+              <Button
+                type={'link'}
+                ghost
+                disabled={data ? data.disabledSignUp.value : false}
+                style={{
+                  color: '#FFF',
+                }}
+              >
                 {t('register')}
               </Button>
             </Link>,

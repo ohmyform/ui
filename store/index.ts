@@ -25,4 +25,4 @@ const makeStore: MakeStore<State> = () => {
   return createStore(root, undefined, composeWithDevTools(applyMiddleware(thunkMiddleware)))
 }
 
-export const wrapper = createWrapper<State>(makeStore, { debug: true })
+export const wrapper = createWrapper<State>(makeStore, { debug: false })
