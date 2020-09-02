@@ -17,6 +17,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
  
 ## [0.9.8] - 2020-09-02
 
+### Fixed
+
+- menu selection type
+
+### Security
+ 
+## [0.9.7] - 2020-09-02
+
 ### Changed
 
 - improved german translation (https://github.com/ohmyform/ui/pull/28)
@@ -24,7 +32,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 
 - colors for landing page buttons
-- menu selection type
 
 ### Security
 
