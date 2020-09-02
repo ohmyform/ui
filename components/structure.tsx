@@ -218,9 +218,9 @@ const Structure: FunctionComponent<Props> = (props) => {
             style={{ flex: 1 }}
             defaultSelectedKeys={['1']}
             selectedKeys={selected}
-            onSelect={(s): void => setSelected(s.keyPath)}
+            onSelect={(s): void => setSelected(s.keyPath as string[])}
             openKeys={open}
-            onOpenChange={(open): void => setOpen(open)}
+            onOpenChange={(open): void => setOpen(open as string[])}
           >
             {buildMenu(sideMenu)}
           </Menu>
