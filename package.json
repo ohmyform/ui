@@ -1,6 +1,6 @@
 {
   "name": "ohmyform-react",
-  "version": "0.9.5",
+  "version": "0.9.7",
   "license": "AGPL-3.0-or-later",
   "scripts": {
     "start:dev": "next dev -p 4000",
