@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 
+- missing dependency to @apollo/client
+
 ### Security
  
 ## [0.9.8] - 2020-09-02
