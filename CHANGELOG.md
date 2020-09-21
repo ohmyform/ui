@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 
+- updated french translations by @Vercety87
+
 ### Fixed
 
 - missing dependency to @apollo/client
