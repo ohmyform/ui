@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 
 - updated french translations by @Vercety87
+- upgrade to node 14 (https://github.com/ohmyform/ohmyform/issues/99)
 
 ### Fixed
 
