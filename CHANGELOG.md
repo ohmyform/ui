@@ -4,10 +4,23 @@ All notable changes to this project will be documented in this file.
  
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
- 
+
 ## UNRELEASED
 
 ### Added
+
+### Changed
+
+### Fixed
+
+### Security
+
+## [0.9.9] - 2021-02-14
+
+### Added
+
+- Submission export
+- Lokalize reference
 
 ### Changed
 
@@ -17,8 +30,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 
 - missing dependency to @apollo/client
+- footer rendering during authentication check
 
 ### Security
+
+- authentication check for profile page
  
 ## [0.9.8] - 2020-09-02
 
