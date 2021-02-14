@@ -112,6 +112,18 @@ const AuthFooterInner: React.FC<Props> = (props) => {
       >
         OhMyForm
       </Button>
+      <Button
+        type={'link'}
+        target={'_blank'}
+        rel={'noreferrer'}
+        ghost
+        href={'https://lokalise.com/'}
+        style={{
+          color: '#FFF',
+        }}
+      >
+        translated with Lokalize
+      </Button>
     </footer>
   )
 }
