@@ -39,7 +39,7 @@ export const authConfig = (config: AxiosRequestConfig = {}): AxiosRequestConfig 
 }
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types,@typescript-eslint/no-explicit-any
-export const withAuth = (Component: any, roles: string[] = []): React.FC => {
+export const withAuth = (Component: any, roles: string[] = [], optional?: boolean): React.FC => {
   // eslint-disable-next-line react/display-name
   return (props) => {
     const { t } = useTranslation()
@@ -79,12 +79,14 @@ export const withAuth = (Component: any, roles: string[] = []): React.FC => {
       }
     }, [data])
 
-    if (loading) {
-      return <LoadingPage message={t('loadingCredentials')} />
-    }
+    if (!optional) {
+      if (loading) {
+        return <LoadingPage message={t('loadingCredentials')}/>
+      }
 
-    if (!access) {
-      return <LoadingPage message={t('checkingCredentials')} />
+      if (!access) {
+        return <LoadingPage message={t('checkingCredentials')}/>
+      }
     }
 
     return <Component me={data && data.me} {...props} />

@@ -13,6 +13,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { ExportSubmissionAction } from '../../../../components/form/admin/export.submission.action'
 import { SubmissionValues } from '../../../../components/form/admin/submission.values'
 import {
   ADMIN_PAGER_SUBMISSION_QUERY,
@@ -101,6 +102,15 @@ const Submissions: NextPage = () => {
       ]}
       padded={false}
       extra={[
+        <ExportSubmissionAction
+          key={'export'}
+          form={router.query.id as string}
+          trigger={(onClick, loading) => (
+            <Button onClick={onClick} loading={loading}>
+              {t('submission:export')}
+            </Button>
+          )}
+        />,
         <Link
           key={'edit'}
           href={'/admin/forms/[id]'}
