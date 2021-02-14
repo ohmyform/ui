@@ -6,6 +6,7 @@ import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { cleanInput } from '../../components/clean.input'
 import Structure from '../../components/structure'
+import { withAuth } from '../../components/with.auth'
 import {
   ADMIN_PROFILE_UPDATE_MUTATION,
   AdminProfileUpdateMutationData,
@@ -151,4 +152,4 @@ const Profile: NextPage = () => {
   )
 }
 
-export default Profile
+export default withAuth(Profile)
