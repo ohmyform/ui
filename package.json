@@ -19,7 +19,7 @@
     "@lifeomic/axios-fetch": "^1.4.2",
     "antd": "^4.6.2",
     "apollo-boost": "^0.4.9",
-    "axios": "^0.20.0",
+    "axios": "^0.21.1",
     "cross-env": "^7.0.2",
     "dayjs": "^1.8.34",
     "exceljs": "^4.2.0",
