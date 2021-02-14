@@ -128,4 +128,4 @@ const AuthFooterInner: React.FC<Props> = (props) => {
   )
 }
 
-export const AuthFooter = withAuth(AuthFooterInner)
+export const AuthFooter = withAuth(AuthFooterInner, [], true)
