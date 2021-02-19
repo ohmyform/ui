@@ -9,11 +9,4 @@ export const Omf: React.FC = () => {
   if (loading || (data && data.hideContrib.value)) {
     return null
   }
-
-  return (
-    <a className={scss.badge} href="https://ohmyform.com" target={'_blank'} rel={'noreferrer'}>
-      <span>OhMyForm</span>
-      <span>Fork & Support!</span>
-    </a>
-  )
 }
