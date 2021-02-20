@@ -1,0 +1,10 @@
+{
+  "email": "メール",
+  "firstName": "姓",
+  "language": "言語",
+  "lastName": "名",
+  "updated": "プロフィールを更新しました",
+  "updateError": "プロフィールの更新でエラー",
+  "updateNow": "保存",
+  "username": "ユーザー名"
+}
