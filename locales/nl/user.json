@@ -1,0 +1,18 @@
+{
+  "baseData": "",
+  "confirmDelete": "",
+  "deleted": "",
+  "deleteError": "",
+  "deleteNow": "",
+  "loading": "",
+  "mange": "",
+  "row": {
+    "created": "",
+    "email": "",
+    "menu": "",
+    "roles": ""
+  },
+  "updated": "",
+  "updateError": "",
+  "updateNow": ""
+}

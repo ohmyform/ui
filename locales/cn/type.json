@@ -8,6 +8,7 @@
   },
   "deleteNow": "删除栏位",
   "description": "描述",
+  "descriptionInfo": "",
   "dropdown": {
     "addOption": "添加选项",
     "default": "默认值",
@@ -49,6 +50,8 @@
   },
   "required": "需要",
   "requiredInfo": "如果需要，必须设置默认值以使用户能够提交表单！",
+  "slug": "",
+  "slugInfo": "",
   "textarea": {
     "default": "默认值",
     "name": "文字区"

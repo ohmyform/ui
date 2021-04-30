@@ -1,0 +1,68 @@
+{
+  "confirmDelete": "",
+  "date": {
+    "default": "",
+    "max": "",
+    "min": "",
+    "name": ""
+  },
+  "deleteNow": "",
+  "description": "",
+  "descriptionInfo": "",
+  "dropdown": {
+    "addOption": "",
+    "default": "",
+    "name": "",
+    "options": "",
+    "removeOption": "",
+    "titlePlaceholder": "",
+    "valuePlaceholder": ""
+  },
+  "email": {
+    "default": "",
+    "name": ""
+  },
+  "hidden": {
+    "default": "",
+    "name": ""
+  },
+  "link": {
+    "default": "",
+    "name": ""
+  },
+  "number": {
+    "default": "",
+    "name": ""
+  },
+  "radio": {
+    "addOption": "",
+    "default": "",
+    "name": "",
+    "options": "",
+    "removeOption": "",
+    "titlePlaceholder": "",
+    "valuePlaceholder": ""
+  },
+  "rating": {
+    "clearNote": "",
+    "default": "",
+    "name": ""
+  },
+  "required": "",
+  "requiredInfo": "",
+  "slug": "",
+  "slugInfo": "",
+  "textarea": {
+    "default": "",
+    "name": ""
+  },
+  "textfield": {
+    "default": "",
+    "name": ""
+  },
+  "title": "",
+  "yes_no": {
+    "default": "",
+    "name": ""
+  }
+}

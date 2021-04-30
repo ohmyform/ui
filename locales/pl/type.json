@@ -8,6 +8,7 @@
   },
   "deleteNow": "Usuń pole",
   "description": "Opis",
+  "descriptionInfo": "",
   "dropdown": {
     "addOption": "Dodaj opcję",
     "default": "Domyślna wartość",
@@ -49,6 +50,8 @@
   },
   "required": "wymagany",
   "requiredInfo": "W razie potrzeby należy ustawić wartość domyślną, aby umożliwić użytkownikom przesłanie formularza!",
+  "slug": "",
+  "slugInfo": "",
   "textarea": {
     "default": "Domyślna wartość",
     "name": "Obszar tekstowy"

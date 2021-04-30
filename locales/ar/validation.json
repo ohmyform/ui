@@ -1,0 +1,18 @@
+{
+  "emailFieldRequired": "",
+  "emailRequired": "",
+  "invalidEmail": "",
+  "invalidNumber": "",
+  "invalidSlug": "",
+  "invalidUrl": "",
+  "languageRequired": "",
+  "mandatoryFieldsMissing": "",
+  "passwordMinLength": "",
+  "passwordRequired": "",
+  "subjectRequired": "",
+  "templateRequired": "",
+  "titleRequired": "",
+  "urlRequired": "",
+  "usernameRequired": "",
+  "valueRequired": ""
+}

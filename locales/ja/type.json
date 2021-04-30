@@ -1,5 +1,4 @@
 {
-  "add": "項目を追加する",
   "confirmDelete": "このフィールドを削除します。他から参照されていないことを確認してください。削除してよろしいですか？",
   "date": {
     "default": "既定の日付",
@@ -41,7 +40,7 @@
     "name": "ラジオボタン",
     "options": "選択肢",
     "removeOption": "削除する",
-    "titlePlaceholder": "表示名",
+    "titlePlaceholder": "項目名",
     "valuePlaceholder": "値"
   },
   "rating": {
@@ -54,7 +53,7 @@
   "slug": "スラッグ（Slug）",
   "slugInfo": "URLのパラメーターで値を設定するためにスラッグ（Slug）を利用できます ?slug=value",
   "textarea": {
-    "default": "規定の値",
+    "default": "既定の値",
     "name": "テキストエリア"
   },
   "textfield": {

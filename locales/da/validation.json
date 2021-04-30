@@ -1,0 +1,18 @@
+{
+  "emailFieldRequired": "",
+  "emailRequired": "",
+  "invalidEmail": "",
+  "invalidNumber": "",
+  "invalidSlug": "Slug må kun indeholde små bogstaver fra a-z, 0-9 og _",
+  "invalidUrl": "",
+  "languageRequired": "",
+  "mandatoryFieldsMissing": "",
+  "passwordMinLength": "",
+  "passwordRequired": "",
+  "subjectRequired": "",
+  "templateRequired": "",
+  "titleRequired": "",
+  "urlRequired": "Angiv venligst en URL",
+  "usernameRequired": "",
+  "valueRequired": ""
+}

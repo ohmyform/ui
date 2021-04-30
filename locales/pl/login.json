@@ -1,6 +1,7 @@
 {
   "invalidLoginCredentials": "nazwa użytkownika \/ hasło są nieprawidłowe",
   "loginNow": "Zaloguj się teraz",
+  "note": "",
   "passwordPlaceholder": "Hasło",
   "usernamePlaceholder": "Nazwa Użytkownika",
   "welcomeBack": "Witamy spowrotem!"

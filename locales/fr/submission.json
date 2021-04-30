@@ -1,5 +1,5 @@
 {
-  "add": "Ajouter une réponse",
+  "add": "Ajouter une soumission",
   "city": "Ville",
   "country": "Pays",
   "created": "Créé",
@@ -8,9 +8,10 @@
     "type": "Type d'appareil"
   },
   "edit": "Éditer",
+  "export": "",
   "field": "Champ",
   "lastModified": "Dernier changement",
-  "progress": "Progression",
-  "submission": "Envoyer",
+  "progress": "Le progrès",
+  "submission": "Soumission",
   "value": "Valeur"
 }

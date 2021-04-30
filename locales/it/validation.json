@@ -2,6 +2,8 @@
   "emailFieldRequired": "Seleziona un campo e-mail",
   "emailRequired": "Si prega di fornire una e-mail",
   "invalidEmail": "Deve essere un'e-mail valida!",
+  "invalidNumber": "",
+  "invalidSlug": "",
   "invalidUrl": "Deve essere un URL valido",
   "languageRequired": "Seleziona una lingua",
   "mandatoryFieldsMissing": "Campi obbligatori mancanti",
@@ -10,6 +12,7 @@
   "subjectRequired": "Si prega di fornire un argomento",
   "templateRequired": "Si prega di fornire un modello",
   "titleRequired": "Si prega di fornire un titolo",
+  "urlRequired": "",
   "usernameRequired": "Fornisci un nome utente",
   "valueRequired": "Si prega di fornire un valore"
 }

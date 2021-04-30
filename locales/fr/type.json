@@ -8,6 +8,7 @@
   },
   "deleteNow": "Supprimer le champ",
   "description": "La description",
+  "descriptionInfo": "",
   "dropdown": {
     "addOption": "Ajouter une option",
     "default": "Valeur par défaut",
@@ -49,6 +50,8 @@
   },
   "required": "Obligatoire",
   "requiredInfo": "Si nécessaire, la valeur par défaut doit être définie pour permettre aux utilisateurs de soumettre le formulaire!",
+  "slug": "",
+  "slugInfo": "",
   "textarea": {
     "default": "Valeur par défaut",
     "name": "Zone de texte"

@@ -1,7 +1,8 @@
 {
-  "invalidLoginCredentials": "Nom d'utilisateur \/ Mot de passe invalide",
-  "loginNow": "Se connecter",
+  "invalidLoginCredentials": "nom d'utilisateur \/ mot de passe invalide",
+  "loginNow": "Connecte-toi maintenant",
+  "note": "",
   "passwordPlaceholder": "Mot de passe",
   "usernamePlaceholder": "Nom d'utilisateur",
-  "welcomeBack": "Ravis de vous revoir!"
+  "welcomeBack": "Nous saluons le retour!"
 }

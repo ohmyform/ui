@@ -2,6 +2,8 @@
   "emailFieldRequired": "Wybierz pole e-mail",
   "emailRequired": "Proszę podać e-mail",
   "invalidEmail": "Musi być prawidłowym adresem e-mail!",
+  "invalidNumber": "",
+  "invalidSlug": "",
   "invalidUrl": "Musi być prawidłowym adresem URL",
   "languageRequired": "Proszę wybierz język",
   "mandatoryFieldsMissing": "Brak pól obowiązkowych",
@@ -10,6 +12,7 @@
   "subjectRequired": "Podaj temat",
   "templateRequired": "Proszę podać szablon",
   "titleRequired": "Proszę podać tytuł",
+  "urlRequired": "",
   "usernameRequired": "Podaj nazwę użytkownika",
   "valueRequired": "Podaj wartość"
 }

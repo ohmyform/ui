@@ -1,16 +1,16 @@
 {
   "baseData": {
-    "isLive": "Est en ligne",
+    "isLive": "Est en direct",
     "language": "Langue",
     "showFooter": "Afficher le pied de page",
     "title": "Titre"
   },
   "baseDataTab": "Données de base",
-  "building": "Construire",
-  "confirmDelete": "Êtes-vous sûr de supprimer ce formulaire avec toutes les réponses?",
+  "building": "Forme du bâtiment",
+  "confirmDelete": "Êtes-vous sûr de supprimer ce formulaire avec toutes les soumissions?",
   "create": "Créer un nouveau formulaire",
   "created": "Formulaire créé",
-  "createNow": "Sauvegarder",
+  "createNow": "sauver",
   "creationError": "Impossible de créer le formulaire",
   "deleted": "Formulaire supprimé",
   "deleteError": "Impossible de supprimer le formulaire",
@@ -28,29 +28,38 @@
   "endPage": {
     "action": "action",
     "activeColor": "Couleur active",
-    "addButton": "Ajouter",
+    "addButton": "Bouton Ajouter",
     "bgColor": "Couleur de l'arrière plan",
     "buttons": "Boutons",
     "color": "Couleur",
     "continueButtonText": "Continuer le texte du bouton",
     "paragraph": "Paragraphe",
-    "show": "Montrer",
+    "paragraphInfo": "",
+    "show": "Spectacle",
     "text": "Texte",
     "title": "Titre",
     "url": "URL"
   },
   "endPageTab": "Page de fin",
+  "fieldsTab": "",
+  "hooks": {
+    "add": "Ajouter",
+    "confirmDelete": "",
+    "deleteNow": "",
+    "enabled": "Activé"
+  },
+  "hooksTab": "WebHooks",
   "loading": "Formulaire de chargement",
   "mange": "Modifier le formulaire \" {{title}} \"",
-  "new": "Nouveau formulaire",
+  "new": "Nouvelle forme",
   "respondentNotifications": {
     "enabled": "Activée",
     "fromEmail": "Courriel de l'expéditeur",
     "fromEmailInfo": "Assurez-vous que votre serveur de messagerie peut envoyer à partir de cet e-mail",
     "htmlTemplate": "Modèle HTML",
     "htmlTemplateInfo": "Vous pouvez également utiliser <u> MJML <\/u> pour créer vos modèles de courrier électronique",
-    "subject": "Sujet",
-    "toField": "Votre adresse mail",
+    "subject": "Matière",
+    "toField": "Champ de messagerie",
     "toFieldInfo": "Champ avec e-mail pour réception"
   },
   "respondentNotificationsTab": "Notifications des répondants",
@@ -58,7 +67,7 @@
   "row": {
     "admin": "Propriétaire",
     "created": "Créé",
-    "isLive": "En ligne",
+    "isLive": "Vivre",
     "language": "Langue",
     "lastModified": "Dernière modification",
     "menu": "",
@@ -70,7 +79,7 @@
     "fromFieldInfo": "Champ avec e-mail, définira l'en-tête Répondre à",
     "htmlTemplate": "Modèle HTML",
     "htmlTemplateInfo": "Vous pouvez également utiliser <u> MJML <\/u> pour créer vos modèles de courrier électronique",
-    "subject": "Sujet",
+    "subject": "Matière",
     "toEmail": "Votre email",
     "toEmailInfo": "S'il n'est pas défini, il sera envoyé à l'administrateur du formulaire"
   },
@@ -84,14 +93,15 @@
     "color": "Couleur",
     "continueButtonText": "Continuer le texte du bouton",
     "paragraph": "Paragraphe",
-    "show": "Montrer",
+    "paragraphInfo": "",
+    "show": "Spectacle",
     "text": "Texte",
     "title": "Titre",
     "url": "URL"
   },
   "startPageTab": "Page de démarrage",
-  "submitted": "Merci pour votre participation!",
+  "submitted": "Merci pour votre soumission!",
   "updated": "Formulaire mis à jour",
   "updateError": "Impossible de mettre à jour le formulaire",
-  "updateNow": "Sauvegarder"
+  "updateNow": "sauver"
 }

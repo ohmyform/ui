@@ -1,0 +1,68 @@
+{
+  "confirmDelete": "Er du sikker på, at du ønsker at slette dette felt? Undersøg evt. om feltet er refereret til fra noget sted.",
+  "date": {
+    "default": "Standarddato",
+    "max": "Maksimumsdato",
+    "min": "Minimumsdato",
+    "name": "Dato"
+  },
+  "deleteNow": "Slet felt",
+  "description": "Beskrivelse",
+  "descriptionInfo": "",
+  "dropdown": {
+    "addOption": "",
+    "default": "",
+    "name": "",
+    "options": "",
+    "removeOption": "",
+    "titlePlaceholder": "",
+    "valuePlaceholder": ""
+  },
+  "email": {
+    "default": "",
+    "name": ""
+  },
+  "hidden": {
+    "default": "",
+    "name": ""
+  },
+  "link": {
+    "default": "",
+    "name": ""
+  },
+  "number": {
+    "default": "",
+    "name": ""
+  },
+  "radio": {
+    "addOption": "",
+    "default": "",
+    "name": "",
+    "options": "",
+    "removeOption": "",
+    "titlePlaceholder": "",
+    "valuePlaceholder": ""
+  },
+  "rating": {
+    "clearNote": "",
+    "default": "",
+    "name": ""
+  },
+  "required": "",
+  "requiredInfo": "",
+  "slug": "",
+  "slugInfo": "",
+  "textarea": {
+    "default": "",
+    "name": ""
+  },
+  "textfield": {
+    "default": "",
+    "name": ""
+  },
+  "title": "",
+  "yes_no": {
+    "default": "",
+    "name": ""
+  }
+}

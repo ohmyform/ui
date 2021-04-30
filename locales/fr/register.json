@@ -1,6 +1,6 @@
 {
-  "credentialsAlreadyInUse": "Un compte existe déjà!",
-  "gotoLogin": "Vous avez un compte? Connectez vous ici",
-  "registerNow": "Créer un compte",
+  "credentialsAlreadyInUse": "Quelques données déjà utilisées!",
+  "gotoLogin": "Avoir un compte? Accéder à la connexion",
+  "registerNow": "S'inscrire maintenant",
   "welcome": "Bienvenue, veuillez également confirmer votre adresse e-mail"
 }

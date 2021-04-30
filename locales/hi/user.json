@@ -1,0 +1,18 @@
+{
+  "baseData": "",
+  "confirmDelete": "",
+  "deleted": "",
+  "deleteError": "",
+  "deleteNow": "",
+  "loading": "",
+  "mange": "संपादित करें उपयोगकर्ता \"{ईमेल}}} \"{{email}}",
+  "row": {
+    "created": "",
+    "email": "",
+    "menu": "",
+    "roles": ""
+  },
+  "updated": "",
+  "updateError": "उपयोगकर्ता को अपडेट नहीं किया जा सका",
+  "updateNow": "सहेजें☻"
+}

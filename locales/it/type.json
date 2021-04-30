@@ -8,6 +8,7 @@
   },
   "deleteNow": "Elimina campo",
   "description": "Descrizione",
+  "descriptionInfo": "",
   "dropdown": {
     "addOption": "Aggiungi opzione",
     "default": "Valore predefinito",
@@ -49,6 +50,8 @@
   },
   "required": "necessario",
   "requiredInfo": "Se necessario, è necessario impostare il valore predefinito per consentire agli utenti di inviare il modulo!",
+  "slug": "",
+  "slugInfo": "",
   "textarea": {
     "default": "Valore predefinito",
     "name": "Area di testo"
