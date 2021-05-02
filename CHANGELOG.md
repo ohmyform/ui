@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - ability to change user passwords
 - add default page background
 - add environment list in [doc](doc/environment.md)
+- show error message on homepage in case there is a problem with api connection
 
 ### Changed
 

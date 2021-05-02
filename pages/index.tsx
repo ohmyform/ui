@@ -1,12 +1,13 @@
-import { Layout } from 'antd'
+import { Alert, Layout } from 'antd'
 import { AuthFooter } from 'components/auth/footer'
-import { GetStaticProps, NextPage } from 'next'
+import { NextPage } from 'next'
 import getConfig from 'next/config'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { LoadingPage } from '../components/loading.page'
 import { Omf } from '../components/omf'
+import { useStatusQuery } from '../graphql/query/status.query'
 import { NextConfigType } from '../next.config.type'
 
 const { publicRuntimeConfig } = getConfig() as NextConfigType
@@ -17,6 +18,7 @@ const Index: NextPage = () => {
   const [loading, setLoading] = useState<boolean>(
     publicRuntimeConfig.spa || (process.browser && router.pathname !== window.location.pathname)
   )
+  const status = useStatusQuery()
 
   useEffect(() => {
     if (router.pathname !== window.location.pathname) {
@@ -67,6 +69,9 @@ const Index: NextPage = () => {
         src={require('../assets/images/logo_white.png') as string}
       />
 
+      {status.error && (
+        <Alert message={`There is an error with your API connection: ${status.error.message}`} />
+      )}
       <AuthFooter />
     </Layout>
   )
