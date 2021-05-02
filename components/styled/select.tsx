@@ -2,18 +2,18 @@ import { Select } from 'antd'
 import { SelectProps } from 'antd/lib/select'
 import React from 'react'
 import styled from 'styled-components'
-import { FormDesignFragment } from '../../graphql/fragment/form.fragment'
+import { FormPublicDesignFragment } from '../../graphql/fragment/form.public.fragment'
 import { transparentize } from './color.change'
 
 interface Props extends SelectProps<string> {
-  design: FormDesignFragment
+  design: FormPublicDesignFragment
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment
 const Field = styled(Select)`
   .ant-select-selector {
-    color: ${(props: Props) => props.design.colors.answerColor};
-    border-color: ${(props: Props) => props.design.colors.answerColor} !important;
+    color: ${(props: Props) => props.design.colors.answer};
+    border-color: ${(props: Props) => props.design.colors.answer} !important;
     background: none !important;
     border-right: none !important;
     border-top: none !important;
@@ -23,25 +23,25 @@ const Field = styled(Select)`
   }
 
   :focus {
-    outline: ${(props: Props) => props.design.colors.answerColor} auto 5px;
+    outline: ${(props: Props) => props.design.colors.answer} auto 5px;
   }
 
   :hover,
   :active {
-    border-color: ${(props: Props) => props.design.colors.answerColor};
+    border-color: ${(props: Props) => props.design.colors.answer};
   }
 
   input {
     background: none !important;
-    color: ${(props: Props) => props.design.colors.answerColor};
+    color: ${(props: Props) => props.design.colors.answer};
 
     ::placeholder {
-      color: ${(props: Props) => transparentize(props.design.colors.answerColor, 60)};
+      color: ${(props: Props) => transparentize(props.design.colors.answer, 60)};
     }
   }
 
   .anticon {
-    color: ${(props: Props) => props.design.colors.answerColor};
+    color: ${(props: Props) => props.design.colors.answer};
   }
 `
 

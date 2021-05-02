@@ -1,16 +1,16 @@
 import React from 'react'
 import ReactMarkdown, { ReactMarkdownProps } from 'react-markdown'
 import styled from 'styled-components'
-import { FormDesignFragment } from '../../graphql/fragment/form.fragment'
+import { FormPublicDesignFragment } from '../../graphql/fragment/form.public.fragment'
 import { lighten } from './color.change'
 
 interface Props extends ReactMarkdownProps {
   type: 'question' | 'answer'
-  design: FormDesignFragment
+  design: FormPublicDesignFragment
 }
 
 const getColor = (props: Props) =>
-  props.type === 'question' ? props.design.colors.questionColor : props.design.colors.answerColor
+  props.type === 'question' ? props.design.colors.question : props.design.colors.answer
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-assignment
 const Markdown = styled(ReactMarkdown)`

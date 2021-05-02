@@ -2,24 +2,24 @@ import { Descriptions, Table } from 'antd'
 import { ColumnsType } from 'antd/lib/table/interface'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
+import { FormPagerFragment } from '../../../graphql/fragment/form.pager.fragment'
 import {
-  AdminPagerSubmissionEntryFieldQueryData,
-  AdminPagerSubmissionEntryQueryData,
-  AdminPagerSubmissionFormQueryData,
-} from '../../../graphql/query/admin.pager.submission.query'
+  SubmissionFragment,
+  SubmissionFragmentField,
+} from '../../../graphql/fragment/submission.fragment'
 
 interface Props {
-  form: AdminPagerSubmissionFormQueryData
-  submission: AdminPagerSubmissionEntryQueryData
+  form: FormPagerFragment
+  submission: SubmissionFragment
 }
 
 export const SubmissionValues: React.FC<Props> = (props) => {
   const { t } = useTranslation()
 
-  const columns: ColumnsType<AdminPagerSubmissionEntryFieldQueryData> = [
+  const columns: ColumnsType<SubmissionFragmentField> = [
     {
       title: t('submission:field'),
-      render(row: AdminPagerSubmissionEntryFieldQueryData) {
+      render(_, row) {
         if (row.field) {
           return `${row.field.title}${row.field.required ? '*' : ''}`
         }
@@ -29,9 +29,11 @@ export const SubmissionValues: React.FC<Props> = (props) => {
     },
     {
       title: t('submission:value'),
-      render(row: AdminPagerSubmissionEntryFieldQueryData) {
+      render(_, row) {
         try {
           const data = JSON.parse(row.value) as { value: string }
+
+          console.log('DATA', data)
 
           return data.value
         } catch (e) {

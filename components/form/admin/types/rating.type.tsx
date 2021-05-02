@@ -6,7 +6,6 @@ import { AdminFieldTypeProps } from './type.props'
 export const RatingType: React.FC<AdminFieldTypeProps> = (props) => {
   const { t } = useTranslation()
 
-  // TODO add ratings
   return (
     <div>
       <Form.Item

@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from '@apollo/react-hooks'
+import { useQuery } from '@apollo/client'
 import { Button, Form, Input, message, Tabs } from 'antd'
 import { useForm } from 'antd/lib/form/Form'
 import Structure from 'components/structure'
@@ -9,11 +9,7 @@ import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { cleanInput } from '../../../../components/clean.input'
 import { BaseDataTab } from '../../../../components/user/admin/base.data.tab'
-import {
-  ADMIN_USER_UPDATE_MUTATION,
-  AdminUserUpdateMutationData,
-  AdminUserUpdateMutationVariables,
-} from '../../../../graphql/mutation/admin.user.update.mutation'
+import { useUserUpdateMutation } from '../../../../graphql/mutation/user.update.mutation'
 import {
   ADMIN_USER_QUERY,
   AdminUserQueryData,
@@ -38,9 +34,7 @@ const Index: NextPage = () => {
     }
   )
 
-  const [update] = useMutation<AdminUserUpdateMutationData, AdminUserUpdateMutationVariables>(
-    ADMIN_USER_UPDATE_MUTATION
-  )
+  const [update] = useUserUpdateMutation()
 
   const save = async (formData: AdminUserQueryData) => {
     setSaving(true)

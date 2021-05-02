@@ -1,13 +1,12 @@
-import { gql } from 'apollo-boost'
+import { QueryHookOptions, QueryResult, useQuery } from '@apollo/client'
+import { gql } from '@apollo/client/core'
 import { ADMIN_PROFILE_FRAGMENT, AdminProfileFragment } from '../fragment/admin.profile.fragment'
 
-export interface AdminProfileQueryData {
+interface Data {
   user: AdminProfileFragment
 }
 
-export interface AdminProfileQueryVariables {}
-
-export const ADMIN_PROFILE_QUERY = gql`
+export const QUERY = gql`
   query profile {
     user: me {
       ...AdminProfile
@@ -16,3 +15,7 @@ export const ADMIN_PROFILE_QUERY = gql`
 
   ${ADMIN_PROFILE_FRAGMENT}
 `
+
+export const useProfileQuery = (
+  options?: QueryHookOptions<Data, unknown>
+): QueryResult<Data, unknown> => useQuery<Data, unknown>(QUERY, options)

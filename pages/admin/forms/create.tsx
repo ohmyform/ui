@@ -1,31 +1,27 @@
-import { useMutation } from '@apollo/react-hooks'
 import { Button, Form, Input, message, Tabs } from 'antd'
-import { useForm } from 'antd/lib/form/Form'
 import { cleanInput } from 'components/clean.input'
 import { BaseDataTab } from 'components/form/admin/base.data.tab'
 import Structure from 'components/structure'
 import { withAuth } from 'components/with.auth'
-import { AdminFormQueryData } from 'graphql/query/admin.form.query'
+import { FormFragment } from 'graphql/fragment/form.fragment'
+import { useFormCreateMutation } from 'graphql/mutation/form.create.mutation'
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import {
-  ADMIN_FORM_CREATE_MUTATION,
-  AdminFormCreateMutationData,
-  AdminFormCreateMutationVariables,
-} from '../../../graphql/mutation/admin.form.create.mutation'
+
+interface FormData {
+  form: FormFragment
+}
 
 const Create: NextPage = () => {
   const { t } = useTranslation()
   const router = useRouter()
-  const [form] = useForm()
+  const [form] = Form.useForm<FormData>()
   const [saving, setSaving] = useState(false)
-  const [create] = useMutation<AdminFormCreateMutationData, AdminFormCreateMutationVariables>(
-    ADMIN_FORM_CREATE_MUTATION
-  )
+  const [create] = useFormCreateMutation()
 
-  const save = async (formData: AdminFormQueryData) => {
+  const save = async (formData: FormData) => {
     setSaving(true)
 
     try {

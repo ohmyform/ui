@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/react-hooks'
+import { useQuery } from '@apollo/client'
 import { Col, Row, Statistic } from 'antd'
 import Structure from 'components/structure'
 import { withAuth } from 'components/with.auth'

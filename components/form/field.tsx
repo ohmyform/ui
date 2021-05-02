@@ -1,7 +1,10 @@
 import { Form, message } from 'antd'
 import { useForm } from 'antd/lib/form/Form'
 import React from 'react'
-import { FormDesignFragment, FormFieldFragment } from '../../graphql/fragment/form.fragment'
+import {
+  FormPublicDesignFragment,
+  FormPublicFieldFragment,
+} from '../../graphql/fragment/form.public.fragment'
 import { StyledButton } from '../styled/button'
 import { StyledH1 } from '../styled/h1'
 import { StyledMarkdown } from '../styled/markdown'
@@ -11,8 +14,8 @@ import { TextType } from './types/text.type'
 import { FieldTypeProps } from './types/type.props'
 
 interface Props {
-  field: FormFieldFragment
-  design: FormDesignFragment
+  field: FormPublicFieldFragment
+  design: FormPublicDesignFragment
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   save: (data: any) => void
@@ -84,9 +87,9 @@ export const Field: React.FC<Props> = ({ field, save, design, next, prev, ...pro
         }}
       >
         <StyledButton
-          background={design.colors.buttonColor}
-          color={design.colors.buttonTextColor}
-          highlight={design.colors.buttonActiveColor}
+          background={design.colors.button}
+          color={design.colors.buttonText}
+          highlight={design.colors.buttonActive}
           onClick={prev}
         >
           {'Previous'}
@@ -95,9 +98,9 @@ export const Field: React.FC<Props> = ({ field, save, design, next, prev, ...pro
         <div style={{ flex: 1 }} />
 
         <StyledButton
-          background={design.colors.buttonColor}
-          color={design.colors.buttonTextColor}
-          highlight={design.colors.buttonActiveColor}
+          background={design.colors.button}
+          color={design.colors.buttonText}
+          highlight={design.colors.buttonActive}
           size={'large'}
           onClick={form.submit}
         >

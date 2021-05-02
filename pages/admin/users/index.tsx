@@ -1,5 +1,4 @@
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons/lib'
-import { useMutation, useQuery } from '@apollo/react-hooks'
 import { Button, message, Popconfirm, Space, Table, Tag } from 'antd'
 import { PaginationProps } from 'antd/es/pagination'
 import { ColumnsType } from 'antd/lib/table/interface'
@@ -12,17 +11,9 @@ import { useTranslation } from 'react-i18next'
 import { DateTime } from '../../../components/date.time'
 import { useWindowSize } from '../../../components/use.window.size'
 import { UserRole } from '../../../components/user/role'
-import {
-  ADMIN_USER_DELETE_MUTATION,
-  AdminUserDeleteMutationData,
-  AdminUserDeleteMutationVariables,
-} from '../../../graphql/mutation/admin.user.delete.mutation'
-import {
-  ADMIN_PAGER_USER_QUERY,
-  AdminPagerUserEntryQueryData,
-  AdminPagerUserQueryData,
-  AdminPagerUserQueryVariables,
-} from '../../../graphql/query/admin.pager.user.query'
+import { UserPagerFragment } from '../../../graphql/fragment/user.pager.fragment'
+import { useUserDeleteMutation } from '../../../graphql/mutation/user.delete.mutation'
+import { useUserPagerQuery } from '../../../graphql/query/user.pager.query'
 
 const Index: NextPage = () => {
   const { width } = useWindowSize()
@@ -30,36 +21,30 @@ const Index: NextPage = () => {
   const [pagination, setPagination] = useState<PaginationProps>({
     pageSize: 10,
   })
-  const [entries, setEntries] = useState<AdminPagerUserEntryQueryData[]>()
-  const { loading, refetch } = useQuery<AdminPagerUserQueryData, AdminPagerUserQueryVariables>(
-    ADMIN_PAGER_USER_QUERY,
-    {
-      variables: {
-        limit: pagination.pageSize,
-        start: Math.max(0, pagination.current - 1) * pagination.pageSize || 0,
-      },
-      onCompleted: ({ pager }) => {
-        setPagination({
-          ...pagination,
-          total: pager.total,
-        })
-        setEntries(pager.entries)
-      },
-    }
-  )
-  const [executeDelete] = useMutation<
-    AdminUserDeleteMutationData,
-    AdminUserDeleteMutationVariables
-  >(ADMIN_USER_DELETE_MUTATION)
+  const [entries, setEntries] = useState<UserPagerFragment[]>()
+  const { loading, refetch, error } = useUserPagerQuery({
+    variables: {
+      limit: pagination.pageSize,
+      start: Math.max(0, pagination.current - 1) * pagination.pageSize || 0,
+    },
+    onCompleted: ({ pager }) => {
+      setPagination({
+        ...pagination,
+        total: pager.total,
+      })
+      setEntries(pager.entries)
+    },
+  })
+  const [executeDelete] = useUserDeleteMutation()
 
-  const deleteUser = async (form: AdminPagerUserEntryQueryData) => {
+  const deleteUser = async (id: string) => {
     try {
       await executeDelete({
         variables: {
-          id: form.id,
+          id,
         },
       })
-      const next = entries.filter((entry) => entry.id !== form.id)
+      const next = entries.filter((entry) => entry.id !== id)
       if (next.length === 0) {
         setPagination({ ...pagination, current: 1 })
       } else {
@@ -71,7 +56,7 @@ const Index: NextPage = () => {
     }
   }
 
-  const columns: ColumnsType<AdminPagerUserEntryQueryData> = [
+  const columns: ColumnsType<UserPagerFragment> = [
     {
       title: t('user:row.roles'),
       dataIndex: 'roles',
@@ -82,7 +67,7 @@ const Index: NextPage = () => {
     },
     {
       title: t('user:row.email'),
-      render(row: AdminPagerUserEntryQueryData) {
+      render(_, row) {
         return <Tag color={row.verifiedEmail ? 'lime' : 'volcano'}>{row.email}</Tag>
       },
     },
@@ -97,7 +82,7 @@ const Index: NextPage = () => {
     {
       title: t('user:row.menu'),
       align: 'right',
-      render(row: AdminPagerUserEntryQueryData) {
+      render(_, row) {
         return (
           <Space direction={width < 600 ? 'vertical' : 'horizontal'}>
             <Link href={'/admin/users/[id]'} as={`/admin/users/${row.id}`}>
@@ -108,7 +93,7 @@ const Index: NextPage = () => {
 
             <Popconfirm
               title={t('user:confirmDelete')}
-              onConfirm={() => deleteUser(row)}
+              onConfirm={() => deleteUser(row.id)}
               okText={t('user:deleteNow')}
               okButtonProps={{ danger: true }}
             >
@@ -128,6 +113,7 @@ const Index: NextPage = () => {
       loading={loading}
       breadcrumbs={[{ href: '/admin', name: t('admin:home') }]}
       padded={false}
+      error={error?.message}
     >
       <Table
         columns={columns}

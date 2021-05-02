@@ -1,19 +1,15 @@
 import { Layout } from 'antd'
 import { AuthFooter } from 'components/auth/footer'
-import { NextPage } from 'next'
+import { GetStaticProps, NextPage } from 'next'
 import getConfig from 'next/config'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { LoadingPage } from '../components/loading.page'
 import { Omf } from '../components/omf'
+import { NextConfigType } from '../next.config.type'
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-const { publicRuntimeConfig } = getConfig() as {
-  publicRuntimeConfig: {
-    spa: boolean
-  }
-}
+const { publicRuntimeConfig } = getConfig() as NextConfigType
 
 const Index: NextPage = () => {
   const router = useRouter()
@@ -56,7 +52,7 @@ const Index: NextPage = () => {
     <Layout
       style={{
         height: '100vh',
-        background: '#437fdc',
+        background: publicRuntimeConfig.mainBackground,
       }}
     >
       <Omf />
@@ -74,6 +70,13 @@ const Index: NextPage = () => {
       <AuthFooter />
     </Layout>
   )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  return {
+    revalidate: 10,
+    props: {},
+  }
 }
 
 export default Index

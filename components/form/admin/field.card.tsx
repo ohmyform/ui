@@ -4,14 +4,14 @@ import { FormInstance } from 'antd/lib/form'
 import { FieldData } from 'rc-field-form/lib/interface'
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { AdminFormFieldFragment } from '../../../graphql/fragment/admin.form.fragment'
+import { FormFieldFragment } from '../../../graphql/fragment/form.fragment'
 import { adminTypes } from './types'
 import { TextType } from './types/text.type'
 
 interface Props {
   form: FormInstance
-  fields: AdminFormFieldFragment[]
-  onChangeFields: (fields: AdminFormFieldFragment[]) => void
+  fields: FormFieldFragment[]
+  onChangeFields: (fields: FormFieldFragment[]) => void
   field: FieldData
   remove: (index: number) => void
   index: number

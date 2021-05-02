@@ -1,6 +1,7 @@
-import { gql } from 'apollo-boost'
+import { QueryHookOptions, QueryResult, useQuery } from '@apollo/client'
+import { gql } from '@apollo/client/core'
 
-export interface SettingsQueryData {
+interface Data {
   disabledSignUp: {
     value: boolean
   }
@@ -12,8 +13,8 @@ export interface SettingsQueryData {
   }
 }
 
-export const SETTINGS_QUERY = gql`
-  query {
+const QUERY = gql`
+  query settings {
     disabledSignUp: getSetting(key: "SIGNUP_DISABLED") {
       value: isTrue
     }
@@ -25,3 +26,7 @@ export const SETTINGS_QUERY = gql`
     }
   }
 `
+
+export const useSettingsQuery = (
+  options?: QueryHookOptions<Data, unknown>
+): QueryResult<Data, unknown> => useQuery<Data, unknown>(QUERY, options)

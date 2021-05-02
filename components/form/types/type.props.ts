@@ -1,7 +1,10 @@
-import { FormDesignFragment, FormFieldFragment } from '../../../graphql/fragment/form.fragment'
+import {
+  FormPublicDesignFragment,
+  FormPublicFieldFragment,
+} from '../../../graphql/fragment/form.public.fragment'
 
 export interface FieldTypeProps {
-  field: FormFieldFragment
-  design: FormDesignFragment
+  field: FormPublicFieldFragment
+  design: FormPublicDesignFragment
   urlValue?: string
 }

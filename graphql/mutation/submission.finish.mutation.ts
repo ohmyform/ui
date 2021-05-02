@@ -1,4 +1,4 @@
-import { gql } from 'apollo-boost'
+import { gql } from '@apollo/client/core'
 
 export const SUBMISSION_FINISH_MUTATION = gql`
   mutation start($submission: ID!, $field: SubmissionSetFieldInput!) {

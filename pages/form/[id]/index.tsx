@@ -1,10 +1,8 @@
-import { useQuery } from '@apollo/react-hooks'
 import { Modal } from 'antd'
 import { ErrorPage } from 'components/error.page'
 import { Field } from 'components/form/field'
 import { FormPage } from 'components/form/page'
 import { LoadingPage } from 'components/loading.page'
-import { FORM_QUERY, FormQueryData, FormQueryVariables } from 'graphql/query/form.query'
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
@@ -14,6 +12,7 @@ import { ReactIdSwiperProps } from 'react-id-swiper/lib/types'
 import * as OriginalSwiper from 'swiper'
 import { Omf } from '../../../components/omf'
 import { useSubmission } from '../../../components/use.submission'
+import { useFormPublicQuery } from '../../../graphql/query/form.public.query'
 
 interface Props {
   id: string
@@ -26,7 +25,7 @@ const Index: NextPage<Props> = () => {
   const [swiper, setSwiper] = useState<OriginalSwiper.default>(null)
   const submission = useSubmission(id)
 
-  const { loading, data, error } = useQuery<FormQueryData, FormQueryVariables>(FORM_QUERY, {
+  const { loading, data, error } = useFormPublicQuery({
     variables: {
       id,
     },
@@ -74,7 +73,7 @@ const Index: NextPage<Props> = () => {
   return (
     <div
       style={{
-        background: design.colors.backgroundColor,
+        background: design.colors.background,
       }}
     >
       <Omf />

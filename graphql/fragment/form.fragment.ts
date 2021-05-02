@@ -1,32 +1,41 @@
-import { gql } from 'apollo-boost'
+import { gql } from '@apollo/client/core'
 
 export interface FormPageFragment {
+  id: string
   show: boolean
   title?: string
   paragraph?: string
   buttonText?: string
   buttons: {
+    id: string
     url?: string
     action?: string
     text?: string
     bgColor?: string
-    activeColor?: string
     color?: string
   }[]
 }
 
 export interface FormFieldOptionFragment {
+  id: string
   key?: string
   title?: string
   value: string
 }
 
-export interface FormFieldLogicJumpFragment {
-  fieldA?: string
-  valueB?: string
-  expressionString?: string
-  jumpTo?: string
+export interface FormFieldOptionKeysFragment {
+  [key: string]: string
+}
+
+export interface FormFieldLogicFragment {
+  id: string
+  action: string
+  formula: string
   enabled: boolean
+  jumpTo?: string
+  require?: boolean
+  visible?: boolean
+  disable?: boolean
 }
 
 export interface FormFieldFragment {
@@ -39,8 +48,9 @@ export interface FormFieldFragment {
   value: string
 
   options: FormFieldOptionFragment[]
+  optionKeys?: FormFieldOptionKeysFragment
 
-  logicJump: FormFieldLogicJumpFragment
+  logic: FormFieldLogicFragment[]
 
   rating?: {
     steps?: number
@@ -48,36 +58,70 @@ export interface FormFieldFragment {
   }
 }
 
-export interface FormDesignFragment {
-  colors: {
-    backgroundColor: string
-    questionColor: string
-    answerColor: string
-    buttonColor: string
-    buttonActiveColor: string
-    buttonTextColor: string
-  }
-  font?: string
+export interface FormHookFragment {
+  id: string
+  enabled: boolean
+  url?: string
+  format?: string
+}
+
+export interface FormNotificationFragment {
+  id: string
+  enabled: boolean
+  subject?: string
+  htmlTemplate?: string
+  toField?: string
+  toEmail?: string
+  fromField?: string
+  fromEmail?: string
 }
 
 export interface FormFragment {
   id?: string
   title: string
   created: string
+  lastModified?: string
   language: string
   showFooter: boolean
+  isLive: boolean
   fields: FormFieldFragment[]
-  design: FormDesignFragment
+  hooks: FormHookFragment[]
+  notifications: FormNotificationFragment[]
+  design: {
+    colors: {
+      background: string
+      question: string
+      answer: string
+      button: string
+      buttonText: string
+    }
+    font?: string
+  }
   startPage: FormPageFragment
   endPage: FormPageFragment
+  admin: {
+    id: string
+    username: string
+    email: string
+  }
 }
 
 export const FORM_FRAGMENT = gql`
   fragment Form on Form {
     id
     title
+    created
+    lastModified
     language
     showFooter
+    isLive
+
+    hooks {
+      id
+      enabled
+      format
+      url
+    }
 
     fields {
       id
@@ -89,17 +133,21 @@ export const FORM_FRAGMENT = gql`
       value
 
       options {
+        id
         key
         title
         value
       }
 
-      logicJump {
-        fieldA
-        valueB
-        expressionString
-        jumpTo
+      logic {
+        id
+        action
+        formula
         enabled
+        jumpTo
+        require
+        visible
+        disable
       }
       rating {
         steps
@@ -107,24 +155,36 @@ export const FORM_FRAGMENT = gql`
       }
     }
 
+    notifications {
+      id
+      enabled
+      subject
+      htmlTemplate
+      fromField
+      fromEmail
+      toField
+      toEmail
+    }
+
     design {
       colors {
-        backgroundColor
-        questionColor
-        answerColor
-        buttonColor
-        buttonActiveColor
-        buttonTextColor
+        background
+        question
+        answer
+        button
+        buttonActive
+        buttonText
       }
       font
     }
-
     startPage {
+      id
       show
       title
       paragraph
       buttonText
       buttons {
+        id
         url
         action
         text
@@ -133,13 +193,14 @@ export const FORM_FRAGMENT = gql`
         color
       }
     }
-
     endPage {
+      id
       show
       title
       paragraph
       buttonText
       buttons {
+        id
         url
         action
         text
@@ -147,6 +208,11 @@ export const FORM_FRAGMENT = gql`
         activeColor
         color
       }
+    }
+    admin {
+      id
+      username
+      email
     }
   }
 `

@@ -2,17 +2,17 @@ import { InputNumber } from 'antd'
 import { InputNumberProps } from 'antd/lib/input-number'
 import React from 'react'
 import styled from 'styled-components'
-import { FormDesignFragment } from '../../graphql/fragment/form.fragment'
+import { FormPublicDesignFragment } from '../../graphql/fragment/form.public.fragment'
 import { transparentize } from './color.change'
 
 interface Props extends InputNumberProps {
-  design: FormDesignFragment
+  design: FormPublicDesignFragment
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment
 const Field = styled(InputNumber)`
-  color: ${(props: Props) => props.design.colors.answerColor};
-  border-color: ${(props: Props) => props.design.colors.answerColor};
+  color: ${(props: Props) => props.design.colors.answer};
+  border-color: ${(props: Props) => props.design.colors.answer};
   background: none !important;
   border-right: none;
   border-top: none;
@@ -21,12 +21,12 @@ const Field = styled(InputNumber)`
   width: 100%;
 
   :focus {
-    outline: ${(props: Props) => props.design.colors.answerColor} auto 5px;
+    outline: ${(props: Props) => props.design.colors.answer} auto 5px;
   }
 
   :hover,
   :active {
-    border-color: ${(props: Props) => props.design.colors.answerColor};
+    border-color: ${(props: Props) => props.design.colors.answer};
   }
 
   &.ant-input-number {
@@ -35,15 +35,15 @@ const Field = styled(InputNumber)`
 
   input {
     background: none !important;
-    color: ${(props: Props) => props.design.colors.answerColor};
+    color: ${(props: Props) => props.design.colors.answer};
 
     ::placeholder {
-      color: ${(props: Props) => transparentize(props.design.colors.answerColor, 60)};
+      color: ${(props: Props) => transparentize(props.design.colors.answer, 60)};
     }
   }
 
   .anticon {
-    color: ${(props: Props) => props.design.colors.answerColor};
+    color: ${(props: Props) => props.design.colors.answer};
   }
 `
 

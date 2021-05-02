@@ -1,6 +1,9 @@
 import { Space } from 'antd'
 import React from 'react'
-import { FormDesignFragment, FormPageFragment } from '../../graphql/fragment/form.fragment'
+import {
+  FormPublicDesignFragment,
+  FormPublicPageFragment,
+} from '../../graphql/fragment/form.public.fragment'
 import { StyledButton } from '../styled/button'
 import { StyledH1 } from '../styled/h1'
 import { StyledMarkdown } from '../styled/markdown'
@@ -8,8 +11,8 @@ import scss from './page.module.scss'
 
 interface Props {
   type: 'start' | 'end'
-  page: FormPageFragment
-  design: FormDesignFragment
+  page: FormPublicPageFragment
+  design: FormPublicDesignFragment
   className?: string
 
   next: () => void
@@ -59,9 +62,9 @@ export const FormPage: React.FC<Props> = ({ page, design, next, prev, className,
         <div style={{ flex: 1 }} />
 
         <StyledButton
-          background={design.colors.buttonColor}
-          color={design.colors.buttonTextColor}
-          highlight={design.colors.buttonActiveColor}
+          background={design.colors.button}
+          color={design.colors.buttonText}
+          highlight={design.colors.buttonActive}
           size={'large'}
           onClick={next}
         >

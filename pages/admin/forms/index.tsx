@@ -4,7 +4,6 @@ import {
   GlobalOutlined,
   UnorderedListOutlined,
 } from '@ant-design/icons/lib'
-import { useMutation, useQuery } from '@apollo/react-hooks'
 import { Button, message, Popconfirm, Space, Table, Tag, Tooltip } from 'antd'
 import { PaginationProps } from 'antd/es/pagination'
 import { ColumnsType } from 'antd/lib/table/interface'
@@ -13,23 +12,14 @@ import { FormIsLive } from 'components/form/admin/is.live'
 import Structure from 'components/structure'
 import { TimeAgo } from 'components/time.ago'
 import { withAuth } from 'components/with.auth'
-import {
-  ADMIN_PAGER_FORM_QUERY,
-  AdminPagerFormEntryAdminQueryData,
-  AdminPagerFormEntryQueryData,
-  AdminPagerFormQueryData,
-  AdminPagerFormQueryVariables,
-} from 'graphql/query/admin.pager.form.query'
 import { NextPage } from 'next'
 import Link from 'next/link'
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useWindowSize } from '../../../components/use.window.size'
-import {
-  ADMIN_FORM_DELETE_MUTATION,
-  AdminFormDeleteMutationData,
-  AdminFormDeleteMutationVariables,
-} from '../../../graphql/mutation/admin.form.delete.mutation'
+import { FormPagerFragment } from '../../../graphql/fragment/form.pager.fragment'
+import { useFormDeleteMutation } from '../../../graphql/mutation/form.delete.mutation'
+import { useFormPagerQuery } from '../../../graphql/query/form.pager.query'
 
 const Index: NextPage = () => {
   const { t } = useTranslation()
@@ -37,36 +27,30 @@ const Index: NextPage = () => {
   const [pagination, setPagination] = useState<PaginationProps>({
     pageSize: 25,
   })
-  const [entries, setEntries] = useState<AdminPagerFormEntryQueryData[]>()
-  const { loading, refetch } = useQuery<AdminPagerFormQueryData, AdminPagerFormQueryVariables>(
-    ADMIN_PAGER_FORM_QUERY,
-    {
-      variables: {
-        limit: pagination.pageSize,
-        start: Math.max(0, pagination.current - 1) * pagination.pageSize || 0,
-      },
-      onCompleted: ({ pager }) => {
-        setPagination({
-          ...pagination,
-          total: pager.total,
-        })
-        setEntries(pager.entries)
-      },
-    }
-  )
-  const [executeDelete] = useMutation<
-    AdminFormDeleteMutationData,
-    AdminFormDeleteMutationVariables
-  >(ADMIN_FORM_DELETE_MUTATION)
+  const [entries, setEntries] = useState<FormPagerFragment[]>()
+  const { loading, refetch, error } = useFormPagerQuery({
+    variables: {
+      limit: pagination.pageSize,
+      start: Math.max(0, pagination.current - 1) * pagination.pageSize || 0,
+    },
+    onCompleted: ({ pager }) => {
+      setPagination({
+        ...pagination,
+        total: pager.total,
+      })
+      setEntries(pager.entries)
+    },
+  })
+  const [executeDelete] = useFormDeleteMutation()
 
-  const deleteForm = async (form: AdminFormDeleteMutationVariables) => {
+  const deleteForm = async (id: string) => {
     try {
       await executeDelete({
         variables: {
-          id: form.id,
+          id,
         },
       })
-      const next = entries.filter((entry) => entry.id !== form.id)
+      const next = entries.filter((entry) => entry.id !== id)
       if (next.length === 0) {
         setPagination({ ...pagination, current: 1 })
       } else {
@@ -79,7 +63,7 @@ const Index: NextPage = () => {
     }
   }
 
-  const columns: ColumnsType<AdminPagerFormEntryQueryData> = [
+  const columns: ColumnsType<FormPagerFragment> = [
     {
       title: t('form:row.isLive'),
       dataIndex: 'isLive',
@@ -95,7 +79,7 @@ const Index: NextPage = () => {
     {
       title: t('form:row.admin'),
       dataIndex: 'admin',
-      render(user: AdminPagerFormEntryAdminQueryData) {
+      render(_, { admin: user }) {
         if (!user) {
           return <Tag color={'red'} title={t('form:row.adminMissing')} />
         }
@@ -137,7 +121,7 @@ const Index: NextPage = () => {
     {
       title: t('form:row.menu'),
       align: 'right',
-      render(row: AdminPagerFormEntryQueryData) {
+      render(_, row) {
         return (
           <Space direction={width < 600 ? 'vertical' : 'horizontal'}>
             <Link href={'/admin/forms/[id]/submissions'} as={`/admin/forms/${row.id}/submissions`}>
@@ -156,7 +140,7 @@ const Index: NextPage = () => {
 
             <Popconfirm
               title={t('form:confirmDelete')}
-              onConfirm={() => deleteForm(row)}
+              onConfirm={() => deleteForm(row.id)}
               okText={t('form:deleteNow')}
               okButtonProps={{ danger: true }}
             >
@@ -188,6 +172,7 @@ const Index: NextPage = () => {
           <Button type={'primary'}>{t('form:new')}</Button>
         </Link>,
       ]}
+      error={error?.message}
     >
       <Table
         columns={columns}

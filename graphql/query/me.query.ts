@@ -1,6 +1,7 @@
-import { gql } from 'apollo-boost'
+import { QueryHookOptions, QueryResult, useQuery } from '@apollo/client'
+import { gql } from '@apollo/client/core'
 
-export interface MeQueryData {
+interface Data {
   me: {
     id: string
     username: string
@@ -8,8 +9,8 @@ export interface MeQueryData {
   }
 }
 
-export const ME_QUERY = gql`
-  query {
+const QUERY = gql`
+  query me {
     me {
       id
       roles
@@ -17,3 +18,6 @@ export const ME_QUERY = gql`
     }
   }
 `
+
+export const useMeQuery = (options?: QueryHookOptions<Data, unknown>): QueryResult<Data, unknown> =>
+  useQuery<Data, unknown>(QUERY, options)

@@ -1,50 +1,57 @@
-import { useMutation, useQuery } from '@apollo/react-hooks'
-import { Button, Form, Input, message, Select } from 'antd'
+import { Button, Divider, Form, Input, message, Select } from 'antd'
 import { useForm } from 'antd/lib/form/Form'
 import { NextPage } from 'next'
+import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { cleanInput } from '../../components/clean.input'
 import Structure from '../../components/structure'
 import { withAuth } from '../../components/with.auth'
-import {
-  ADMIN_PROFILE_UPDATE_MUTATION,
-  AdminProfileUpdateMutationData,
-  AdminProfileUpdateMutationVariables,
-} from '../../graphql/mutation/admin.profile.update.mutation'
-import {
-  ADMIN_PROFILE_QUERY,
-  AdminProfileQueryData,
-  AdminProfileQueryVariables,
-} from '../../graphql/query/admin.profile.query'
-import { AdminUserQueryData } from '../../graphql/query/admin.user.query'
+import { useProfileUpdateMutation } from '../../graphql/mutation/profile.update.mutation'
+import { useProfileQuery } from '../../graphql/query/admin.profile.query'
 import { languages } from '../../i18n'
+
+interface FormData {
+  user: {
+    id: string
+    username: string
+    email: string
+    language: string
+    firstName: string
+    lastName: string
+  }
+  password: string
+  confirm: string
+}
 
 const Profile: NextPage = () => {
   const { t } = useTranslation()
-  const [form] = useForm()
+  const [form] = useForm<FormData>()
   const [saving, setSaving] = useState(false)
+  const router = useRouter()
 
-  const { loading } = useQuery<AdminProfileQueryData, AdminProfileQueryVariables>(
-    ADMIN_PROFILE_QUERY,
-    {
-      onCompleted: (next) => {
-        form.setFieldsValue(next)
-      },
-    }
-  )
+  const { loading } = useProfileQuery({
+    onCompleted: (next) => {
+      form.setFieldsValue(next)
+    },
+    onError(e) {
+      void router.push('/')
+    },
+  })
 
-  const [update] = useMutation<AdminProfileUpdateMutationData, AdminProfileUpdateMutationVariables>(
-    ADMIN_PROFILE_UPDATE_MUTATION
-  )
+  const [update] = useProfileUpdateMutation()
 
-  const save = async (formData: AdminUserQueryData) => {
+  const save = async (data: FormData) => {
     setSaving(true)
 
     try {
       const next = (
         await update({
-          variables: cleanInput(formData),
+          variables: {
+            user: {
+              ...data.user,
+              password: data.password && data.password === data.confirm ? data.password : undefined,
+            },
+          },
         })
       ).data
 
@@ -146,6 +153,46 @@ const Profile: NextPage = () => {
 
         <Form.Item label={t('profile:lastName')} name={['user', 'lastName']}>
           <Input />
+        </Form.Item>
+
+        <Divider />
+
+        <Form.Item
+          name="password"
+          label={t('profile:password')}
+          rules={[
+            {
+              min: 5,
+              message: t('validation:passwordMinLength'),
+            },
+          ]}
+        >
+          <Input.Password />
+        </Form.Item>
+
+        <Form.Item noStyle shouldUpdate>
+          {() => (
+            <Form.Item
+              name="confirm"
+              label={t('profile:confirmPassword')}
+              rules={[
+                {
+                  required: Boolean(form.getFieldValue('password')),
+                  message: t('validation:passwordConfirmRequired'),
+                },
+                ({ getFieldValue }) => ({
+                  validator(_, value) {
+                    if (!value || getFieldValue('password') === value) {
+                      return Promise.resolve()
+                    }
+                    return Promise.reject(new Error(t('validation:passwordConfirmMismatch')))
+                  },
+                }),
+              ]}
+            >
+              <Input.Password />
+            </Form.Item>
+          )}
         </Form.Item>
       </Form>
     </Structure>

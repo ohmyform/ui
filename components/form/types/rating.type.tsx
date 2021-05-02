@@ -5,7 +5,6 @@ import { FieldTypeProps } from './type.props'
 
 export const RatingType: React.FC<FieldTypeProps> = ({ field, urlValue }) => {
   const { t } = useTranslation()
-  // TODO add ratings
 
   let initialValue: number = undefined
 

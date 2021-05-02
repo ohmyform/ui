@@ -1,17 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
-import { FormDesignFragment } from '../../graphql/fragment/form.fragment'
+import { FormPublicDesignFragment } from '../../graphql/fragment/form.public.fragment'
 
 interface Props {
   type: 'question' | 'answer'
-  design: FormDesignFragment
+  design: FormPublicDesignFragment
 }
 
 const Header = styled.h1`
   color: ${(props: Props) =>
-    props.type === 'question'
-      ? props.design.colors.questionColor
-      : props.design.colors.answerColor};
+    props.type === 'question' ? props.design.colors.question : props.design.colors.answer};
 `
 
 export const StyledH1: React.FC<Props> = ({ children, ...props }) => {

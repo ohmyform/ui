@@ -1,15 +1,14 @@
 import { CaretDownOutlined, UserOutlined } from '@ant-design/icons'
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons/lib'
-import { useQuery } from '@apollo/react-hooks'
-import { Dropdown, Layout, Menu, PageHeader, Select, Space, Spin, Tag } from 'antd'
+import { Alert, Dropdown, Layout, Menu, PageHeader, Select, Space, Spin, Tag } from 'antd'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { CSSProperties, FunctionComponent } from 'react'
+import GitHubButton from 'react-github-button'
 import { useTranslation } from 'react-i18next'
-import { ME_QUERY, MeQueryData } from '../graphql/query/me.query'
+import { useMeQuery } from '../graphql/query/me.query'
 import { languages } from '../i18n'
 import { sideMenu, SideMenuElement } from './sidemenu'
-import GitHubButton from 'react-github-button'
 import { useWindowSize } from './use.window.size'
 import { clearAuth } from './with.auth'
 
@@ -33,9 +32,10 @@ interface Props {
   title?: string
   subTitle?: string
   extra?: JSX.Element[]
+  error?: string
 }
 
-const Structure: FunctionComponent<Props> = (props) => {
+export const Structure: FunctionComponent<Props> = (props) => {
   const { t, i18n } = useTranslation()
   const size = useWindowSize()
   const [userMenu, setUserMenu] = React.useState(false)
@@ -43,7 +43,7 @@ const Structure: FunctionComponent<Props> = (props) => {
   const [selected, setSelected] = React.useState<string[]>()
   const [sidebar, setSidebar] = React.useState(size.width < 700)
   const router = useRouter()
-  const user = useQuery<MeQueryData>(ME_QUERY)
+  const user = useMeQuery()
 
   React.useEffect(() => {
     if (sidebar !== size.width < 700) {
@@ -76,7 +76,7 @@ const Structure: FunctionComponent<Props> = (props) => {
           return false
         }
 
-        return user.data.me.roles.includes(element.role)
+        return user.data?.me.roles.includes(element.role)
       })
       .map(
         (element): JSX.Element => {
@@ -249,7 +249,9 @@ const Structure: FunctionComponent<Props> = (props) => {
             </Menu.Item>
           </Menu>
         </Sider>
-        <Layout style={{ padding: '0 24px 24px' }}>
+        <Layout
+          style={{ padding: '0 24px 24px', minHeight: 500, height: '100%', overflow: 'auto' }}
+        >
           {props.title && (
             <PageHeader
               title={props.title}
@@ -283,6 +285,10 @@ const Structure: FunctionComponent<Props> = (props) => {
                 },
               }}
             />
+          )}
+
+          {props.error && (
+            <Alert message={props.error} type={'error'} style={{ marginBottom: 24 }} />
           )}
 
           <Spin spinning={!!props.loading}>

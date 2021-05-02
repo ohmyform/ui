@@ -1,15 +1,9 @@
-import { useMutation, useQuery } from '@apollo/react-hooks'
 import { Button, Form, Input, message } from 'antd'
 import { useForm } from 'antd/lib/form/Form'
 import { AuthFooter } from 'components/auth/footer'
 import { AuthLayout } from 'components/auth/layout'
 import { setAuth } from 'components/with.auth'
-import {
-  REGISTER_MUTATION,
-  RegisterMutationData,
-  RegisterMutationVariables,
-  RegisterUserData,
-} from 'graphql/mutation/register.mutation'
+import { RegisterUserData, useRegisterMutation } from 'graphql/mutation/register.mutation'
 import { NextPage } from 'next'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -17,7 +11,7 @@ import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { ErrorPage } from '../components/error.page'
 import { Omf } from '../components/omf'
-import { SETTINGS_QUERY, SettingsQueryData } from '../graphql/query/settings.query'
+import { useSettingsQuery } from '../graphql/query/settings.query'
 import scss from './register.module.scss'
 
 const Register: NextPage = () => {
@@ -25,9 +19,9 @@ const Register: NextPage = () => {
   const [form] = useForm()
   const router = useRouter()
   const [loading, setLoading] = useState(false)
-  const { data } = useQuery<SettingsQueryData>(SETTINGS_QUERY)
+  const { data } = useSettingsQuery()
 
-  const [register] = useMutation<RegisterMutationData, RegisterMutationVariables>(REGISTER_MUTATION)
+  const [register] = useRegisterMutation()
 
   const finish = async (data: RegisterUserData) => {
     setLoading(true)

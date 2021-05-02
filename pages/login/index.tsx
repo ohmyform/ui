@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from '@apollo/react-hooks'
+import { useMutation } from '@apollo/client'
 import { Alert, Button, Form, Input, message } from 'antd'
 import { useForm } from 'antd/lib/form/Form'
 import { AuthFooter } from 'components/auth/footer'
@@ -16,7 +16,7 @@ import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import ReactMarkdown from 'react-markdown'
 import { Omf } from '../../components/omf'
-import { SETTINGS_QUERY, SettingsQueryData } from '../../graphql/query/settings.query'
+import { useSettingsQuery } from '../../graphql/query/settings.query'
 import scss from './index.module.scss'
 
 const Index: NextPage = () => {
@@ -25,7 +25,7 @@ const Index: NextPage = () => {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
   const [login] = useMutation<LoginMutationData, LoginMutationVariables>(LOGIN_MUTATION)
-  const { data } = useQuery<SettingsQueryData>(SETTINGS_QUERY)
+  const { data } = useSettingsQuery()
 
   const finish = async (data: LoginMutationVariables) => {
     setLoading(true)

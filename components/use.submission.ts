@@ -1,4 +1,4 @@
-import { useMutation } from '@apollo/react-hooks'
+import { useMutation } from '@apollo/client'
 import { useCallback, useEffect, useState } from 'react'
 import {
   SUBMISSION_SET_FIELD_MUTATION,

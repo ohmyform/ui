@@ -9,11 +9,24 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
+- ability to change user passwords
+- add default page background
+- add environment list in [doc](doc/environment.md)
+
 ### Changed
+
+- combined notificationts to become more versatile
+- use exported hooks for graphql
+
 
 ### Fixed
 
+- links at the bottom for new users
+- fixes for hide contrib setting
+
 ### Security
+
+- upgrad all packages
 
 ## [0.9.9] - 2021-02-14
 

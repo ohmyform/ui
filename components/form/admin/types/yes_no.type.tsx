@@ -6,7 +6,6 @@ import { AdminFieldTypeProps } from './type.props'
 export const YesNoType: React.FC<AdminFieldTypeProps> = (props) => {
   const { t } = useTranslation()
 
-  // TODO add switch
   return (
     <div>
       <Form.Item

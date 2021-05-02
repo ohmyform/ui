@@ -1,6 +1,7 @@
-import { gql } from 'apollo-boost'
+import { MutationHookOptions, MutationTuple, useMutation } from '@apollo/client'
+import { gql } from '@apollo/client/core'
 
-export interface RegisterMutationData {
+interface Data {
   tokens: {
     access: string
     refresh: string
@@ -13,11 +14,11 @@ export interface RegisterUserData {
   password: string
 }
 
-export interface RegisterMutationVariables {
+interface Variables {
   user: RegisterUserData
 }
 
-export const REGISTER_MUTATION = gql`
+const MUTATION = gql`
   mutation register($user: UserCreateInput!) {
     tokens: authRegister(user: $user) {
       access: accessToken
@@ -25,3 +26,7 @@ export const REGISTER_MUTATION = gql`
     }
   }
 `
+
+export const useRegisterMutation = (
+  data?: MutationHookOptions<Data, Variables>
+): MutationTuple<Data, Variables> => useMutation<Data, Variables>(MUTATION, data)

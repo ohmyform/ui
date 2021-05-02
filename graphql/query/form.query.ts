@@ -1,16 +1,17 @@
-import { gql } from 'apollo-boost'
+import { QueryHookOptions, QueryResult, useQuery } from '@apollo/client'
+import { gql } from '@apollo/client/core'
 import { FORM_FRAGMENT, FormFragment } from '../fragment/form.fragment'
 
-export interface FormQueryData {
+export interface Data {
   form: FormFragment
 }
 
-export interface FormQueryVariables {
+interface Variables {
   id: string
 }
 
-export const FORM_QUERY = gql`
-  query form($id: ID!) {
+const QUERY = gql`
+  query getFormById($id: ID!) {
     form: getFormById(id: $id) {
       ...Form
     }
@@ -18,3 +19,7 @@ export const FORM_QUERY = gql`
 
   ${FORM_FRAGMENT}
 `
+
+export const useFormQuery = (
+  options?: QueryHookOptions<Data, Variables>
+): QueryResult<Data, Variables> => useQuery<Data, Variables>(QUERY, options)

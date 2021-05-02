@@ -1,4 +1,4 @@
-import { gql } from 'apollo-boost'
+import { gql } from '@apollo/client/core'
 import { ADMIN_USER_FRAGMENT, AdminUserFragment } from '../fragment/admin.user.fragment'
 
 export interface AdminUserQueryData {

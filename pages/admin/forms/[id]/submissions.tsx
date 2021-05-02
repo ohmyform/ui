@@ -1,4 +1,3 @@
-import { useQuery } from '@apollo/react-hooks'
 import { Button, Progress, Table } from 'antd'
 import { PaginationProps } from 'antd/es/pagination'
 import { ProgressProps } from 'antd/lib/progress'
@@ -15,13 +14,9 @@ import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { ExportSubmissionAction } from '../../../../components/form/admin/export.submission.action'
 import { SubmissionValues } from '../../../../components/form/admin/submission.values'
-import {
-  ADMIN_PAGER_SUBMISSION_QUERY,
-  AdminPagerSubmissionEntryQueryData,
-  AdminPagerSubmissionFormQueryData,
-  AdminPagerSubmissionQueryData,
-  AdminPagerSubmissionQueryVariables,
-} from '../../../../graphql/query/admin.pager.submission.query'
+import { FormPagerFragment } from '../../../../graphql/fragment/form.pager.fragment'
+import { SubmissionFragment } from '../../../../graphql/fragment/submission.fragment'
+import { useSubmissionPagerQuery } from '../../../../graphql/query/submission.pager.query'
 
 const Submissions: NextPage = () => {
   const { t } = useTranslation()
@@ -29,12 +24,9 @@ const Submissions: NextPage = () => {
   const [pagination, setPagination] = useState<PaginationProps>({
     pageSize: 25,
   })
-  const [form, setForm] = useState<AdminPagerSubmissionFormQueryData>()
-  const [entries, setEntries] = useState<AdminPagerSubmissionEntryQueryData[]>()
-  const { loading, refetch } = useQuery<
-    AdminPagerSubmissionQueryData,
-    AdminPagerSubmissionQueryVariables
-  >(ADMIN_PAGER_SUBMISSION_QUERY, {
+  const [form, setForm] = useState<FormPagerFragment>()
+  const [entries, setEntries] = useState<SubmissionFragment[]>()
+  const { loading, refetch } = useSubmissionPagerQuery({
     variables: {
       form: router.query.id as string,
       limit: pagination.pageSize,
@@ -50,10 +42,10 @@ const Submissions: NextPage = () => {
     },
   })
 
-  const columns: ColumnsType<AdminPagerSubmissionEntryQueryData> = [
+  const columns: ColumnsType<SubmissionFragment> = [
     {
       title: t('submission:progress'),
-      render(row: AdminPagerSubmissionEntryQueryData) {
+      render(_, row) {
         const props: ProgressProps = {
           status: 'active',
           percent: Math.round(row.percentageComplete * 100),

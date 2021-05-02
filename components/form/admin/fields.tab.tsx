@@ -5,14 +5,14 @@ import { TabPaneProps } from 'antd/lib/tabs'
 import { FieldData } from 'rc-field-form/lib/interface'
 import React, { useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { AdminFormFieldFragment } from '../../../graphql/fragment/admin.form.fragment'
+import { FormFieldFragment } from '../../../graphql/fragment/form.fragment'
 import { FieldCard } from './field.card'
 import { adminTypes } from './types'
 
 interface Props extends TabPaneProps {
   form: FormInstance
-  fields: AdminFormFieldFragment[]
-  onChangeFields: (fields: AdminFormFieldFragment[]) => void
+  fields: FormFieldFragment[]
+  onChangeFields: (fields: FormFieldFragment[]) => void
 }
 
 export const FieldsTab: React.FC<Props> = (props) => {
@@ -55,10 +55,8 @@ export const FieldsTab: React.FC<Props> = (props) => {
             <Button
               type="dashed"
               onClick={() => {
-                const defaults: AdminFormFieldFragment = {
-                  logicJump: {
-                    enabled: false,
-                  },
+                const defaults: FormFieldFragment = {
+                  logic: [],
                   options: [],
                   id: `NEW-${Date.now()}`,
                   type: nextType,

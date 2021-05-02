@@ -1,5 +1,6 @@
 {
   "admin": "Admin",
+  "profile": "Profile",
   "checkingCredentials": "Checking Credentials",
   "loadingCredentials": "Loading Credentials",
   "login": "Login",

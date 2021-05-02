@@ -1,19 +1,9 @@
-import { useQuery } from '@apollo/react-hooks'
 import { message } from 'antd'
-import { useCallback, useState } from 'react'
 import ExcelJS from 'exceljs'
-import {
-  ADMIN_FORM_QUERY,
-  AdminFormQueryData,
-  AdminFormQueryVariables,
-} from '../../../graphql/query/admin.form.query'
-import {
-  ADMIN_PAGER_SUBMISSION_QUERY,
-  AdminPagerSubmissionEntryQueryData,
-  AdminPagerSubmissionQueryData,
-  AdminPagerSubmissionQueryVariables,
-} from '../../../graphql/query/admin.pager.submission.query'
-import { useImperativeQuery } from '../../use.imerative.query'
+import { useCallback, useState } from 'react'
+import { SubmissionFragment } from '../../../graphql/fragment/submission.fragment'
+import { useFormQuery } from '../../../graphql/query/form.query'
+import { useSubmissionPagerImperativeQuery } from '../../../graphql/query/submission.pager.query'
 
 interface Props {
   form: string
@@ -23,16 +13,13 @@ interface Props {
 export const ExportSubmissionAction: React.FC<Props> = (props) => {
   const [loading, setLoading] = useState(false)
 
-  const form = useQuery<AdminFormQueryData, AdminFormQueryVariables>(ADMIN_FORM_QUERY, {
+  const form = useFormQuery({
     variables: {
       id: props.form,
     },
   })
 
-  const getSubmissions = useImperativeQuery<
-    AdminPagerSubmissionQueryData,
-    AdminPagerSubmissionQueryVariables
-  >(ADMIN_PAGER_SUBMISSION_QUERY)
+  const getSubmissions = useSubmissionPagerImperativeQuery()
 
   const exportSubmissions = useCallback(async () => {
     if (loading) {
@@ -66,7 +53,7 @@ export const ExportSubmissionAction: React.FC<Props> = (props) => {
         start: 0,
       })
 
-      const buildRow = (data: AdminPagerSubmissionEntryQueryData): any[] => {
+      const buildRow = (data: SubmissionFragment): any[] => {
         const row = [
           data.id,
           data.created,

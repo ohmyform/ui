@@ -1,4 +1,3 @@
-import { useMutation, useQuery } from '@apollo/react-hooks'
 import { Button, Form, Input, message, Tabs } from 'antd'
 import { useForm } from 'antd/lib/form/Form'
 import { cleanInput } from 'components/clean.input'
@@ -6,75 +5,66 @@ import { BaseDataTab } from 'components/form/admin/base.data.tab'
 import { DesignTab } from 'components/form/admin/design.tab'
 import { EndPageTab } from 'components/form/admin/end.page.tab'
 import { FieldsTab } from 'components/form/admin/fields.tab'
-import { RespondentNotificationsTab } from 'components/form/admin/respondent.notifications.tab'
-import { SelfNotificationsTab } from 'components/form/admin/self.notifications.tab'
+import { NotificationsTab } from 'components/form/admin/notifications.tab'
 import { StartPageTab } from 'components/form/admin/start.page.tab'
-import Structure from 'components/structure'
+import { Structure } from 'components/structure'
 import { withAuth } from 'components/with.auth'
-import {
-  AdminFormFieldFragment,
-  AdminFormFieldOptionKeysFragment,
-} from 'graphql/fragment/admin.form.fragment'
-import {
-  ADMIN_FORM_UPDATE_MUTATION,
-  AdminFormUpdateMutationData,
-  AdminFormUpdateMutationVariables,
-} from 'graphql/mutation/admin.form.update.mutation'
-import {
-  ADMIN_FORM_QUERY,
-  AdminFormQueryData,
-  AdminFormQueryVariables,
-} from 'graphql/query/admin.form.query'
+import { useFormUpdateMutation } from 'graphql/mutation/form.update.mutation'
 import { NextPage } from 'next'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { HooksTab } from '../../../../components/form/admin/hooks.tab'
+import {
+  FormFieldFragment,
+  FormFieldOptionKeysFragment,
+} from '../../../../graphql/fragment/form.fragment'
+import { Data, useFormQuery } from '../../../../graphql/query/form.query'
 
 const Index: NextPage = () => {
   const { t } = useTranslation()
   const router = useRouter()
   const [form] = useForm()
   const [saving, setSaving] = useState(false)
-  const [fields, setFields] = useState<AdminFormFieldFragment[]>([])
-  const [update] = useMutation<AdminFormUpdateMutationData, AdminFormUpdateMutationVariables>(
-    ADMIN_FORM_UPDATE_MUTATION
-  )
+  const [fields, setFields] = useState<FormFieldFragment[]>([])
+  const [update] = useFormUpdateMutation()
 
-  const processNext = (next: AdminFormQueryData): AdminFormQueryData => {
-    next.form.fields = next.form.fields.map((field) => {
-      const keys: AdminFormFieldOptionKeysFragment = {}
+  const processNext = (next: Data) => {
+    return {
+      form: {
+        ...next.form,
+        fields: next.form.fields.map((field) => {
+          const keys: FormFieldOptionKeysFragment = {}
 
-      field.options.forEach((option) => {
-        if (option.key) {
-          keys[option.key] = option.value
-        }
-      })
+          field.options.forEach((option) => {
+            if (option.key) {
+              keys[option.key] = option.value
+            }
+          })
 
-      field.options = field.options.filter((option) => !option.key)
-      field.optionKeys = keys
-      return field
-    })
-
-    return next
-  }
-
-  const { data, loading } = useQuery<AdminFormQueryData, AdminFormQueryVariables>(
-    ADMIN_FORM_QUERY,
-    {
-      variables: {
-        id: router.query.id as string,
-      },
-      onCompleted: (next) => {
-        next = processNext(next)
-        form.setFieldsValue(next)
-        setFields(next.form.fields)
+          return {
+            ...field,
+            options: field.options.filter((option) => !option.key),
+            optionKeys: keys,
+          }
+        }),
       },
     }
-  )
+  }
 
-  const save = async (formData: AdminFormQueryData) => {
+  const { data, loading } = useFormQuery({
+    variables: {
+      id: router.query.id as string,
+    },
+    onCompleted: (next) => {
+      const processed = processNext(next)
+      form.setFieldsValue(processed)
+      setFields(processed.form.fields)
+    },
+  })
+
+  const save = async (formData: Data) => {
     setSaving(true)
 
     formData.form.fields = formData.form.fields
@@ -89,6 +79,7 @@ const Index: NextPage = () => {
             }
 
             options.push({
+              id: null, // TODO improve this
               value: optionKeys[key],
               key,
             })
@@ -175,15 +166,9 @@ const Index: NextPage = () => {
           />
           <BaseDataTab key={'base_data'} tab={t('form:baseDataTab')} />
           <DesignTab key={'design'} tab={t('form:designTab')} />
-          <SelfNotificationsTab
-            key={'self_notifications'}
-            tab={t('form:selfNotificationsTab')}
-            fields={fields}
-            form={form}
-          />
-          <RespondentNotificationsTab
-            key={'respondent_notifications'}
-            tab={t('form:respondentNotificationsTab')}
+          <NotificationsTab
+            key={'notifications'}
+            tab={t('form:notificationsTab')}
             fields={fields}
             form={form}
           />
