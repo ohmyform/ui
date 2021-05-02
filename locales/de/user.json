@@ -1,5 +1,5 @@
 {
-  "baseData": "Basis Daten",
+  "baseData": "Basisdaten",
   "confirmDelete": "Wollen sie diesen Benutzer wirklich löschen?",
   "deleted": "Benutzer gelöscht",
   "deleteError": "Benutzer konnte nicht gelöscht werden",
@@ -9,7 +9,6 @@
   "row": {
     "created": "Erstellt",
     "email": "E-Mail",
-    "menu": "",
     "roles": "Rolle"
   },
   "updated": "Benutzer aktualisiert",

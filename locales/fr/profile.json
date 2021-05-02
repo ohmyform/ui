@@ -5,6 +5,6 @@
   "lastName": "Nom de famille",
   "updated": "Profil mis à jour",
   "updateError": "Impossible de mettre à jour le profil",
-  "updateNow": "Sauvegarder",
+  "updateNow": "sauver",
   "username": "Nom d'utilisateur"
 }

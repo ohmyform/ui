@@ -16,13 +16,15 @@
   "deleteError": "Nie można usunąć formularza",
   "deleteNow": "Usuń teraz!",
   "design": {
-    "answerColor": "Kolor odpowiedzi",
-    "backgroundColor": "Kolor tła",
-    "buttonActiveColor": "Przycisk Aktywny kolor",
-    "buttonColor": "Kolor przycisku",
-    "buttonTextColor": "Kolor tekstu przycisku",
-    "font": "Czcionka",
-    "questionColor": "Kolor pytania"
+    "color": {
+      "answer": "Kolor odpowiedzi",
+      "background": "Kolor tła",
+      "button": "Kolor przycisku",
+      "buttonActive": "Przycisk Aktywny kolor",
+      "buttonText": "Kolor tekstu przycisku",
+      "question": "Kolor pytania"
+    },
+    "font": "Czcionka"
   },
   "designTab": "Projekt",
   "endPage": {
@@ -43,17 +45,20 @@
   "loading": "Ładowanie formularza",
   "mange": "Edytuj formularz „ {{title}} ”",
   "new": "Nowa forma",
-  "respondentNotifications": {
+  "notifications": {
     "enabled": "Włączone",
     "fromEmail": "E-mail nadawcy",
     "fromEmailInfo": "Upewnij się, że Twój serwer pocztowy może wysyłać z tego e-maila",
+    "fromField": "E-mail nadawcy",
+    "fromFieldInfo": "Pole z e-mailem ustawi nagłówek odpowiedzi",
     "htmlTemplate": "Szablon HTML",
     "htmlTemplateInfo": "Możesz również użyć <u> MJML <\/u> aby utworzyć szablony e-mail",
     "subject": "Przedmiot",
+    "toEmail": "Twój email",
+    "toEmailInfo": "Jeśli nie ustawione, wyśle do administratora formularza",
     "toField": "Pole e-mail",
     "toFieldInfo": "Pole z adresem e-mail do odbioru"
   },
-  "respondentNotificationsTab": "Powiadomienia respondenta",
   "restart": "Uruchom ponownie formularz",
   "row": {
     "admin": "Właściciel",
@@ -61,20 +66,8 @@
     "isLive": "Relacja na żywo",
     "language": "Język",
     "lastModified": "Ostatnio zmodyfikowany",
-    "menu": "",
     "title": "Tytuł"
   },
-  "selfNotifications": {
-    "enabled": "Włączone",
-    "fromField": "E-mail nadawcy",
-    "fromFieldInfo": "Pole z e-mailem ustawi nagłówek odpowiedzi",
-    "htmlTemplate": "Szablon HTML",
-    "htmlTemplateInfo": "Możesz również użyć <u> MJML <\/u> aby utworzyć szablony e-mail",
-    "subject": "Przedmiot",
-    "toEmail": "Twój email",
-    "toEmailInfo": "Jeśli nie ustawione, wyśle do administratora formularza"
-  },
-  "selfNotificationsTab": "Powiadomienia własne",
   "startPage": {
     "action": "Akcja",
     "activeColor": "Aktywny kolor",

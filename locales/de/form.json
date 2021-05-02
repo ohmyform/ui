@@ -5,24 +5,26 @@
     "showFooter": "Fußzeile anzeigen",
     "title": "Titel"
   },
-  "baseDataTab": "Basis Daten",
+  "baseDataTab": "Basisdaten",
   "building": "Formular wird aufgebaut",
   "confirmDelete": "Wollen Sie dieses Formular mit allen Einträgen löschen?",
   "create": "Neues Formular erstellen",
   "created": "Formular erstellt",
-  "createNow": "Jetzt anlegen",
+  "createNow": "Speichern",
   "creationError": "Formular konnte nicht erstellt werden",
   "deleted": "Formular gelöscht",
   "deleteError": "Formular konnte nicht gelöscht werden",
   "deleteNow": "Jetzt löschen!",
   "design": {
-    "answerColor": "Antwortfarbe",
-    "backgroundColor": "Hintergrundfarbe",
-    "buttonActiveColor": "Aktive Aktionsfarbe",
-    "buttonColor": "Aktionsfarbe",
-    "buttonTextColor": "Textaktionsfarbe",
-    "font": "Schriftart",
-    "questionColor": "Fragenfarbe"
+    "color": {
+      "answer": "Antwortfarbe",
+      "background": "Hintergrundfarbe",
+      "button": "Farbe der Schaltfläche",
+      "buttonActive": "Farbe der aktiven Schaltfläche",
+      "buttonText": "Farbe des Schaltflächentextes",
+      "question": "Fragenfarbe"
+    },
+    "font": "Schriftart"
   },
   "designTab": "Design",
   "endPage": {
@@ -32,28 +34,40 @@
     "bgColor": "Hintergrundfarbe",
     "buttons": "Aktionen",
     "color": "Textfarbe",
-    "continueButtonText": "Weiter Text",
-    "paragraph": "Paragraf",
+    "continueButtonText": "Text der Schaltfläche Weiter",
+    "paragraph": "Absatz",
+    "paragraphInfo": "Verwenden Sie Markdown für erweiterte Formatierung",
     "show": "Anzeigen",
     "text": "Text",
     "title": "Titel",
-    "url": "Url"
+    "url": "URL"
   },
-  "endPageTab": "Abschluss Seite",
+  "endPageTab": "Endseite",
+  "fieldsTab": "Formularfelder",
+  "hooks": {
+    "add": "Hinzufügen",
+    "confirmDelete": "Wollen Sie diesen Webhook wirklich löschen?",
+    "deleteNow": "Nun löschen",
+    "enabled": "Aktiv"
+  },
+  "hooksTab": "Webhooks",
   "loading": "Formular wird geladen",
   "mange": "Formular \"{{title}}\" bearbeiten",
   "new": "Neues Formular",
-  "respondentNotifications": {
+  "notifications": {
     "enabled": "Aktiv",
-    "fromEmail": "Absender E-Mail",
-    "fromEmailInfo": "Der E-Mail Server muss den Versand von dieser E-Mail zulassen",
-    "htmlTemplate": "HTML Template",
-    "htmlTemplateInfo": "Sie können auch <u>MJML<\/u> verwenden um das Template zu gestalten",
+    "fromEmail": "Absender-E-Mail",
+    "fromEmailInfo": "Stellen Sie sicher, dass Ihr Mailserver von dieser E-Mail senden kann",
+    "fromField": "Absender-E-Mail",
+    "fromFieldInfo": "Feld mit E-Mail, setzt den Reply-To-Header",
+    "htmlTemplate": "HTML-Vorlage",
+    "htmlTemplateInfo": "Sie können auch <u>MJML<\/u> verwenden, um Ihre E-Mail-Vorlagen zu erstellen",
     "subject": "Betreff",
-    "toField": "Empfänger E-Mail",
-    "toFieldInfo": "Formular E-Mail Feld für Benachrichtigung"
+    "toEmail": "Ihre E-Mail",
+    "toEmailInfo": "Als Standard wird die E-Mail des Administrators verwendet",
+    "toField": "E-Mail-Feld",
+    "toFieldInfo": "Feld mit E-Mail für den Empfang"
   },
-  "respondentNotificationsTab": "Benarichtigungen für Nutzer",
   "restart": "Formular neu starten",
   "row": {
     "admin": "Verwalter",
@@ -61,20 +75,8 @@
     "isLive": "Öffentlich",
     "language": "Sprache",
     "lastModified": "Letzte Änderung",
-    "menu": "",
     "title": "Titel"
   },
-  "selfNotifications": {
-    "enabled": "Aktiv",
-    "fromField": "Absender E-Mail",
-    "fromFieldInfo": "Formular E-Mail Feld für Benachrichtigung, wird als Reply-To gesetzt",
-    "htmlTemplate": "HTML Template",
-    "htmlTemplateInfo": "Sie können auch <u>MJML<\/u> verwenden um das Template zu gestalten",
-    "subject": "Betreff",
-    "toEmail": "Empfänger E-Mail",
-    "toEmailInfo": "Als Standard wird die E-Mail des Verwalters verwendet"
-  },
-  "selfNotificationsTab": "Benachrichtigungen für Verwalter",
   "startPage": {
     "action": "Aktion",
     "activeColor": "Aktive Farbe",
@@ -82,12 +84,13 @@
     "bgColor": "Hintergrundfarbe",
     "buttons": "Aktionen",
     "color": "Textfarbe",
-    "continueButtonText": "Weiter Text",
-    "paragraph": "Paragraf",
+    "continueButtonText": "Text der Schaltfläche Weiter",
+    "paragraph": "Absatz",
+    "paragraphInfo": "Verwenden Sie Markdown für erweiterte Formatierung",
     "show": "Anzeigen",
     "text": "Text",
     "title": "Titel",
-    "url": "Url"
+    "url": "URL"
   },
   "startPageTab": "Startseite",
   "submitted": "Vielen Dank für Ihre Eingaben!",

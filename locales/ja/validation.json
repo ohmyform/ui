@@ -12,7 +12,7 @@
   "subjectRequired": "件名を入力してください",
   "templateRequired": "テンプレートを入力してください",
   "titleRequired": "項目名を入力してください",
+  "urlRequired": "URL を入力してください",
   "usernameRequired": "ユーザー名を入力してください",
-  "valueRequired": "値を入力してください",
-  "urlRequired": "URL を入力してください"
+  "valueRequired": "値を入力してください"
 }
