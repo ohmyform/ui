@@ -7,7 +7,7 @@
     "build": "next build",
     "lint": "eslint pages/ store/ components/ graphql/",
     "type-check": "tsc --pretty",
-    "export": "cross-env SPA=1 next build && next export",
+    "export": "cross-env SPA=1 next build && cross-env SPA=1 next export",
     "start": "next start -p $PORT",
     "translation:sort": "cross-env TS_NODE_TRANSPILE_ONLY=true ts-node-script locales/sort.ts",
     "translation:missing": "cross-env TS_NODE_TRANSPILE_ONLY=true ts-node locales/missing.ts"
