@@ -8,6 +8,7 @@
   },
   "deleteNow": "Excluir campo",
   "description": "Descrição",
+  "descriptionInfo": "Use markdown para formatação avançada",
   "dropdown": {
     "addOption": "Adicionar opção",
     "default": "Valor padrão",
@@ -49,6 +50,7 @@
   },
   "required": "Requeridos",
   "requiredInfo": "Se necessário, o valor padrão deve ser definido para permitir que os usuários enviem o formulário!",
+  "slug": "Slug",
   "textarea": {
     "default": "Valor padrão",
     "name": "Área de texto"
