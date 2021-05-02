@@ -9,7 +9,7 @@
   "row": {
     "created": "Creado",
     "email": "Correo electrónico",
-    "menu": "",
+    "menu": "Vacío",
     "roles": "Roles"
   },
   "updated": "Usuario actualizado",

@@ -10,6 +10,7 @@
   "subjectRequired": "Veuillez fournir un sujet",
   "templateRequired": "Veuillez fournir un modèle",
   "titleRequired": "Veuillez fournir un titre",
+  "urlRequired": "Veuillez fournir une URL",
   "usernameRequired": "Veuillez fournir un nom d'utilisateur",
   "valueRequired": "Veuillez fournir une valeur"
 }

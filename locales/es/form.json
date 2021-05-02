@@ -16,13 +16,15 @@
   "deleteError": "No se pudo eliminar el formulario",
   "deleteNow": "¡Eliminar ahora!",
   "design": {
-    "answerColor": "Color de respuesta",
-    "backgroundColor": "Color de fondo",
-    "buttonActiveColor": "Color activo del botón",
-    "buttonColor": "Color del boton",
-    "buttonTextColor": "Color del texto del botón",
-    "font": "Fuente",
-    "questionColor": "Color de la pregunta"
+    "color": {
+      "answer": "Color de respuesta",
+      "background": "Color de fondo",
+      "button": "Color del boton",
+      "buttonActive": "Color activo del botón",
+      "buttonText": "Color del texto del botón",
+      "question": "Color de la pregunta"
+    },
+    "font": "Fuente"
   },
   "designTab": "Diseño",
   "endPage": {
@@ -34,6 +36,7 @@
     "color": "Color",
     "continueButtonText": "Continuar texto del botón",
     "paragraph": "Párrafo",
+    "paragraphInfo": "Use markdown para formateo avanzado",
     "show": "mostrar",
     "text": "Texto",
     "title": "Título",
@@ -41,20 +44,30 @@
   },
   "endPageTab": "Página final",
   "fieldsTab": "Campos",
+  "hooks": {
+    "add": "Agregar",
+    "confirmDelete": "Vacío",
+    "deleteNow": "Vacío",
+    "enabled": "Habilitado"
+  },
+  "hooksTab": "WebHooks",
   "loading": "Formulario de carga",
   "mange": "Editar formulario \" {{title}} \"",
   "new": "Nuevo formulario",
-  "respondentNotifications": {
+  "notifications": {
     "enabled": "Habilitado",
     "fromEmail": "Correo electrónico del remitente",
     "fromEmailInfo": "Asegúrese de que su servidor de correo pueda enviar desde este correo electrónico",
+    "fromField": "Correo electrónico del remitente",
+    "fromFieldInfo": "Asegúrese de que su servidor de correo pueda enviar desde este correo electrónico",
     "htmlTemplate": "Plantilla HTML",
     "htmlTemplateInfo": "También puede usar <u> MJML <\/u> para crear sus plantillas de correo electrónico",
-    "subject": "Asunto",
+    "subject": "Tema",
+    "toEmail": "Tu correo electrónico",
+    "toEmailInfo": "Si no está configurado, se enviará al administrador del formulario",
     "toField": "Correo electrónico de destino",
     "toFieldInfo": "Dirección de correo electrónico que recibirá las notificaiones"
   },
-  "respondentNotificationsTab": "Notificaciones de encuestados",
   "restart": "Reiniciar formulario",
   "row": {
     "admin": "Propietario",
@@ -62,20 +75,8 @@
     "isLive": "En Vivo",
     "language": "Idioma",
     "lastModified": "Última modificación",
-    "menu": "",
     "title": "Título"
   },
-  "selfNotifications": {
-    "enabled": "Habilitado",
-    "fromField": "Correo electrónico del remitente",
-    "fromFieldInfo": "Asegúrese de que su servidor de correo pueda enviar desde este correo electrónico",
-    "htmlTemplate": "Plantilla HTML",
-    "htmlTemplateInfo": "También puede usar <u> MJML <\/u> para crear sus plantillas de correo electrónico",
-    "subject": "Tema",
-    "toEmail": "Tu correo electrónico",
-    "toEmailInfo": "Si no está configurado, se enviará al administrador del formulario"
-  },
-  "selfNotificationsTab": "Auto notificaciones",
   "startPage": {
     "action": "Acción",
     "activeColor": "Color activo",
@@ -85,6 +86,7 @@
     "color": "Color",
     "continueButtonText": "Texto del botón continuar",
     "paragraph": "Párrafo",
+    "paragraphInfo": "Use markdown para formateo avanzado",
     "show": "mostrar",
     "text": "Texto",
     "title": "Título",

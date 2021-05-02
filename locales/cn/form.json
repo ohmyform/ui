@@ -16,13 +16,15 @@
   "deleteError": "无法删除表格",
   "deleteNow": "立即删除！",
   "design": {
-    "answerColor": "答案颜色",
-    "backgroundColor": "背景颜色",
-    "buttonActiveColor": "按钮活动颜色",
-    "buttonColor": "按钮颜色",
-    "buttonTextColor": "按钮文字颜色",
-    "font": "字形",
-    "questionColor": "问题颜色"
+    "color": {
+      "answer": "答案颜色",
+      "background": "背景颜色",
+      "button": "按钮颜色",
+      "buttonActive": "按钮活动颜色",
+      "buttonText": "按钮文字颜色",
+      "question": "问题颜色"
+    },
+    "font": "字形"
   },
   "designTab": "设计",
   "endPage": {
@@ -43,17 +45,20 @@
   "loading": "加载表格",
   "mange": "编辑表单“ {{title}} ”",
   "new": "新表格",
-  "respondentNotifications": {
+  "notifications": {
     "enabled": "已启用",
     "fromEmail": "发件人电子邮件",
     "fromEmailInfo": "确保您的邮件服务器可以通过此电子邮件发送",
+    "fromField": "发件人电子邮件",
+    "fromFieldInfo": "带有电子邮件的字段，将设置Reply-To标头",
     "htmlTemplate": "HTML模板",
     "htmlTemplateInfo": "您还可以使用<u> MJML <\/u>创建电子邮件模板",
     "subject": "学科",
+    "toEmail": "你的邮件",
+    "toEmailInfo": "如果未设置，将发送给表单管理员",
     "toField": "电子邮件栏位",
     "toFieldInfo": "带有电子邮件的收据字段"
   },
-  "respondentNotificationsTab": "受访者通知",
   "restart": "重新启动表格",
   "row": {
     "admin": "所有者",
@@ -61,20 +66,8 @@
     "isLive": "生活",
     "language": "语言",
     "lastModified": "最后修改",
-    "menu": "",
     "title": "标题"
   },
-  "selfNotifications": {
-    "enabled": "已启用",
-    "fromField": "发件人电子邮件",
-    "fromFieldInfo": "带有电子邮件的字段，将设置Reply-To标头",
-    "htmlTemplate": "HTML模板",
-    "htmlTemplateInfo": "您还可以使用<u> MJML <\/u>创建电子邮件模板",
-    "subject": "学科",
-    "toEmail": "你的邮件",
-    "toEmailInfo": "如果未设置，将发送给表单管理员"
-  },
-  "selfNotificationsTab": "自我通知",
   "startPage": {
     "action": "行动",
     "activeColor": "主动色",

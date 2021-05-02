@@ -16,13 +16,15 @@
   "deleteError": "Impossibile eliminare il modulo",
   "deleteNow": "Cancella ora!",
   "design": {
-    "answerColor": "Rispondi al colore",
-    "backgroundColor": "Colore di sfondo",
-    "buttonActiveColor": "Pulsante Colore attivo",
-    "buttonColor": "Colore pulsante",
-    "buttonTextColor": "Colore testo pulsante",
-    "font": "Font",
-    "questionColor": "Domanda di colore"
+    "color": {
+      "answer": "Rispondi al colore",
+      "background": "Colore di sfondo",
+      "button": "Colore pulsante",
+      "buttonActive": "Pulsante Colore attivo",
+      "buttonText": "Colore testo pulsante",
+      "question": "Domanda di colore"
+    },
+    "font": "Font"
   },
   "designTab": "Design",
   "endPage": {
@@ -43,17 +45,20 @@
   "loading": "Modulo di caricamento",
   "mange": "Modifica modulo \" {{title}} \"",
   "new": "Nuovo modulo",
-  "respondentNotifications": {
+  "notifications": {
     "enabled": "Abilitato",
     "fromEmail": "Email del mittente",
     "fromEmailInfo": "Assicurati che il tuo mailserver possa inviare da questa email",
+    "fromField": "Email del mittente",
+    "fromFieldInfo": "Campo con e-mail, imposterà l'intestazione Rispondi a",
     "htmlTemplate": "Modello HTML",
     "htmlTemplateInfo": "Puoi anche utilizzare <u> MJML <\/u> per creare i tuoi modelli di email",
     "subject": "Soggetto",
+    "toEmail": "La tua email",
+    "toEmailInfo": "Se non impostato, verrà inviato all'amministratore del modulo",
     "toField": "Campo email",
     "toFieldInfo": "Campo con e-mail per la ricevuta"
   },
-  "respondentNotificationsTab": "Notifiche degli intervistati",
   "restart": "Riavvia modulo",
   "row": {
     "admin": "Proprietario",
@@ -61,20 +66,8 @@
     "isLive": "Vivere",
     "language": "linguaggio",
     "lastModified": "Ultima modifica",
-    "menu": "",
     "title": "Titolo"
   },
-  "selfNotifications": {
-    "enabled": "Abilitato",
-    "fromField": "Email del mittente",
-    "fromFieldInfo": "Campo con e-mail, imposterà l'intestazione Rispondi a",
-    "htmlTemplate": "Modello HTML",
-    "htmlTemplateInfo": "Puoi anche utilizzare <u> MJML <\/u> per creare i tuoi modelli di email",
-    "subject": "Soggetto",
-    "toEmail": "La tua email",
-    "toEmailInfo": "Se non impostato, verrà inviato all'amministratore del modulo"
-  },
-  "selfNotificationsTab": "Auto notifiche",
   "startPage": {
     "action": "Azione",
     "activeColor": "Colore attivo",

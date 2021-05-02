@@ -1,12 +1,12 @@
 {
   "baseData": {
-    "isLive": "Жив",
-    "language": "язык",
+    "isLive": "Опубликована?",
+    "language": "Язык",
     "showFooter": "Показать нижний колонтитул",
-    "title": "заглавие"
+    "title": "Заголовок"
   },
-  "baseDataTab": "База данных",
-  "building": "Форма здания",
+  "baseDataTab": "Базовые данные",
+  "building": "Создание формы",
   "confirmDelete": "Вы уверены, что удалите эту форму со всеми представлениями?",
   "create": "Создать новую форму",
   "created": "Форма создана",
@@ -16,78 +16,79 @@
   "deleteError": "Не удалось удалить форму",
   "deleteNow": "Удалить сейчас!",
   "design": {
-    "answerColor": "Цвет ответа",
-    "backgroundColor": "Фоновый цвет",
-    "buttonActiveColor": "Кнопка Активный Цвет",
-    "buttonColor": "Цвет кнопки",
-    "buttonTextColor": "Цвет текста кнопки",
-    "font": "Шрифт",
-    "questionColor": "Цвет вопроса"
+    "color": {
+      "answer": "Цвет ответа",
+      "background": "Фоновый цвет",
+      "button": "Цвет кнопки",
+      "buttonActive": "Цвет активной кнопки",
+      "buttonText": "Цвет текста кнопки",
+      "question": "Цвет вопроса"
+    },
+    "font": "Шрифт"
   },
-  "designTab": "дизайн",
+  "designTab": "Дизайн",
   "endPage": {
-    "action": "действие",
+    "action": "Действие",
     "activeColor": "Активный цвет",
-    "addButton": "Кнопка Добавить",
-    "bgColor": "Фоновый цвет",
+    "addButton": "Добавить кнопку",
+    "bgColor": "Цвет фона",
     "buttons": "Кнопки",
-    "color": "цвет",
+    "color": "Цвет",
     "continueButtonText": "Продолжить текст кнопки",
     "paragraph": "Пункт",
+    "paragraphInfo": "Используйте markdown для расширенного форматирования",
     "show": "Показать",
     "text": "Текст",
     "title": "заглавие",
     "url": "Веб-сайт"
   },
   "endPageTab": "Конечная страница",
+  "fieldsTab": "Поля формы",
+  "hooks": {
+    "add": "Добавить",
+    "enabled": "Включено"
+  },
+  "hooksTab": "Хуки",
   "loading": "Форма загрузки",
   "mange": "Изменить форму \" {{title}} \"",
   "new": "Новая форма",
-  "respondentNotifications": {
+  "notifications": {
     "enabled": "Включено",
     "fromEmail": "Электронная почта отправителя",
     "fromEmailInfo": "Убедитесь, что ваш почтовый сервер может отправлять с этого письма",
-    "htmlTemplate": "HTML шаблон",
-    "htmlTemplateInfo": "Вы также можете использовать <u> MJML <\/u> для создания своих шаблонов электронной почты",
-    "subject": "Тема",
-    "toField": "Поле электронной почты",
-    "toFieldInfo": "Поле с адресом электронной почты для получения"
-  },
-  "respondentNotificationsTab": "Уведомления респондента",
-  "restart": "Перезапустить форму",
-  "row": {
-    "admin": "владелец",
-    "created": "созданный",
-    "isLive": "Жить",
-    "language": "язык",
-    "lastModified": "Последнее изменение",
-    "menu": "",
-    "title": "заглавие"
-  },
-  "selfNotifications": {
-    "enabled": "Включено",
     "fromField": "Электронная почта отправителя",
     "fromFieldInfo": "Поле с адресом электронной почты, установит заголовок Reply-To",
     "htmlTemplate": "HTML шаблон",
     "htmlTemplateInfo": "Вы также можете использовать <u> MJML <\/u> для создания своих шаблонов электронной почты",
     "subject": "Тема",
     "toEmail": "Ваш адрес электронной почты",
-    "toEmailInfo": "Если не установлено, отправит администратору форму"
+    "toEmailInfo": "Если не установлен, отправит администратору формы",
+    "toField": "Поле электронной почты",
+    "toFieldInfo": "Поле с адресом электронной почты для получения"
   },
-  "selfNotificationsTab": "Self уведомления",
+  "restart": "Перезапустить форму",
+  "row": {
+    "admin": "Владелец",
+    "created": "Создан",
+    "isLive": "Опубликовать",
+    "language": "Язык",
+    "lastModified": "Последнее изменение",
+    "title": "заглавие"
+  },
   "startPage": {
-    "action": "действие",
+    "action": "Действие",
     "activeColor": "Активный цвет",
-    "addButton": "Кнопка Добавить",
-    "bgColor": "Фоновый цвет",
+    "addButton": "Добавить кнопку",
+    "bgColor": "Цвет фона",
     "buttons": "Кнопки",
-    "color": "цвет",
-    "continueButtonText": "Продолжить текст кнопки",
-    "paragraph": "Пункт",
+    "color": "Цвет",
+    "continueButtonText": "Текст кнопки \"Продолжить\"",
+    "paragraph": "Параграф",
+    "paragraphInfo": "Используйте markdown для расширенного форматирования",
     "show": "Показать",
     "text": "Текст",
-    "title": "заглавие",
-    "url": "Веб-сайт"
+    "title": "Заголовок",
+    "url": "URL"
   },
   "startPageTab": "Начальная страница",
   "submitted": "Спасибо за ваш вклад!",

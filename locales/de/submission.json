@@ -4,10 +4,11 @@
   "country": "Land",
   "created": "Erstellt",
   "device": {
-    "name": "Geräte Name",
-    "type": "Geräte Typ"
+    "name": "Gerätename",
+    "type": "Gerätetyp"
   },
   "edit": "Formular bearbeiten",
+  "export": "Exportieren",
   "field": "Feld",
   "lastModified": "Letzte Änderung",
   "progress": "Fortschritt",

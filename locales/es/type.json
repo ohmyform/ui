@@ -8,6 +8,7 @@
   },
   "deleteNow": "Eliminar campo",
   "description": "Descripción",
+  "descriptionInfo": "Use markdown para formateo avanzado",
   "dropdown": {
     "addOption": "Agregar opción",
     "default": "Valor por defecto",
@@ -49,6 +50,8 @@
   },
   "required": "Necesario",
   "requiredInfo": "Si es necesario, el valor predeterminado debe establecerse para que los usuarios puedan enviar el formulario.",
+  "slug": "Slug",
+  "slugInfo": "Utilice slug para pasar la dinámica predeterminada como parámetro de url? Slug = value",
   "textarea": {
     "default": "Valor por defecto",
     "name": "Área de texto"
