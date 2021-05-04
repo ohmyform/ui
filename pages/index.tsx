@@ -70,7 +70,10 @@ const Index: NextPage = () => {
       />
 
       {status.error && (
-        <Alert message={`There is an error with your API connection: ${status.error.message}`} />
+        <Alert
+          message={`There is an error with your API connection: ${status.error.message}`}
+          style={{ marginBottom: 40, marginLeft: 16, marginRight: 16 }}
+        />
       )}
       <AuthFooter />
     </Layout>
