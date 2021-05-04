@@ -30,6 +30,7 @@ export const sideMenu: SideMenuElement[] = [
     key: 'public',
     name: 'admin:forms',
     group: true,
+    role: 'admin',
     items: [
       {
         key: 'forms',
