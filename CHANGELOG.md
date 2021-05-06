@@ -24,6 +24,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 - links at the bottom for new users
 - fixes for hide contrib setting
+- fix problem with node-prune on production build
 
 ### Security
 
