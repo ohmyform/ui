@@ -1,5 +1,5 @@
 import { message } from 'antd'
-import ExcelJS from 'exceljs'
+import ExcelJS, { CellValue } from 'exceljs'
 import { useCallback, useState } from 'react'
 import { SubmissionFragment } from '../../../graphql/fragment/submission.fragment'
 import { useFormQuery } from '../../../graphql/query/form.query'
@@ -53,8 +53,8 @@ export const ExportSubmissionAction: React.FC<Props> = (props) => {
         start: 0,
       })
 
-      const buildRow = (data: SubmissionFragment): any[] => {
-        const row = [
+      const buildRow = (data: SubmissionFragment): CellValue[] => {
+        const row: CellValue[] = [
           data.id,
           data.created,
           data.lastModified,
@@ -66,8 +66,9 @@ export const ExportSubmissionAction: React.FC<Props> = (props) => {
 
         data.fields.forEach((field) => {
           try {
-            const decoded = JSON.parse(field.value)
-            row.push(decoded.value)
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+            const decoded: { value: CellValue } = JSON.parse(field.value)
+            row.push(decoded.value || '')
           } catch (e) {
             row.push('')
           }

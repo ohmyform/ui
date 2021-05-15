@@ -1,12 +1,13 @@
 import { ApolloClient, from, HttpLink, InMemoryCache } from '@apollo/client'
+import { NormalizedCacheObject } from '@apollo/client/cache/inmemory/types'
 import { setContext } from '@apollo/client/link/context'
 import 'isomorphic-fetch'
 import getConfig from 'next/config'
 import { NextConfigType } from '../next.config.type'
 
-let client: ApolloClient<any>
+let client: ApolloClient<NormalizedCacheObject>
 
-const getClient = (): ApolloClient<any> => {
+const getClient = (): ApolloClient<NormalizedCacheObject> => {
   if (!client) {
     const config = getConfig() as NextConfigType
 
@@ -14,7 +15,7 @@ const getClient = (): ApolloClient<any> => {
 
     const { publicRuntimeConfig, serverRuntimeConfig } = config
 
-    client = new ApolloClient({
+    client = new ApolloClient<NormalizedCacheObject>({
       cache: new InMemoryCache(),
       link: from([
         setContext((request, context) => {

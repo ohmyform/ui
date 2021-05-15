@@ -18,7 +18,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 - combined notificationts to become more versatile
 - use exported hooks for graphql
-
+- disable swipe gesture
 
 ### Fixed
 

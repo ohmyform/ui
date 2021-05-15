@@ -1,5 +1,4 @@
 import { Button, Select } from 'antd'
-import getConfig from 'next/config'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
@@ -7,11 +6,8 @@ import GitHubButton from 'react-github-button'
 import { useTranslation } from 'react-i18next'
 import { useSettingsQuery } from '../../graphql/query/settings.query'
 import { languages } from '../../i18n'
-import { NextConfigType } from '../../next.config.type'
 import { clearAuth, withAuth } from '../with.auth'
 import scss from './footer.module.scss'
-
-const { publicRuntimeConfig } = getConfig() as NextConfigType
 
 interface Props {
   me?: {
@@ -42,7 +38,6 @@ const AuthFooterInner: React.FC<Props> = (props) => {
               <Link key={'admin'} href={'/admin'}>
                 <Button
                   type={'link'}
-                  ghost
                   style={{
                     color: '#FFF',
                   }}
@@ -54,7 +49,6 @@ const AuthFooterInner: React.FC<Props> = (props) => {
             <Link key={'profile'} href={'/admin/profile'}>
               <Button
                 type={'link'}
-                ghost
                 style={{
                   color: '#FFF',
                 }}
@@ -65,7 +59,6 @@ const AuthFooterInner: React.FC<Props> = (props) => {
             <Button
               key={'logout'}
               type={'link'}
-              ghost
               onClick={logout}
               style={{
                 color: '#FFF',
@@ -78,7 +71,6 @@ const AuthFooterInner: React.FC<Props> = (props) => {
             <Link href={'/login'} key={'login'}>
               <Button
                 type={'link'}
-                ghost
                 style={{
                   color: '#FFF',
                 }}
@@ -90,7 +82,6 @@ const AuthFooterInner: React.FC<Props> = (props) => {
               <Link href={'/register'} key={'register'}>
                 <Button
                   type={'link'}
-                  ghost
                   style={{
                     color: '#FFF',
                   }}
@@ -124,7 +115,6 @@ const AuthFooterInner: React.FC<Props> = (props) => {
             type={'link'}
             target={'_blank'}
             rel={'noreferrer'}
-            ghost
             href={'https://www.ohmyform.com'}
             style={{
               color: '#FFF',
@@ -136,7 +126,6 @@ const AuthFooterInner: React.FC<Props> = (props) => {
             type={'link'}
             target={'_blank'}
             rel={'noreferrer'}
-            ghost
             href={'https://lokalise.com/'}
             style={{
               color: '#FFF',

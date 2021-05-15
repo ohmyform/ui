@@ -3,21 +3,14 @@ import 'antd/dist/antd.css'
 import 'assets/global.scss'
 import 'assets/variables.scss'
 import 'i18n'
-import { AppInitialProps } from 'next/app'
-import getConfig from 'next/config'
+import App, { AppInitialProps } from 'next/app'
 import { AppType } from 'next/dist/next-server/lib/utils'
 import Head from 'next/head'
 import React from 'react'
 import { wrapper } from 'store'
 import getClient from '../graphql/client'
 
-const { publicRuntimeConfig } = getConfig() as {
-  publicRuntimeConfig: {
-    endpoint: string
-  }
-}
-
-const App: AppType = ({ Component, pageProps }) => {
+const MyApp: AppType = ({ Component, pageProps }) => {
   return (
     <ApolloProvider client={getClient()}>
       <Head>
@@ -29,8 +22,6 @@ const App: AppType = ({ Component, pageProps }) => {
   )
 }
 
-App.getInitialProps = (): AppInitialProps => ({
-  pageProps: {},
-})
+MyApp.getInitialProps = (context): Promise<AppInitialProps> => App.getInitialProps(context as any)
 
-export default wrapper.withRedux(App)
+export default wrapper.withRedux(MyApp)

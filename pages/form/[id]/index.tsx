@@ -14,11 +14,7 @@ import { Omf } from '../../../components/omf'
 import { useSubmission } from '../../../components/use.submission'
 import { useFormPublicQuery } from '../../../graphql/query/form.public.query'
 
-interface Props {
-  id: string
-}
-
-const Index: NextPage<Props> = () => {
+const Index: NextPage = () => {
   const { t, i18n } = useTranslation()
   const router = useRouter()
   const id = router.query.id as string
@@ -67,6 +63,7 @@ const Index: NextPage<Props> = () => {
     direction: 'vertical',
     allowSlideNext: false,
     allowSlidePrev: true,
+    noSwiping: true,
     updateOnWindowResize: true,
   }
 
@@ -145,12 +142,6 @@ const Index: NextPage<Props> = () => {
       </Swiper>
     </div>
   )
-}
-
-Index.getInitialProps = ({ query }) => {
-  return {
-    id: query.id as string,
-  }
 }
 
 export default Index
