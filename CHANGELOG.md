@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - show error message on homepage in case there is a problem with api connection
 - new slider field type
 - new card layout for forms
+- field logic
 
 ### Changed
 
