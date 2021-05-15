@@ -7,6 +7,8 @@
   "invalidUrl": "有効な URL ではありません",
   "languageRequired": "言語を選んでください",
   "mandatoryFieldsMissing": "必要な項目が入力されていません",
+  "passwordConfirmMismatch": "入力した2つのパスワードが一致しません！",
+  "passwordConfirmRequired": "パスワードを確認してください。",
   "passwordMinLength": "5 文字以上を入力してください！",
   "passwordRequired": "パスワードを入力してください！",
   "subjectRequired": "件名を入力してください",

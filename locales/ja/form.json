@@ -16,6 +16,11 @@
   "deleteError": "フォームの削除でエラー",
   "deleteNow": "すぐに削除！",
   "design": {
+    "answerColor": "回答の色",
+    "backgroundColor": "背景色",
+    "buttonActiveColor": "アクティブなボタン色",
+    "buttonColor": "ボタン色",
+    "buttonTextColor": "ボタンテキスト色",
     "color": {
       "answer": "回答の色",
       "background": "背景色",
@@ -24,7 +29,8 @@
       "buttonText": "ボタンテキスト色",
       "question": "質問の色"
     },
-    "font": "フォント"
+    "font": "フォント",
+    "questionColor": "質問の色"
   },
   "designTab": "デザイン",
   "endPage": {
@@ -46,7 +52,7 @@
   "fieldsTab": "フォームの項目",
   "hooks": {
     "add": "追加する",
-    "confirmDelete": "削除します",
+    "confirmDelete": "削除します。よろしいですか？",
     "deleteNow": "すぐに削除",
     "enabled": "有効"
   },
@@ -68,6 +74,13 @@
     "toField": "受信者メールアドレスの項目",
     "toFieldInfo": "回答受け付けメールの送信先アドレスとして利用するフォームの項目"
   },
+  "respondentNotifications": {
+    "fromEmail": "送信者アドレス",
+    "fromEmailInfo": "このアドレスからのメールを指定のサーバーで送信できることを確認してください",
+    "toField": "メールアドレス項目",
+    "toFieldInfo": "回答受け付け通知メールの送信先アドレスとして利用するメールアドレス項目"
+  },
+  "respondentNotificationsTab": "回答者への通知",
   "restart": "最初から",
   "row": {
     "admin": "オーナー",
@@ -78,6 +91,17 @@
     "menu": "メニュー",
     "title": "題名"
   },
+  "selfNotifications": {
+    "enabled": "有効",
+    "fromField": "送信者アドレス",
+    "fromFieldInfo": "Reply-To（返信先）として利用するメールアドレス項目",
+    "htmlTemplate": "HTML テンプレート",
+    "htmlTemplateInfo": "メールテンプレートには、<u>MJML<\/u> も使えます",
+    "subject": "件名",
+    "toEmail": "自分のメールアドレス",
+    "toEmailInfo": "設定しない場合は、フォームの作成者に送信します"
+  },
+  "selfNotificationsTab": "作成者への通知",
   "startPage": {
     "action": "アクション",
     "activeColor": "アクティブ色",

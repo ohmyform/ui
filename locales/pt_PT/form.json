@@ -75,6 +75,9 @@
     "lastModified": "Última modificação",
     "title": "Título"
   },
+  "selfNotifications": {
+    "toEmail": "O seu email"
+  },
   "startPage": {
     "action": "Açao",
     "activeColor": "Cor ativa",

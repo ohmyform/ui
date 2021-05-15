@@ -8,9 +8,10 @@
     "type": "设备类型"
   },
   "edit": "编辑",
-  "field": "领域",
+  "export": "导出",
+  "field": "栏位",
   "lastModified": "最后一次变更",
   "progress": "进展",
-  "submission": "投稿",
+  "submission": "提交",
   "value": "值"
 }

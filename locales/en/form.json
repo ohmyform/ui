@@ -16,6 +16,11 @@
   "deleteError": "Could not delete form",
   "deleteNow": "Delete Now!",
   "design": {
+    "answerColor": "Answer Color",
+    "backgroundColor": "Background Color",
+    "buttonActiveColor": "Button Active Color",
+    "buttonColor": "Button Color",
+    "buttonTextColor": "Button Text Color",
     "color": {
       "answer": "Answer Color",
       "background": "Background Color",
@@ -24,7 +29,8 @@
       "buttonText": "Button Text Color",
       "question": "Question Color"
     },
-    "font": "Font"
+    "font": "Font",
+    "questionColor": "Question Color"
   },
   "designTab": "Design",
   "endPage": {
@@ -66,6 +72,13 @@
     "toField": "Email Field",
     "toFieldInfo": "Field with Email for receipt"
   },
+  "respondentNotifications": {
+    "fromEmail": "Sender Email",
+    "fromEmailInfo": "Make sure your mailserver can send from this email",
+    "toField": "Email Field",
+    "toFieldInfo": "Field with Email for receipt"
+  },
+  "respondentNotificationsTab": "Respondent Notifications",
   "restart": "Restart Form",
   "row": {
     "admin": "Owner",
@@ -75,6 +88,17 @@
     "lastModified": "Last Modified",
     "title": "Title"
   },
+  "selfNotifications": {
+    "enabled": "Enabled",
+    "fromField": "Sender Email",
+    "fromFieldInfo": "Field with Email, will set the Reply-To header",
+    "htmlTemplate": "HTML Template",
+    "htmlTemplateInfo": "You can also use <u>MJML<\/u> to create your email templates",
+    "subject": "Subject",
+    "toEmail": "Your Email",
+    "toEmailInfo": "If not set will send to the admin of the form"
+  },
+  "selfNotificationsTab": "Self Notifications",
   "startPage": {
     "action": "Action",
     "activeColor": "Active Color",
