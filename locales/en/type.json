@@ -19,6 +19,13 @@
     "titlePlaceholder": "Title",
     "valuePlaceholder": "Value"
   },
+  "slider": {
+    "default": "Default Value",
+    "name": "Slider",
+    "min": "Min Value",
+    "max": "Max Value",
+    "step": "Step Size"
+  },
   "email": {
     "default": "Default Email",
     "name": "Email"

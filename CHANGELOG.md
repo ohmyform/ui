@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - add default page background
 - add environment list in [doc](doc/environment.md)
 - show error message on homepage in case there is a problem with api connection
+- new slider field type
 
 ### Changed
 
