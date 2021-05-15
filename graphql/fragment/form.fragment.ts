@@ -96,6 +96,7 @@ export interface FormFragment {
       buttonText: string
     }
     font?: string
+    layout?: string
   }
   startPage: FormPageFragment
   endPage: FormPageFragment
@@ -176,6 +177,7 @@ export const FORM_FRAGMENT = gql`
         buttonText
       }
       font
+      layout
     }
     startPage {
       id

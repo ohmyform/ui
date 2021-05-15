@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - add environment list in [doc](doc/environment.md)
 - show error message on homepage in case there is a problem with api connection
 - new slider field type
+- new card layout for forms
 
 ### Changed
 
@@ -26,6 +27,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - links at the bottom for new users
 - fixes for hide contrib setting
 - fix problem with node-prune on production build
+- translation for prev / continue during form submission
 
 ### Security
 

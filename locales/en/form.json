@@ -8,6 +8,7 @@
   "baseDataTab": "Base Data",
   "building": "Building Form",
   "confirmDelete": "Do you really want to delete this form with all submissions?",
+  "continue": "Continue",
   "create": "Create new form",
   "created": "Form Created",
   "createNow": "Save",
@@ -24,6 +25,11 @@
       "buttonText": "Button Text Color",
       "question": "Question Color"
     },
+    "layout": {
+      "card": "Card",
+      "slider": "Slider"
+    },
+    "layouts": "Layout",
     "font": "Font"
   },
   "designTab": "Design",
@@ -52,7 +58,9 @@
   "loading": "Loading Form",
   "mange": "Edit Form \"{{title}}\"",
   "new": "New Form",
+  "next": "Next",
   "notifications": {
+    "add": "Add Notification",
     "enabled": "Enabled",
     "fromEmail": "Sender Email",
     "fromEmailInfo": "Make sure your mailserver can send from this email",
@@ -66,6 +74,8 @@
     "toField": "Email Field",
     "toFieldInfo": "Field with Email for receipt"
   },
+  "notificationsTab": "Notifications",
+  "previous": "Previous",
   "restart": "Restart Form",
   "row": {
     "admin": "Owner",

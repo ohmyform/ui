@@ -1,4 +1,4 @@
-import { Form, Input, Tabs } from 'antd'
+import { Form, Input, Select, Tabs } from 'antd'
 import { TabPaneProps } from 'antd/lib/tabs'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
@@ -11,6 +11,20 @@ export const DesignTab: React.FC<TabPaneProps> = (props) => {
     <Tabs.TabPane {...props}>
       <Form.Item label={t('form:design.font')} name={['form', 'design', 'font']}>
         <Input />
+      </Form.Item>
+      <Form.Item label={t('form:design.layouts')} name={['form', 'design', 'layout']}>
+        <Select
+          options={[
+            {
+              value: null,
+              label: t('form:design.layout.slider'),
+            },
+            {
+              value: 'card',
+              label: t('form:design.layout.card'),
+            },
+          ]}
+        />
       </Form.Item>
 
       {['background', 'question', 'answer', 'button', 'buttonActive', 'buttonText'].map((name) => (

@@ -11,10 +11,10 @@ import {
   SubmissionStartMutationVariables,
 } from '../graphql/mutation/submission.start.mutation'
 
-interface Submission {
+export interface Submission {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   setField: (fieldId: string, data: unknown) => Promise<void>
-  finish: () => void
+  finish: () => Promise<void>
 }
 
 export const useSubmission = (formId: string): Submission => {
@@ -70,8 +70,10 @@ export const useSubmission = (formId: string): Submission => {
     [submission]
   )
 
-  const finish = useCallback(() => {
+  const finish = useCallback(async () => {
     console.log('finish submission!!', formId)
+
+    await Promise.resolve()
   }, [submission])
 
   return {

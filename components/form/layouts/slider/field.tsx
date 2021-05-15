@@ -1,17 +1,18 @@
 import { Form, message } from 'antd'
 import { useForm } from 'antd/lib/form/Form'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import {
   FormPublicDesignFragment,
   FormPublicFieldFragment,
-} from '../../graphql/fragment/form.public.fragment'
-import { StyledButton } from '../styled/button'
-import { StyledH1 } from '../styled/h1'
-import { StyledMarkdown } from '../styled/markdown'
-import { useRouter } from '../use.router'
-import { fieldTypes } from './types'
-import { TextType } from './types/text.type'
-import { FieldTypeProps } from './types/type.props'
+} from '../../../../graphql/fragment/form.public.fragment'
+import { StyledButton } from '../../../styled/button'
+import { StyledH1 } from '../../../styled/h1'
+import { StyledMarkdown } from '../../../styled/markdown'
+import { useRouter } from '../../../use.router'
+import { fieldTypes } from '../../types'
+import { TextType } from '../../types/text.type'
+import { FieldTypeProps } from '../../types/type.props'
 
 interface Props {
   field: FormPublicFieldFragment
@@ -26,6 +27,7 @@ interface Props {
 export const Field: React.FC<Props> = ({ field, save, design, next, prev, ...props }) => {
   const [form] = useForm()
   const router = useRouter()
+  const { t } = useTranslation()
 
   const FieldInput: React.FC<FieldTypeProps> = fieldTypes[field.type] || TextType
 
@@ -92,7 +94,7 @@ export const Field: React.FC<Props> = ({ field, save, design, next, prev, ...pro
           highlight={design.colors.buttonActive}
           onClick={prev}
         >
-          {'Previous'}
+          {t('form:previous')}
         </StyledButton>
 
         <div style={{ flex: 1 }} />
@@ -104,7 +106,7 @@ export const Field: React.FC<Props> = ({ field, save, design, next, prev, ...pro
           size={'large'}
           onClick={form.submit}
         >
-          {'Next'}
+          {t('form:next')}
         </StyledButton>
       </div>
     </Form>

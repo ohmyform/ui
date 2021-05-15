@@ -1,20 +1,22 @@
 import { gql } from '@apollo/client/core'
 
+export interface FormPublicPageButtonFragment {
+  id: string
+  url?: string
+  action?: string
+  text?: string
+  bgColor?: string
+  activeColor?: string
+  color?: string
+}
+
 export interface FormPublicPageFragment {
   id: string
   show: boolean
   title?: string
   paragraph?: string
   buttonText?: string
-  buttons: {
-    id: string
-    url?: string
-    action?: string
-    text?: string
-    bgColor?: string
-    activeColor?: string
-    color?: string
-  }[]
+  buttons: FormPublicPageButtonFragment[]
 }
 
 export interface FormPublicFieldOptionFragment {
@@ -62,6 +64,7 @@ export interface FormPublicDesignFragment {
     buttonText: string
   }
   font?: string
+  layout?: string
 }
 
 export interface FormPublicFragment {
@@ -134,6 +137,7 @@ export const FORM_PUBLIC_FRAGMENT = gql`
         buttonText
       }
       font
+      layout
     }
 
     startPage {

@@ -1,16 +1,16 @@
-import { Space } from 'antd'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import {
   FormPublicDesignFragment,
   FormPublicPageFragment,
-} from '../../graphql/fragment/form.public.fragment'
-import { StyledButton } from '../styled/button'
-import { StyledH1 } from '../styled/h1'
-import { StyledMarkdown } from '../styled/markdown'
+} from '../../../../graphql/fragment/form.public.fragment'
+import { StyledButton } from '../../../styled/button'
+import { StyledH1 } from '../../../styled/h1'
+import { StyledMarkdown } from '../../../styled/markdown'
+import { PageButtons } from '../page.buttons'
 import scss from './page.module.scss'
 
 interface Props {
-  type: 'start' | 'end'
   page: FormPublicPageFragment
   design: FormPublicDesignFragment
   className?: string
@@ -20,6 +20,8 @@ interface Props {
 }
 
 export const FormPage: React.FC<Props> = ({ page, design, next, prev, className, ...props }) => {
+  const { t } = useTranslation()
+
   if (!page.show) {
     return null
   }
@@ -38,26 +40,17 @@ export const FormPage: React.FC<Props> = ({ page, design, next, prev, className,
           display: 'flex',
         }}
       >
-        {prev && <div />}
-        {page.buttons.length > 0 && (
-          <Space>
-            {page.buttons.map((button, key) => {
-              return (
-                <StyledButton
-                  background={button.bgColor}
-                  color={button.color}
-                  highlight={button.activeColor}
-                  key={key}
-                  href={button.url}
-                  target={'_blank'}
-                  rel={'noreferrer'}
-                >
-                  {button.text}
-                </StyledButton>
-              )
-            })}
-          </Space>
+        {prev && (
+          <StyledButton
+            background={design.colors.button}
+            color={design.colors.buttonText}
+            highlight={design.colors.buttonActive}
+            onClick={prev}
+          >
+            {t('form:previous')}
+          </StyledButton>
         )}
+        <PageButtons buttons={page.buttons} />
 
         <div style={{ flex: 1 }} />
 
@@ -68,7 +61,7 @@ export const FormPage: React.FC<Props> = ({ page, design, next, prev, className,
           size={'large'}
           onClick={next}
         >
-          {page.buttonText || 'Continue'}
+          {page.buttonText || t('form:continue')}
         </StyledButton>
       </div>
     </div>

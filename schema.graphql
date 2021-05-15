@@ -36,6 +36,7 @@ type Deleted {
 type Design {
     colors: Colors!
     font: String
+    layout: String
 }
 
 type Device {
@@ -283,6 +284,7 @@ input ColorsInput {
 input DesignInput {
     colors: ColorsInput!
     font: String
+    layout: String
 }
 
 input DeviceInput {
@@ -294,6 +296,7 @@ input DeviceInput {
 input FormCreateInput {
     isLive: Boolean
     language: String!
+    layout: String
     showFooter: Boolean
     title: String!
 }
