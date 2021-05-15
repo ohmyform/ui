@@ -81,7 +81,7 @@ export const CardLayout: React.FC<LayoutProps> = (props) => {
                   return null
                 }
 
-                return <Field key={field.id} field={field} design={design} />
+                return <Field key={field.id} field={field} design={design} focus={i === 0} />
               })}
               <div
                 style={{

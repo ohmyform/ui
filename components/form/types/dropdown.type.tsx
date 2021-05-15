@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { StyledSelect } from '../../styled/select'
 import { FieldTypeProps } from './type.props'
 
-export const DropdownType: React.FC<FieldTypeProps> = ({ field, design, urlValue }) => {
+export const DropdownType: React.FC<FieldTypeProps> = ({ field, design, urlValue, focus }) => {
   const [open, setOpen] = useState(false)
   const { t } = useTranslation()
 
@@ -16,6 +16,7 @@ export const DropdownType: React.FC<FieldTypeProps> = ({ field, design, urlValue
         initialValue={urlValue || field.value || null}
       >
         <StyledSelect
+          autoFocus={focus}
           design={design}
           open={open}
           onBlur={() => setOpen(false)}

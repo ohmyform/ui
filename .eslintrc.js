@@ -21,6 +21,7 @@ module.exports = {
     'react/prop-types': 'off',
     '@typescript-eslint/no-empty-interface': 'off',
     '@typescript-eslint/no-var-requires': 'off',
+    'jsx-a11y/no-autofocus': 'off'
   },
   settings: {
     react: {

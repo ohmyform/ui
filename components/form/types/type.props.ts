@@ -6,5 +6,6 @@ import {
 export interface FieldTypeProps {
   field: FormPublicFieldFragment
   design: FormPublicDesignFragment
+  focus?: boolean
   urlValue?: string
 }

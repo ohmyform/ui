@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next'
 import { StyledDateInput } from '../../styled/date.input'
 import { FieldTypeProps } from './type.props'
 
-export const DateType: React.FC<FieldTypeProps> = ({ field, design, urlValue }) => {
+export const DateType: React.FC<FieldTypeProps> = ({ field, design, urlValue, focus }) => {
   const [min, setMin] = useState<Dayjs>()
   const [max, setMax] = useState<Dayjs>()
   const { t } = useTranslation()
@@ -42,6 +42,7 @@ export const DateType: React.FC<FieldTypeProps> = ({ field, design, urlValue }) 
         initialValue={initialValue}
       >
         <StyledDateInput
+          autoFocus={focus}
           size={'large'}
           design={design}
           disabledDate={(d: Moment) => {

@@ -1,4 +1,4 @@
-import { FormPublicFragment, } from '../../../graphql/fragment/form.public.fragment'
+import { FormPublicFragment } from '../../../graphql/fragment/form.public.fragment'
 import { Submission } from '../../use.submission'
 
 export interface LayoutProps {

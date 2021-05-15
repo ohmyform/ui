@@ -1,0 +1,19 @@
+.main {
+  display: flex;
+  flex-direction: column;
+
+  .content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    overflow: auto;
+    padding: 16px;
+
+    @media (max-width: 600px) {
+      display: block;
+    }
+  }
+}
+

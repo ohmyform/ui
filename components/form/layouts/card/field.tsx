@@ -11,11 +11,12 @@ import { TextType } from '../../types/text.type'
 import { FieldTypeProps } from '../../types/type.props'
 
 interface Props {
+  focus: boolean
   field: FormPublicFieldFragment
   design: FormPublicDesignFragment
 }
 
-export const Field: React.FC<Props> = ({ field, design, ...props }) => {
+export const Field: React.FC<Props> = ({ field, design, focus, ...props }) => {
   const router = useRouter()
 
   const FieldInput: React.FC<FieldTypeProps> = fieldTypes[field.type] || TextType
@@ -56,7 +57,7 @@ export const Field: React.FC<Props> = ({ field, design, ...props }) => {
           <StyledMarkdown design={design} type={'question'} source={field.description} />
         )}
 
-        <FieldInput design={design} field={field} urlValue={getUrlDefault()} />
+        <FieldInput design={design} field={field} urlValue={getUrlDefault()} focus={focus} />
       </div>
     </div>
   )

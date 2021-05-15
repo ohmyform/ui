@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { StyledInput } from '../../styled/input'
 import { FieldTypeProps } from './type.props'
 
-export const EmailType: React.FC<FieldTypeProps> = ({ field, design, urlValue }) => {
+export const EmailType: React.FC<FieldTypeProps> = ({ field, design, urlValue, focus }) => {
   const { t } = useTranslation()
 
   return (
@@ -17,7 +17,7 @@ export const EmailType: React.FC<FieldTypeProps> = ({ field, design, urlValue })
         ]}
         initialValue={urlValue || field.value}
       >
-        <StyledInput design={design} allowClear size={'large'} />
+        <StyledInput autoFocus={focus} design={design} allowClear size={'large'} />
       </Form.Item>
     </div>
   )

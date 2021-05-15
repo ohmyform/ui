@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { StyledTextareaInput } from '../../styled/textarea.input'
 import { FieldTypeProps } from './type.props'
 
-export const TextareaType: React.FC<FieldTypeProps> = ({ field, design, urlValue }) => {
+export const TextareaType: React.FC<FieldTypeProps> = ({ field, design, urlValue, focus }) => {
   const { t } = useTranslation()
 
   return (
@@ -14,7 +14,7 @@ export const TextareaType: React.FC<FieldTypeProps> = ({ field, design, urlValue
         rules={[{ required: field.required, message: t('validation:valueRequired') }]}
         initialValue={urlValue || field.value}
       >
-        <StyledTextareaInput design={design} allowClear autoSize />
+        <StyledTextareaInput autoFocus={focus} design={design} allowClear autoSize />
       </Form.Item>
     </div>
   )
