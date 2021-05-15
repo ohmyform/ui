@@ -54,7 +54,7 @@
   "slug": "スラッグ（Slug）",
   "slugInfo": "URLのパラメーターで値を設定するためにスラッグ（Slug）を利用できます ?slug=value",
   "textarea": {
-    "default": "規定の値",
+    "default": "既定の値",
     "name": "テキストエリア"
   },
   "textfield": {

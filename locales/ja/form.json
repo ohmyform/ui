@@ -46,7 +46,7 @@
   "fieldsTab": "フォームの項目",
   "hooks": {
     "add": "追加する",
-    "confirmDelete": "削除します",
+    "confirmDelete": "削除します。よろしいですか？",
     "deleteNow": "すぐに削除",
     "enabled": "有効"
   },
