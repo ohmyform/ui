@@ -1,8 +1,9 @@
 {
-  "forms": "形式",
-  "home": "家",
-  "profile": "轮廓",
-  "submissions": "意见书",
+  "administration": "管理",
+  "forms": "表单",
+  "home": "主页",
+  "profile": "个人资料",
+  "submissions": "提交",
   "username": "用户名",
   "users": "用户数"
 }

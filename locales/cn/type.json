@@ -1,5 +1,6 @@
 {
-  "confirmDelete": "真的要删除此字段吗？检查它在任何地方都没有被引用！",
+  "add": "新增栏位",
+  "confirmDelete": "确定要删除此字段吗？请检查它在任何地方都没有被引用！",
   "date": {
     "default": "预设日期",
     "max": "最长日期",
@@ -8,6 +9,7 @@
   },
   "deleteNow": "删除栏位",
   "description": "描述",
+  "descriptionInfo": "使用markdown进行高级格式化",
   "dropdown": {
     "addOption": "添加选项",
     "default": "默认值",
@@ -38,7 +40,7 @@
     "default": "默认值",
     "name": "无线电开关",
     "options": "选件",
-    "removeOption": "去掉",
+    "removeOption": "删除",
     "titlePlaceholder": "标题",
     "valuePlaceholder": "值"
   },
@@ -49,6 +51,8 @@
   },
   "required": "需要",
   "requiredInfo": "如果需要，必须设置默认值以使用户能够提交表单！",
+  "slug": "Slug",
+  "slugInfo": "使用slug传递默认动态作为url get参数slug = value",
   "textarea": {
     "default": "默认值",
     "name": "文字区"

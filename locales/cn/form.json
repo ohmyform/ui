@@ -36,12 +36,21 @@
     "color": "颜色",
     "continueButtonText": "继续按钮文字",
     "paragraph": "段",
+    "paragraphInfo": "使用markdown进行高级格式化",
     "show": "显示",
     "text": "文本",
     "title": "标题",
     "url": "网址"
   },
   "endPageTab": "结束页",
+  "fieldsTab": "表格栏位",
+  "hooks": {
+    "add": "添加",
+    "confirmDelete": "空",
+    "deleteNow": "空",
+    "enabled": "已启用"
+  },
+  "hooksTab": "WebHooks",
   "loading": "加载表格",
   "mange": "编辑表单“ {{title}} ”",
   "new": "新表格",
@@ -66,6 +75,7 @@
     "isLive": "生活",
     "language": "语言",
     "lastModified": "最后修改",
+    "menu": "空",
     "title": "标题"
   },
   "startPage": {
@@ -77,6 +87,7 @@
     "color": "颜色",
     "continueButtonText": "继续按钮文字",
     "paragraph": "段",
+    "paragraphInfo": "使用markdown进行高级格式化",
     "show": "显示",
     "text": "文本",
     "title": "标题",
