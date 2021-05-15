@@ -4,7 +4,10 @@ const p = require('./package.json')
 const version = p.version;
 
 module.exports = withImages({
-  poweredByHeader: false,
+  poweredByHeader: true,
+  future: {
+    webpack5: true,
+  },
   publicRuntimeConfig: {
     endpoint: process.env.ENDPOINT || '/graphql',
     spa: !!process.env.SPA || false,
