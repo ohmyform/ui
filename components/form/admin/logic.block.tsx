@@ -1,6 +1,7 @@
 import { DeleteOutlined } from '@ant-design/icons'
 import { Alert, Button, Checkbox, Form, Mentions, Popconfirm, Select } from 'antd'
 import { FormInstance } from 'antd/lib/form'
+import FormItemContext from 'rc-field-form/lib/FieldContext'
 import { FieldData } from 'rc-field-form/lib/interface'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
@@ -45,6 +46,8 @@ export const LogicBlock: React.FC<Props> = (props) => {
 
       <Form.Item noStyle shouldUpdate>
         {(form) => {
+          const context = React.useContext(FormItemContext)
+
           try {
             const defaults = {}
 
@@ -57,7 +60,7 @@ export const LogicBlock: React.FC<Props> = (props) => {
             })
 
             const result = evaluator(
-              form.getFieldValue([...form.prefixName, field.name as string, 'formula']),
+              form.getFieldValue([...context.prefixName, field.name as string, 'formula']),
               defaults
             )
 
@@ -73,7 +76,13 @@ export const LogicBlock: React.FC<Props> = (props) => {
               />
             )
           } catch (e) {
-            return <Alert message={e.message} type={'error'} style={{ marginBottom: 24 }} />
+            return (
+              <Alert
+                message={(e as Error).message || 'Failed to process formula'}
+                type={'error'}
+                style={{ marginBottom: 24 }}
+              />
+            )
           }
         }}
       </Form.Item>
@@ -100,80 +109,100 @@ export const LogicBlock: React.FC<Props> = (props) => {
         />
       </Form.Item>
       <Form.Item noStyle shouldUpdate>
-        {(form) => (
-          <Form.Item
-            hidden={
-              form.getFieldValue([...form.prefixName, field.name as string, 'action']) !== 'jumpTo'
-            }
-            labelCol={{ span: 6 }}
-            label={t('form:logic.action.jumpTo')}
-            rules={[{ required: true, message: 'Jump target is required' }]}
-            extra={'after selecting field (works best with clickable values)'}
-          >
-            <Select
-              options={fields
-                .filter((field) => !/NEW/i.test(field.id))
-                .map((field) => ({
-                  value: field.id,
-                  label: field.title,
-                }))}
-            />
-          </Form.Item>
-        )}
+        {(form) => {
+          const context = React.useContext(FormItemContext)
+
+          return (
+            <Form.Item
+              hidden={
+                form.getFieldValue([...context.prefixName, field.name as string, 'action']) !==
+                'jumpTo'
+              }
+              labelCol={{ span: 6 }}
+              label={t('form:logic.action.jumpTo')}
+              rules={[{ required: true, message: 'Jump target is required' }]}
+              extra={'after selecting field (works best with clickable values)'}
+            >
+              <Select
+                options={fields
+                  .filter((field) => !/NEW/i.test(field.id))
+                  .map((field) => ({
+                    value: field.id,
+                    label: field.title,
+                  }))}
+              />
+            </Form.Item>
+          )
+        }}
       </Form.Item>
 
       <Form.Item noStyle shouldUpdate>
-        {(form) => (
-          <Form.Item
-            hidden={
-              form.getFieldValue([...form.prefixName, field.name as string, 'action']) !== 'visible'
-            }
-            initialValue={true}
-            labelCol={{ span: 6 }}
-            label={t('form:logic.action.visible')}
-            valuePropName={'checked'}
-            getValueFromEvent={(checked: boolean) => (checked ? '1' : '')}
-            getValueProps={(e: string) => ({ checked: !!e })}
-          >
-            <Checkbox />
-          </Form.Item>
-        )}
+        {(form) => {
+          const context = React.useContext(FormItemContext)
+
+          return (
+            <Form.Item
+              hidden={
+                form.getFieldValue([...context.prefixName, field.name as string, 'action']) !==
+                'visible'
+              }
+              initialValue={true}
+              labelCol={{ span: 6 }}
+              label={t('form:logic.action.visible')}
+              valuePropName={'checked'}
+              getValueFromEvent={(checked: boolean) => (checked ? '1' : '')}
+              getValueProps={(e: string) => ({ checked: !!e })}
+            >
+              <Checkbox />
+            </Form.Item>
+          )
+        }}
       </Form.Item>
 
       <Form.Item noStyle shouldUpdate>
-        {(form) => (
-          <Form.Item
-            hidden={
-              form.getFieldValue([...form.prefixName, field.name as string, 'action']) !== 'disable'
-            }
-            initialValue={false}
-            labelCol={{ span: 6 }}
-            label={t('form:logic.action.disable')}
-            valuePropName={'checked'}
-            getValueFromEvent={(checked: boolean) => (checked ? '1' : '')}
-            getValueProps={(e: string) => ({ checked: !!e })}
-          >
-            <Checkbox />
-          </Form.Item>
-        )}
+        {(form) => {
+          const context = React.useContext(FormItemContext)
+
+          return (
+            <Form.Item
+              hidden={
+                form.getFieldValue([...context.prefixName, field.name as string, 'action']) !==
+                'disable'
+              }
+              initialValue={false}
+              labelCol={{ span: 6 }}
+              label={t('form:logic.action.disable')}
+              valuePropName={'checked'}
+              getValueFromEvent={(checked: boolean) => (checked ? '1' : '')}
+              getValueProps={(e: string) => ({ checked: !!e })}
+            >
+              <Checkbox />
+            </Form.Item>
+          )
+        }}
       </Form.Item>
 
       <Form.Item noStyle shouldUpdate>
-        {(form) => (
-          <Form.Item
-            hidden={
-              form.getFieldValue([...form.prefixName, field.name as string, 'action']) !== 'require'
-            }
-            initialValue={true}
-            labelCol={{ span: 6 }}
-            label={t('form:logic.action.require')}
-            valuePropName={'checked'}
-            getValueFromEvent={(checked: boolean) => (checked ? '1' : '')}
-            getValueProps={(e: string) => ({ checked: !!e })}
-          >
-            <Checkbox />
-          </Form.Item>
-        )}
+        {(form) => {
+          const context = React.useContext(FormItemContext)
+
+          return (
+            <Form.Item
+              hidden={
+                form.getFieldValue([...context.prefixName, field.name as string, 'action']) !==
+                'require'
+              }
+              initialValue={true}
+              labelCol={{ span: 6 }}
+              label={t('form:logic.action.require')}
+              valuePropName={'checked'}
+              getValueFromEvent={(checked: boolean) => (checked ? '1' : '')}
+              getValueProps={(e: string) => ({ checked: !!e })}
+            >
+              <Checkbox />
+            </Form.Item>
+          )
+        }}
       </Form.Item>
 
       <Form.Item>
