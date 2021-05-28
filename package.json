@@ -25,6 +25,7 @@
     "i18next": "^19.9.2",
     "i18next-browser-languagedetector": "^6.1.0",
     "isomorphic-fetch": "^3.0.0",
+    "mathjs": "^9.3.2",
     "next": "^10.2.0",
     "next-images": "^1.7.0",
     "next-redux-wrapper": "^6.0.2",
@@ -47,6 +48,7 @@
   "devDependencies": {
     "@types/axios": "^0.14.0",
     "@types/lifeomic__axios-fetch": "^1.5.0",
+    "@types/mathjs": "^6.0.12",
     "@types/node": "^14.14.43",
     "@types/node-fetch": "^2.5.10",
     "@types/react": "^17.0.4",

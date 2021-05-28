@@ -1,10 +1,22 @@
-import { DeleteOutlined } from '@ant-design/icons/lib'
-import { Button, Card, Checkbox, Form, Input, Popconfirm, Popover, Tag } from 'antd'
+import { DeleteOutlined, PlusOutlined } from '@ant-design/icons/lib'
+import {
+  Button,
+  Card,
+  Checkbox,
+  Form,
+  Input,
+  Popconfirm,
+  Popover,
+  Space,
+  Tag,
+  Tooltip,
+} from 'antd'
 import { FormInstance } from 'antd/lib/form'
 import { FieldData } from 'rc-field-form/lib/interface'
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { FormFieldFragment } from '../../../graphql/fragment/form.fragment'
+import { FormFieldFragment, FormFieldLogicFragment } from '../../../graphql/fragment/form.fragment'
+import { LogicBlock } from './logic.block'
 import { adminTypes } from './types'
 import { TextType } from './types/text.type'
 
@@ -47,12 +59,57 @@ export const FieldCard: React.FC<Props> = (props) => {
     return () => clearTimeout(id)
   }, [nextTitle])
 
+  const addLogic = useCallback((add: (defaults: unknown) => void, index: number) => {
+    return (
+      <Form.Item wrapperCol={{ span: 24 }}>
+        <Space
+          style={{
+            width: '100%',
+            justifyContent: 'flex-end',
+          }}
+        >
+          <Button
+            type="dashed"
+            onClick={() => {
+              const defaults: FormFieldLogicFragment = {
+                id: `NEW-${Date.now()}`,
+                formula: null,
+                action: null,
+                jumpTo: null,
+                visible: null,
+                disable: null,
+                require: null,
+                enabled: false,
+              }
+
+              add(defaults)
+            }}
+          >
+            <PlusOutlined /> {t('form:logic.add')}
+          </Button>
+        </Space>
+      </Form.Item>
+    )
+  }, [])
+
   return (
     <Card
-      title={nextTitle}
+      title={<Tooltip title={`@${field.name as string}`}>nextTitle</Tooltip>}
       type={'inner'}
       extra={
         <div>
+          <Form.Item noStyle shouldUpdate>
+            {() => {
+              // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+              const slug = form.getFieldValue(['form', 'fields', field.name as string, 'slug'])
+
+              if (!slug) {
+                return null
+              }
+
+              return <Tag color={'warning'}>Slug: {slug}</Tag>
+            }}
+          </Form.Item>
           <Popover
             placement={'left'}
             content={
@@ -90,7 +147,6 @@ export const FieldCard: React.FC<Props> = (props) => {
           </Popconfirm>
         </div>
       }
-      actions={[<DeleteOutlined key={'delete'} onClick={() => remove(index)} />]}
     >
       <Form.Item name={[field.name as string, 'type']} noStyle>
         <Input type={'hidden'} />
@@ -122,6 +178,35 @@ export const FieldCard: React.FC<Props> = (props) => {
       </Form.Item>
 
       <TypeComponent field={field} form={form} />
+
+      <Form.List name={[field.name as string, 'logic']}>
+        {(logic, { add, remove, move }) => {
+          const addAndMove = (index) => (defaults) => {
+            add(defaults)
+            move(fields.length, index)
+          }
+
+          return (
+            <div>
+              {addLogic(addAndMove(0), 0)}
+              {logic.map((field, index) => (
+                <div key={field.key}>
+                  <Form.Item wrapperCol={{ span: 24 }} noStyle>
+                    <LogicBlock
+                      field={field}
+                      form={form}
+                      fields={fields}
+                      index={index}
+                      remove={remove}
+                    />
+                  </Form.Item>
+                  {addLogic(addAndMove(index + 1), index + 1)}
+                </div>
+              ))}
+            </div>
+          )
+        }}
+      </Form.List>
     </Card>
   )
 }

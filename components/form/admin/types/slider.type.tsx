@@ -1,4 +1,5 @@
 import { Form, InputNumber, Slider } from 'antd'
+import FormItemContext from 'rc-field-form/lib/FieldContext'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { AdminFieldTypeProps } from './type.props'
@@ -10,11 +11,11 @@ export const SliderType: React.FC<AdminFieldTypeProps> = (props) => {
     <div>
       <Form.Item shouldUpdate noStyle>
         {(form) => {
+          const context = React.useContext(FormItemContext)
+
           const getValue = (name, defaultValue: number): number => {
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-            const current = form.getFieldValue([
-              // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-              ...form['prefixName'],
+            const current: unknown = form.getFieldValue([
+              ...context.prefixName,
               props.field.name as string,
               'optionKeys',
               name,
@@ -24,7 +25,7 @@ export const SliderType: React.FC<AdminFieldTypeProps> = (props) => {
               return defaultValue
             }
 
-            return parseFloat(current)
+            return parseFloat(current as string)
           }
 
           const max = getValue('max', 100)
