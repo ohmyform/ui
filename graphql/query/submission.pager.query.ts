@@ -23,7 +23,7 @@ interface Variables {
 }
 
 const QUERY = gql`
-  query pager($form: ID!, $start: Int, $limit: Int) {
+  query listSubmissions($form: ID!, $start: Int, $limit: Int) {
     form: getFormById(id: $form) {
       ...Form
     }

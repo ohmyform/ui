@@ -1,7 +1,6 @@
 import { DeleteOutlined } from '@ant-design/icons'
 import { Alert, Button, Checkbox, Form, Mentions, Popconfirm, Select } from 'antd'
 import { FormInstance } from 'antd/lib/form'
-import FormItemContext from 'rc-field-form/lib/FieldContext'
 import { FieldData } from 'rc-field-form/lib/interface'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
@@ -16,9 +15,14 @@ interface Props {
   index: number
 }
 
-export const LogicBlock: React.FC<Props> = (props) => {
+export const LogicBlock: React.FC<Props> = ({
+  form,
+  field,
+  fields,
+  remove,
+  index,
+}) => {
   const { t } = useTranslation()
-  const { form, field, fields, remove, index } = props
   const evaluator = useMath()
 
   return (
@@ -45,9 +49,7 @@ export const LogicBlock: React.FC<Props> = (props) => {
       </Form.Item>
 
       <Form.Item noStyle shouldUpdate>
-        {(form) => {
-          const context = React.useContext(FormItemContext)
-
+        {(form: FormInstance & { prefixName: string[] }) => {
           try {
             const defaults = {}
 
@@ -60,7 +62,11 @@ export const LogicBlock: React.FC<Props> = (props) => {
             })
 
             const result = evaluator(
-              form.getFieldValue([...context.prefixName, field.name as string, 'formula']),
+              form.getFieldValue([
+                ...form.prefixName,
+                field.name as string,
+                'formula',
+              ]),
               defaults
             )
 
@@ -109,13 +115,13 @@ export const LogicBlock: React.FC<Props> = (props) => {
         />
       </Form.Item>
       <Form.Item noStyle shouldUpdate>
-        {(form) => {
-          const context = React.useContext(FormItemContext)
-
+        {(form: FormInstance & { prefixName: string[] }) => {
           return (
             <Form.Item
               hidden={
-                form.getFieldValue([...context.prefixName, field.name as string, 'action']) !==
+                form.getFieldValue([
+                  ...form.prefixName, field.name as string, 'action',
+                ]) !==
                 'jumpTo'
               }
               labelCol={{ span: 6 }}
@@ -137,13 +143,13 @@ export const LogicBlock: React.FC<Props> = (props) => {
       </Form.Item>
 
       <Form.Item noStyle shouldUpdate>
-        {(form) => {
-          const context = React.useContext(FormItemContext)
-
+        {(form: FormInstance & { prefixName: string[] }) => {
           return (
             <Form.Item
               hidden={
-                form.getFieldValue([...context.prefixName, field.name as string, 'action']) !==
+                form.getFieldValue([
+                  ...form.prefixName, field.name as string, 'action',
+                ]) !==
                 'visible'
               }
               initialValue={true}
@@ -160,13 +166,13 @@ export const LogicBlock: React.FC<Props> = (props) => {
       </Form.Item>
 
       <Form.Item noStyle shouldUpdate>
-        {(form) => {
-          const context = React.useContext(FormItemContext)
-
+        {(form: FormInstance & { prefixName: string[] }) => {
           return (
             <Form.Item
               hidden={
-                form.getFieldValue([...context.prefixName, field.name as string, 'action']) !==
+                form.getFieldValue([
+                  ...form.prefixName, field.name as string, 'action',
+                ]) !==
                 'disable'
               }
               initialValue={false}
@@ -183,13 +189,13 @@ export const LogicBlock: React.FC<Props> = (props) => {
       </Form.Item>
 
       <Form.Item noStyle shouldUpdate>
-        {(form) => {
-          const context = React.useContext(FormItemContext)
-
+        {(form: FormInstance & { prefixName: string[] }) => {
           return (
             <Form.Item
               hidden={
-                form.getFieldValue([...context.prefixName, field.name as string, 'action']) !==
+                form.getFieldValue([
+                  ...form.prefixName, field.name as string, 'action',
+                ]) !==
                 'require'
               }
               initialValue={true}

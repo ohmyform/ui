@@ -12,12 +12,11 @@ export interface SubmissionSetFieldMutationVariables {
   field: {
     token: string
     field: string
-    data: string
   }
 }
 
 export const SUBMISSION_SET_FIELD_MUTATION = gql`
-  mutation start($submission: ID!, $field: SubmissionSetFieldInput!) {
+  mutation submissionSetField($submission: ID!, $field: SubmissionSetFieldInput!) {
     submission: submissionSetField(submission: $submission, field: $field) {
       id
       percentageComplete

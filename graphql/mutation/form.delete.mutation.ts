@@ -12,7 +12,7 @@ interface Variables {
 }
 
 const MUTATION = gql`
-  mutation delete($id: ID!) {
+  mutation deleteForm($id: ID!) {
     form: deleteForm(id: $id) {
       id
     }

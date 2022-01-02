@@ -7,7 +7,7 @@ interface Data {
 }
 
 export const QUERY = gql`
-  query profile {
+  query adminMe {
     user: me {
       ...AdminProfile
     }

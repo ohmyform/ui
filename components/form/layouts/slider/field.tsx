@@ -62,6 +62,7 @@ export const Field: React.FC<Props> = ({ field, save, design, next, prev, ...pro
       style={{
         display: 'flex',
         flexDirection: 'column',
+        height: '100%',
       }}
     >
       <div
@@ -77,7 +78,7 @@ export const Field: React.FC<Props> = ({ field, save, design, next, prev, ...pro
           {field.title}
         </StyledH1>
         {field.description && (
-          <StyledMarkdown design={design} type={'question'} source={field.description} />
+          <StyledMarkdown design={design} type={'question'}>{field.description}</StyledMarkdown>
         )}
 
         <FieldInput design={design} field={field} urlValue={getUrlDefault()} />

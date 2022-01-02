@@ -54,7 +54,7 @@ export const Field: React.FC<Props> = ({ field, design, focus, ...props }) => {
           {field.title}
         </StyledH1>
         {field.description && (
-          <StyledMarkdown design={design} type={'question'} source={field.description} />
+          <StyledMarkdown design={design} type={'question'} >{field.description}</StyledMarkdown>
         )}
 
         <FieldInput design={design} field={field} urlValue={getUrlDefault()} focus={focus} />

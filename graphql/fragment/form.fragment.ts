@@ -40,6 +40,7 @@ export interface FormFieldLogicFragment {
 
 export interface FormFieldFragment {
   id: string
+  idx?: number
   title: string
   slug?: string
   type: string
@@ -126,6 +127,7 @@ export const FORM_FRAGMENT = gql`
 
     fields {
       id
+      idx
       title
       slug
       type

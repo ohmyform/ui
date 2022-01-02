@@ -1,5 +1,8 @@
+import debug from 'debug'
 import { all, create } from 'mathjs'
 import { useState } from 'react'
+
+const logger = debug('useMath')
 
 export const useMath = (): ((
   expression: string,
@@ -14,15 +17,24 @@ export const useMath = (): ((
       Object.keys(values).forEach((key) => {
         const r = new RegExp(key.replace('$', '\\$'), 'ig')
 
-        if (r.test(processed)) {
+        const test = r.test(processed)
+
+        if (test) {
           processed = processed.replace(r, String(values[key]))
         }
       })
 
-      const result = math.evaluate(processed)
-
-      return Boolean(result)
+      return Boolean(math.evaluate(processed))
     } catch (e) {
+      logger(
+        'failed to calculate %O: %s',
+        {
+          expression,
+          values,
+        },
+        e.message
+      )
+
       throw e
     }
   }

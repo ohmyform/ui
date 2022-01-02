@@ -1,6 +1,8 @@
 import { NextRouter, useRouter as useNextRouter } from 'next/router'
 
-const parseQuery = (path) => {
+type parseQueryResponse = { [key: string]: string }
+
+const parseQuery = (path: string): parseQueryResponse => {
   const query = {}
   const regex = /[?&]([^&$=]+)(=([^&$]+))?/g
   let param: RegExpExecArray

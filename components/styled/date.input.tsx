@@ -1,10 +1,10 @@
 import { DatePicker } from 'antd'
 import { PickerProps } from 'antd/lib/date-picker/generatePicker'
 import { Moment } from 'moment'
+import { transparentize } from 'polished'
 import React from 'react'
 import styled from 'styled-components'
 import { FormPublicDesignFragment } from '../../graphql/fragment/form.public.fragment'
-import { transparentize } from './color.change'
 
 type Props = { design: FormPublicDesignFragment } & PickerProps<Moment>
 
@@ -36,7 +36,7 @@ const Field = styled(DatePicker)`
     color: ${(props: Props) => props.design.colors.answer};
 
     ::placeholder {
-      color: ${(props: Props) => transparentize(props.design.colors.answer, 60)};
+      color: ${(props: Props) => transparentize(0.6, props.design.colors.answer)};
     }
   }
 

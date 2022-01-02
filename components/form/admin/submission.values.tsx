@@ -33,8 +33,6 @@ export const SubmissionValues: React.FC<Props> = (props) => {
         try {
           const data = JSON.parse(row.value) as { value: string }
 
-          console.log('DATA', data)
-
           return data.value
         } catch (e) {
           return row.value

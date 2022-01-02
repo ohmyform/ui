@@ -30,7 +30,8 @@ WORKDIR /usr/src/app
 
 COPY --from=builder /usr/src/app /usr/src/app
 
-ENV PORT=4000
+ENV PORT=4000 \
+    NODE_ENV=production
 
 # Change to non-root privilege
 USER ohmyform

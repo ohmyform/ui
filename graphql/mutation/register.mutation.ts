@@ -19,7 +19,7 @@ interface Variables {
 }
 
 const MUTATION = gql`
-  mutation register($user: UserCreateInput!) {
+  mutation authRegister($user: UserCreateInput!) {
     tokens: authRegister(user: $user) {
       access: accessToken
       refresh: refreshToken

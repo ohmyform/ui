@@ -2,9 +2,11 @@ import { Alert, Layout } from 'antd'
 import { AuthFooter } from 'components/auth/footer'
 import { GetStaticProps, NextPage } from 'next'
 import getConfig from 'next/config'
+import Image from 'next/image'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import LogoWhitePng from '../assets/images/logo_white.png'
 import { LoadingPage } from '../components/loading.page'
 import { Omf } from '../components/omf'
 import { useStatusQuery } from '../graphql/query/status.query'
@@ -24,7 +26,9 @@ const Index: NextPage = () => {
     if (router.pathname !== window.location.pathname) {
       let href = router.asPath
       const as = router.asPath
-      const possible = [/(\/form\/)[^/]+/i, /(\/admin\/forms\/)[^/]+/i, /(\/admin\/users\/)[^/]+/i]
+      const possible = [
+        /(\/form\/)[^/]+/i, /(\/admin\/forms\/)[^/]+/i, /(\/admin\/users\/)[^/]+/i,
+      ]
 
       possible.forEach((r) => {
         if (r.test(as)) {
@@ -58,16 +62,22 @@ const Index: NextPage = () => {
       }}
     >
       <Omf />
-      <img
-        alt={'OhMyForm'}
+      <div
         style={{
           margin: 'auto',
           maxWidth: '90%',
           width: 500,
           textAlign: 'center',
         }}
-        src={require('../assets/images/logo_white.png') as string}
-      />
+      >
+        <Image
+          alt={'OhMyForm'}
+          layout={'responsive'}
+          width={1608 / 4}
+          height={530 / 4}
+          src={LogoWhitePng.src}
+        />
+      </div>
 
       {status.error && (
         <Alert

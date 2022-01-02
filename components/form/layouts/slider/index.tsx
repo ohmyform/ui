@@ -1,31 +1,42 @@
 import { Modal } from 'antd'
+import debug from 'debug'
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import Swiper from 'react-id-swiper'
-import { ReactIdSwiperProps } from 'react-id-swiper/lib/types'
-import * as OriginalSwiper from 'swiper'
+import SwiperClass from 'swiper'
+import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react'
 import { Omf } from '../../../omf'
+import { useWindowSize } from '../../../use.window.size'
 import { LayoutProps } from '../layout.props'
 import { Field } from './field'
 import { FormPage } from './page'
 
+const logger = debug('layout/slider')
+
 export const SliderLayout: React.FC<LayoutProps> = (props) => {
   const { t } = useTranslation()
-  const [swiper, setSwiper] = useState<OriginalSwiper.default>(null)
-
+  const [swiper, setSwiper] = useState<SwiperClass>(null)
+  const { height } = useWindowSize()
   const { design, startPage, endPage, fields } = props.form
   const { finish, setField } = props.submission
 
   const goNext = () => {
     if (!swiper) return
 
+    logger('goNext')
     swiper.allowSlideNext = true
     swiper.slideNext()
     swiper.allowSlideNext = false
   }
-  const goPrev = () => swiper && swiper.slidePrev()
+  const goPrev = () => {
+    if (!swiper) {
+      return
+    }
 
-  const swiperConfig: ReactIdSwiperProps = {
+    logger('goPrevious')
+    swiper.slidePrev()
+  }
+
+  const swiperConfig: SwiperProps = {
     direction: 'vertical',
     allowSlideNext: false,
     allowSlidePrev: true,
@@ -37,14 +48,25 @@ export const SliderLayout: React.FC<LayoutProps> = (props) => {
     <div
       style={{
         background: design.colors.background,
+        overflow: 'hidden',
+        height: '100vh',
       }}
     >
       <Omf />
       {/* eslint-disable-next-line @typescript-eslint/no-unsafe-member-access */}
-      <Swiper {...swiperConfig} ref={(element) => element && setSwiper((element as any).swiper)}>
+      <Swiper
+        height={height}
+        {...swiperConfig}
+        onSwiper={next => {
+          logger('setSwiper')
+          setSwiper(next)
+        }}
+      >
         {[
           startPage.show ? (
-            <FormPage key={'start'} page={startPage} design={design} next={goNext} prev={goPrev} />
+            <SwiperSlide key={'start'}>
+              <FormPage page={startPage} design={design} next={goNext} prev={goPrev} />
+            </SwiperSlide>
           ) : undefined,
           ...fields
             .map((field, i) => {
@@ -53,42 +75,45 @@ export const SliderLayout: React.FC<LayoutProps> = (props) => {
               }
 
               return (
-                <Field
-                  key={field.id}
-                  field={field}
-                  design={design}
-                  save={async (values: { [key: string]: unknown }) => {
-                    await setField(field.id, values[field.id])
+                <SwiperSlide key={field.id}>
+                  <Field
+                    field={field}
+                    design={design}
+                    save={async (values: { [key: string]: unknown }) => {
+                      await setField(field.id, values[field.id])
 
-                    if (fields.length === i + 1) {
-                      finish()
-                    }
-                  }}
-                  next={() => {
-                    if (fields.length === i + 1) {
-                      // prevent going back!
-                      swiper.allowSlidePrev = true
-
-                      if (!endPage.show) {
-                        Modal.success({
-                          content: t('form:submitted'),
-                          okText: t('from:restart'),
-                          onOk: () => {
-                            window.location.reload()
-                          },
-                        })
+                      if (fields.length === i + 1) {
+                        await finish()
                       }
-                    }
+                    }}
+                    next={() => {
+                      if (fields.length === i + 1) {
+                      // prevent going back!
+                        swiper.allowSlidePrev = true
 
-                    goNext()
-                  }}
-                  prev={goPrev}
-                />
+                        if (!endPage.show) {
+                          Modal.success({
+                            content: t('form:submitted'),
+                            okText: t('from:restart'),
+                            onOk: () => {
+                              window.location.reload()
+                            },
+                          })
+                        }
+                      }
+
+                      goNext()
+                    }}
+                    prev={goPrev}
+                  />
+                </SwiperSlide>
               )
             })
             .filter((e) => e !== null),
           endPage.show ? (
-            <FormPage key={'end'} page={endPage} design={design} next={finish} prev={goPrev} />
+            <SwiperSlide key={'end'}>
+              <FormPage page={endPage} design={design} next={finish} prev={goPrev} />
+            </SwiperSlide>
           ) : undefined,
         ].filter((e) => !!e)}
       </Swiper>

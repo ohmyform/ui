@@ -1,16 +1,6 @@
+import { VerticalAlignBottomOutlined, VerticalAlignTopOutlined } from '@ant-design/icons'
 import { DeleteOutlined, PlusOutlined } from '@ant-design/icons/lib'
-import {
-  Button,
-  Card,
-  Checkbox,
-  Form,
-  Input,
-  Popconfirm,
-  Popover,
-  Space,
-  Tag,
-  Tooltip,
-} from 'antd'
+import { Button, Card, Checkbox, Form, Input, Popconfirm, Popover, Space, Tag, Tooltip } from 'antd'
 import { FormInstance } from 'antd/lib/form'
 import { FieldData } from 'rc-field-form/lib/interface'
 import React, { useCallback, useEffect, useState } from 'react'
@@ -26,22 +16,40 @@ interface Props {
   onChangeFields: (fields: FormFieldFragment[]) => void
   field: FieldData
   remove: (index: number) => void
+  move: (from: number, to: number) => void
   index: number
 }
 
-export const FieldCard: React.FC<Props> = (props) => {
+export const FieldCard: React.FC<Props> = ({
+  form,
+  field,
+  fields,
+  onChangeFields,
+  remove,
+  move,
+  index,
+}) => {
   const { t } = useTranslation()
-  const { form, field, fields, onChangeFields, remove, index } = props
 
-  const type = form.getFieldValue(['form', 'fields', field.name as string, 'type']) as string
+  const type = form.getFieldValue([
+    'form', 'fields', field.name as string, 'type',
+  ]) as string
   const TypeComponent = adminTypes[type] || TextType
 
+  const [shouldUpdate, setShouldUpdate] = useState(false)
   const [nextTitle, setNextTitle] = useState<string>(
-    form.getFieldValue(['form', 'fields', field.name as string, 'title'])
+    form.getFieldValue([
+      'form', 'fields', field.name as string, 'title',
+    ])
   )
 
   useEffect(() => {
+    if (!shouldUpdate) {
+      return
+    }
+
     const id = setTimeout(() => {
+      setShouldUpdate(false)
       onChangeFields(
         fields.map((field, i) => {
           if (i === index) {
@@ -57,7 +65,9 @@ export const FieldCard: React.FC<Props> = (props) => {
     }, 500)
 
     return () => clearTimeout(id)
-  }, [nextTitle])
+  }, [
+    nextTitle, shouldUpdate, fields,
+  ])
 
   const addLogic = useCallback((add: (defaults: unknown) => void, index: number) => {
     return (
@@ -94,14 +104,32 @@ export const FieldCard: React.FC<Props> = (props) => {
 
   return (
     <Card
-      title={<Tooltip title={`@${field.name as string}`}>nextTitle</Tooltip>}
+      title={nextTitle}
       type={'inner'}
       extra={
-        <div>
+        <Space>
+          <Tooltip title={t('form:field.move.up')}>
+            <Button
+              type={'text'}
+              disabled={index === 0}
+              onClick={() => move(index, index - 1)}
+              icon={<VerticalAlignTopOutlined />}
+            />
+          </Tooltip>
+          <Tooltip title={t('form:field.move.down')}>
+            <Button
+              type={'text'}
+              disabled={index + 1 >= form.getFieldValue(['form', 'fields']).length}
+              onClick={() => move(index, index + 1)}
+              icon={<VerticalAlignBottomOutlined />}
+            />
+          </Tooltip>
           <Form.Item noStyle shouldUpdate>
             {() => {
               // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-              const slug = form.getFieldValue(['form', 'fields', field.name as string, 'slug'])
+              const slug = form.getFieldValue([
+                'form', 'fields', field.name as string, 'slug',
+              ])
 
               if (!slug) {
                 return null
@@ -145,7 +173,7 @@ export const FieldCard: React.FC<Props> = (props) => {
               <DeleteOutlined />
             </Button>
           </Popconfirm>
-        </div>
+        </Space>
       }
     >
       <Form.Item name={[field.name as string, 'type']} noStyle>
@@ -157,7 +185,12 @@ export const FieldCard: React.FC<Props> = (props) => {
         rules={[{ required: true, message: 'Title is required' }]}
         labelCol={{ span: 6 }}
       >
-        <Input onChange={(e) => setNextTitle(e.target.value)} />
+        <Input
+          onChange={(e) => {
+            setNextTitle(e.target.value)
+            setShouldUpdate(true)
+          }}
+        />
       </Form.Item>
       <Form.Item
         label={t('type:description')}
@@ -181,7 +214,7 @@ export const FieldCard: React.FC<Props> = (props) => {
 
       <Form.List name={[field.name as string, 'logic']}>
         {(logic, { add, remove, move }) => {
-          const addAndMove = (index) => (defaults) => {
+          const addAndMove = (index: number) => (defaults) => {
             add(defaults)
             move(fields.length, index)
           }

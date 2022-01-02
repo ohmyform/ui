@@ -62,7 +62,7 @@ export const NotificationsTab: React.FC<Props> = (props) => {
     <Tabs.TabPane {...props}>
       <Form.List name={['form', 'notifications']}>
         {(fields, { add, remove, move }) => {
-          const addAndMove = (index) => (defaults) => {
+          const addAndMove = (index: number) => (defaults) => {
             add(defaults)
             move(fields.length, index)
           }

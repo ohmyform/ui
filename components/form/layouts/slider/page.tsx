@@ -32,7 +32,7 @@ export const FormPage: React.FC<Props> = ({ page, design, next, prev, className,
         <StyledH1 design={design} type={'question'}>
           {page.title}
         </StyledH1>
-        <StyledMarkdown design={design} type={'question'} source={page.paragraph} />
+        <StyledMarkdown design={design} type={'question'}>{page.paragraph}</StyledMarkdown>
       </div>
       <div
         style={{

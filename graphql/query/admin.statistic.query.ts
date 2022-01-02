@@ -15,7 +15,7 @@ export interface AdminStatisticQueryData {
 export interface AdminStatisticQueryVariables {}
 
 export const ADMIN_STATISTIC_QUERY = gql`
-  query {
+  query statistics {
     forms: getFormStatistic {
       total
     }

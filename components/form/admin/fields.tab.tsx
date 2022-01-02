@@ -2,12 +2,15 @@ import { PlusOutlined } from '@ant-design/icons/lib'
 import { Button, Form, Select, Space, Tabs } from 'antd'
 import { FormInstance } from 'antd/lib/form'
 import { TabPaneProps } from 'antd/lib/tabs'
+import debug from 'debug'
 import { FieldData } from 'rc-field-form/lib/interface'
 import React, { useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { FormFieldFragment } from '../../../graphql/fragment/form.fragment'
 import { FieldCard } from './field.card'
 import { adminTypes } from './types'
+
+const logger = debug('FieldsTab')
 
 interface Props extends TabPaneProps {
   form: FormInstance
@@ -20,13 +23,25 @@ export const FieldsTab: React.FC<Props> = (props) => {
   const [nextType, setNextType] = useState('textfield')
 
   const renderType = useCallback(
-    (field: FieldData, index: number, remove: (index: number) => void) => {
+    (
+      field: FieldData,
+      index: number,
+      remove: (index: number) => void,
+      move: (from: number, to: number) => void
+    ) => {
       return (
         <FieldCard
           form={props.form}
           field={field}
           index={index}
-          remove={remove}
+          remove={(index: number) => {
+            logger('remove %d', index)
+            remove(index)
+          }}
+          move={(from: number, to: number) => {
+            logger('move %d TO %d', from, to)
+            move(from, to)
+          }}
           fields={props.fields}
           onChangeFields={props.onChangeFields}
         />
@@ -85,7 +100,7 @@ export const FieldsTab: React.FC<Props> = (props) => {
     <Tabs.TabPane {...props}>
       <Form.List name={['form', 'fields']}>
         {(fields, { add, remove, move }) => {
-          const addAndMove = (index) => (defaults) => {
+          const addAndMove = (index: number) => (defaults) => {
             add(defaults)
             move(fields.length, index)
           }
@@ -96,7 +111,7 @@ export const FieldsTab: React.FC<Props> = (props) => {
               {fields.map((field, index) => (
                 <div key={field.key}>
                   <Form.Item wrapperCol={{ span: 24 }}>
-                    {renderType(field, index, remove)}
+                    {renderType(field, index, remove, move)}
                   </Form.Item>
                   {addField(addAndMove(index + 1), index + 1)}
                 </div>

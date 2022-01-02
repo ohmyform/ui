@@ -9,10 +9,14 @@ export const DesignTab: React.FC<TabPaneProps> = (props) => {
 
   return (
     <Tabs.TabPane {...props}>
-      <Form.Item label={t('form:design.font')} name={['form', 'design', 'font']}>
+      <Form.Item label={t('form:design.font')} name={[
+        'form', 'design', 'font',
+      ]}>
         <Input />
       </Form.Item>
-      <Form.Item label={t('form:design.layouts')} name={['form', 'design', 'layout']}>
+      <Form.Item label={t('form:design.layouts')} name={[
+        'form', 'design', 'layout',
+      ]}>
         <Select
           options={[
             {
@@ -27,11 +31,15 @@ export const DesignTab: React.FC<TabPaneProps> = (props) => {
         />
       </Form.Item>
 
-      {['background', 'question', 'answer', 'button', 'buttonActive', 'buttonText'].map((name) => (
+      {[
+        'background', 'question', 'answer', 'button', 'buttonActive', 'buttonText',
+      ].map((name) => (
         <Form.Item
           key={name}
           label={t(`form:design.color.${name}`)}
-          name={['form', 'design', 'colors', name]}
+          name={[
+            'form', 'design', 'colors', name,
+          ]}
         >
           <InputColor />
         </Form.Item>
