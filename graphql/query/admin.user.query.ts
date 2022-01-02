@@ -10,7 +10,7 @@ export interface AdminUserQueryVariables {
 }
 
 export const ADMIN_USER_QUERY = gql`
-  query user($id: ID!) {
+  query getUserById($id: ID!) {
     user: getUserById(id: $id) {
       ...AdminUser
     }

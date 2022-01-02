@@ -11,7 +11,7 @@ interface Variables {
 }
 
 const MUTATION = gql`
-  mutation update($user: UserUpdateInput!) {
+  mutation updateUser($user: UserUpdateInput!) {
     form: updateUser(user: $user) {
       ...AdminUser
     }

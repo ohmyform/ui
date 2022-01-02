@@ -62,7 +62,9 @@ export const NotificationCard: React.FC<Props> = (props) => {
             rules={[
               {
                 required: Boolean(
-                  form.getFieldValue(['form', 'notifications', field.name as string, 'enabled'])
+                  form.getFieldValue([
+                    'form', 'notifications', field.name as string, 'enabled',
+                  ])
                 ),
                 message: t('validation:subjectRequired'),
               },
@@ -82,7 +84,9 @@ export const NotificationCard: React.FC<Props> = (props) => {
             rules={[
               {
                 required: Boolean(
-                  form.getFieldValue(['form', 'notifications', field.name as string, 'enabled'])
+                  form.getFieldValue([
+                    'form', 'notifications', field.name as string, 'enabled',
+                  ])
                 ),
                 message: t('validation:templateRequired'),
               },
@@ -119,7 +123,9 @@ export const NotificationCard: React.FC<Props> = (props) => {
             rules={[
               {
                 required: Boolean(
-                  form.getFieldValue(['form', 'notifications', field.name as string, 'enabled']) &&
+                  form.getFieldValue([
+                    'form', 'notifications', field.name as string, 'enabled',
+                  ]) &&
                     !form.getFieldValue([
                       'form',
                       'notifications',
@@ -156,7 +162,9 @@ export const NotificationCard: React.FC<Props> = (props) => {
             rules={[
               {
                 required: Boolean(
-                  form.getFieldValue(['form', 'notifications', field.name as string, 'enabled']) &&
+                  form.getFieldValue([
+                    'form', 'notifications', field.name as string, 'enabled',
+                  ]) &&
                     !form.getFieldValue([
                       'form',
                       'notifications',
@@ -182,8 +190,12 @@ export const NotificationCard: React.FC<Props> = (props) => {
             rules={[
               {
                 required: Boolean(
-                  form.getFieldValue(['form', 'notifications', field.name as string, 'enabled']) &&
-                    !form.getFieldValue(['form', 'notifications', field.name as string, 'toEmail'])
+                  form.getFieldValue([
+                    'form', 'notifications', field.name as string, 'enabled',
+                  ]) &&
+                    !form.getFieldValue([
+                      'form', 'notifications', field.name as string, 'toEmail',
+                    ])
                 ),
                 message: t('validation:emailFieldRequired'),
               },
@@ -215,8 +227,12 @@ export const NotificationCard: React.FC<Props> = (props) => {
             rules={[
               {
                 required: Boolean(
-                  form.getFieldValue(['form', 'notifications', field.name as string, 'enabled']) &&
-                    !form.getFieldValue(['form', 'notifications', field.name as string, 'toField'])
+                  form.getFieldValue([
+                    'form', 'notifications', field.name as string, 'enabled',
+                  ]) &&
+                    !form.getFieldValue([
+                      'form', 'notifications', field.name as string, 'toField',
+                    ])
                 ),
                 message: t('validation:emailFieldRequired'),
               },

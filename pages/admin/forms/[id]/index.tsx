@@ -34,21 +34,23 @@ const Index: NextPage = () => {
     return {
       form: {
         ...next.form,
-        fields: next.form.fields.map((field) => {
-          const keys: FormFieldOptionKeysFragment = {}
+        fields: next.form.fields
+          .map((field) => {
+            const keys: FormFieldOptionKeysFragment = {}
 
-          field.options.forEach((option) => {
-            if (option.key) {
-              keys[option.key] = option.value
+            field.options.forEach((option) => {
+              if (option.key) {
+                keys[option.key] = option.value
+              }
+            })
+
+            return {
+              ...field,
+              options: field.options.filter((option) => !option.key),
+              optionKeys: keys,
             }
           })
-
-          return {
-            ...field,
-            options: field.options.filter((option) => !option.key),
-            optionKeys: keys,
-          }
-        }),
+          .sort((a, b) => a.idx - b.idx),
       },
     }
   }
@@ -69,7 +71,7 @@ const Index: NextPage = () => {
 
     formData.form.fields = formData.form.fields
       .filter((e) => e && e.type)
-      .map(({ optionKeys, ...field }) => {
+      .map(({ optionKeys, ...field }, index) => {
         const options = field.options
 
         if (optionKeys) {
@@ -89,6 +91,7 @@ const Index: NextPage = () => {
         return {
           ...field,
           options,
+          idx: index,
         }
       })
 

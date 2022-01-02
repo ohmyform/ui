@@ -12,19 +12,25 @@ export const StartPageTab: React.FC<TabPaneProps> = (props) => {
     <Tabs.TabPane {...props}>
       <Form.Item
         label={t('form:startPage.show')}
-        name={['form', 'startPage', 'show']}
+        name={[
+          'form', 'startPage', 'show',
+        ]}
         valuePropName={'checked'}
       >
         <Switch />
       </Form.Item>
 
-      <Form.Item label={t('form:startPage.title')} name={['form', 'startPage', 'title']}>
+      <Form.Item label={t('form:startPage.title')} name={[
+        'form', 'startPage', 'title',
+      ]}>
         <Input />
       </Form.Item>
 
       <Form.Item
         label={t('form:startPage.paragraph')}
-        name={['form', 'startPage', 'paragraph']}
+        name={[
+          'form', 'startPage', 'paragraph',
+        ]}
         extra={t('form:startPage.paragraphInfo')}
       >
         <Input.TextArea autoSize />
@@ -32,12 +38,16 @@ export const StartPageTab: React.FC<TabPaneProps> = (props) => {
 
       <Form.Item
         label={t('form:startPage.continueButtonText')}
-        name={['form', 'startPage', 'buttonText']}
+        name={[
+          'form', 'startPage', 'buttonText',
+        ]}
       >
         <Input />
       </Form.Item>
 
-      <Form.List name={['form', 'startPage', 'buttons']}>
+      <Form.List name={[
+        'form', 'startPage', 'buttons',
+      ]}>
         {(fields, { add, remove }) => {
           return (
             <div>

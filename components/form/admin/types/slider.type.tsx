@@ -50,7 +50,9 @@ export const SliderType: React.FC<AdminFieldTypeProps> = (props) => {
 
       <Form.Item
         label={t('type:slider.min')}
-        name={[props.field.name as string, 'optionKeys', 'min']}
+        name={[
+props.field.name as string, 'optionKeys', 'min',
+        ]}
         labelCol={{ span: 6 }}
         initialValue={0}
         getValueFromEvent={(value: number) =>
@@ -63,7 +65,9 @@ export const SliderType: React.FC<AdminFieldTypeProps> = (props) => {
 
       <Form.Item
         label={t('type:slider.max')}
-        name={[props.field.name as string, 'optionKeys', 'max']}
+        name={[
+props.field.name as string, 'optionKeys', 'max',
+        ]}
         labelCol={{ span: 6 }}
         initialValue={100}
         getValueFromEvent={(value: number) =>
@@ -76,7 +80,9 @@ export const SliderType: React.FC<AdminFieldTypeProps> = (props) => {
 
       <Form.Item
         label={t('type:slider.step')}
-        name={[props.field.name as string, 'optionKeys', 'step']}
+        name={[
+props.field.name as string, 'optionKeys', 'step',
+        ]}
         labelCol={{ span: 6 }}
         initialValue={1}
         getValueFromEvent={(value: number) =>

@@ -10,11 +10,13 @@ import {
   LoginMutationVariables,
 } from 'graphql/mutation/login.mutation'
 import { NextPage } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import ReactMarkdown from 'react-markdown'
+import LogoWhitePng from '../../assets/images/logo_white.png'
 import { Omf } from '../../components/omf'
 import { useSettingsQuery } from '../../graphql/query/settings.query'
 import scss from './index.module.scss'
@@ -64,9 +66,7 @@ const Index: NextPage = () => {
           width: 400,
         }}
       >
-        <img
-          src={require('../../assets/images/logo_white_small.png') as string}
-          alt={'OhMyForm'}
+        <div
           style={{
             display: 'block',
             width: '70%',
@@ -74,14 +74,21 @@ const Index: NextPage = () => {
             marginRight: 'auto',
             marginBottom: 16,
           }}
-        />
+        >
+          <Image
+            src={LogoWhitePng.src}
+            alt={'OhMyForm'}
+            width={1608 / 4}
+            height={530 / 4}
+          />
+        </div>
 
         {data && data.loginNote.value && (
           <Alert
             type="warning"
             showIcon
             message={t('login:note')}
-            description={<ReactMarkdown escapeHtml={false} source={data.loginNote.value} />}
+            description={<ReactMarkdown>{data.loginNote.value}</ReactMarkdown>}
             style={{
               marginBottom: 24,
             }}

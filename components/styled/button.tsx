@@ -1,8 +1,8 @@
 import { Button } from 'antd'
 import { ButtonProps } from 'antd/lib/button/button'
+import { darken, lighten } from 'polished'
 import React from 'react'
 import styled from 'styled-components'
-import { darken, lighten } from './color.change'
 
 interface Props extends ButtonProps {
   background: string
@@ -14,12 +14,12 @@ interface Props extends ButtonProps {
 const Styled = styled(Button)`
   background: ${(props: Props) => props.background};
   color: ${(props: Props) => props.color};
-  border-color: ${(props: Props) => darken(props.background, 10)};
+  border-color: ${(props: Props) => darken(0.1, props.background)};
 
   :hover {
     color: ${(props: Props) => props.highlight};
-    background-color: ${(props: Props) => lighten(props.background, 10)};
-    border-color: ${(props: Props) => darken(props.highlight, 10)};
+    background-color: ${(props: Props) => lighten(0.1, props.background)};
+    border-color: ${(props: Props) => darken(0.1, props.highlight)};
   }
 `
 

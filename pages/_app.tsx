@@ -2,15 +2,26 @@ import { ApolloProvider } from '@apollo/client'
 import 'antd/dist/antd.css'
 import 'assets/global.scss'
 import 'assets/variables.scss'
+import debug from 'debug'
 import 'i18n'
-import App, { AppInitialProps } from 'next/app'
-import { AppType } from 'next/dist/next-server/lib/utils'
+import getConfig from 'next/config'
+import { AppInitialProps, AppType } from 'next/dist/shared/lib/utils'
 import Head from 'next/head'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { wrapper } from 'store'
 import getClient from '../graphql/client'
+import { NextConfigType } from '../next.config.type'
 
-const MyApp: AppType = ({ Component, pageProps }) => {
+const { publicRuntimeConfig } = getConfig() as NextConfigType
+
+const App: AppType = ({ Component, pageProps }) => {
+
+  useEffect(() => {
+    if (publicRuntimeConfig.environment !== 'production') {
+      debug.enable('*,-micromark')
+    }
+  })
+
   return (
     <ApolloProvider client={getClient()}>
       <Head>
@@ -22,6 +33,8 @@ const MyApp: AppType = ({ Component, pageProps }) => {
   )
 }
 
-MyApp.getInitialProps = (context): Promise<AppInitialProps> => App.getInitialProps(context as any)
+App.getInitialProps = (): AppInitialProps => ({
+  pageProps: {},
+})
 
-export default wrapper.withRedux(MyApp)
+export default wrapper.withRedux(App)

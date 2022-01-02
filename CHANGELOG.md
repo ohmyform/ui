@@ -16,12 +16,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - new slider field type
 - new card layout for forms
 - field logic
+- add enviroment config
 
 ### Changed
 
 - combined notificationts to become more versatile
 - use exported hooks for graphql
 - disable swipe gesture
+- upgrade to nextjs 12
 
 ### Fixed
 

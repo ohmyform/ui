@@ -26,7 +26,7 @@ export const Page: React.FC<Props> = ({ design, page, next, prev }) => {
       <StyledH1 design={design} type={'question'}>
         {page.title}
       </StyledH1>
-      <StyledMarkdown design={design} type={'question'} source={page.paragraph} />
+      <StyledMarkdown design={design} type={'question'}>{page.paragraph}</StyledMarkdown>
 
       <div
         style={{

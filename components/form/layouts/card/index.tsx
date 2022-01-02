@@ -1,10 +1,12 @@
 import { Card, Form, message, Modal, Spin } from 'antd'
-import React, { useState } from 'react'
+import { darken, lighten } from 'polished'
+import React, { useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
+import { FormPublicFieldFragment } from '../../../../graphql/fragment/form.public.fragment'
 import { Omf } from '../../../omf'
 import { StyledButton } from '../../../styled/button'
-import { darken, lighten } from '../../../styled/color.change'
+import { useMath } from '../../../use.math'
 import { LayoutProps } from '../layout.props'
 import { Field } from './field'
 import { Page } from './page'
@@ -12,7 +14,7 @@ import { Page } from './page'
 type Step = 'start' | 'form' | 'end'
 
 const MyCard = styled.div<{ background: string }>`
-  background: ${(props) => darken(props.background, 10)};
+  background: ${(props) => darken(0.1, props.background)};
   height: 100%;
   min-height: 100vh;
 
@@ -20,7 +22,7 @@ const MyCard = styled.div<{ background: string }>`
 
   .ant-card {
     background: ${(props) => props.background};
-    border-color: ${(props) => lighten(props.background, 40)};
+    border-color: ${(props) => lighten(0.4, props.background)};
     width: 800px;
     margin: auto;
     max-width: 90%;
@@ -32,6 +34,8 @@ export const CardLayout: React.FC<LayoutProps> = (props) => {
   const [form] = Form.useForm()
   const [loading, setLoading] = useState(false)
   const [step, setStep] = useState<Step>(props.form.startPage.show ? 'start' : 'form')
+  const evaluator = useMath()
+  const [values, setValues] = useState({})
 
   const { design, startPage, endPage, fields } = props.form
   const { setField } = props.submission
@@ -67,6 +71,31 @@ export const CardLayout: React.FC<LayoutProps> = (props) => {
     setLoading(false)
   }
 
+  const isVisible = useCallback((field: FormPublicFieldFragment): boolean => {
+    if (!field.logic) return true
+
+    console.log('DEFAULTS', values)
+
+    return field.logic
+      .filter(logic => logic.action === 'visible')
+      .map(logic => {
+        try {
+          const r = evaluator(
+            logic.formula,
+            values
+          )
+
+          console.log('result', r)
+          return Boolean(r)
+        } catch {
+          return true
+        }
+      })
+      .reduce<boolean>((previous, current) => previous && current, true)
+  }, [
+    fields, form, values,
+  ])
+
   const render = () => {
     switch (step) {
       case 'start':
@@ -75,9 +104,29 @@ export const CardLayout: React.FC<LayoutProps> = (props) => {
       case 'form':
         return (
           <Card>
-            <Form form={form} onFinish={finish}>
+            <Form
+              form={form}
+              onFinish={finish}
+              onValuesChange={() => {
+                const defaults = {}
+
+                fields.forEach(field => {
+                  defaults[`@${field.id}`] = form.getFieldValue([field.id, 'value'])
+
+                  if (field.slug) {
+                    defaults[`$${field.slug}`] = form.getFieldValue([field.id, 'value'])
+                  }
+                })
+
+                setValues(defaults)
+              }}
+            >
               {fields.map((field, i) => {
                 if (field.type === 'hidden') {
+                  return null
+                }
+
+                if (!isVisible(field)) {
                   return null
                 }
 

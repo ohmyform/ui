@@ -108,7 +108,9 @@ export const ExportSubmissionAction: React.FC<Props> = (props) => {
       })
     }
     setLoading(false)
-  }, [form, getSubmissions, props.form, setLoading, loading])
+  }, [
+    form, getSubmissions, props.form, setLoading, loading,
+  ])
 
   return props.trigger(() => exportSubmissions(), loading)
 }

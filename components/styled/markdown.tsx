@@ -1,10 +1,11 @@
+import { lighten } from 'polished'
 import React from 'react'
-import ReactMarkdown, { ReactMarkdownProps } from 'react-markdown'
+import ReactMarkdown from 'react-markdown'
+import { ReactMarkdownOptions } from 'react-markdown/lib/react-markdown'
 import styled from 'styled-components'
 import { FormPublicDesignFragment } from '../../graphql/fragment/form.public.fragment'
-import { lighten } from './color.change'
 
-interface Props extends ReactMarkdownProps {
+interface Props extends ReactMarkdownOptions {
   type: 'question' | 'answer'
   design: FormPublicDesignFragment
 }
@@ -29,7 +30,7 @@ const Markdown = styled(ReactMarkdown)`
   }
 
   blockquote {
-    color: ${(props: Props) => lighten(getColor(props), 50)};
+    color: ${(props: Props) => lighten(0.5, getColor(props))};
     padding-left: 20px;
     border-left: 10px rgba(0, 0, 0, 0.05) solid;
   }
@@ -56,7 +57,7 @@ const Markdown = styled(ReactMarkdown)`
 
 export const StyledMarkdown: React.FC<Props> = ({ children, ...props }) => {
   return (
-    <Markdown escapeHtml={false} {...props}>
+    <Markdown {...props}>
       {children}
     </Markdown>
   )

@@ -1,14 +1,13 @@
-const withImages = require('next-images')
 const p = require('./package.json')
 
+const environment = process.env.NODE_ENV ? process.env.NODE_ENV : 'dev';
 const version = p.version;
 
-module.exports = withImages({
+module.exports = {
   poweredByHeader: true,
-  future: {
-    webpack5: true,
-  },
+  productionBrowserSourceMaps: true,
   publicRuntimeConfig: {
+    environment,
     endpoint: process.env.ENDPOINT || '/graphql',
     spa: !!process.env.SPA || false,
     mainBackground: process.env.MAIN_BACKGROUND || '#8FA2A6'
@@ -19,4 +18,4 @@ module.exports = withImages({
   env: {
     version,
   }
-})
+}

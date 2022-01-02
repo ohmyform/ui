@@ -7,12 +7,10 @@ export const useImperativeQuery: <TData, TVariables>(
 ) => (variables: TVariables) => Promise<ApolloQueryResult<TData>> = (query) => {
   const { refetch } = useQuery(query, { skip: true })
 
-  const cb = useCallback(
+  return useCallback(
     (variables) => {
       return refetch(variables)
     },
     [refetch]
   )
-
-  return cb
 }

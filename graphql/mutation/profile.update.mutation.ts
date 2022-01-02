@@ -20,7 +20,7 @@ export interface Variables {
 }
 
 export const MUTATION = gql`
-  mutation update($user: ProfileUpdateInput!) {
+  mutation updateProfile($user: ProfileUpdateInput!) {
     form: updateProfile(user: $user) {
       ...AdminProfile
     }

@@ -48,7 +48,9 @@ export const BaseDataTab: React.FC<TabPaneProps> = (props) => {
         getValueFromEvent={(e) => {
           switch (e) {
             case 'superuser':
-              return ['user', 'admin', 'superuser']
+              return [
+                'user', 'admin', 'superuser',
+              ]
             case 'admin':
               return ['user', 'admin']
             default:
@@ -70,7 +72,9 @@ export const BaseDataTab: React.FC<TabPaneProps> = (props) => {
         }}
       >
         <Select>
-          {['user', 'admin', 'superuser'].map((role) => (
+          {[
+            'user', 'admin', 'superuser',
+          ].map((role) => (
             <Select.Option value={role} key={role}>
               {role.toUpperCase()}
             </Select.Option>

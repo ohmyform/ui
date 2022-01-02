@@ -1,9 +1,9 @@
 import { InputNumber } from 'antd'
 import { InputNumberProps } from 'antd/lib/input-number'
+import { transparentize } from 'polished'
 import React from 'react'
 import styled from 'styled-components'
 import { FormPublicDesignFragment } from '../../graphql/fragment/form.public.fragment'
-import { transparentize } from './color.change'
 
 interface Props extends InputNumberProps {
   design: FormPublicDesignFragment
@@ -38,7 +38,7 @@ const Field = styled(InputNumber)`
     color: ${(props: Props) => props.design.colors.answer};
 
     ::placeholder {
-      color: ${(props: Props) => transparentize(props.design.colors.answer, 60)};
+      color: ${(props: Props) => transparentize(0.6, props.design.colors.answer)};
     }
   }
 

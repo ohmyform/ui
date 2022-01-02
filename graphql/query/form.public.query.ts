@@ -11,7 +11,7 @@ interface Variables {
 }
 
 const QUERY = gql`
-  query form($id: ID!) {
+  query getFormById($id: ID!) {
     form: getFormById(id: $id) {
       ...Form
     }

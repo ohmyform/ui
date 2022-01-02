@@ -31,66 +31,66 @@ const AuthFooterInner: React.FC<Props> = (props) => {
     <footer className={scss.footer}>
       {props.me
         ? [
-            <span style={{ color: '#FFF' }} key={'user'}>
+          <span style={{ color: '#FFF' }} key={'user'}>
               Hi, {props.me.username}
-            </span>,
-            props.me.roles.includes('admin') && (
-              <Link key={'admin'} href={'/admin'}>
-                <Button
-                  type={'link'}
-                  style={{
-                    color: '#FFF',
-                  }}
-                >
-                  {t('admin')}
-                </Button>
-              </Link>
-            ),
-            <Link key={'profile'} href={'/admin/profile'}>
+          </span>,
+          props.me.roles.includes('admin') && (
+            <Link key={'admin'} href={'/admin'}>
               <Button
                 type={'link'}
                 style={{
                   color: '#FFF',
                 }}
               >
-                {t('profile')}
+                {t('admin')}
               </Button>
-            </Link>,
+            </Link>
+          ),
+          <Link key={'profile'} href={'/admin/profile'}>
             <Button
-              key={'logout'}
               type={'link'}
-              onClick={logout}
               style={{
                 color: '#FFF',
               }}
             >
-              {t('logout')}
-            </Button>,
-          ]
+              {t('profile')}
+            </Button>
+          </Link>,
+          <Button
+            key={'logout'}
+            type={'link'}
+            onClick={logout}
+            style={{
+              color: '#FFF',
+            }}
+          >
+            {t('logout')}
+          </Button>,
+        ]
         : [
-            <Link href={'/login'} key={'login'}>
+          <Link href={'/login'} key={'login'}>
+            <Button
+              type={'link'}
+              style={{
+                color: '#FFF',
+              }}
+            >
+              {t('login')}
+            </Button>
+          </Link>,
+          !loading && !data?.disabledSignUp.value && (
+            <Link href={'/register'} key={'register'}>
               <Button
                 type={'link'}
                 style={{
                   color: '#FFF',
                 }}
               >
-                {t('login')}
+                {t('register')}
               </Button>
-            </Link>,
-            !loading && !data?.disabledSignUp.value && (
-              <Link href={'/register'} key={'register'}>
-                <Button
-                  type={'link'}
-                  style={{
-                    color: '#FFF',
-                  }}
-                >
-                  {t('register')}
-                </Button>
-              </Link>
-            ),
-          ]}
+            </Link>
+          ),
+        ]}
       <div style={{ flex: 1 }} />
       <Select
         bordered={false}

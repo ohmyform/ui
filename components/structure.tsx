@@ -1,11 +1,13 @@
 import { CaretDownOutlined, UserOutlined } from '@ant-design/icons'
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons/lib'
 import { Alert, Dropdown, Layout, Menu, PageHeader, Select, Space, Spin, Tag } from 'antd'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { CSSProperties, FunctionComponent } from 'react'
 import GitHubButton from 'react-github-button'
 import { useTranslation } from 'react-i18next'
+import LogoWhitePng from '../assets/images/logo_white.png'
 import { useMeQuery } from '../graphql/query/me.query'
 import { languages } from '../i18n'
 import { sideMenu, SideMenuElement } from './sidemenu'
@@ -86,7 +88,7 @@ export const Structure: FunctionComponent<Props> = (props) => {
                 <ItemGroup
                   key={element.key}
                   title={
-                    <div
+                    <Space
                       style={{
                         textTransform: 'uppercase',
                         paddingTop: 16,
@@ -95,8 +97,10 @@ export const Structure: FunctionComponent<Props> = (props) => {
                       }}
                     >
                       {element.icon}
-                      {t(element.name)}
-                    </div>
+                      <div>
+                        {t(element.name)}
+                      </div>
+                    </Space>
                   }
                 >
                   {buildMenu(element.items)}
@@ -108,10 +112,12 @@ export const Structure: FunctionComponent<Props> = (props) => {
               <SubMenu
                 key={element.key}
                 title={
-                  <span>
+                  <Space>
                     {element.icon}
-                    {t(element.name)}
-                  </span>
+                    <div>
+                      {t(element.name)}
+                    </div>
+                  </Space>
                 }
               >
                 {buildMenu(element.items)}
@@ -128,8 +134,12 @@ export const Structure: FunctionComponent<Props> = (props) => {
               }}
               key={element.key}
             >
-              {element.icon}
-              {t(element.name)}
+              <Space>
+                {element.icon}
+                <div>
+                  {t(element.name)}
+                </div>
+              </Space>
             </Menu.Item>
           )
         }
@@ -148,7 +158,7 @@ export const Structure: FunctionComponent<Props> = (props) => {
           paddingLeft: 0,
         }}
       >
-        <div
+        <Space
           style={{
             float: 'left',
             color: '#FFF',
@@ -162,13 +172,18 @@ export const Structure: FunctionComponent<Props> = (props) => {
             onClick: () => setSidebar(!sidebar),
           })}
 
-          <img
-            src={require('assets/images/logo_white_small.png') as string}
-            height={30}
-            style={{ marginRight: 16 }}
-            alt={'OhMyForm'}
-          />
-        </div>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+          }}>
+            <Image
+              src={LogoWhitePng.src}
+              width={1608 / 12}
+              height={530 / 12}
+              alt={'OhMyForm'}
+            />
+          </div>
+        </Space>
         <div style={{ float: 'right', display: 'flex', height: '100%' }}>
           <Dropdown
             overlay={
@@ -218,9 +233,9 @@ export const Structure: FunctionComponent<Props> = (props) => {
             style={{ flex: 1 }}
             defaultSelectedKeys={['1']}
             selectedKeys={selected}
-            onSelect={(s): void => setSelected(s.keyPath as string[])}
+            onSelect={(s): void => setSelected(s.keyPath )}
             openKeys={open}
-            onOpenChange={(open): void => setOpen(open as string[])}
+            onOpenChange={(open): void => setOpen(open )}
           >
             {buildMenu(sideMenu)}
           </Menu>
