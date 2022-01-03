@@ -12,6 +12,7 @@ export interface SubmissionSetFieldMutationVariables {
   field: {
     token: string
     field: string
+    data: string
   }
 }
 
