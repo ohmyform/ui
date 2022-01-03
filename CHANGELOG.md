@@ -32,6 +32,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - fixes for hide contrib setting
 - fix problem with node-prune on production build
 - translation for prev / continue during form submission
+- reload form list after adding new one (https://github.com/ohmyform/ohmyform/issues/139)
 
 ### Security
 

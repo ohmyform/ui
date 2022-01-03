@@ -15,7 +15,7 @@ export interface FormPagerFragment {
 }
 
 export const FORM_PAGER_FRAGMENT = gql`
-  fragment Form on Form {
+  fragment PagerForm on Form {
     id
     created
     lastModified

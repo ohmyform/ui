@@ -26,5 +26,20 @@ const MUTATION = gql`
 `
 
 export const useFormCreateMutation = (
-  data?: MutationHookOptions<Data, Variables>
-): MutationTuple<Data, Variables> => useMutation<Data, Variables>(MUTATION, data)
+  options: MutationHookOptions<Data, Variables> = {}
+): MutationTuple<Data, Variables> => {
+  const oldUpdate = options.update
+
+  options.update = (cache, result, options) => {
+    cache.evict({
+      fieldName: 'listForms',
+    })
+    cache.gc()
+
+    if (oldUpdate) {
+      oldUpdate(cache, result, options)
+    }
+  }
+
+  return useMutation<Data, Variables>(MUTATION, options)
+}

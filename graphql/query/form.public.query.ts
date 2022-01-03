@@ -13,7 +13,7 @@ interface Variables {
 const QUERY = gql`
   query getFormById($id: ID!) {
     form: getFormById(id: $id) {
-      ...Form
+      ...PublicForm
     }
   }
 

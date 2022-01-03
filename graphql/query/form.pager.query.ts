@@ -21,7 +21,7 @@ const QUERY = gql`
   query listForms($start: Int, $limit: Int) {
     pager: listForms(start: $start, limit: $limit) {
       entries {
-        ...Form
+        ...PagerForm
       }
       total
       limit

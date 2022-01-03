@@ -80,7 +80,7 @@ export interface FormPublicFragment {
 }
 
 export const FORM_PUBLIC_FRAGMENT = gql`
-  fragment Form on Form {
+  fragment PublicForm on Form {
     id
     title
     language
