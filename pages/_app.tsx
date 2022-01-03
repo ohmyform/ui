@@ -22,6 +22,21 @@ const App: AppType = ({ Component, pageProps }) => {
     }
   })
 
+  useEffect(() => {
+    if (!/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+      return
+    }
+
+    const resize = () => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+
+    window.addEventListener('resize', resize)
+
+    return () => window.removeEventListener('resize', resize)
+  })
+
   return (
     <ApolloProvider client={getClient()}>
       <Head>

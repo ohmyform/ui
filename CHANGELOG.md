@@ -34,6 +34,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - fix problem with node-prune on production build
 - translation for prev / continue during form submission
 - reload form list after adding new one (https://github.com/ohmyform/ohmyform/issues/139)
+- android screen size fix (https://github.com/ohmyform/ohmyform/issues/114)
 
 ### Security
 

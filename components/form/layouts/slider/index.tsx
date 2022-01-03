@@ -46,10 +46,9 @@ export const SliderLayout: React.FC<LayoutProps> = (props) => {
 
   return (
     <div
+      className={'swiper-container'}
       style={{
         background: design.colors.background,
-        overflow: 'hidden',
-        height: '100vh',
       }}
     >
       <Omf />

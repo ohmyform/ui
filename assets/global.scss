@@ -25,12 +25,18 @@
   }
 }
 
+.full-height {
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+}
+
 .ant-spin-nested-loading > div > .ant-spin {
   max-height: unset;
 }
 
 .swiper-container {
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
 
   .swiper-wrapper {
     position: fixed

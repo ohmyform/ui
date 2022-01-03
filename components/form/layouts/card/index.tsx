@@ -17,6 +17,7 @@ const MyCard = styled.div<{ background: string }>`
   background: ${(props) => darken(0.1, props.background)};
   height: 100%;
   min-height: 100vh;
+  min-height: calc(var(--vh, 1vh) * 100);
 
   padding: 32px;
 
