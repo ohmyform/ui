@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - new card layout for forms
 - field logic
 - add enviroment config
+- anonymous form submissions (fixes https://github.com/ohmyform/ohmyform/issues/108)
 
 ### Changed
 

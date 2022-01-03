@@ -56,6 +56,14 @@ export const BaseDataTab: React.FC<TabPaneProps> = (props) => {
       >
         <Switch />
       </Form.Item>
+
+      <Form.Item
+        label={t('form:baseData.anonymousSubmission')}
+        name={['form', 'anonymousSubmission']}
+        valuePropName={'checked'}
+      >
+        <Switch />
+      </Form.Item>
     </Tabs.TabPane>
   )
 }

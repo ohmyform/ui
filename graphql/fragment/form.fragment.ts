@@ -84,6 +84,7 @@ export interface FormFragment {
   lastModified?: string
   language: string
   showFooter: boolean
+  anonymousSubmission: boolean
   isLive: boolean
   fields: FormFieldFragment[]
   hooks: FormHookFragment[]
@@ -116,6 +117,7 @@ export const FORM_FRAGMENT = gql`
     lastModified
     language
     showFooter
+    anonymousSubmission
     isLive
 
     hooks {
