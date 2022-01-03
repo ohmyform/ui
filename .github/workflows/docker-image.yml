@@ -31,7 +31,6 @@ jobs:
           flavor: |
             latest=true
           tags: |
-            # minimal
             type=semver,pattern={{major}}
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{version}}
