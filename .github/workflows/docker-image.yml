@@ -28,9 +28,8 @@ jobs:
         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
         with:
           images: ohmyform/ui
-          flavor: |
-            latest=true
           tags: |
+            type=raw,value=latest
             type=semver,pattern={{major}}
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{version}}
