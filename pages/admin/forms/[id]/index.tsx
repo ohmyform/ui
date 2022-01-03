@@ -55,7 +55,7 @@ const Index: NextPage = () => {
     }
   }
 
-  const { data, loading } = useFormQuery({
+  const { data, loading, error } = useFormQuery({
     variables: {
       id: router.query.id as string,
     },
@@ -114,6 +114,21 @@ const Index: NextPage = () => {
     }
 
     setSaving(false)
+  }
+
+  if (error) {
+    return (
+      <Structure
+        title={t('form:notFound')}
+        selected={'forms'}
+        breadcrumbs={[
+          { href: '/admin', name: t('admin:home') },
+          { href: '/admin/forms', name: t('admin:forms') },
+        ]}
+      >
+        Not Found
+      </Structure>
+    )
   }
 
   return (
