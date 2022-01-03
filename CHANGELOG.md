@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - field logic
 - add enviroment config
 - anonymous form submissions (fixes https://github.com/ohmyform/ohmyform/issues/108)
+- checkbox field type (fixed https://github.com/ohmyform/ohmyform/issues/138)
 
 ### Changed
 

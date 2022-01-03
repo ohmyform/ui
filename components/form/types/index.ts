@@ -1,4 +1,5 @@
 import React from 'react'
+import { CheckboxType } from './checkbox.type'
 import { DateType } from './date.type'
 import { DropdownType } from './dropdown.type'
 import { EmailType } from './email.type'
@@ -17,6 +18,7 @@ export const fieldTypes: {
 } = {
   date: DateType,
   dropdown: DropdownType,
+  checkbox: CheckboxType,
   email: EmailType,
   link: LinkType,
   number: NumberType,

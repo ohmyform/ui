@@ -30,9 +30,20 @@ export const SubmissionValues: React.FC<Props> = (props) => {
     {
       title: t('submission:value'),
       render(_, row) {
+        console.log('row.value', row.value)
+
         try {
           const data = JSON.parse(row.value) as { value: string }
 
+          if (Array.isArray(data.value)) {
+            return (
+              <ul>
+                {data.value.map(r => (
+                  <li key={r}>{JSON.stringify(r)}</li>
+                ))}
+              </ul>
+            )
+          }
           return data.value
         } catch (e) {
           return row.value
