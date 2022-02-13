@@ -28,7 +28,7 @@
     "isomorphic-fetch": "^3.0.0",
     "jimp": "^0.16.1",
     "mathjs": "^10.0.2",
-    "next": "^12.0.7",
+    "next": "^12.0.9",
     "next-compose-plugins": "^2.2.1",
     "next-optimized-images": "^2.6.2",
     "next-redux-wrapper": "^7.0.5",
