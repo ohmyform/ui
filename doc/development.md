@@ -30,10 +30,10 @@ coming into the system will then be rendered on the server. (great for SEO)
 ### GraphQL Path
 
 Per default the graphql endpoint is expected at `/graphql` on the same host as the frontend.
-To modify this pass the environment variable API_HOST with the parameter you need.
+To modify this pass the environment variable ENDPOINT with the parameter you need.
 
 With a local backend you could start ie the dev server with 
-`API_HOST=http://localhost:4100/graphql yarn start:dev`
+`ENDPOINT=http://localhost:4100/graphql yarn start:dev`
 
 
 ## Used Tools / Libraries

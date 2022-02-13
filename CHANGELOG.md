@@ -36,6 +36,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - reload form list after adding new one (https://github.com/ohmyform/ohmyform/issues/139)
 - android screen size fix (https://github.com/ohmyform/ohmyform/issues/114)
 - sending finish mutation (https://github.com/ohmyform/ui/pull/67)
+- fix dev documentation (https://github.com/ohmyform/ui/issues/65)
 
 ### Security
 
