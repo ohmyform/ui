@@ -2,11 +2,9 @@ import { Alert, Layout } from 'antd'
 import { AuthFooter } from 'components/auth/footer'
 import { GetStaticProps, NextPage } from 'next'
 import getConfig from 'next/config'
-import Image from 'next/image'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import LogoWhitePng from '../assets/images/logo_white.png'
 import { LoadingPage } from '../components/loading.page'
 import { Omf } from '../components/omf'
 import { useStatusQuery } from '../graphql/query/status.query'
@@ -70,12 +68,11 @@ const Index: NextPage = () => {
           textAlign: 'center',
         }}
       >
-        <Image
+        <img
           alt={'OhMyForm'}
-          layout={'responsive'}
+          src={require('../assets/images/logo_white.png?resize&size=512')}
           width={1608 / 4}
           height={530 / 4}
-          src={LogoWhitePng.src}
         />
       </div>
 

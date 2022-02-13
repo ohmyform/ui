@@ -5,12 +5,10 @@ import { AuthLayout } from 'components/auth/layout'
 import { setAuth } from 'components/with.auth'
 import { RegisterUserData, useRegisterMutation } from 'graphql/mutation/register.mutation'
 import { NextPage } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import LogoWhitePng from '../assets/images/logo_white.png'
 import { ErrorPage } from '../components/error.page'
 import { Omf } from '../components/omf'
 import { useSettingsQuery } from '../graphql/query/settings.query'
@@ -77,11 +75,10 @@ const Register: NextPage = () => {
             marginBottom: 16,
           }}
         >
-          <Image
-            src={LogoWhitePng.src}
+          <img
+            style={{ maxWidth: '100%' }}
+            src={require('../assets/images/logo_white.png?resize&size=256')}
             alt={'OhMyForm'}
-            width={1608 / 4}
-            height={530 / 4}
           />
         </div>
 

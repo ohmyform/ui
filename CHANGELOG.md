@@ -37,6 +37,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - android screen size fix (https://github.com/ohmyform/ohmyform/issues/114)
 - sending finish mutation (https://github.com/ohmyform/ui/pull/67)
 - fix dev documentation (https://github.com/ohmyform/ui/issues/65)
+- remove next/image as it does not work with static exports (https://github.com/ohmyform/ohmyform/issues/154)
 
 ### Security
 

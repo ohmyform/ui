@@ -1,13 +1,11 @@
 import { CaretDownOutlined, UserOutlined } from '@ant-design/icons'
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons/lib'
 import { Alert, Dropdown, Layout, Menu, PageHeader, Select, Space, Spin, Tag } from 'antd'
-import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { CSSProperties, FunctionComponent } from 'react'
 import GitHubButton from 'react-github-button'
 import { useTranslation } from 'react-i18next'
-import LogoWhitePng from '../assets/images/logo_white.png'
 import { useMeQuery } from '../graphql/query/me.query'
 import { languages } from '../i18n'
 import { sideMenu, SideMenuElement } from './sidemenu'
@@ -176,10 +174,8 @@ export const Structure: FunctionComponent<Props> = (props) => {
             display: 'flex',
             alignItems: 'center',
           }}>
-            <Image
-              src={LogoWhitePng.src}
-              width={1608 / 12}
-              height={530 / 12}
+            <img
+              src={require('../assets/images/logo_white.png?resize&size=256')}
               alt={'OhMyForm'}
             />
           </div>
