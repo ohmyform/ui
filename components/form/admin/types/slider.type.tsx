@@ -1,5 +1,4 @@
 import { Form, InputNumber, Slider } from 'antd'
-import FormItemContext from 'rc-field-form/lib/FieldContext'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { AdminFieldTypeProps } from './type.props'
@@ -11,11 +10,12 @@ export const SliderType: React.FC<AdminFieldTypeProps> = (props) => {
     <div>
       <Form.Item shouldUpdate noStyle>
         {(form) => {
-          const context = React.useContext(FormItemContext)
+          //const prefix = React.useContext(FormItemContext).prefixName
+          const prefix = (form as any).prefixName
 
           const getValue = (name, defaultValue: number): number => {
             const current: unknown = form.getFieldValue([
-              ...context.prefixName,
+              ...prefix,
               props.field.name as string,
               'optionKeys',
               name,
@@ -51,7 +51,9 @@ export const SliderType: React.FC<AdminFieldTypeProps> = (props) => {
       <Form.Item
         label={t('type:slider.min')}
         name={[
-props.field.name as string, 'optionKeys', 'min',
+          props.field.name as string,
+          'optionKeys',
+          'min',
         ]}
         labelCol={{ span: 6 }}
         initialValue={0}
@@ -66,7 +68,9 @@ props.field.name as string, 'optionKeys', 'min',
       <Form.Item
         label={t('type:slider.max')}
         name={[
-props.field.name as string, 'optionKeys', 'max',
+          props.field.name as string,
+          'optionKeys',
+          'max',
         ]}
         labelCol={{ span: 6 }}
         initialValue={100}
@@ -81,7 +85,9 @@ props.field.name as string, 'optionKeys', 'max',
       <Form.Item
         label={t('type:slider.step')}
         name={[
-props.field.name as string, 'optionKeys', 'step',
+          props.field.name as string,
+          'optionKeys',
+          'step',
         ]}
         labelCol={{ span: 6 }}
         initialValue={1}
