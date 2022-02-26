@@ -175,6 +175,7 @@ export const Structure: FunctionComponent<Props> = (props) => {
             alignItems: 'center',
           }}>
             <img
+              height={40}
               src={require('../assets/images/logo_white.png?resize&size=256')}
               alt={'OhMyForm'}
             />

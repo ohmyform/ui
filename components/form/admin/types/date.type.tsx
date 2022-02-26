@@ -21,7 +21,9 @@ export const DateType: React.FC<AdminFieldTypeProps> = ({ field }) => {
       <Form.Item
         label={t('type:date.min')}
         name={[
-field.name as string, 'optionKeys', 'min',
+          field.name as string,
+          'optionKeys',
+          'min',
         ]}
         labelCol={{ span: 6 }}
         getValueFromEvent={(e: Moment) => e.format('YYYY-MM-DD')}
@@ -33,7 +35,9 @@ field.name as string, 'optionKeys', 'min',
       <Form.Item
         label={t('type:date.max')}
         name={[
-field.name as string, 'optionKeys', 'max',
+          field.name as string,
+          'optionKeys',
+          'max',
         ]}
         labelCol={{ span: 6 }}
         getValueFromEvent={(e: Moment) => e.format('YYYY-MM-DD')}

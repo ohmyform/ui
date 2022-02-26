@@ -3,7 +3,7 @@ MAINTAINER OhMyForm <admin@ohmyform.com>
 
 WORKDIR /usr/src/app
 
-RUN apk update && apk add curl bash && rm -rf /var/cache/apk/*
+RUN apk --update --no-cache add curl bash g++ make libpng-dev
 
 # install node-prune (https://github.com/tj/node-prune)
 RUN curl -sfL https://install.goreleaser.com/github.com/tj/node-prune.sh | bash -s -- -b /usr/local/bin
