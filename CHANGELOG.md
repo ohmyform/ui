@@ -38,6 +38,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - sending finish mutation (https://github.com/ohmyform/ui/pull/67)
 - fix dev documentation (https://github.com/ohmyform/ui/issues/65)
 - remove next/image as it does not work with static exports (https://github.com/ohmyform/ohmyform/issues/154)
+- switch back to form.prefixName (https://github.com/ohmyform/ohmyform/issues/150)
+- upgrade all packages to latest versions
 
 ### Security
 
