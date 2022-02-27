@@ -9,7 +9,7 @@ export const TextType: React.FC<AdminFieldTypeProps> = (props) => {
   return (
     <Form.Item
       label={t('type:textfield:default')}
-      name={[props.field.name as string, 'value']}
+      name={[props.field.name as string, 'defaultValue']}
       labelCol={{ span: 6 }}
     >
       <Input />

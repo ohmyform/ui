@@ -31,6 +31,9 @@ const Submissions: NextPage = () => {
       form: router.query.id as string,
       limit: pagination.pageSize,
       start: Math.max(0, pagination.current - 1) * pagination.pageSize || 0,
+      filter: {
+        excludeEmpty: true,
+      },
     },
     onCompleted: ({ pager, form }) => {
       setPagination({

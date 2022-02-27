@@ -10,7 +10,7 @@ export const CheckboxType: React.FC<AdminFieldTypeProps> = (props) => {
     <div>
       <Form.Item
         label={t('type:checkbox:default')}
-        name={[props.field.name as string, 'value']}
+        name={[props.field.name as string, 'defaultValue']}
         labelCol={{ span: 6 }}
       >
         <Input />

@@ -185,9 +185,9 @@ export const Structure: FunctionComponent<Props> = (props) => {
           <Dropdown
             overlay={
               <Menu>
-                <Menu.Item onClick={() => router.push('/admin/profile')}>Profile</Menu.Item>
-                <Menu.Divider />
-                <Menu.Item onClick={signOut}>Logout</Menu.Item>
+                <Menu.Item key={'profile'} onClick={() => router.push('/admin/profile')}>Profile</Menu.Item>
+                <Menu.Divider key={'d1'} />
+                <Menu.Item key={'logout'} onClick={signOut}>Logout</Menu.Item>
               </Menu>
             }
             onVisibleChange={setUserMenu}
@@ -237,7 +237,7 @@ export const Structure: FunctionComponent<Props> = (props) => {
             {buildMenu(sideMenu)}
           </Menu>
           <Menu mode="inline" selectable={false}>
-            <Menu.Item className={'language-selector'}>
+            <Menu.Item className={'language-selector'} key={'language-selector'}>
               <Select
                 bordered={false}
                 value={i18n.language.replace(/-.*/, '')}
@@ -253,10 +253,10 @@ export const Structure: FunctionComponent<Props> = (props) => {
                 ))}
               </Select>
             </Menu.Item>
-            <Menu.Item style={{ display: 'flex', alignItems: 'center' }}>
+            <Menu.Item style={{ display: 'flex', alignItems: 'center' }} key={'github'}>
               <GitHubButton type="stargazers" namespace="ohmyform" repo="ohmyform" />
             </Menu.Item>
-            <Menu.Item>
+            <Menu.Item key={'version'}>
               Version: <Tag color="gold">{process.env.version}</Tag>
             </Menu.Item>
           </Menu>

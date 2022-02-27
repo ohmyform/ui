@@ -1,10 +1,13 @@
 import { Form } from 'antd'
 import dayjs, { Dayjs } from 'dayjs'
+import debug from 'debug'
 import moment, { Moment } from 'moment'
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { StyledDateInput } from '../../styled/date.input'
 import { FieldTypeProps } from './type.props'
+
+const logger = debug('field/date')
 
 export const DateType: React.FC<FieldTypeProps> = ({ field, design, urlValue, focus }) => {
   const [min, setMin] = useState<Dayjs>()
@@ -24,12 +27,16 @@ export const DateType: React.FC<FieldTypeProps> = ({ field, design, urlValue, fo
 
   let initialValue: Moment = undefined
 
-  if (field.value) {
-    initialValue = moment(field.value)
+  if (field.defaultValue) {
+    try {
+      initialValue = moment(JSON.parse(field.defaultValue))
+    } catch (e) {
+      logger('invalid default value %O', e)
+    }
   }
 
   if (urlValue) {
-    initialValue = moment(field.value)
+    initialValue = moment(urlValue)
   }
 
   return (

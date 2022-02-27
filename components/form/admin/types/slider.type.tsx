@@ -35,11 +35,8 @@ export const SliderType: React.FC<AdminFieldTypeProps> = (props) => {
           return (
             <Form.Item
               label={t('type:slider.default')}
-              name={[props.field.name as string, 'value']}
+              name={[props.field.name as string, 'defaultValue']}
               labelCol={{ span: 6 }}
-              getValueFromEvent={(value: number) =>
-                typeof value === 'number' ? value.toFixed(2) : value
-              }
               getValueProps={(value: string) => ({ value: value ? parseFloat(value) : undefined })}
             >
               <Slider min={min} max={max} step={step} dots={(max - min) / step <= 10} />
@@ -57,10 +54,6 @@ export const SliderType: React.FC<AdminFieldTypeProps> = (props) => {
         ]}
         labelCol={{ span: 6 }}
         initialValue={0}
-        getValueFromEvent={(value: number) =>
-          typeof value === 'number' ? value.toFixed(2) : value
-        }
-        getValueProps={(e: string) => ({ value: e ? parseFloat(e) : undefined })}
       >
         <InputNumber />
       </Form.Item>
@@ -74,10 +67,6 @@ export const SliderType: React.FC<AdminFieldTypeProps> = (props) => {
         ]}
         labelCol={{ span: 6 }}
         initialValue={100}
-        getValueFromEvent={(value: number) =>
-          typeof value === 'number' ? value.toFixed(2) : value
-        }
-        getValueProps={(e: string) => ({ value: e ? parseFloat(e) : undefined })}
       >
         <InputNumber />
       </Form.Item>
@@ -91,10 +80,6 @@ export const SliderType: React.FC<AdminFieldTypeProps> = (props) => {
         ]}
         labelCol={{ span: 6 }}
         initialValue={1}
-        getValueFromEvent={(value: number) =>
-          typeof value === 'number' ? value.toFixed(2) : value
-        }
-        getValueProps={(e: string) => ({ value: e ? parseFloat(e) : undefined })}
       >
         <InputNumber />
       </Form.Item>

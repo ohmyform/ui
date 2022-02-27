@@ -10,11 +10,9 @@ export const YesNoType: React.FC<AdminFieldTypeProps> = (props) => {
     <div>
       <Form.Item
         label={t('type:yes_no:default')}
-        name={[props.field.name as string, 'value']}
+        name={[props.field.name as string, 'defaultValue']}
         labelCol={{ span: 6 }}
         valuePropName={'checked'}
-        getValueFromEvent={(checked: boolean) => (checked ? '1' : '')}
-        getValueProps={(e: string) => ({ checked: !!e })}
       >
         <Switch />
       </Form.Item>

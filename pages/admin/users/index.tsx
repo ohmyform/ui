@@ -85,7 +85,7 @@ const Index: NextPage = () => {
       render(_, row) {
         return (
           <Space direction={width < 600 ? 'vertical' : 'horizontal'}>
-            <Link href={'/admin/users/[id]'} as={`/admin/users/${row.id}`}>
+            <Link href={`/admin/users/${row.id}`} passHref>
               <Button type={'primary'}>
                 <EditOutlined />
               </Button>

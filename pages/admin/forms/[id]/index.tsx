@@ -9,6 +9,7 @@ import { NotificationsTab } from 'components/form/admin/notifications.tab'
 import { StartPageTab } from 'components/form/admin/start.page.tab'
 import { Structure } from 'components/structure'
 import { withAuth } from 'components/with.auth'
+import debug from 'debug'
 import { useFormUpdateMutation } from 'graphql/mutation/form.update.mutation'
 import { NextPage } from 'next'
 import Link from 'next/link'
@@ -21,6 +22,8 @@ import {
   FormFieldOptionKeysFragment,
 } from '../../../../graphql/fragment/form.fragment'
 import { Data, useFormQuery } from '../../../../graphql/query/form.query'
+
+const logger = debug('page/admin/form/[id]')
 
 const Index: NextPage = () => {
   const { t } = useTranslation()
@@ -40,12 +43,17 @@ const Index: NextPage = () => {
 
             field.options.forEach((option) => {
               if (option.key) {
-                keys[option.key] = option.value
+                try {
+                  keys[option.key] = JSON.parse(option.value)
+                } catch (e) {
+                  logger('invalid option value %O', e)
+                }
               }
             })
 
             return {
               ...field,
+              defaultValue: field.defaultValue ? JSON.parse(field.defaultValue) : null,
               options: field.options.filter((option) => !option.key),
               optionKeys: keys,
             }
@@ -76,13 +84,13 @@ const Index: NextPage = () => {
 
         if (optionKeys) {
           Object.keys(optionKeys).forEach((key) => {
-            if (!optionKeys[key]) {
+            if (optionKeys[key] === undefined) {
               return
             }
 
             options.push({
               id: null, // TODO improve this
-              value: optionKeys[key],
+              value: JSON.stringify(optionKeys[key]),
               key,
             })
           })
@@ -90,6 +98,7 @@ const Index: NextPage = () => {
 
         return {
           ...field,
+          defaultValue: field.defaultValue !== null ? JSON.stringify(field.defaultValue) : null,
           options,
           idx: index,
         }

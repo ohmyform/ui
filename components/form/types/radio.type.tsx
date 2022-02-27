@@ -1,16 +1,23 @@
 import { Form, Radio } from 'antd'
+import debug from 'debug'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { StyledRadio } from '../../styled/radio'
 import { FieldTypeProps } from './type.props'
+
+const logger = debug('field/radio')
 
 export const RadioType: React.FC<FieldTypeProps> = ({ field, design, urlValue }) => {
   const { t } = useTranslation()
 
   let initialValue: string = undefined
 
-  if (field.value) {
-    initialValue = field.value
+  if (field.defaultValue) {
+    try {
+      initialValue = JSON.parse(field.defaultValue)
+    } catch (e) {
+      logger('invalid default value %O', e)
+    }
   }
 
   if (urlValue) {

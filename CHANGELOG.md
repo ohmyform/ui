@@ -16,7 +16,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - new slider field type
 - new card layout for forms
 - field logic
-- add enviroment config
+- add environment config
 - anonymous form submissions (fixes https://github.com/ohmyform/ohmyform/issues/108)
 - checkbox field type (fixed https://github.com/ohmyform/ohmyform/issues/138)
 
@@ -26,6 +26,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - use exported hooks for graphql
 - disable swipe gesture
 - upgrade to nextjs 12
+- change default value from value to defaultValue
+- handle options and values as json correctly
+- exclude empty submissions per default (https://github.com/ohmyform/ohmyform/issues/153)
 
 ### Fixed
 
@@ -153,11 +156,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 
 - `export` uses now spa mode for initial loading screen
+- change value to defaultValue for initial form
 
 ### Fixed
 
-- [OMF#93](https://github.com/ohmyform/ohmyform/issues/93) dropdown options are not saved
+- dropdown options are not saved (https://github.com/ohmyform/ohmyform/issues/93)
 - redirect attempts on static export
+- date can now be prefilled by url
  
 ## [0.9.2] - 2020-06-04
 

@@ -46,7 +46,7 @@ export interface FormFieldFragment {
   type: string
   description: string
   required: boolean
-  value: string
+  defaultValue?: string
 
   options: FormFieldOptionFragment[]
   optionKeys?: FormFieldOptionKeysFragment
@@ -135,7 +135,7 @@ export const FORM_FRAGMENT = gql`
       type
       description
       required
-      value
+      defaultValue
 
       options {
         id

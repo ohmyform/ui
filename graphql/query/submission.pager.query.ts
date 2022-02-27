@@ -20,15 +20,19 @@ interface Variables {
   form: string
   start?: number
   limit?: number
+  filter?: {
+    finished?: boolean
+    excludeEmpty?: boolean
+  }
 }
 
 const QUERY = gql`
-  query listSubmissions($form: ID!, $start: Int, $limit: Int) {
+  query listSubmissions($form: ID!, $start: Int, $limit: Int, $filter: SubmissionPagerFilterInput) {
     form: getFormById(id: $form) {
       ...PagerForm
     }
 
-    pager: listSubmissions(form: $form, start: $start, limit: $limit) {
+    pager: listSubmissions(form: $form, start: $start, limit: $limit, filter: $filter) {
       entries {
         ...Submission
       }

@@ -85,11 +85,11 @@ const Index: NextPage = () => {
         }
 
         return (
-          <Link href={'/admin/users/[id]'} as={`/admin/users/${user.id}`}>
-            <Tooltip title={user.email}>
+          <Tooltip title={user.email}>
+            <Link href={`/admin/users/${user.id}`} passHref>
               <Button type={'dashed'}>{user.username}</Button>
-            </Tooltip>
-          </Link>
+            </Link>
+          </Tooltip>
         )
       },
       responsive: ['lg'],
@@ -124,15 +124,15 @@ const Index: NextPage = () => {
       render(_, row) {
         return (
           <Space direction={width < 600 ? 'vertical' : 'horizontal'}>
-            <Link href={'/admin/forms/[id]/submissions'} as={`/admin/forms/${row.id}/submissions`}>
-              <Tooltip title={'Show Submissions'}>
+            <Tooltip title={'Show Submissions'}>
+              <Link href={`/admin/forms/${row.id}/submissions`} passHref>
                 <Button>
                   <UnorderedListOutlined />
                 </Button>
-              </Tooltip>
-            </Link>
+              </Link>
+            </Tooltip>
 
-            <Link href={'/admin/forms/[id]'} as={`/admin/forms/${row.id}`}>
+            <Link href={`/admin/forms/${row.id}`} passHref>
               <Button type={'primary'}>
                 <EditOutlined />
               </Button>

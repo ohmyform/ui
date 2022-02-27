@@ -37,7 +37,7 @@ export const LogicBlock: React.FC<Props> = ({
         labelCol={{ span: 6 }}
         label={'Formula'}
         rules={[{ required: true, message: 'combine other fields' }]}
-        extra={'Save form to get new IDs and slugs'}
+        extra={'Save form to get new @IDs and $slugs. (example: $slug < 21 or @id = 42)'}
       >
         <Mentions rows={1}>
           {fields.map((field) => (
@@ -54,10 +54,10 @@ export const LogicBlock: React.FC<Props> = ({
             const defaults = {}
 
             fields.forEach((field) => {
-              defaults[`@${field.id}`] = field.value
+              defaults[`@${field.id}`] = field.defaultValue
 
               if (field.slug) {
-                defaults[`$${field.slug}`] = field.value
+                defaults[`$${field.slug}`] = field.defaultValue
               }
             })
 

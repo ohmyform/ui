@@ -10,7 +10,7 @@ export const EmailType: React.FC<AdminFieldTypeProps> = (props) => {
     <div>
       <Form.Item
         label={t('type:email.default')}
-        name={[props.field.name as string, 'value']}
+        name={[props.field.name as string, 'defaultValue']}
         rules={[{ type: 'email', message: t('validation:emailRequired') }]}
         labelCol={{ span: 6 }}
       >

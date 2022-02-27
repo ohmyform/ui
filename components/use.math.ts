@@ -1,6 +1,5 @@
 import debug from 'debug'
-import { all, create } from 'mathjs'
-import { useState } from 'react'
+import { formula, init } from 'expressionparser'
 
 const logger = debug('useMath')
 
@@ -8,9 +7,15 @@ export const useMath = (): ((
   expression: string,
   values?: { [id: string]: string | number }
 ) => boolean) => {
-  const [math] = useState(create(all, {}))
-
   return (expression, values) => {
+    const parser = init(formula, (term: string) => {
+      if (values[term]) {
+        return values[term]
+      }
+
+      throw new Error(`Invalid term: ${term}`);
+    })
+
     try {
       let processed = expression
 
@@ -24,7 +29,9 @@ export const useMath = (): ((
         }
       })
 
-      return Boolean(math.evaluate(processed))
+      parser.expressionToValue(expression)
+
+      return Boolean(parser.expressionToValue(expression))
     } catch (e) {
       logger(
         'failed to calculate %O: %s',

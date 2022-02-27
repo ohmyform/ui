@@ -1,6 +1,7 @@
 import { Card, Form, message, Modal, Spin } from 'antd'
+import debug from 'debug'
 import { darken, lighten } from 'polished'
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 import { FormPublicFieldFragment } from '../../../../graphql/fragment/form.public.fragment'
@@ -12,6 +13,8 @@ import { Field } from './field'
 import { Page } from './page'
 
 type Step = 'start' | 'form' | 'end'
+
+const logger = debug('layout/card')
 
 const MyCard = styled.div<{ background: string }>`
   background: ${(props) => darken(0.1, props.background)};
@@ -41,8 +44,28 @@ export const CardLayout: React.FC<LayoutProps> = (props) => {
   const { design, startPage, endPage, fields } = props.form
   const { setField } = props.submission
 
+  const updateValues = useCallback(() => {
+    const defaults = {}
+
+    fields.forEach(field => {
+      const defaultValue = field.defaultValue ? JSON.parse(field.defaultValue) : null
+
+      defaults[`@${field.id}`] = form.getFieldValue([field.id, 'value']) ?? defaultValue
+
+      if (field.slug) {
+        defaults[`$${field.slug}`] = form.getFieldValue([field.id, 'value']) ?? defaultValue
+      }
+    })
+
+    setValues(defaults)
+  }, [fields, form])
+
+  useEffect(() => {
+    updateValues()
+  }, [updateValues])
+
   const finish = async (data: { [key: number]: unknown }) => {
-    console.log('data', data)
+    logger('finish form %O', data)
     setLoading(true)
 
     try {
@@ -63,7 +86,7 @@ export const CardLayout: React.FC<LayoutProps> = (props) => {
         })
       }
     } catch (e) {
-      console.error(e)
+      logger('failed to finish form %O', e)
       void message.error({
         content: 'Error saving Input',
       })
@@ -75,8 +98,6 @@ export const CardLayout: React.FC<LayoutProps> = (props) => {
   const isVisible = useCallback((field: FormPublicFieldFragment): boolean => {
     if (!field.logic) return true
 
-    console.log('DEFAULTS', values)
-
     return field.logic
       .filter(logic => logic.action === 'visible')
       .map(logic => {
@@ -86,7 +107,6 @@ export const CardLayout: React.FC<LayoutProps> = (props) => {
             values
           )
 
-          console.log('result', r)
           return Boolean(r)
         } catch {
           return true
@@ -108,19 +128,7 @@ export const CardLayout: React.FC<LayoutProps> = (props) => {
             <Form
               form={form}
               onFinish={finish}
-              onValuesChange={() => {
-                const defaults = {}
-
-                fields.forEach(field => {
-                  defaults[`@${field.id}`] = form.getFieldValue([field.id, 'value'])
-
-                  if (field.slug) {
-                    defaults[`$${field.slug}`] = form.getFieldValue([field.id, 'value'])
-                  }
-                })
-
-                setValues(defaults)
-              }}
+              onValuesChange={updateValues}
             >
               {fields.map((field, i) => {
                 if (field.type === 'hidden') {

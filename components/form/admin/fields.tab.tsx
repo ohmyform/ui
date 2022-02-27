@@ -78,7 +78,6 @@ export const FieldsTab: React.FC<Props> = (props) => {
                   title: '',
                   description: '',
                   required: false,
-                  value: '',
                 }
 
                 add(defaults)

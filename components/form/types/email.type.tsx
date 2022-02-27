@@ -1,11 +1,28 @@
 import { Form } from 'antd'
+import debug from 'debug'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { StyledInput } from '../../styled/input'
 import { FieldTypeProps } from './type.props'
 
+const logger = debug('field/email')
+
 export const EmailType: React.FC<FieldTypeProps> = ({ field, design, urlValue, focus }) => {
   const { t } = useTranslation()
+
+  let initialValue = null
+
+  if (field.defaultValue) {
+    try {
+      initialValue = JSON.parse(field.defaultValue)
+    } catch (e) {
+      logger('invalid default value %O', e)
+    }
+  }
+
+  if (urlValue) {
+    initialValue = urlValue
+  }
 
   return (
     <div>
@@ -15,7 +32,7 @@ export const EmailType: React.FC<FieldTypeProps> = ({ field, design, urlValue, f
           { required: field.required, message: t('validation:valueRequired') },
           { type: 'email', message: t('validation:invalidEmail') },
         ]}
-        initialValue={urlValue || field.value}
+        initialValue={initialValue}
       >
         <StyledInput autoFocus={focus} design={design} allowClear size={'large'} />
       </Form.Item>

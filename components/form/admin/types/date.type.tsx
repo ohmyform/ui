@@ -11,7 +11,7 @@ export const DateType: React.FC<AdminFieldTypeProps> = ({ field }) => {
     <div>
       <Form.Item
         label={t('type:date.default')}
-        name={[field.name as string, 'value']}
+        name={[field.name as string, 'defaultValue']}
         labelCol={{ span: 6 }}
         getValueFromEvent={(e: Moment) => (e ? e.format('YYYY-MM-DD') : undefined)}
         getValueProps={(e: string) => ({ value: e ? moment(e) : undefined })}

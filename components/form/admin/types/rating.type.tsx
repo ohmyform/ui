@@ -10,13 +10,9 @@ export const RatingType: React.FC<AdminFieldTypeProps> = (props) => {
     <div>
       <Form.Item
         label={t('type:rating:default')}
-        name={[props.field.name as string, 'value']}
+        name={[props.field.name as string, 'defaultValue']}
         labelCol={{ span: 6 }}
         extra={t('type:rating.clearNote')}
-        getValueFromEvent={(value: number) =>
-          typeof value === 'number' ? value.toFixed(2) : value
-        }
-        getValueProps={(value: string) => ({ value: value ? parseFloat(value) : undefined })}
       >
         <Rate allowHalf allowClear />
       </Form.Item>

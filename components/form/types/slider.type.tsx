@@ -1,7 +1,10 @@
 import { Form, Slider, Spin } from 'antd'
+import debug from 'debug'
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { FieldTypeProps } from './type.props'
+
+const logger = debug('field/slider')
 
 export const SliderType: React.FC<FieldTypeProps> = ({ field, urlValue }) => {
   const [min, setMin] = useState<number>()
@@ -14,13 +17,25 @@ export const SliderType: React.FC<FieldTypeProps> = ({ field, urlValue }) => {
   useEffect(() => {
     field.options.forEach((option) => {
       if (option.key === 'min') {
-        setMin(parseFloat(option.value))
+        try {
+          setMin(JSON.parse(option.value))
+        } catch (e) {
+          logger('invalid min value %O', e)
+        }
       }
       if (option.key === 'max') {
-        setMax(parseFloat(option.value))
+        try {
+          setMax(JSON.parse(option.value))
+        } catch (e) {
+          logger('invalid max value %O', e)
+        }
       }
       if (option.key === 'step') {
-        setStep(parseFloat(option.value))
+        try {
+          setStep(JSON.parse(option.value))
+        } catch (e) {
+          logger('invalid step value %O', e)
+        }
       }
     })
 
@@ -29,8 +44,12 @@ export const SliderType: React.FC<FieldTypeProps> = ({ field, urlValue }) => {
 
   let initialValue: number = undefined
 
-  if (field.value) {
-    initialValue = parseFloat(field.value)
+  if (field.defaultValue) {
+    try {
+      initialValue = JSON.parse(field.defaultValue)
+    } catch (e) {
+      logger('invalid default value %O', e)
+    }
   }
 
   if (urlValue) {
@@ -51,10 +70,6 @@ export const SliderType: React.FC<FieldTypeProps> = ({ field, urlValue }) => {
         name={[field.id, 'value']}
         rules={[{ required: field.required, message: t('validation:valueRequired') }]}
         initialValue={initialValue}
-        getValueFromEvent={(value: number) =>
-          typeof value === 'number' ? value.toFixed(2) : value
-        }
-        getValueProps={(value: string) => ({ value: value ? parseFloat(value) : undefined })}
       >
         <Slider
           min={min}
