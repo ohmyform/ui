@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
+- map field type
+
 ### Changed
 
 - update translations (https://github.com/ohmyform/ui/pull/70)
@@ -17,6 +19,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 
 - locale scripts were missing dependency
+- edit user shows now email in title
 
 ### Security
 

@@ -59,7 +59,7 @@ const Index: NextPage = () => {
   return (
     <Structure
       loading={loading || saving}
-      title={loading ? t('user:loading') : t('user:mange', { title: data.user.email })}
+      title={loading ? t('user:loading') : t('user:mange', { email: data.user.email })}
       selected={'users'}
       breadcrumbs={[
         { href: '/admin', name: t('admin:home') },
