@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 
 - update translations (https://github.com/ohmyform/ui/pull/70)
+- show warning icon in form list if not public
 
 ### Fixed
 

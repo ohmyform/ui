@@ -3,6 +3,7 @@ import {
   EditOutlined,
   GlobalOutlined,
   UnorderedListOutlined,
+  WarningOutlined,
 } from '@ant-design/icons/lib'
 import { Button, message, Popconfirm, Space, Table, Tag, Tooltip } from 'antd'
 import { PaginationProps } from 'antd/es/pagination'
@@ -149,11 +150,21 @@ const Index: NextPage = () => {
               </Button>
             </Popconfirm>
 
-            <Tooltip title={row.isLive ? null : 'Not Public accessible!'}>
+            {row.isLive && (
               <Button href={`/form/${row.id}`} target={'_blank'}>
                 <GlobalOutlined />
               </Button>
-            </Tooltip>
+            )}
+
+            {!row.isLive && (
+              <Tooltip title={'Not Public accessible!'} placement={'left'}>
+                <Button href={`/form/${row.id}`} target={'_blank'}>
+                  <WarningOutlined />
+                </Button>
+              </Tooltip>
+            )}
+
+
           </Space>
         )
       },
