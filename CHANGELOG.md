@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
+### Changed
+
+### Fixed
+
+### Security
+
+## [1.0.0] - 2022-02-28
+
+### Added
+
 - ability to change user passwords
 - add default page background
 - add environment list in [doc](doc/environment.md)
