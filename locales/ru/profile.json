@@ -3,8 +3,8 @@
   "firstName": "Имя",
   "language": "Язык",
   "lastName": "Фамилия",
-  "updated": "Профиль обновлен",
   "updateError": "Не удалось обновить профиль",
   "updateNow": "Сохранить",
+  "updated": "Профиль обновлен",
   "username": "Имя пользователя"
 }

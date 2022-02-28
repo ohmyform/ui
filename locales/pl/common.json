@@ -2,8 +2,9 @@
   "admin": "Admin",
   "checkingCredentials": "Sprawdzanie poświadczeń",
   "loadingCredentials": "Ładowanie poświadczeń",
-  "login": "Zaloguj sie",
+  "login": "Zaloguj się",
   "logout": "Wyloguj",
-  "recover": "Zgubione hasło",
+  "profile": "Profil",
+  "recover": "Zapomniałem hasła",
   "register": "Utwórz konto"
 }

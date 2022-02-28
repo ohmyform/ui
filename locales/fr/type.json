@@ -1,5 +1,6 @@
 {
-  "confirmDelete": "Voulez-vous vraiment supprimer ce champ? Vérifiez qu'il n'est référencé nulle part!",
+  "add": "Ajouter un champ",
+  "confirmDelete": "Voulez-vous vraiment supprimer ce champ ? Vérifiez qu'il n'est référencé nulle part !",
   "date": {
     "default": "Date par défaut",
     "max": "Date max",
@@ -7,18 +8,19 @@
     "name": "Date"
   },
   "deleteNow": "Supprimer le champ",
-  "description": "La description",
+  "description": "Description",
+  "descriptionInfo": "Utiliser markdown pour le formatage avancé",
   "dropdown": {
     "addOption": "Ajouter une option",
     "default": "Valeur par défaut",
     "name": "Menu déroulant",
-    "options": "Les options",
-    "removeOption": "Retirer",
-    "titlePlaceholder": "Titre",
+    "options": "Options",
+    "removeOption": "Supprimer",
+    "titlePlaceholder": "Label",
     "valuePlaceholder": "Valeur"
   },
   "email": {
-    "default": "E-mail par défaut",
+    "default": "Email par défaut",
     "name": "Email"
   },
   "hidden": {
@@ -30,16 +32,16 @@
     "name": "URL"
   },
   "number": {
-    "default": "Numéro par défaut",
+    "default": "Nombre par défaut",
     "name": "Nombre"
   },
   "radio": {
     "addOption": "Ajouter une option",
     "default": "Valeur par défaut",
-    "name": "Commutateur radio",
-    "options": "Les options",
-    "removeOption": "Retirer",
-    "titlePlaceholder": "Titre",
+    "name": "Choix simple (radio)",
+    "options": "Options",
+    "removeOption": "Supprimer",
+    "titlePlaceholder": "Label",
     "valuePlaceholder": "Valeur"
   },
   "rating": {
@@ -48,18 +50,27 @@
     "name": "Évaluation"
   },
   "required": "Obligatoire",
-  "requiredInfo": "Si nécessaire, la valeur par défaut doit être définie pour permettre aux utilisateurs de soumettre le formulaire!",
+  "requiredInfo": "Si obligatoire, la valeur par défaut doit être définie pour permettre aux utilisateurs de soumettre le formulaire !",
+  "slider": {
+    "default": "Valeur par défaut",
+    "max": "Valeur max",
+    "min": "Valeur min",
+    "name": "Carousel",
+    "step": "Taille de l'étape"
+  },
+  "slug": "Slug",
+  "slugInfo": "Utiliser le slug pour passer en paramètre d'URL ?slug=valeur",
   "textarea": {
     "default": "Valeur par défaut",
-    "name": "Zone de texte"
+    "name": "Texte long"
   },
   "textfield": {
     "default": "Valeur par défaut",
-    "name": "Ligne de texte"
+    "name": "Texte court"
   },
-  "title": "Titre",
+  "title": "Label",
   "yes_no": {
     "default": "Valeur par défaut",
-    "name": "Oui Non"
+    "name": "Oui \/ Non"
   }
 }

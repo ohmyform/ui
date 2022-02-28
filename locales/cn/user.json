@@ -1,9 +1,9 @@
 {
   "baseData": "基础数据",
   "confirmDelete": "您确定要删除该用户吗？",
-  "deleted": "用户已删除",
   "deleteError": "无法删除用户",
   "deleteNow": "立即删除！",
+  "deleted": "用户已删除",
   "loading": "正在加载用户",
   "mange": "编辑用户“ {{email}} ”",
   "row": {
@@ -12,7 +12,7 @@
     "menu": "空",
     "roles": "角色"
   },
-  "updated": "用户已更新",
   "updateError": "无法更新用户",
-  "updateNow": "救"
+  "updateNow": "救",
+  "updated": "用户已更新"
 }

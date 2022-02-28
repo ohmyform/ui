@@ -7,6 +7,8 @@
   "invalidUrl": "Muss eine gültige URL sein",
   "languageRequired": "Bitte eine Sprache angeben",
   "mandatoryFieldsMissing": "Es fehlen Pflichtfelder",
+  "passwordConfirmMismatch": "Die beiden eingegebenen Passwörter stimmen nicht überein!",
+  "passwordConfirmRequired": "Bitte bestätigen Sie Ihr Passwort!",
   "passwordMinLength": "Passwort muss mindestens 5 Zeichen haben!",
   "passwordRequired": "Bitte ein Passwort angeben",
   "subjectRequired": "Bitte einen Betreff angeben",

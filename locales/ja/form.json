@@ -8,13 +8,14 @@
   "baseDataTab": "基本データ",
   "building": "フォーム作成中",
   "confirmDelete": "このフォームをすべての回答とともに削除します。よろしいですか？",
+  "continue": "続ける",
   "create": "新規フォームの作成",
-  "created": "フォームを作成しました",
   "createNow": "保存",
+  "created": "フォームを作成しました",
   "creationError": "フォームの作成でエラー",
-  "deleted": "フォームを削除しました",
   "deleteError": "フォームの削除でエラー",
   "deleteNow": "すぐに削除！",
+  "deleted": "フォームを削除しました",
   "design": {
     "color": {
       "answer": "回答の色",
@@ -24,7 +25,12 @@
       "buttonText": "ボタンテキスト色",
       "question": "質問の色"
     },
-    "font": "フォント"
+    "font": "フォント",
+    "layout": {
+      "card": "カード",
+      "slider": "スライド"
+    },
+    "layouts": "レイアウト"
   },
   "designTab": "デザイン",
   "endPage": {
@@ -52,9 +58,20 @@
   },
   "hooksTab": "WebHook",
   "loading": "フォームを読み込んでいます",
+  "logic": {
+    "action": {
+      "disable": "無効に",
+      "jumpTo": "ジャンプ先",
+      "require": "必須",
+      "visible": "表示"
+    },
+    "add": "ロジックを追加"
+  },
   "mange": "「{{title}}」のフォームを編集",
   "new": "新規フォーム",
+  "next": "次",
   "notifications": {
+    "add": "通知を追加",
     "enabled": "有効",
     "fromEmail": "送信者メールアドレス",
     "fromEmailInfo": "お使いのメールサーバーがこのメールからの送信ができることを確認すること",
@@ -68,6 +85,8 @@
     "toField": "受信者メールアドレスの項目",
     "toFieldInfo": "回答受け付けメールの送信先アドレスとして利用するフォームの項目"
   },
+  "notificationsTab": "通知",
+  "previous": "前",
   "restart": "最初から",
   "row": {
     "admin": "オーナー",
@@ -95,7 +114,7 @@
   },
   "startPageTab": "開始ページ",
   "submitted": "回答ありがとうございます。",
-  "updated": "フォームを更新しました",
   "updateError": "フォームの更新でエラー",
-  "updateNow": "保存"
+  "updateNow": "保存",
+  "updated": "フォームを更新しました"
 }

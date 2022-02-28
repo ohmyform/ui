@@ -1,3 +1,8 @@
 {
-  "profile": "Profil"
+  "loadingCredentials": "Inloggegevens laden",
+  "login": "Inloggen",
+  "logout": "Uitloggen",
+  "profile": "Profil",
+  "recover": "Wachtwoord vergeten",
+  "register": "Account aanmaken"
 }

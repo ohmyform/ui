@@ -8,13 +8,14 @@
   "baseDataTab": "Basisdaten",
   "building": "Formular wird aufgebaut",
   "confirmDelete": "Wollen Sie dieses Formular mit allen Einträgen löschen?",
+  "continue": "Fortsetzen",
   "create": "Neues Formular erstellen",
-  "created": "Formular erstellt",
   "createNow": "Speichern",
+  "created": "Formular erstellt",
   "creationError": "Formular konnte nicht erstellt werden",
-  "deleted": "Formular gelöscht",
   "deleteError": "Formular konnte nicht gelöscht werden",
   "deleteNow": "Jetzt löschen!",
+  "deleted": "Formular gelöscht",
   "design": {
     "color": {
       "answer": "Antwortfarbe",
@@ -24,7 +25,12 @@
       "buttonText": "Farbe des Schaltflächentextes",
       "question": "Fragenfarbe"
     },
-    "font": "Schriftart"
+    "font": "Schriftart",
+    "layout": {
+      "card": "Karte",
+      "slider": "Schieberegler"
+    },
+    "layouts": "Layout"
   },
   "designTab": "Design",
   "endPage": {
@@ -52,9 +58,14 @@
   },
   "hooksTab": "Webhooks",
   "loading": "Formular wird geladen",
+  "logic": {
+    "add": "Logik hinzufügen"
+  },
   "mange": "Formular \"{{title}}\" bearbeiten",
   "new": "Neues Formular",
+  "next": "Nächste",
   "notifications": {
+    "add": "Benachrichtigung hinzufügen",
     "enabled": "Aktiv",
     "fromEmail": "Absender-E-Mail",
     "fromEmailInfo": "Stellen Sie sicher, dass Ihr Mailserver von dieser E-Mail senden kann",
@@ -68,6 +79,8 @@
     "toField": "E-Mail-Feld",
     "toFieldInfo": "Feld mit E-Mail für den Empfang"
   },
+  "notificationsTab": "Benachrichtigungen",
+  "previous": "Vorherige",
   "restart": "Formular neu starten",
   "row": {
     "admin": "Verwalter",
@@ -75,6 +88,7 @@
     "isLive": "Öffentlich",
     "language": "Sprache",
     "lastModified": "Letzte Änderung",
+    "menu": "Aktionen",
     "title": "Titel"
   },
   "startPage": {
@@ -94,7 +108,7 @@
   },
   "startPageTab": "Startseite",
   "submitted": "Vielen Dank für Ihre Eingaben!",
-  "updated": "Formular aktualisiert",
   "updateError": "Formular konnte nicht aktualisiert werden",
-  "updateNow": "Speichern"
+  "updateNow": "Speichern",
+  "updated": "Formular aktualisiert"
 }

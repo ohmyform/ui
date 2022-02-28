@@ -9,12 +9,12 @@
   "building": "Formulário de construção",
   "confirmDelete": "Tem certeza de que excluiu este formulário com todos os envios?",
   "create": "Criar novo formulário",
-  "created": "Formulário criado",
   "createNow": "Salve ",
+  "created": "Formulário criado",
   "creationError": "Não foi possível criar o formulário",
-  "deleted": "Formulário excluído",
   "deleteError": "Não foi possível excluir o formulário",
   "deleteNow": "Excluir agora!",
+  "deleted": "Formulário excluído",
   "design": {
     "color": {
       "answer": "Cor da resposta",
@@ -92,7 +92,7 @@
   },
   "startPageTab": "Página inicial",
   "submitted": "Obrigado pela sua submissão!",
-  "updated": "Formulário atualizado",
   "updateError": "Não foi possível atualizar o formulário",
-  "updateNow": "Salve "
+  "updateNow": "Salve ",
+  "updated": "Formulário atualizado"
 }

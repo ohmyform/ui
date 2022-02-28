@@ -1,1 +1,5 @@
-{}
+{
+  "note": "Bemærk",
+  "passwordPlaceholder": "Adgangskode",
+  "usernamePlaceholder": "Brugernavn"
+}
