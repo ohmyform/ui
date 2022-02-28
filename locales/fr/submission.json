@@ -4,13 +4,14 @@
   "country": "Pays",
   "created": "Créé",
   "device": {
-    "name": "Nom de l'appareil",
-    "type": "Type d'appareil"
+    "name": "Type de l'appareil",
+    "type": "User agent"
   },
   "edit": "Éditer",
+  "export": "Exporter",
   "field": "Champ",
   "lastModified": "Dernier changement",
-  "progress": "Le progrès",
+  "progress": "Progression",
   "submission": "Soumission",
   "value": "Valeur"
 }

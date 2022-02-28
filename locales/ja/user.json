@@ -1,9 +1,9 @@
 {
   "baseData": "基本データ",
   "confirmDelete": "このユーザーを削除します。よろしいですか？",
-  "deleted": "ユーザーを削除しました",
   "deleteError": "ユーザーの削除でエラー",
   "deleteNow": "すぐに削除",
+  "deleted": "ユーザーを削除しました",
   "loading": "ユーザーを読み込んでいます",
   "mange": "「{{email}}」ユーザーの編集",
   "row": {
@@ -12,7 +12,7 @@
     "menu": "メニュー",
     "roles": "権限"
   },
-  "updated": "ユーザー情報を更新しました",
   "updateError": "ユーザー情報の更新でエラー",
-  "updateNow": "保存"
+  "updateNow": "保存",
+  "updated": "ユーザー情報を更新しました"
 }

@@ -1,5 +1,6 @@
 {
-  "confirmDelete": "Naprawdę usunąć to pole? Sprawdź, czy nigdzie się nie odwołuje!",
+  "add": "Dodaj pole",
+  "confirmDelete": "Czy naprawdę chcesz usunąć to pole? Sprawdź, czy nigdzie się nie odwołuje!",
   "date": {
     "default": "Domyślna data",
     "max": "Maksymalna data",
@@ -49,6 +50,13 @@
   },
   "required": "wymagany",
   "requiredInfo": "W razie potrzeby należy ustawić wartość domyślną, aby umożliwić użytkownikom przesłanie formularza!",
+  "slider": {
+    "default": "Domyślna wartość",
+    "max": "Maksymalna wartość",
+    "min": "Minimalna wartość",
+    "name": "Slider",
+    "step": "Rozdzielczość "
+  },
   "textarea": {
     "default": "Domyślna wartość",
     "name": "Obszar tekstowy"

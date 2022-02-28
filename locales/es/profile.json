@@ -3,8 +3,8 @@
   "firstName": "Nombre",
   "language": "Idioma",
   "lastName": "Apellido",
-  "updated": "Perfil actualizado",
   "updateError": "No se pudo actualizar el perfil",
   "updateNow": "Guardar",
+  "updated": "Perfil actualizado",
   "username": "Nombre de usuario"
 }

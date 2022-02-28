@@ -9,12 +9,12 @@
   "building": "Formulario de construcción",
   "confirmDelete": "¿Estás seguro de eliminar este formulario con todos los envíos?",
   "create": "Crear nuevo formulario",
-  "created": "Formulario creado",
   "createNow": "Guardar",
+  "created": "Formulario creado",
   "creationError": "No se pudo crear el formulario",
-  "deleted": "Formulario eliminado",
   "deleteError": "No se pudo eliminar el formulario",
   "deleteNow": "¡Eliminar ahora!",
+  "deleted": "Formulario eliminado",
   "design": {
     "color": {
       "answer": "Color de respuesta",
@@ -94,7 +94,7 @@
   },
   "startPageTab": "Página de inicio",
   "submitted": "Gracias por tu presentación!",
-  "updated": "Formulario actualizado",
   "updateError": "No se pudo actualizar el formulario",
-  "updateNow": "Guardar"
+  "updateNow": "Guardar",
+  "updated": "Formulario actualizado"
 }

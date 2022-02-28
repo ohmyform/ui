@@ -8,13 +8,14 @@
   "baseDataTab": "Dane podstawowe",
   "building": "Formularz budowlany",
   "confirmDelete": "Czy na pewno usuniesz ten formularz ze wszystkimi zgłoszeniami?",
+  "continue": "Kontynuuj",
   "create": "Utwórz nowy formularz",
-  "created": "Formularz utworzony",
   "createNow": "Zapisać",
+  "created": "Formularz utworzony",
   "creationError": "Nie można utworzyć formularza",
-  "deleted": "Formularz usunięty",
   "deleteError": "Nie można usunąć formularza",
   "deleteNow": "Usuń teraz!",
+  "deleted": "Formularz usunięty",
   "design": {
     "color": {
       "answer": "Kolor odpowiedzi",
@@ -24,7 +25,12 @@
       "buttonText": "Kolor tekstu przycisku",
       "question": "Kolor pytania"
     },
-    "font": "Czcionka"
+    "font": "Czcionka",
+    "layout": {
+      "card": "Karta",
+      "slider": "Slider"
+    },
+    "layouts": "Wygląd"
   },
   "designTab": "Projekt",
   "endPage": {
@@ -42,10 +48,23 @@
     "url": "URL"
   },
   "endPageTab": "Strona końcowa",
+  "fieldsTab": "Pola formularza",
+  "hooks": {
+    "add": "Dodaj",
+    "confirmDelete": "Pusty",
+    "deleteNow": "Pusty",
+    "enabled": "Aktywny"
+  },
+  "hooksTab": "WebHooki",
   "loading": "Ładowanie formularza",
+  "logic": {
+    "add": "Dodaj logikę"
+  },
   "mange": "Edytuj formularz „ {{title}} ”",
   "new": "Nowa forma",
+  "next": "Dalej",
   "notifications": {
+    "add": "Dodaj powiadomienie",
     "enabled": "Włączone",
     "fromEmail": "E-mail nadawcy",
     "fromEmailInfo": "Upewnij się, że Twój serwer pocztowy może wysyłać z tego e-maila",
@@ -59,6 +78,8 @@
     "toField": "Pole e-mail",
     "toFieldInfo": "Pole z adresem e-mail do odbioru"
   },
+  "notificationsTab": "Powiadomienia",
+  "previous": "Poprzedni",
   "restart": "Uruchom ponownie formularz",
   "row": {
     "admin": "Właściciel",
@@ -84,7 +105,7 @@
   },
   "startPageTab": "Strona startowa",
   "submitted": "Dziękujemy za zgłoszenie!",
-  "updated": "Formularz zaktualizowany",
   "updateError": "Nie można zaktualizować formularza",
-  "updateNow": "Zapisać"
+  "updateNow": "Zapisać",
+  "updated": "Formularz zaktualizowany"
 }

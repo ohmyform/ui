@@ -8,13 +8,14 @@
   "baseDataTab": "基础数据",
   "building": "建筑形式",
   "confirmDelete": "您确定删除所有提交的表格吗？",
+  "continue": "继续",
   "create": "建立新表格",
-  "created": "表格已建立",
   "createNow": "救",
+  "created": "表格已建立",
   "creationError": "无法建立表格",
-  "deleted": "表格已删除",
   "deleteError": "无法删除表格",
   "deleteNow": "立即删除！",
+  "deleted": "表格已删除",
   "design": {
     "color": {
       "answer": "答案颜色",
@@ -24,7 +25,12 @@
       "buttonText": "按钮文字颜色",
       "question": "问题颜色"
     },
-    "font": "字形"
+    "font": "字形",
+    "layout": {
+      "card": "卡片",
+      "slider": "滑杆"
+    },
+    "layouts": "布局"
   },
   "designTab": "设计",
   "endPage": {
@@ -52,9 +58,14 @@
   },
   "hooksTab": "WebHooks",
   "loading": "加载表格",
+  "logic": {
+    "add": "添加逻辑"
+  },
   "mange": "编辑表单“ {{title}} ”",
   "new": "新表格",
+  "next": "下一个",
   "notifications": {
+    "add": "添加通知",
     "enabled": "已启用",
     "fromEmail": "发件人电子邮件",
     "fromEmailInfo": "确保您的邮件服务器可以通过此电子邮件发送",
@@ -68,6 +79,8 @@
     "toField": "电子邮件栏位",
     "toFieldInfo": "带有电子邮件的收据字段"
   },
+  "notificationsTab": "通知",
+  "previous": "上一步",
   "restart": "重新启动表格",
   "row": {
     "admin": "所有者",
@@ -95,7 +108,7 @@
   },
   "startPageTab": "首页",
   "submitted": "感谢您提交！",
-  "updated": "表格已更新",
   "updateError": "无法更新表格",
-  "updateNow": "救"
+  "updateNow": "救",
+  "updated": "表格已更新"
 }

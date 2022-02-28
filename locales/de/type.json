@@ -1,4 +1,5 @@
 {
+  "add": "Feld hinzufügen",
   "confirmDelete": "Wollen Sie das Feld wirklich löschen? Bitte achten Sie darauf, dass es keine Referenzen mehr auf dieses Feld gibt!",
   "date": {
     "default": "Standarddatum",
@@ -50,6 +51,15 @@
   },
   "required": "Pflichtfeld",
   "requiredInfo": "Bei Bedarf muss der Standardwert festgelegt werden, damit Benutzer ein Formular senden können!",
+  "slider": {
+    "default": "Standardwert",
+    "max": "Maximalwert",
+    "min": "Minimalwert",
+    "name": "Schieberegler",
+    "step": "Schrittweite"
+  },
+  "slug": "Schnecke",
+  "slugInfo": "Verwenden Sie slug, um die Standard-Dynamik als URL-Parameter \"?slug=value\" zu übergeben",
   "textarea": {
     "default": "Standardwert",
     "name": "Mehrzeiliger Text"

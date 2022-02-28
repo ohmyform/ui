@@ -7,7 +7,8 @@
     "name": "Nazwa urządzenia",
     "type": "Rodzaj urządzenia"
   },
-  "edit": "Edytować",
+  "edit": "Edytuj",
+  "export": "Exportuj",
   "field": "Pole",
   "lastModified": "Ostatnia zmiana",
   "progress": "Postęp",

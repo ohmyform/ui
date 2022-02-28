@@ -51,6 +51,13 @@
   },
   "required": "需要",
   "requiredInfo": "如果需要，必须设置默认值以使用户能够提交表单！",
+  "slider": {
+    "default": "默认值",
+    "max": "最大值",
+    "min": "最小值",
+    "name": "滑杆",
+    "step": "每步大小"
+  },
   "slug": "Slug",
   "slugInfo": "使用slug传递默认动态作为url get参数slug = value",
   "textarea": {

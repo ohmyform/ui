@@ -51,6 +51,13 @@
   },
   "required": "必須項目",
   "requiredInfo": "ユーザーが回答を送信できるよう、必要に応じて既定の値を設定する必要があります。",
+  "slider": {
+    "default": "既定の値",
+    "max": "最大値",
+    "min": "最小値",
+    "name": "スライド",
+    "step": "ステップの大きさ"
+  },
   "slug": "スラッグ（Slug）",
   "slugInfo": "URLのパラメーターで値を設定するためにスラッグ（Slug）を利用できます ?slug=value",
   "textarea": {

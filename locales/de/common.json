@@ -4,6 +4,7 @@
   "loadingCredentials": "Lade Zugangsdaten",
   "login": "Anmelden",
   "logout": "Abmelden",
+  "profile": "Profil",
   "recover": "Passwort vergessen",
   "register": "Benutzer erstellen"
 }

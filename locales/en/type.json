@@ -19,13 +19,6 @@
     "titlePlaceholder": "Title",
     "valuePlaceholder": "Value"
   },
-  "slider": {
-    "default": "Default Value",
-    "name": "Slider",
-    "min": "Min Value",
-    "max": "Max Value",
-    "step": "Step Size"
-  },
   "email": {
     "default": "Default Email",
     "name": "Email"
@@ -58,6 +51,13 @@
   },
   "required": "Required",
   "requiredInfo": "If required, default value must be set to enable users to submit form!",
+  "slider": {
+    "default": "Default Value",
+    "max": "Max Value",
+    "min": "Min Value",
+    "name": "Slider",
+    "step": "Step Size"
+  },
   "slug": "Slug",
   "slugInfo": "Use slug to pass the default dynamic as url parameter ?slug=value",
   "textarea": {

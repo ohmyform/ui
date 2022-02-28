@@ -10,12 +10,12 @@
   "confirmDelete": "Do you really want to delete this form with all submissions?",
   "continue": "Continue",
   "create": "Create new form",
-  "created": "Form Created",
   "createNow": "Save",
+  "created": "Form Created",
   "creationError": "Could not create form",
-  "deleted": "Form deleted",
   "deleteError": "Could not delete form",
   "deleteNow": "Delete Now!",
+  "deleted": "Form deleted",
   "design": {
     "color": {
       "answer": "Answer Color",
@@ -25,12 +25,12 @@
       "buttonText": "Button Text Color",
       "question": "Question Color"
     },
+    "font": "Font",
     "layout": {
       "card": "Card",
       "slider": "Slider"
     },
-    "layouts": "Layout",
-    "font": "Font"
+    "layouts": "Layout"
   },
   "designTab": "Design",
   "endPage": {
@@ -57,13 +57,13 @@
   "hooksTab": "WebHooks",
   "loading": "Loading Form",
   "logic": {
-    "add": "Add Logic",
     "action": {
-      "jumpTo": "Jump To",
-      "visible": "Visible",
       "disable": "Disable",
-      "require": "Require"
-    }
+      "jumpTo": "Jump To",
+      "require": "Require",
+      "visible": "Visible"
+    },
+    "add": "Add Logic"
   },
   "mange": "Edit Form \"{{title}}\"",
   "new": "New Form",
@@ -111,7 +111,7 @@
   },
   "startPageTab": "Start Page",
   "submitted": "Thank you for your submission!",
-  "updated": "Form updated",
   "updateError": "Could not update form",
-  "updateNow": "Save"
+  "updateNow": "Save",
+  "updated": "Form updated"
 }

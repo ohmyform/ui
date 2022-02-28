@@ -9,12 +9,12 @@
   "building": "Modulo di costruzione",
   "confirmDelete": "Sei sicuro di eliminare questo modulo con tutti gli invii?",
   "create": "Crea un nuovo modulo",
-  "created": "Modulo creato",
   "createNow": "Salva",
+  "created": "Modulo creato",
   "creationError": "Impossibile creare il modulo",
-  "deleted": "Modulo eliminato",
   "deleteError": "Impossibile eliminare il modulo",
   "deleteNow": "Cancella ora!",
+  "deleted": "Modulo eliminato",
   "design": {
     "color": {
       "answer": "Rispondi al colore",
@@ -84,7 +84,7 @@
   },
   "startPageTab": "Pagina iniziale",
   "submitted": "Grazie per la vostra presentazione!",
-  "updated": "Modulo aggiornato",
   "updateError": "Impossibile aggiornare il modulo",
-  "updateNow": "Salva"
+  "updateNow": "Salva",
+  "updated": "Modulo aggiornato"
 }
