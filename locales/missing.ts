@@ -1,12 +1,12 @@
-const fs = require('fs');
+const { readFileSync } = require('fs');
 const glob = require('glob');
 const { program } = require('commander');
 const merge = require('lodash.merge');
+
 const dirs: string[] = []
 
 program.version('1.0.0');
-program
-  .arguments('<limit>')
+program.arguments('<limit>')
   .action((limit) => {
     dirs.push(
       ...limit
@@ -21,12 +21,12 @@ let all = {}
 
 glob.sync('locales/**/*.json').forEach(file => {
   try {
-    const original = JSON.parse(fs.readFileSync(file))
+    const original = JSON.parse(readFileSync(file).toString('utf-8'))
 
     all = merge(
       all,
       {
-        [file.replace(/^.*\/([a-z]+)\.json$/, '$1')]: original
+        [file.replace(/^.*\/([a-z]+)\.json$/, '$1')]: original,
       }
     )
   } catch (e) {
@@ -34,7 +34,7 @@ glob.sync('locales/**/*.json').forEach(file => {
   }
 })
 
-const compare = (original, compareTo, path, file) => {
+const compare = (original, compareTo, path, file: string) => {
   const oKeys = Object.keys(original)
   const aKeys = Object.keys(compareTo)
 
@@ -54,7 +54,7 @@ const compare = (original, compareTo, path, file) => {
 dirs.forEach(dir => {
   const files: string[] = glob.sync(`${dir}*.json`)
 
-  const existingFiles = files.map(file => file.replace(/^.*\/([a-z]+)\.json$/, '$1')).push('language')
+  const existingFiles: string[] = files.map(file => file.replace(/^.*\/([a-z]+)\.json$/, '$1'))
   Object
     .keys(all)
     .filter(file => !existingFiles.includes(file))
@@ -65,7 +65,7 @@ dirs.forEach(dir => {
   files.forEach(file => {
     try {
       compare(
-        JSON.parse(fs.readFileSync(file)),
+        JSON.parse(readFileSync(file).toString('utf-8')),
         all[file.replace(/^.*\/([a-z]+)\.json$/, '$1')],
         [],
         file

@@ -11,7 +11,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 
+- update translations (https://github.com/ohmyform/ui/pull/70)
+
 ### Fixed
+
+- locale scripts were missing dependency
 
 ### Security
 
