@@ -59,7 +59,7 @@ export const Field: React.FC<Props> = ({ field, design, focus, ...props }) => {
           design={design}
           field={field}
           urlValue={getUrlDefault()}
-          focus={false}/* cannot use this in card layout! try with 2 input fields */
+          focus={focus}
         />
       </div>
     </div>

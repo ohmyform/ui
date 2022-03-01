@@ -147,7 +147,7 @@ export const CardLayout: React.FC<LayoutProps> = (props) => {
               onFinish={finish}
               onValuesChange={updateValues}
             >
-              {fields.map((field) => {
+              {fields.map((field, i) => {
                 if (field.type === 'hidden') {
                   return null
                 }
@@ -161,7 +161,7 @@ export const CardLayout: React.FC<LayoutProps> = (props) => {
                     key={field.id}
                     field={field}
                     design={design}
-                    focus={false}
+                    focus={i === 0}
                   />
                 )
               })}

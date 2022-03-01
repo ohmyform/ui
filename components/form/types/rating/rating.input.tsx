@@ -11,9 +11,7 @@ export const builder: FieldInputBuilderType = ({
   parseValue,
 }) => function RatingInput ({
   field,
-  design,
   urlValue,
-  focus,
 }) {
   const { t } = useTranslation()
 
