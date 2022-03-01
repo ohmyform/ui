@@ -82,7 +82,6 @@ const Create: NextPage = () => {
           noStyle
           name={[
             'form',
-            'design',
             'layout',
           ]}
           initialValue={'card'}

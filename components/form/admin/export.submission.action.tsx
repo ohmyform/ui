@@ -4,6 +4,7 @@ import { useCallback, useState } from 'react'
 import { SubmissionFragment } from '../../../graphql/fragment/submission.fragment'
 import { useFormQuery } from '../../../graphql/query/form.query'
 import { useSubmissionPagerImperativeQuery } from '../../../graphql/query/submission.pager.query'
+import { fieldTypes } from '../types'
 
 interface Props {
   form: string
@@ -66,9 +67,9 @@ export const ExportSubmissionAction: React.FC<Props> = (props) => {
 
         data.fields.forEach((field) => {
           try {
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-            const decoded: { value: CellValue } = JSON.parse(field.value)
-            row.push(decoded.value || '')
+            fieldTypes[field.type]?.stringifyValue(field.value)
+
+            row.push(fieldTypes[field.type]?.stringifyValue(field.value))
           } catch (e) {
             row.push('')
           }

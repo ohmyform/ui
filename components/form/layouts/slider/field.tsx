@@ -11,10 +11,9 @@ import { StyledH1 } from '../../../styled/h1'
 import { StyledMarkdown } from '../../../styled/markdown'
 import { useRouter } from '../../../use.router'
 import { fieldTypes } from '../../types'
-import { TextType } from '../../types/text.type'
-import { FieldTypeProps } from '../../types/type.props'
 
 interface Props {
+  focus: boolean
   field: FormPublicFieldFragment
   design: FormPublicDesignFragment
 
@@ -29,7 +28,7 @@ export const Field: React.FC<Props> = ({ field, save, design, next, prev, ...pro
   const router = useRouter()
   const { t } = useTranslation()
 
-  const FieldInput: React.FC<FieldTypeProps> = fieldTypes[field.type] || TextType
+  const FieldInput = (fieldTypes[field.type] || fieldTypes[field.type]).inputFormField()
 
   const finish = (data) => {
     console.log('received field data', data)
@@ -81,7 +80,12 @@ export const Field: React.FC<Props> = ({ field, save, design, next, prev, ...pro
           <StyledMarkdown design={design} type={'question'}>{field.description}</StyledMarkdown>
         )}
 
-        <FieldInput design={design} field={field} urlValue={getUrlDefault()} />
+        <FieldInput
+          design={design}
+          field={field}
+          focus={props.focus}
+          urlValue={getUrlDefault()}
+        />
       </div>
       <div
         style={{

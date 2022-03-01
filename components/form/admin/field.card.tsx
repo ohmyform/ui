@@ -6,9 +6,8 @@ import { FieldData } from 'rc-field-form/lib/interface'
 import React, { useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { FormFieldFragment, FormFieldLogicFragment } from '../../../graphql/fragment/form.fragment'
+import { fieldTypes } from '../types'
 import { LogicBlock } from './logic.block'
-import { adminTypes } from './types'
-import { TextType } from './types/text.type'
 
 interface Props {
   form: FormInstance
@@ -34,7 +33,7 @@ export const FieldCard: React.FC<Props> = ({
   const type = form.getFieldValue([
     'form', 'fields', field.name as string, 'type',
   ]) as string
-  const TypeComponent = adminTypes[type] || TextType
+  const TypeComponent = (fieldTypes[type] || fieldTypes['textfield']).adminFormField()
 
   const [shouldUpdate, setShouldUpdate] = useState(false)
   const [nextTitle, setNextTitle] = useState<string>(
