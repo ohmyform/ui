@@ -1,4 +1,5 @@
 /*
+TODO
 import dynamic from 'next/dynamic'
 import { ComponentType } from 'react'
 import { AbstractType } from '../abstract.type'
@@ -15,3 +16,4 @@ export class ImageType extends AbstractType<string> {
   }
 }
 */
+export {}

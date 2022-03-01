@@ -13,9 +13,7 @@ export const builder: FieldInputBuilderType = ({
   parseValue,
 }) => function LocationInput ({
   field,
-  design,
   urlValue,
-  focus,
 }) {
   const [initialZoom, setInitialZoom] = useState<number>(13)
   const [tiles, setTiles] = useState<string>()

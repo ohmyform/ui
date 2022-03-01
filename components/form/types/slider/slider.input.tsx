@@ -11,7 +11,6 @@ export const builder: FieldInputBuilderType = ({
   parseValue,
 }) => function SliderInput ({
   field,
-  design,
   urlValue,
   focus,
 }) {

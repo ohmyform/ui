@@ -11,9 +11,7 @@ export const builder: FieldInputBuilderType = ({
   parseValue,
 }) => function YesNoInput ({
   field,
-  design,
   urlValue,
-  focus,
 }) {
   const { t } = useTranslation()
 

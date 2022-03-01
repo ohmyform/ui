@@ -14,7 +14,6 @@ export const builder: FieldInputBuilderType = ({
   field,
   design,
   urlValue,
-  focus,
 }) {
   const { t } = useTranslation()
 
