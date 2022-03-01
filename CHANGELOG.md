@@ -5,7 +5,30 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## UNRELEASED
+<!--
+Template for next version
+## [Unreleased]
+
+### Added
+
+### Changed
+
+### Fixed
+
+### Security
+-->
+
+## [Unreleased]
+
+### Added
+
+### Changed
+
+### Fixed
+
+### Security
+
+## [1.0.1] - 2022-03-01
 
 ### Added
 
@@ -25,8 +48,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - focus is now passed also do slide layout fields
 - empty fields are no longer submitted
 - stuttery form because of logic rerenders
-
-### Security
 
 ## [1.0.0] - 2022-02-28
 
