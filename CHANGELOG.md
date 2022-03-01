@@ -24,6 +24,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - edit user shows now email in title
 - focus is now passed also do slide layout fields
 - empty fields are no longer submitted
+- stuttery form because of logic rerenders
 
 ### Security
 
