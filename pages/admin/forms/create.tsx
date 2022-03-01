@@ -78,6 +78,18 @@ const Create: NextPage = () => {
           <Input type={'hidden'} />
         </Form.Item>
 
+        <Form.Item
+          noStyle
+          name={[
+            'form',
+            'design',
+            'layout',
+          ]}
+          initialValue={'card'}
+        >
+          <Input type={'hidden'} />
+        </Form.Item>
+
         <Tabs>
           <BaseDataTab key={'base_data'} tab={t('form:baseDataTab')} />
         </Tabs>

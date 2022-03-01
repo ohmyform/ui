@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 - update translations (https://github.com/ohmyform/ui/pull/70)
 - show warning icon in form list if not public
+- default form layout is now "card"
 
 ### Fixed
 
