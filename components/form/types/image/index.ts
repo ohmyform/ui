@@ -1,3 +1,4 @@
+/*
 import dynamic from 'next/dynamic'
 import { ComponentType } from 'react'
 import { AbstractType } from '../abstract.type'
@@ -13,3 +14,4 @@ export class ImageType extends AbstractType<string> {
     return dynamic(() => import('./dropdown.input').then(c => c.builder(this)));
   }
 }
+*/

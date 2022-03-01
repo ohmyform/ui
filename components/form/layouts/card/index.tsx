@@ -4,10 +4,10 @@ import { darken, lighten } from 'polished'
 import React, { useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
-import { FormPublicFieldFragment } from '../../../../graphql/fragment/form.public.fragment'
 import { Omf } from '../../../omf'
 import { StyledButton } from '../../../styled/button'
 import { useMath } from '../../../use.math'
+import { fieldTypes } from '../../types'
 import { LayoutProps } from '../layout.props'
 import { Field } from './field'
 import { Page } from './page'
@@ -39,7 +39,7 @@ export const CardLayout: React.FC<LayoutProps> = (props) => {
   const [loading, setLoading] = useState(false)
   const [step, setStep] = useState<Step>(props.form.startPage.show ? 'start' : 'form')
   const evaluator = useMath()
-  const [values, setValues] = useState({})
+  const [visiblity, setVisibility] = useState({})
 
   const { design, startPage, endPage, fields } = props.form
   const { setField } = props.submission
@@ -48,7 +48,9 @@ export const CardLayout: React.FC<LayoutProps> = (props) => {
     const defaults = {}
 
     fields.forEach(field => {
-      const defaultValue = field.defaultValue ? JSON.parse(field.defaultValue) : null
+      const defaultValue = field.defaultValue
+        ? fieldTypes[field.type].parseValue(field.defaultValue)
+        : null
 
       defaults[`@${field.id}`] = form.getFieldValue([field.id, 'value']) ?? defaultValue
 
@@ -57,8 +59,43 @@ export const CardLayout: React.FC<LayoutProps> = (props) => {
       }
     })
 
-    setValues(defaults)
-  }, [fields, form])
+    // now calculate visibility
+    const nextVisibility = {}
+    fields.forEach(field => {
+      if (!field.logic) return
+
+      const logic = field.logic
+        .filter(logic => logic.action === 'visible')
+
+      if (logic.length === 0) {
+        return
+      }
+
+      nextVisibility[field.id] = logic
+        .map(logic => {
+          try {
+            const r = evaluator(
+              logic.formula,
+              defaults
+            )
+
+            return Boolean(r)
+          } catch {
+            return true
+          }
+        })
+        .reduce<boolean>((previous, current) => previous && current, true)
+    })
+
+    // TODO improve logic of how we calculate new logic checks
+    if (Object.values(nextVisibility).join(',') == Object.values(visiblity).join(',')) {
+      return
+    }
+
+    setVisibility(nextVisibility)
+  }, [
+    fields, form, visiblity,
+  ])
 
   useEffect(() => {
     updateValues()
@@ -95,27 +132,7 @@ export const CardLayout: React.FC<LayoutProps> = (props) => {
     setLoading(false)
   }
 
-  const isVisible = useCallback((field: FormPublicFieldFragment): boolean => {
-    if (!field.logic) return true
-
-    return field.logic
-      .filter(logic => logic.action === 'visible')
-      .map(logic => {
-        try {
-          const r = evaluator(
-            logic.formula,
-            values
-          )
-
-          return Boolean(r)
-        } catch {
-          return true
-        }
-      })
-      .reduce<boolean>((previous, current) => previous && current, true)
-  }, [
-    fields, form, values,
-  ])
+  console.log('render')
 
   const render = () => {
     switch (step) {
@@ -130,12 +147,12 @@ export const CardLayout: React.FC<LayoutProps> = (props) => {
               onFinish={finish}
               onValuesChange={updateValues}
             >
-              {fields.map((field, i) => {
+              {fields.map((field) => {
                 if (field.type === 'hidden') {
                   return null
                 }
 
-                if (!isVisible(field)) {
+                if (visiblity[field.id] === false) {
                   return null
                 }
 
