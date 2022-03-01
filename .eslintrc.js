@@ -25,6 +25,7 @@ module.exports = {
     '@typescript-eslint/no-unsafe-assignment': 'off',
     '@typescript-eslint/no-unsafe-argument': 'off',
     '@typescript-eslint/no-unsafe-member-access': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
     'react/prop-types': 'off',
     '@typescript-eslint/no-empty-interface': 'off',
     'jsx-a11y/no-autofocus': 'off',

@@ -1,31 +1,34 @@
-import React from 'react'
-import { CheckboxType } from './checkbox.type'
-import { DateType } from './date.type'
-import { DropdownType } from './dropdown.type'
-import { EmailType } from './email.type'
-import { LinkType } from './link.type'
-import { NumberType } from './number.type'
-import { RadioType } from './radio.type'
-import { RatingType } from './rating.type'
-import { SliderType } from './slider.type'
-import { TextType } from './text.type'
-import { TextareaType } from './textarea.type'
-import { FieldTypeProps } from './type.props'
-import { YesNoType } from './yes_no.type'
+import { AbstractType } from './abstract.type'
+import { CheckboxType } from './checkbox'
+import { DateType } from './date'
+import { DropdownType } from './dropdown'
+import { EmailType } from './email'
+import { HiddenType } from './hidden'
+import { LinkType } from './link'
+import { LocationType } from './location'
+import { NumberType } from './number'
+import { RadioType } from './radio'
+import { RatingType } from './rating'
+import { SliderType } from './slider'
+import { TextareaType } from './textarea'
+import { TextfieldType } from './textfield'
+import { YesNoType } from './yes_no'
 
 export const fieldTypes: {
-  [key: string]: React.FC<FieldTypeProps>
+  [key: string]: AbstractType
 } = {
-  date: DateType,
-  dropdown: DropdownType,
-  checkbox: CheckboxType,
-  email: EmailType,
-  link: LinkType,
-  number: NumberType,
-  radio: RadioType,
-  rating: RatingType,
-  slider: SliderType,
-  textarea: TextareaType,
-  textfield: TextType,
-  yes_no: YesNoType,
+  checkbox: new CheckboxType(),
+  date: new DateType(),
+  dropdown: new DropdownType(),
+  email: new EmailType(),
+  hidden: new HiddenType(),
+  link: new LinkType(),
+  location: new LocationType(),
+  number: new NumberType(),
+  radio: new RadioType(),
+  rating: new RatingType(),
+  slider: new SliderType(),
+  textarea: new TextareaType(),
+  textfield: new TextfieldType(),
+  yes_no: new YesNoType(),
 }

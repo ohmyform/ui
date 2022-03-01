@@ -7,11 +7,9 @@ import { StyledH1 } from '../../../styled/h1'
 import { StyledMarkdown } from '../../../styled/markdown'
 import { useRouter } from '../../../use.router'
 import { fieldTypes } from '../../types'
-import { TextType } from '../../types/text.type'
-import { FieldTypeProps } from '../../types/type.props'
 
 interface Props {
-  focus: boolean
+  focus?: boolean
   field: FormPublicFieldFragment
   design: FormPublicDesignFragment
 }
@@ -19,7 +17,7 @@ interface Props {
 export const Field: React.FC<Props> = ({ field, design, focus, ...props }) => {
   const router = useRouter()
 
-  const FieldInput: React.FC<FieldTypeProps> = fieldTypes[field.type] || TextType
+  const FieldInput = (fieldTypes[field.type] || fieldTypes['text']).inputFormField()
 
   const getUrlDefault = (): string => {
     if (router.query[field.id]) {
@@ -57,7 +55,12 @@ export const Field: React.FC<Props> = ({ field, design, focus, ...props }) => {
           <StyledMarkdown design={design} type={'question'} >{field.description}</StyledMarkdown>
         )}
 
-        <FieldInput design={design} field={field} urlValue={getUrlDefault()} focus={focus} />
+        <FieldInput
+          design={design}
+          field={field}
+          urlValue={getUrlDefault()}
+          focus={false}/* cannot use this in card layout! try with 2 input fields */
+        />
       </div>
     </div>
   )

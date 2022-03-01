@@ -77,6 +77,7 @@ export const SliderLayout: React.FC<LayoutProps> = (props) => {
                 <SwiperSlide key={field.id}>
                   <Field
                     field={field}
+                    focus={swiper?.activeIndex === (startPage.show ? 1 : 0) + i}
                     design={design}
                     save={async (values: { [key: string]: unknown }) => {
                       await setField(field.id, values[field.id])

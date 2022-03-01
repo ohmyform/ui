@@ -2,6 +2,11 @@ import { useMutation } from '@apollo/client'
 import debug from 'debug'
 import { useCallback, useEffect, useState } from 'react'
 import {
+  SUBMISSION_FINISH_MUTATION,
+  SubmissionFinishMutationData,
+  SubmissionFinishMutationVariables,
+} from '../graphql/mutation/submission.finish.mutation'
+import {
   SUBMISSION_SET_FIELD_MUTATION,
   SubmissionSetFieldMutationData,
   SubmissionSetFieldMutationVariables,
@@ -11,11 +16,6 @@ import {
   SubmissionStartMutationData,
   SubmissionStartMutationVariables,
 } from '../graphql/mutation/submission.start.mutation'
-import {
-  SUBMISSION_FINISH_MUTATION,
-  SubmissionFinishMutationData,
-  SubmissionFinishMutationVariables,
-} from '../graphql/mutation/submission.finish.mutation'
 
 const logger = debug('useSubmission')
 
@@ -65,8 +65,12 @@ export const useSubmission = (formId: string): Submission => {
   }, [formId])
 
   const setField = useCallback(
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    async (fieldId: string, data: any) => {
+    async (fieldId: string, data: unknown) => {
+      if (data === undefined || data === null) {
+        logger('skip save field id=%O %O', fieldId, data)
+        return
+      }
+
       logger('save field id=%O %O', fieldId, data)
       await save({
         variables: {

@@ -7,8 +7,8 @@ import { FieldData } from 'rc-field-form/lib/interface'
 import React, { useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { FormFieldFragment } from '../../../graphql/fragment/form.fragment'
+import { fieldTypes } from '../types'
 import { FieldCard } from './field.card'
-import { adminTypes } from './types'
 
 const logger = debug('FieldsTab')
 
@@ -61,7 +61,7 @@ export const FieldsTab: React.FC<Props> = (props) => {
             }}
           >
             <Select value={nextType} onChange={(e) => setNextType(e)} style={{ minWidth: 200 }}>
-              {Object.keys(adminTypes).map((type) => (
+              {Object.keys(fieldTypes).map((type) => (
                 <Select.Option value={type} key={type}>
                   {t(`type:${type}.name`)}
                 </Select.Option>
