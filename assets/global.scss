@@ -1,6 +1,7 @@
 @import "variables";
 @import "node_modules/swiper/swiper.scss";
 @import "../node_modules/react-github-button/assets/style.css";
+@import "../node_modules/leaflet/dist/leaflet.css";
 
 :root {
   --backgroundColor: #{$background-color};

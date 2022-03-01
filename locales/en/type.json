@@ -1,6 +1,13 @@
 {
   "add": "Add Field",
   "confirmDelete": "Really remove this field? Check that it is not referenced anywhere!",
+  "checkbox": {
+    "addOption": "Add Checkbox",
+    "default": "Default Value",
+    "name": "Checkbox",
+    "options": "Checkboxes",
+    "removeOption": "Remove"
+  },
   "date": {
     "default": "Default Date",
     "max": "Max Date",
@@ -30,6 +37,10 @@
   "link": {
     "default": "Default Link",
     "name": "URL"
+  },
+  "location": {
+    "name": "Map Location",
+    "default": "Default Location"
   },
   "number": {
     "default": "Default Number",
