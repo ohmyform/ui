@@ -36,6 +36,9 @@ export const ExportSubmissionAction: React.FC<Props> = (props) => {
       workbook.created = new Date()
       workbook.modified = new Date()
 
+      const orderedFields = form.data.form.fields
+        .sort((a, b) => (a.idx ?? 0) - (b.idx ?? 0))
+
       const sheet = workbook.addWorksheet('Submissions')
       sheet.getRow(1).values = [
         'Submission ID',
@@ -45,7 +48,7 @@ export const ExportSubmissionAction: React.FC<Props> = (props) => {
         'City',
         'User Agent',
         'Device',
-        ...form.data.form.fields.map((field) => `${field.title} (${field.type})`),
+        ...orderedFields.map((field) => `${field.title} (${field.type})`),
       ]
 
       const firstPage = await getSubmissions({
@@ -65,7 +68,9 @@ export const ExportSubmissionAction: React.FC<Props> = (props) => {
           data.device.name,
         ]
 
-        data.fields.forEach((field) => {
+        orderedFields.forEach((formField) => {
+          const field = data.fields.find(field => field.id === formField.id)
+
           try {
             fieldTypes[field.type]?.stringifyValue(field.value)
 
