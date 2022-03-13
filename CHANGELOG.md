@@ -26,9 +26,13 @@ Template for next version
 
 ### Fixed
 
-- field sort in excel submission export (https://github.com/ohmyform/ohmyform/issues/163)
-
 ### Security
+
+## [1.0.2] - 2022-03-13
+
+### Fixed
+
+- field sort in excel submission export (https://github.com/ohmyform/ohmyform/issues/163)
 
 ## [1.0.1] - 2022-03-01
 
