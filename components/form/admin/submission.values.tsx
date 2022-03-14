@@ -4,8 +4,8 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { FormPagerFragment } from '../../../graphql/fragment/form.pager.fragment'
 import {
+  SubmissionFieldFragment,
   SubmissionFragment,
-  SubmissionFragmentField,
 } from '../../../graphql/fragment/submission.fragment'
 import { fieldTypes } from '../types'
 
@@ -17,7 +17,7 @@ interface Props {
 export const SubmissionValues: React.FC<Props> = (props) => {
   const { t } = useTranslation()
 
-  const columns: ColumnsType<SubmissionFragmentField> = [
+  const columns: ColumnsType<SubmissionFieldFragment> = [
     {
       title: t('submission:field'),
       render(_, row) {
