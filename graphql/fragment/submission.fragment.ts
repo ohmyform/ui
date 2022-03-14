@@ -1,16 +1,17 @@
 import { gql } from '@apollo/client/core'
 
-interface SubmissionFragmentFormField {
+interface FormFieldSubmissionFragment {
+  id: string
   title: string
   required: boolean
 }
 
-export interface SubmissionFragmentField {
+export interface SubmissionFieldFragment {
   id: string
   value: string
   type: string
 
-  field?: SubmissionFragmentFormField
+  field?: FormFieldSubmissionFragment
 }
 
 export interface SubmissionFragment {
@@ -28,7 +29,7 @@ export interface SubmissionFragment {
     name: string
   }
 
-  fields: SubmissionFragmentField[]
+  fields: SubmissionFieldFragment[]
 }
 
 export const SUBMISSION_FRAGMENT = gql`
@@ -53,6 +54,7 @@ export const SUBMISSION_FRAGMENT = gql`
       type
 
       field {
+        id
         title
         required
       }

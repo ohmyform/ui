@@ -39,6 +39,8 @@ export const ExportSubmissionAction: React.FC<Props> = (props) => {
       const orderedFields = form.data.form.fields
         .sort((a, b) => (a.idx ?? 0) - (b.idx ?? 0))
 
+      // TODO should go through deleted fields as well to have a complete overview!
+
       const sheet = workbook.addWorksheet('Submissions')
       sheet.getRow(1).values = [
         'Submission ID',
@@ -69,7 +71,7 @@ export const ExportSubmissionAction: React.FC<Props> = (props) => {
         ]
 
         orderedFields.forEach((formField) => {
-          const field = data.fields.find(field => field.id === formField.id)
+          const field = data.fields.find(submission => submission.field?.id === formField.id)
 
           try {
             fieldTypes[field.type]?.stringifyValue(field.value)
