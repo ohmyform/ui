@@ -37,6 +37,7 @@ export const ExportSubmissionAction: React.FC<Props> = (props) => {
       workbook.modified = new Date()
 
       const orderedFields = form.data.form.fields
+        .map(field => field)
         .sort((a, b) => (a.idx ?? 0) - (b.idx ?? 0))
 
       // TODO should go through deleted fields as well to have a complete overview!

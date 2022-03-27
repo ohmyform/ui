@@ -26,6 +26,8 @@ Template for next version
 
 ### Fixed
 
+- sorting of fields in excel export
+
 ### Security
 
 ## [1.0.2] - 2022-03-13
