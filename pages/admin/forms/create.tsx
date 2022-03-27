@@ -89,6 +89,37 @@ const Create: NextPage = () => {
           <Input type={'hidden'} />
         </Form.Item>
 
+        <Form.Item
+          noStyle
+          name={[
+            'form', 'endPage', 'show',
+          ]}
+          initialValue={true}
+        >
+          <Input type={'hidden'} />
+        </Form.Item>
+
+        <Form.Item
+          noStyle
+          name={[
+            'form', 'endPage', 'title',
+          ]}
+          initialValue={t('form:submitted')}
+        >
+          <Input type={'hidden'} />
+        </Form.Item>
+
+        <Form.Item
+          noStyle
+          label={t('form:endPage.continueButtonText')}
+          name={[
+            'form', 'endPage', 'buttonText',
+          ]}
+          initialValue={t('form:restart')}
+        >
+          <Input type={'hidden'} />
+        </Form.Item>
+
         <Tabs>
           <BaseDataTab key={'base_data'} tab={t('form:baseDataTab')} />
         </Tabs>

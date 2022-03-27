@@ -24,6 +24,8 @@ Template for next version
 
 ### Changed
 
+- default form now has an end page
+
 ### Fixed
 
 - sorting of fields in excel export
