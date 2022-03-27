@@ -24,13 +24,19 @@ Template for next version
 
 ### Changed
 
+### Fixed
+
+### Security
+
+## [1.0.3] - 2022-03-27
+
+### Changed
+
 - default form now has an end page
 
 ### Fixed
 
 - sorting of fields in excel export
-
-### Security
 
 ## [1.0.2] - 2022-03-13
 
