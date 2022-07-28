@@ -26,6 +26,8 @@ Template for next version
 
 ### Fixed
 
+- node prune location (https://github.com/ohmyform/ohmyform/issues/184)
+
 ### Security
 
 ## [1.0.3] - 2022-03-27
