@@ -9,7 +9,7 @@ export const useMath = (): ((
 ) => boolean) => {
   return (expression, values) => {
     const parser = init(formula, (term: string) => {
-      if (values[term]) {
+      if (values.hasOwnProperty(term)) {
         return values[term]
       }
 
@@ -17,20 +17,6 @@ export const useMath = (): ((
     })
 
     try {
-      let processed = expression
-
-      Object.keys(values).forEach((key) => {
-        const r = new RegExp(key.replace('$', '\\$'), 'ig')
-
-        const test = r.test(processed)
-
-        if (test) {
-          processed = processed.replace(r, String(values[key]))
-        }
-      })
-
-      parser.expressionToValue(expression)
-
       return Boolean(parser.expressionToValue(expression))
     } catch (e) {
       logger(
