@@ -9,7 +9,7 @@ export const useMath = (): ((
 ) => boolean) => {
   return (expression, values) => {
     const parser = init(formula, (term: string) => {
-      if (values.hasOwnProperty(term)) {
+      if (Object.prototype.hasOwnProperty.call(values, term)) {
         return values[term]
       }
 
