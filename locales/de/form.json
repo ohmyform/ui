@@ -3,7 +3,8 @@
     "isLive": "Öffentlich",
     "language": "Sprache",
     "showFooter": "Fußzeile anzeigen",
-    "title": "Titel"
+    "title": "Titel",
+    "anonymousSubmission": "Anonyme Einreichung"
   },
   "baseDataTab": "Basisdaten",
   "building": "Formular wird aufgebaut",

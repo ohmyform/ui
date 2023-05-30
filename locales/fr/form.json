@@ -3,7 +3,8 @@
     "isLive": "Actif",
     "language": "Langue",
     "showFooter": "Afficher le pied de page",
-    "title": "Titre"
+    "title": "Titre",
+    "anonymousSubmission": "Soumission anonyme"
   },
   "baseDataTab": "Paramètres",
   "building": "Construction du formulaire",

@@ -200,7 +200,7 @@ export const Structure: FunctionComponent<Props> = (props) => {
                 display: 'inline-flex',
               }}
             >
-              <div>Hi {user.data && user.data.me.username},</div>
+              <div>Hi {user.data && user.data.me.username}</div>
               <UserOutlined style={{ fontSize: 24 }} />
               <CaretDownOutlined />
             </Space>

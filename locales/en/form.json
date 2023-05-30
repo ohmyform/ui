@@ -3,7 +3,8 @@
     "isLive": "Is Live",
     "language": "Language",
     "showFooter": "Show Footer",
-    "title": "Title"
+    "title": "Title",
+    "anonymousSubmission": "Anonymous Submission"
   },
   "baseDataTab": "Base Data",
   "building": "Building Form",
