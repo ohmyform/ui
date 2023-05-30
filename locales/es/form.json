@@ -3,7 +3,8 @@
     "isLive": "Es en vivo",
     "language": "Idioma",
     "showFooter": "Mostrar pie de página",
-    "title": "Título"
+    "title": "Título",
+    "anonymousSubmission": "Presentación anónima"
   },
   "baseDataTab": "Datos Generales",
   "building": "Formulario de construcción",
