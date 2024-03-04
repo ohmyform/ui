@@ -52,10 +52,10 @@ export const CardLayout: React.FC<LayoutProps> = (props) => {
         ? fieldTypes[field.type].parseValue(field.defaultValue)
         : null
 
-      defaults[`@${field.id}`] = form.getFieldValue([field.id, 'value']) ?? defaultValue
+      defaults[`@${field.id}`] = form.getFieldValue([field.id]) ?? defaultValue
 
       if (field.slug) {
-        defaults[`$${field.slug}`] = form.getFieldValue([field.id, 'value']) ?? defaultValue
+        defaults[`$${field.slug}`] = form.getFieldValue([field.id]) ?? defaultValue
       }
     })
 
